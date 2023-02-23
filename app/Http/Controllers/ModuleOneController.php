@@ -20,7 +20,6 @@ use App\Models\Pono;
 use App\Models\Priority;
 use App\Models\Production;
 use App\Models\Smallquan;
-use App\Models\TraineeID;
 use App\Models\TransporterReg;
 use App\Models\Tsdreg;
 use App\Models\Upload;
@@ -53,13 +52,12 @@ class ModuleOneController extends Controller
         $pono = Pono::all();
         $operation = Operation::all();
         $production = Production::all();
-        $trainee_id = TraineeID::all();
         $upload = Upload::all();
 
         return view('module.moduleOne')
             ->with(['aircon'=>$aircon,'dpno'=>$dpno,'gic'=>$gic, 'acno'=> $acno,'dpno'=>$dpno,'cncno'=>$cncno,'denrid'=>$denrid,
                 'transporterReg'=>$transporterReg,'tsdreg'=>$tsdreg,'ccoreg'=>$ccoreg,'import'=>$import,'permit'=>$permit,'smallquan'=>$smallquan,
-                'priority'=>$priority,'piccs'=>$piccs,'pmpin'=>$pmpin,'pono'=>$pono,'operation'=>$operation,'production'=>$production,'traineeid'=>$trainee_id,'uploads'=>$upload
+                'priority'=>$priority,'piccs'=>$piccs,'pmpin'=>$pmpin,'pono'=>$pono,'operation'=>$operation,'production'=>$production, 'uploads'=>$upload
             ]);
 
     }

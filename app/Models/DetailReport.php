@@ -9,4 +9,5 @@ class DetailReport extends Model
 {
     use HasFactory;
     protected $table ='detailreport';
+
 }

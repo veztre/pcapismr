@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('usertype');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('region');
+            $table->string('region')->nullable();
             $table->string('password');
             $table->string('company_id', 2048)->nullable();
             $table->string('government_id', 2048)->nullable();

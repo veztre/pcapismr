@@ -33,7 +33,7 @@ class ModuleFourController extends Controller
         $improvement_or_modification = Improvement_or_modification::all();
         $cost_of_improvement_of_modification = Cost_of_improvement_of_modification::all();
         $detailreport = DetailReport::all();
-        $detailreport1 = DetailReport::all();
+
 
 
 
@@ -43,7 +43,7 @@ class ModuleFourController extends Controller
         'total_cost_of_chemicals_used'=>$total_cost_of_chemicals_used,'total_consumption_of_electricity'=>$total_consumption_of_electricity,
         'administrative_and_overhead_costs'=>$administrative_and_overhead_costs,'cost_of_operating_in_house_laboratory'=>$cost_of_operating_in_house_laboratory
         ,'improvement_or_modification'=>$improvement_or_modification,'cost_of_improvement_of_modification'=>$cost_of_improvement_of_modification,
-        'detailreport'=>$detailreport,'detailreport'=>$detailreport1
+        'detailreport'=>$detailreport,
 
     ]);
 

@@ -1,13 +1,16 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+
+
     <div class="container-fluid">
             <span class="navbar-brand mb-0 h-1 mx-auto">
                 <div class="m-auto mt-8 text-primary text-center text-4xl p-1 text-blue-600 mb-4" >
                        <x-jet-application-mark class="block h-9 w-auto inline-block flex-wrap" />
-                    ENVIRONMENTAL MANAGEMENT BUREAU ONLINE SERVICES - SMR
+                    TRAINER - SMR
                 </div>
             </span>
-
     </div>
+
+
 
 
 
