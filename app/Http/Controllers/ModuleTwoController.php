@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 class ModuleTwoController extends Controller
 {
     public function index(){
-        $hwGeneration = HwGeneration::all();
+        $hwGeneration = HwGeneration::get();
         $hwDetails = HWDetails::all();
         $storage = Storage::all();
         $transporter = Transporter::all();
