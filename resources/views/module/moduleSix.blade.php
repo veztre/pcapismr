@@ -62,7 +62,9 @@
                                 </div>
 
                                 <div class="card-body">
-                                    <input type="text" class="form-control mt-0" placeholder="" name="reference_no" value="{{ $reference_no }}" readonly>
+                                    @if(\App\Models\referencen::where('userid', Auth::user()->username)->first())
+                                        <input type="text" class="form-control mt-0" placeholder=""  value="{{ \App\Models\referencen::where('username', Auth::user()->username)->first()->ref_no }}" readonly >
+                                    @endif
                                 </div>
 
                             </div>

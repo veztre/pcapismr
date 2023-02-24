@@ -15,6 +15,10 @@ class UserController extends Controller
         $users = User::all();
 
         return view('admin.users.index', compact('users'));
+
+
+        $usertype = 'admin';
+        return view('navigation-menu', compact('usertype'));
     }
 
     public function show(User $user)
@@ -72,4 +76,6 @@ class UserController extends Controller
 
         return back()->with('message', 'User deleted.');
     }
+
+
 }

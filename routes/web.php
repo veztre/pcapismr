@@ -59,6 +59,8 @@ Route::post('/saveData', [ModuleOneController::class, 'save'])->name('saveData')
 
 Route::get('/pdf', [ModuleOneController::class, 'pdf']);
 
+Route::get('/reference', [ModuleOneController::class, 'generate'])->name('module.moduleOne.generate.save');
+
 /* Module Two Controller */
 Route::get('/moduleTwo', [ModuleTwoController::class, 'index'])->name('module.moduleTwo');
 

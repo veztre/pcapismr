@@ -19,6 +19,7 @@ use App\Models\Pmpin;
 use App\Models\Pono;
 use App\Models\Priority;
 use App\Models\Production;
+use App\Models\referencen;
 use App\Models\Smallquan;
 use App\Models\TransporterReg;
 use App\Models\Tsdreg;
@@ -52,13 +53,17 @@ class ModuleOneController extends Controller
         $pono = Pono::all();
         $operation = Operation::all();
         $production = Production::all();
+        $reference_no = referencen::all();
         $upload = Upload::all();
 
         return view('module.moduleOne')
             ->with(['aircon'=>$aircon,'dpno'=>$dpno,'gic'=>$gic, 'acno'=> $acno,'dpno'=>$dpno,'cncno'=>$cncno,'denrid'=>$denrid,
                 'transporterReg'=>$transporterReg,'tsdreg'=>$tsdreg,'ccoreg'=>$ccoreg,'import'=>$import,'permit'=>$permit,'smallquan'=>$smallquan,
-                'priority'=>$priority,'piccs'=>$piccs,'pmpin'=>$pmpin,'pono'=>$pono,'operation'=>$operation,'production'=>$production, 'uploads'=>$upload
+                'priority'=>$priority,'piccs'=>$piccs,'pmpin'=>$pmpin,'pono'=>$pono,'operation'=>$operation,'production'=>$production,'referencens'=>$reference_no, 'uploads'=>$upload
             ]);
+
+
+
 
     }
 
@@ -316,6 +321,23 @@ class ModuleOneController extends Controller
         $item->save();
 
         return redirect()->route('module.moduleOne');
+    }
+
+    public static function generate(){
+
+        $existing_referencen = \App\Models\referencen::where('userid', Auth::user()->username)->first();
+
+        if ($existing_referencen) {
+            $reference_no = $existing_referencen->ref_no;
+        } else {
+            $reference_no = Helper::IDGenerator(new referencen, 'ref_no', 5 , 'DENR');
+            $data = new referencen;
+            $data->ref_no = $reference_no;
+            $data->userid = Auth::user()->username;
+            $data->save();
+        }
+
+        return redirect('moduleOne');
     }
 
 }

@@ -294,7 +294,18 @@ class User extends Authenticatable
 
 
 /*    Module 6 start*/
+    public function accident_records (){
+        return $this->hasOne(AccidentRecord::class);
+    }
 
+    public function personel_staff (){
+        return $this->hasOne(PersonelStaff::class);
+    }
 /*    Module 6 end*/
+
+    public function reference_no (){
+        return $this->hasOne(referencen::class);
+    }
+
 
 }
