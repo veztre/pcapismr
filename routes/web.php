@@ -11,7 +11,8 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ModuleTwoController;
 use App\Http\Controllers\ModuleThreeController;
 use App\Http\Controllers\ModuleFourController;
-
+use App\Http\Controllers\ModuleFiveController;
+use App\Http\Controllers\ModuleSixController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -78,3 +79,18 @@ Route::get('/moduleFour', [ModuleFourController::class, 'index'])->name('module.
 Route::get('/saveData4', [ModuleFourController::class, 'save'])->name('module.moduleFour');
 
 Route::get('/pdf4', [ModuleFourController::class, 'pdf']);
+
+
+/* Module Five Controller */
+Route::get('/moduleFive', [ModuleFiveController::class, 'index'])->name('module.moduleFive');
+
+Route::get('/saveData5', [ModuleFiveController::class, 'save']);
+
+Route::get('/pdf5', [ModuleFiveController::class, 'pdf']);
+
+/* Module Six Controller */
+Route::get('/moduleSix', [ModuleSixController::class, 'index'])->name('module.moduleSix');
+
+Route::get('/saveData6', [ModuleSixController::class, 'save']);
+
+Route::get('/pdf6', [ModuleSixController::class, 'pdf']);

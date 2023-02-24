@@ -256,8 +256,40 @@ class User extends Authenticatable
 
 
 /*    Module 5 start*/
+    public function evmpprogram (){
+        return $this->hasOne(EVMPprogram::class);
+    }
+    public function aqg (){
+        return $this->hasOne(AQG::class);
+    }
+    public function tqg (){
+        return $this->hasOne(TQG::class);
+    }
+    public function aqc (){
+        return $this->hasOne(AQC::class);
+    }
+    public function tqc (){
+        return $this->hasOne(TQC::class);
+    }
+    public function eicc (){
+        return $this->hasOne(EICC::class);
+    }
+    public function description (){
+        return $this->hasOne(Description::class);
+    }
+    public function awqmonitoring1 (){
+        return $this->hasOne(Awqmonitoring1::class);
+    }
+    public function awqmonitoring (){
+        return $this->hasOne(Awqmonitoring::class);
+    }
 
-
+    public function aaqmonitoring (){
+        return $this->hasmany(AAQmonitoring::class);
+    }
+    public function oecondition (){
+        return $this->hasmany(OECondition::class);
+    }
 /*    Module 5 end*/
 
 
