@@ -611,4 +611,81 @@
     });
 </script>
 {{--Module 4 script end--}}
+
+
+
+{{--Module 5 Script start--}}
+<!-- SCRIPT FOR  AMBIENT AIR QUALITY MONITORING (IF REQUIRED AS PART OF ECC CONDITIONS)-->
+<script type="text/javascript">
+    var i = 0;
+    $("#AAQMonitoring").click(function () { //button name
+        ++i;
+        $("#AAQM").append(
+            ' <tr><td><input class="form-control" type="text" name="aaqmonitoring[]"></td><td><input class="form-control" type="date" name="aaqmonitoring[]"></td><td><input class="form-control" type="text" name="aaqmonitoring[]"></td><td><input class="form-control" type="text" name="aaqmonitoring[]"></td><td><input class="form-control" type="text" name="aaqmonitoring[]"></td><td><input class="form-control" type="text" name="aaqmonitoring[]"></td><td><input class="form-control" type="text" name=" "></td><td><input class="form-control" type="text" name=" "></td><td><input class="form-control" type="text" name=" "></td></tr>'
+        ); //table name
+    });
+</script>
+
+<!-- SCRIPT FOR  AMBIENT WATER QUALITY MONITORING (IF REQUIRED AS PART OF ECC CONDITIONS))-->
+<script type="text/javascript">
+    var i = 0;
+    $("#AWQMonitoring").click(function () { //button name
+        ++i;
+        $("#AWQM").append(
+            '<tr><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="date" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td></tr>'
+        ); //table name
+    });
+</script>
+
+<!-- SCRIPT FOR OTHER ECC CONDITIONS -->
+<script type="text/javascript">
+    var i = 0;
+    $("#OECondition").click(function () { //button name
+        ++i;
+        $("#OEC").append(
+            '<tr><td class="counterCell " style="text-align: right" ></td><td><input class="form-control" type="text" name="oecondition[]"></td><td style="text-align: center"><form action=""><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="oecondition[]"id="oecRadio1" value="Yes"><label class="form-check-label" for="oecRadio1"><p class="mt-3 mx-1">Yes</p></label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="oecondition[]"id="oecRadio2" value="No"><label class="form-check-label" for="oecRadio2"><p class="mt-3 mx-1">No</p></label></div></form></td><td><textarea class="form-control" type="text" name="oecondition[]"style="overflow:scroll; overflow: hidden visible;"></textarea></td></tr>'
+        ); //table name
+    });
+</script>
+
+<!-- SCRIPT FOR ENVIRONMENTAL MANAGEMENT PLAN/ PROGRAM -->
+<script type="text/javascript">
+    var i = 0;
+    $("#EMPlanProgram").click(function () { //button name
+        ++i;
+        $("#EMPP").append(
+            '<tr><td class="counterCell " style="text-align: right" ></td><td><input class="form-control" type="text" name=" "></td> <td style="text-align: center"> <form action=""> <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="inlineRadioOptions" id="emppRadio1" value="option1"> <label class="form-check-label" for="emppRadio1"><p class="mt-3 mx-1">Yes</p></label> </div> <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="inlineRadioOptions" id="emppRadio2" value="option2"> <label class="form-check-label" for="emppRadio2"><p class="mt-3 mx-1">No</p></label> </div> </form> </td> <td><textarea class="form-control" type="text" name=" "  style="overflow:scroll; overflow: hidden visible;"></textarea></td> </tr>'
+        ); //table name
+    });
+</script>
+{{--Module 5 Script end--}}
+
+
+{{--Module 6 Script start--}}
+
+<!-- Script for ACCIDENTS & EMERGENCY RECORDS -->
+<script type="text/javascript">
+    var i = 0;
+    $("#AERT").click(function () { //button name
+        ++i;
+        $("#AER").append
+        (' <tr><td><input type="date" class="form-control" name="accident_records[]"></td><td><input type="text" class="form-control" name="accident_records[]"></td><td><input type="text" class="form-control" name="accident_records[]"></td><td><input type="text" class="form-control" name="accident_records[]"></td><td><input type="text" class="form-control" name="accident_records[]"></td></tr>'); //table name
+    });
+</script>
+
+
+<!--  Script for ACCIDENTS & Personel Staff RECORDS -->
+<script type="text/javascript">
+    var i = 0;
+    $("#PersonelStaff").click(function () { //button name
+        ++i;
+        $("#PST").append
+        (' <tr><td><input type="date" class="form-control" name="personel_staff[]"></td><td><input type="text" class="form-control" name="personel_staff[]"></td><td><input type="text" class="form-control" name="personel_staff[]"></td></tr>'); //table name
+    });
+</script>
+
+{{--Module 6 Script end--}}
+
+
+
 </html>
