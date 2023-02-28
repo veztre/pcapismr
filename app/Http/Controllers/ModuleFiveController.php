@@ -14,22 +14,23 @@ use App\Models\OECondition;
 use App\Models\TQC;
 use App\Models\TQG;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PDF;
 
 class ModuleFiveController extends Controller
 {
     public function index(){
-        $aaqmonitoring = AAQmonitoring::all();
-        $oecondition = OECondition::all();
-        $evmpprogram = EVMPprogram::all();
-        $aqg = AQG::all();
-        $tqg = TQG::all();
-        $aqc = AQC::all();
-        $tqc = TQC::all();
-        $eicc = EICC::all();
-        $description = Description::all();
-        $awqmonitoring = Awqmonitoring::all();
-        $awqmonitoring1 = Awqmonitoring1::all();
+        $aaqmonitoring = Auth::user()->aaqmonitoring();
+        $oecondition = Auth::user()->oecondition();
+        $evmpprogram = Auth::user()->evmpprogram();
+        $aqg = Auth::user()->aqg();
+        $tqg = Auth::user()->tqg();
+        $aqc = Auth::user()->aqc();
+        $tqc = Auth::user()->tqc();
+        $eicc = Auth::user()->eicc();
+        $description = Auth::user()->description();
+        $awqmonitoring = Auth::user()->awqmonitoring();
+        $awqmonitoring1 = Auth::user()->awqmonitoring1();
 
 
         return view('module.moduleFive');

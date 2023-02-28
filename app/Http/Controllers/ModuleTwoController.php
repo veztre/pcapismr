@@ -16,13 +16,13 @@ use Illuminate\Support\Facades\Auth;
 class ModuleTwoController extends Controller
 {
     public function index(){
-        $hwGeneration = HwGeneration::all();
-        $hwDetails = HWDetails::all();
-        $storage = Storage::all();
-        $transporter = Transporter::all();
-        $treater = Treater::all();
-        $disposal = Disposal::all();
-        $osisa = Osisa::all();
+        $hwGeneration = Auth::user()->hwGeneration();
+        $hwDetails = Auth::user()->hwDetails();
+        $storage = Auth::user()->storage();
+        $transporter = Auth::user()->transporter();
+        $treater = Auth::user()->treater();
+        $disposal = Auth::user()->disposal();
+        $osisa = Auth::user()->osisa();
 
         return view('module.moduleTwo');
         -with(['hwGeneration'=>$hwGeneration,'hwDetails'=>$hwDetails,'storage'=>$storage,'trasporter'=>$transporter,
@@ -73,7 +73,7 @@ class ModuleTwoController extends Controller
                     $DBtransporter->transpo_id = $transporter[$x];
                     $DBtransporter->name = $transporter[$x+1];
                     $DBtransporter->method = $transporter[$x+2];
-                    $DBtransporter->date = $transporter[$x+3];
+                    $DBtransporter->date = date('Y-m-d',$transporter[$x+3]);
                     $DBtransporter->save();
                 }
                 $treater = $request->input('treater');

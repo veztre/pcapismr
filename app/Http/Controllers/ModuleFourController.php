@@ -22,18 +22,18 @@ use PDF;
 class ModuleFourController extends Controller
 {
     public function index(){
-        $summary1 = Summary1::all();
-        $summary2 = Summary2::all();
-        $summary3 = Summary3::all();
-        $cost_of_person_employed = Cost_of_person_employed::all();
-        $total_consumption_of_water = Total_Consumption_of_Water::all();
-        $total_cost_of_chemicals_used = Total_Cost_of_Chemicals_used::all();
-        $total_consumption_of_electricity = Total_Consumption_of_Electricity::all();
-        $administrative_and_overhead_costs = Administrative_and_Overhead_Costs::all();
-        $cost_of_operating_in_house_laboratory = Cost_of_operating_in_house_laboratory::all();
-        $improvement_or_modification = Improvement_or_modification::all();
-        $cost_of_improvement_of_modification = Cost_of_improvement_of_modification::all();
-        $detailreport = DetailReport::all();
+        $summary1 = Auth::user()->summary1();
+        $summary2 = Auth::user()->summary2();
+        $summary3 = Auth::user()->summary3();
+        $cost_of_person_employed = Auth::user()->cost_of_person_employed();
+        $total_consumption_of_water = Auth::user()->total_consumption_of_water();
+        $total_cost_of_chemicals_used = Auth::user()->total_cost_of_chemicals_used();
+        $total_consumption_of_electricity = Auth::user()->total_consumption_of_electricity();
+        $administrative_and_overhead_costs = Auth::user()->administrative_and_overhead_costs();
+        $cost_of_operating_in_house_laboratory = Auth::user()->cost_of_operating_in_house_laboratory();
+        $improvement_or_modification = Auth::user()->improvement_or_modification();
+        $cost_of_improvement_of_modification = Auth::user()->cost_of_improvement_of_modification();
+        $detailreport = Auth::user()->detailreport();
 
 
 

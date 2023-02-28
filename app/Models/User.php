@@ -72,183 +72,185 @@ class User extends Authenticatable
     ];
 
 
+
+
   /* Module1 start*/
      public function gic(){
-        return $this->hasOne(Gic::class);
+        return $this->hasOne(Gic::class,foreignKey: 'userid');
     }
      public function aircon(){
-        return $this->hasOne(Aircon::class);
+        return $this->hasOne(Aircon::class,foreignKey: 'userid');
     }
 
      public function denrid(){
-        return $this->hasOne(Denrid::class);
+        return $this->hasOne(Denrid::class,foreignKey: 'userid');
     }
      public function transporterReg(){
-        return $this->hasOne(TransporterReg::class);
+        return $this->hasOne(TransporterReg::class,foreignKey: 'userid');
     }
 
      public function tsdreg(){
-        return $this->hasOne(Tsdreg::class);
+        return $this->hasOne(Tsdreg::class,foreignKey: 'userid');
     }
      public function acno(){
-        return $this->hasOne(Acno::class);
+        return $this->hasOne(Acno::class,foreignKey: 'userid');
     }
     public function operation(){
-        return $this->hasOne(Operation::class);
+        return $this->hasOne(Operation::class,foreignKey: 'userid');
     }
 
      public function production(){
-        return $this->hasOne(Production::class);
+        return $this->hasOne(Production::class,foreignKey: 'userid');
     }
 
 
     public function dpno(){
-        return $this->hasMany(Dpno::class);
+        return $this->hasMany(Dpno::class,foreignKey: 'userid');
     }
 
     public function cncno(){
-        return $this->hasMany(Cncno::class);
+        return $this->hasMany(Cncno::class,foreignKey: 'userid');
     }
 
     public function ccoreg(){
-        return $this->hasMany(Ccoreg::class);
+        return $this->hasMany(Ccoreg::class,foreignKey: 'userid');
     }
     public function import(){
-        return $this->hasMany(Import::class);
+        return $this->hasMany(Import::class,foreignKey: 'userid');
     }
     public function permit(){
-        return $this->hasMany(Permmit::class);
+        return $this->hasMany(Permmit::class,foreignKey: 'userid');
     }
 
     public function smallquan(){
-        return $this->hasMany(Smallquan::class);
+        return $this->hasMany(Smallquan::class,foreignKey: 'userid');
     }
     public function priority(){
-        return $this->hasMany(Priority::class);
+        return $this->hasMany(Priority::class,foreignKey: 'userid');
     }
     public function piccs(){
-        return $this->hasMany(Piccs::class);
+        return $this->hasMany(Piccs::class,foreignKey: 'userid');
     }
     public function pmpin(){
-        return $this->hasMany(Pmpin::class);
+        return $this->hasMany(Pmpin::class,foreignKey: 'userid');
     }
     public function pono(){
-        return $this->hasMany(Pono::class);
+        return $this->hasMany(Pono::class,foreignKey: 'userid');
     }
 
    /* Module1 end*/
 
     /*Module 2 start*/
     public function hwDetails(){
-        return $this->hasMany(HWDetails::class);
+        return $this->hasMany(HWDetails::class,foreignKey: 'userid');
     }
 
     public function hwGeneration(){
-        return $this->hasMany(HwGeneration::class);
+        return $this->hasMany(HwGeneration::class,foreignKey: 'userid');
     }
 
     public function storage(){
-        return $this->hasMany(Storage::class);
+        return $this->hasMany(Storage::class,foreignKey: 'userid');
     }
     public function transporter(){
-        return $this->hasMany(Transporter::class);
+        return $this->hasMany(Transporter::class,foreignKey: 'userid');
     }
     public function treater(){
-        return $this->hasMany(Treater::class);
+        return $this->hasMany(Treater::class,foreignKey: 'userid');
     }
     public function disposal(){
-        return $this->hasMany(Disposal::class);
+        return $this->hasMany(Disposal::class,foreignKey: 'userid');
     }
     public function osisa(){
-        return $this->hasMany(Osisa::class);
+        return $this->hasMany(Osisa::class,foreignKey: 'userid');
     }
 
     /*Module 2 end*/
 
 /*    Module 3 start*/
     public function waterpolutiondata(){
-        return $this->hasOne(WaterPolutionData::class);
+        return $this->hasOne(WaterPolutionData::class,foreignKey: 'userid');
     }
 
     public function personEmployed(){
-        return $this->hasOne(PersonEmployed::class);
+        return $this->hasOne(PersonEmployed::class,foreignKey: 'userid');
     }
     public function personEmployedCost(){
-        return $this->hasOne(PersonEmployedCost::class);
+        return $this->hasOne(PersonEmployedCost::class,foreignKey: 'userid');
     }
     public function costofchemical(){
-        return $this->hasOne(CostOfChemical::class);
+        return $this->hasOne(CostOfChemical::class,foreignKey: 'userid');
     }
     public function utilitycost(){
-        return $this->hasOne(UtilityCost::class);
+        return $this->hasOne(UtilityCost::class,foreignKey: 'userid');
     }
     public function administrativecosts(){
-        return $this->hasOne(AdministrativeCost::class);
+        return $this->hasOne(AdministrativeCost::class,foreignKey: 'userid');
     }
     public function costofoperating(){
-        return $this->hasOne(CostOfOperating::class);
+        return $this->hasOne(CostOfOperating::class,foreignKey: 'userid');
     }
     public function newinvestment(){
-        return $this->hasOne(NewInvestment::class);
+        return $this->hasOne(NewInvestment::class,foreignKey: 'userid');
     }
     public function costofnew (){
-        return $this->hasOne(CostOfNew::class);
+        return $this->hasOne(CostOfNew::class,foreignKey: 'userid');
     }
     public function drowcfop (){
-        return $this->hasOne(Drowcfop::class);
+        return $this->hasOne(Drowcfop::class,foreignKey: 'userid');
     }
 
     public function dischargeLocation(){
-        return $this->hasMany(DischargeLocation::class);
+        return $this->hasMany(DischargeLocation::class,foreignKey: 'userid');
     }
 
     public function dreportofwaste(){
-        return $this->hasMany(DreportofWaste::class);
+        return $this->hasMany(DreportofWaste::class,foreignKey: 'userid');
     }
 
     public function drowcfop1(){
-        return $this->hasMany(Drowcfop1::class);
+        return $this->hasMany(Drowcfop1::class,foreignKey: 'userid');
     }
 
     /*Module 3 End */
 
     /*Module4 start*/
     public function summary1(){
-        return $this->hasMany(Summary1::class);
+        return $this->hasMany(Summary1::class,foreignKey: 'userid');
     }
     public function summary2(){
-        return $this->hasMany(Summary2::class);
+        return $this->hasMany(Summary2::class,foreignKey: 'userid');
     }
     public function summary3(){
-        return $this->hasMany(Summary3::class);
+        return $this->hasMany(Summary3::class,foreignKey: 'userid');
     }
 
     public function cost_of_person_employed (){
-        return $this->hasOne(Cost_of_person_employed::class);
+        return $this->hasOne(Cost_of_person_employed::class,foreignKey: 'userid');
     }
     public function total_consumption_of_water (){
-        return $this->hasOne(Total_Consumption_of_Water::class);
+        return $this->hasOne(Total_Consumption_of_Water::class,foreignKey: 'userid');
     }
     public function total_cost_of_chemicals_used (){
-        return $this->hasOne(Total_Cost_of_Chemicals_used::class);
+        return $this->hasOne(Total_Cost_of_Chemicals_used::class,foreignKey: 'userid');
     }
     public function total_consumption_of_electricity (){
-        return $this->hasOne(Total_Consumption_of_Electricity::class);
+        return $this->hasOne(Total_Consumption_of_Electricity::class,foreignKey: 'userid');
     }
     public function administrative_and_overhead_costs (){
-        return $this->hasOne(Administrative_and_Overhead_Costs::class);
+        return $this->hasOne(Administrative_and_Overhead_Costs::class,foreignKey: 'userid');
     }
     public function cost_of_operating_in_house_laboratory (){
-        return $this->hasOne(Cost_of_operating_in_house_laboratory::class);
+        return $this->hasOne(Cost_of_operating_in_house_laboratory::class,foreignKey: 'userid');
     }
     public function improvement_or_modification (){
-        return $this->hasOne(Improvement_or_modification::class);
+        return $this->hasOne(Improvement_or_modification::class,foreignKey: 'userid');
     }
     public function cost_of_improvement_of_modification (){
-        return $this->hasOne(Cost_of_improvement_of_modification::class);
+        return $this->hasOne(Cost_of_improvement_of_modification::class,foreignKey: 'userid');
     }
     public function detailreport (){
-        return $this->hasOne(DetailReport::class);
+        return $this->hasOne(DetailReport::class,foreignKey: 'userid');
     }
 
 
@@ -257,54 +259,54 @@ class User extends Authenticatable
 
 /*    Module 5 start*/
     public function evmpprogram (){
-        return $this->hasOne(EVMPprogram::class);
+        return $this->hasOne(EVMPprogram::class,foreignKey: 'userid');
     }
     public function aqg (){
-        return $this->hasOne(AQG::class);
+        return $this->hasOne(AQG::class,foreignKey: 'userid');
     }
     public function tqg (){
-        return $this->hasOne(TQG::class);
+        return $this->hasOne(TQG::class,foreignKey: 'userid');
     }
     public function aqc (){
-        return $this->hasOne(AQC::class);
+        return $this->hasOne(AQC::class,foreignKey: 'userid');
     }
     public function tqc (){
-        return $this->hasOne(TQC::class);
+        return $this->hasOne(TQC::class,foreignKey: 'userid');
     }
     public function eicc (){
-        return $this->hasOne(EICC::class);
+        return $this->hasOne(EICC::class,foreignKey: 'userid');
     }
     public function description (){
-        return $this->hasOne(Description::class);
+        return $this->hasOne(Description::class,foreignKey: 'userid');
     }
     public function awqmonitoring1 (){
-        return $this->hasOne(Awqmonitoring1::class);
+        return $this->hasOne(Awqmonitoring1::class,foreignKey: 'userid');
     }
     public function awqmonitoring (){
-        return $this->hasOne(Awqmonitoring::class);
+        return $this->hasOne(Awqmonitoring::class,foreignKey: 'userid');
     }
 
     public function aaqmonitoring (){
-        return $this->hasmany(AAQmonitoring::class);
+        return $this->hasmany(AAQmonitoring::class,foreignKey: 'userid');
     }
     public function oecondition (){
-        return $this->hasmany(OECondition::class);
+        return $this->hasmany(OECondition::class,foreignKey: 'userid');
     }
 /*    Module 5 end*/
 
 
 /*    Module 6 start*/
     public function accident_records (){
-        return $this->hasOne(AccidentRecord::class);
+        return $this->hasOne(AccidentRecord::class,foreignKey: 'userid');
     }
 
     public function personel_staff (){
-        return $this->hasOne(PersonelStaff::class);
+        return $this->hasOne(PersonelStaff::class,foreignKey: 'userid');
     }
 /*    Module 6 end*/
 
     public function reference_no (){
-        return $this->hasOne(referencen::class);
+        return $this->hasOne(referencen::class,foreignKey: 'userid');
     }
 
 

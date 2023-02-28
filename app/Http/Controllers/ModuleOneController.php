@@ -34,33 +34,34 @@ class ModuleOneController extends Controller
 {
     public function index(){
 
-        $aircon = Aircon::all();
-        $gic = Gic::all();
-        $acno = Acno::all();
-        $dpno = Dpno::all();
-        $cncno = Cncno::all();
-        $denrid = Denrid::all();
-        $transporterReg = TransporterReg::all();
-        $tsdreg = Tsdreg::all();
-        $ccoreg = Ccoreg::all();
-        $import = Import::all();
-        $permit = Permmit::all();
-        $smallquan = Smallquan::all();
-        $priority = Priority::all();
-        $piccs = Piccs::all();
-        $pmpin = Pmpin::all();
-        $pono = Pono::all();
-        $operation = Operation::all();
-        $production = Production::all();
-        $reference_no = referencen::all();
-        $upload = Upload::all();
+        $aircon = Auth::user()->aircon();
+        $gic = Auth::user()->gic();
+        $acno = Auth::user()->acno();
+        $dpno = Auth::user()->dpno();
+        $cncno = Auth::user()->cncno();
+        $denrid = Auth::user()->denrid();
+        $transporterReg = Auth::user()->transporterReg();
+        $tsdreg = Auth::user()->tsdreg();
+        $ccoreg = Auth::user()->ccoreg();
+        $import = Auth::user()->import();
+        $permit = Auth::user()->permit();
+        $smallquan = Auth::user()->smallquan();
+        $priority = Auth::user()->priority();
+        $piccs = Auth::user()->piccs();
+        $pmpin = Auth::user()->pmpin();
+        $pono = Auth::user()->pono();
+        $operation = Auth::user()->operation();
+        $production = Auth::user()->production();
+        $reference_no = Auth::user()->reference_no()->find(1);
+        ($reference_no->ref_no);
 
-        return view('module.moduleOne')
-            ->with(['aircon'=>$aircon,'gic'=>$gic, 'acno'=> $acno,'dpno'=>$dpno,'cncno'=>$cncno,'denrid'=>$denrid,
-                'transporterReg'=>$transporterReg,'tsdreg'=>$tsdreg,'ccoreg'=>$ccoreg,'import'=>$import,'permit'=>$permit,'smallquan'=>$smallquan,
-                'priority'=>$priority,'piccs'=>$piccs,'pmpin'=>$pmpin,'pono'=>$pono,'operation'=>$operation,'production'=>$production,'referencens'=>$reference_no, 'uploads'=>$upload
-            ]);
 
+
+            return view('module.moduleOne')
+                ->with(['aircon' => $aircon, 'gic' => $gic, 'acno' => $acno, 'dpno' => $dpno, 'cncno' => $cncno, 'denrid' => $denrid,
+                    'transporterReg' => $transporterReg, 'tsdreg' => $tsdreg, 'ccoreg' => $ccoreg, 'import' => $import, 'permit' => $permit, 'smallquan' => $smallquan,
+                    'priority' => $priority, 'piccs' => $piccs, 'pmpin' => $pmpin, 'pono' => $pono, 'operation' => $operation, 'production' => $production, 'referencens' => $reference_no
+                ]);
 
 
 
@@ -324,7 +325,8 @@ class ModuleOneController extends Controller
 
     public static function generate(){
 
-        $existing_referencen = referencen::where('userid', Auth::user()->id)->first();
+        $existing_referencen = Auth::user()->reference_no()->find(1);
+
 
         if ($existing_referencen) {
             $reference_no = $existing_referencen->ref_no;

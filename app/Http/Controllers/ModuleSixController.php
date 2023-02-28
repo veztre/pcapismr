@@ -5,14 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\AccidentRecord;
 use App\Models\PersonelStaff;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use PDF;
 
 class ModuleSixController extends Controller
 {
     public function index(){
-            $accident_records = AccidentRecord::all();
-            $personel_staff = PersonelStaff::all();
+            $accident_records = Auth::user()->accident_records();
+            $personel_staff = Auth::user()->personel_staff();
 
 
         return view('module.moduleSix');

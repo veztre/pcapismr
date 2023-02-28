@@ -23,19 +23,19 @@ class ModuleThreeController extends Controller
 {
     public function index(){
 
-        $waterpolutiondata = WaterPolutionData::all();
-        $personEmployed = PersonEmployed::all();
-        $personEmployedCost = PersonEmployedCost::all();
-        $costofchemical = CostOfChemical::all();
-        $utilitycost = UtilityCost::all();
-        $administrativecosts = AdministrativeCost::all();
-        $costofoperating = CostOfOperating::all();
-        $newinvestment = NewInvestment::all();
-        $costofnew = CostOfNew::all();
-        $dischargeLocation = DischargeLocation::all();
-        $dreportofwaste = DreportofWaste::all();
-        $drowcfop = Drowcfop::all();
-        $drowcfop1 = Drowcfop1::all();
+        $waterpolutiondata = Auth::user()->waterpolutiondata();
+        $personEmployed = Auth::user()->personEmployed();
+        $personEmployedCost = Auth::user()->personEmployedCost();
+        $costofchemical = Auth::user()->costofchemical();
+        $utilitycost = Auth::user()->utilitycost();
+        $administrativecosts = Auth::user()->administrativecosts();
+        $costofoperating = Auth::user()->costofoperating();
+        $newinvestment = Auth::user()->newinvestment();
+        $costofnew = Auth::user()->costofnew();
+        $dischargeLocation = Auth::user()->dischargeLocation();
+        $dreportofwaste = Auth::user()->dreportofwaste();
+        $drowcfop = Auth::user()->drowcfop();
+        $drowcfop1 = Auth::user()->drowcfop1();
 
 
 

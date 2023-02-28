@@ -47,7 +47,7 @@
 
 
                 <div class="container col ml-4" style="align-content: center">
-                    <form action="/saveData" method="post"  enctype="multipart/form-data">
+                    <form action="/updateData" method="post"  enctype="multipart/form-data">
                         @csrf
                         <!-- {{ csrf_field() }} -->
                         <br>
@@ -68,8 +68,8 @@
                                 </div>
 
                                 <div class="card-body">
-                                    @if($referencens)
-                                        <input type="text" class="form-control mt-0" placeholder=""  value="{{$referencens->ref_no}}" readonly >
+                                    @if(\App\Models\referencen::where('userid', Auth::user()->userid)->first())
+                                        <input type="text" class="form-control mt-0" placeholder=""  value="{{ \App\Models\referencen::where('userid', Auth::user()->userid)->first()->ref_no }}" readonly >
                                     @endif
 
                                 </div>
