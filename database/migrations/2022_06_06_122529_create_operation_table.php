@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('operation', function (Blueprint $table) {
             $table->id();
             $table->integer('userid');
-            $table->string('username');
             $table->string('aveOPhours');
             $table->string('aveOPdays');
             $table->string('aveOPshift');

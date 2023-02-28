@@ -35,7 +35,6 @@ class ModuleOneController extends Controller
     public function index(){
 
         $aircon = Aircon::all();
-        $dpno = Dpno::all();
         $gic = Gic::all();
         $acno = Acno::all();
         $dpno = Dpno::all();
@@ -251,7 +250,7 @@ class ModuleOneController extends Controller
 
             };
         }
-        return redirect('module.moduleTwo');
+        return redirect('moduleTwo');
 
 
     }

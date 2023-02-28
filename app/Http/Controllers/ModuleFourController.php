@@ -15,6 +15,7 @@ use App\Models\Total_Consumption_of_Electricity;
 use App\Models\Total_Consumption_of_Water;
 use App\Models\Total_Cost_of_Chemicals_used;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use PDF;
 
@@ -56,6 +57,7 @@ public function save(Request $request){
     $summary1 = $request->input('summary1');
     for ($x=0; $x<count($summary1); $x+=3 ){
         $DBsummary1 = new Summary1();
+        $DBsummary1->userid = Auth::user()->id;
         $DBsummary1->Process_Equipment = $summary1[$x];
         $DBsummary1->Location = $summary1[$x+1];
         $DBsummary1->no_of_hours_of_operation_for_the_quarter = $summary1[$x+2];
@@ -66,6 +68,7 @@ public function save(Request $request){
     $summary2 = $request->input('summary2');
     for ($x=0; $x<count($summary2); $x+=7 ){
         $DBsummary2 = new Summary2();
+        $DBsummary2->userid = Auth::user()->id;
         $DBsummary2->Fuel_Burning_Equipment = $summary2[$x];
         $DBsummary2->Rated_Capacity = $summary2[$x+1];
         $DBsummary2->Location = $summary2[$x+2];
@@ -80,6 +83,7 @@ public function save(Request $request){
     $summary3 = $request->input('summary3');
     for ($x=0; $x<count($summary3); $x+=3 ){
         $DBsummary3 = new Summary3();
+        $DBsummary3->userid = Auth::user()->id;
         $DBsummary3->Pollution_Control_Facility = $summary3[$x];
         $DBsummary3->Location = $summary3[$x+1];
         $DBsummary3->no_of_hours_of_operation_for_the_quarter = $summary3[$x+2];
@@ -88,6 +92,7 @@ public function save(Request $request){
     }
 
     $cost_of_person_employed = new Cost_of_person_employed();
+    $cost_of_person_employed->userid = Auth::user()->id;
         $cost_of_person_employed->month1 = $request->input('COPEMonth1');
         $cost_of_person_employed->month2 = $request->input('COPEMonth2');
         $cost_of_person_employed->month3 = $request->input('COPEMonth3');
@@ -95,6 +100,7 @@ public function save(Request $request){
         $cost_of_person_employed->save();
 
      $total_consumption_of_water = new Total_Consumption_of_Water();
+    $total_consumption_of_water->userid = Auth::user()->id;
         $total_consumption_of_water->month1 = $request->input('TCOWMonth1');
         $total_consumption_of_water->month2 = $request->input('TCOWMonth2');
         $total_consumption_of_water->month3 = $request->input('TCOWMonth3');
@@ -102,6 +108,7 @@ public function save(Request $request){
         $total_consumption_of_water->save();
 
     $total_cost_of_chemicals_used = new Total_Cost_of_Chemicals_used();
+    $total_cost_of_chemicals_used->userid = Auth::user()->id;
         $total_cost_of_chemicals_used->month1 = $request->input('TCOCMonth1');
         $total_cost_of_chemicals_used->month2 = $request->input('TCOCMonth2');
         $total_cost_of_chemicals_used->month3 = $request->input('TCOCMonth3');
@@ -109,6 +116,7 @@ public function save(Request $request){
         $total_cost_of_chemicals_used->save();
 
     $total_consumption_of_electricity = new Total_Consumption_of_Electricity();
+    $total_consumption_of_electricity->userid = Auth::user()->id;
         $total_consumption_of_electricity->month1 = $request->input('TCOEMonth1');
         $total_consumption_of_electricity->month2 = $request->input('TCOEMonth2');
         $total_consumption_of_electricity->month3 = $request->input('TCOEMonth3');

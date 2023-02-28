@@ -52,7 +52,7 @@ class ModuleThreeController extends Controller
     public function save(Request $request){
 
         $waterpolutiondata  = new WaterPolutionData();
-        $waterpolutiondata->username = Auth::user()->username;
+        $waterpolutiondata->userid = Auth::user()->id;
         $waterpolutiondata->Domestic_wastewater = $request->input('domwaste');
         $waterpolutiondata->Cooling_water = $request->input('coolingw');
         $waterpolutiondata->Waste_water_equipment = $request->input('wequip');
@@ -65,7 +65,7 @@ class ModuleThreeController extends Controller
         $waterpolutiondata->save();
 
         $personEmployed = new PersonEmployed();
-        $personEmployed->username = Auth::user()->username;
+        $personEmployed->userid = Auth::user()->id;
         $personEmployed->Month_1 = $request->input('pemonth1');
         $personEmployed->Month_2 = $request->input('pemonth2');
         $personEmployed->Month_3 = $request->input('pemonth3');
@@ -73,7 +73,7 @@ class ModuleThreeController extends Controller
         $personEmployed->save();
 
         $personEmployedCost = new PersonEmployedCost();
-        $personEmployedCost->username = Auth::user()->username;
+        $personEmployedCost->userid = Auth::user()->id;
         $personEmployedCost->Month_1 = $request->input('pecmonth1');
         $personEmployedCost->Month_2 = $request->input('pecmonth2');
         $personEmployedCost->Month_3 = $request->input('pecmonth3');
@@ -81,7 +81,7 @@ class ModuleThreeController extends Controller
         $personEmployedCost->save();
 
         $costofchemical = new CostOfChemical();
-        $costofchemical->username = Auth::user()->username;
+        $costofchemical->userid = Auth::user()->id;
         $costofchemical->Month_1 = $request->input('cocw1');
         $costofchemical->Month_2 = $request->input('cocw2');
         $costofchemical->Month_3 = $request->input('cocw3');
@@ -89,7 +89,7 @@ class ModuleThreeController extends Controller
         $costofchemical->save();
 
         $utilitycost = new UtilityCost();
-        $utilitycost->username = Auth::user()->username;
+        $utilitycost->userid = Auth::user()->id;
         $utilitycost->Month_1 = $request->input('ucw1');
         $utilitycost->Month_2 = $request->input('ucw2');
         $utilitycost->Month_3 = $request->input('ucw3');
@@ -97,7 +97,7 @@ class ModuleThreeController extends Controller
         $utilitycost->save();
 
         $administrativecosts = new AdministrativeCost();
-        $administrativecosts->username = Auth::user()->username;
+        $administrativecosts->userid = Auth::user()->id;
         $administrativecosts->Month_1 = $request->input('aoc1');
         $administrativecosts->Month_2 = $request->input('aoc2');
         $administrativecosts->Month_3 = $request->input('aoc3');
@@ -105,7 +105,7 @@ class ModuleThreeController extends Controller
         $administrativecosts->save();
 
         $costofoperating = new CostOfOperating();
-        $costofoperating->username = Auth::user()->username;
+        $costofoperating->userid = Auth::user()->id;
         $costofoperating->Month_1 = $request->input('colab1');
         $costofoperating->Month_2 = $request->input('colab2');
         $costofoperating->Month_3 = $request->input('colab3');
@@ -113,7 +113,7 @@ class ModuleThreeController extends Controller
         $costofoperating->save();
 
         $newinvestment = new NewInvestment();
-        $newinvestment->username = Auth::user()->username;
+        $newinvestment->userid = Auth::user()->id;
         $newinvestment->Month_1 = $request->input('nai1');
         $newinvestment->Month_2 = $request->input('nai2');
         $newinvestment->Month_3 = $request->input('nai3');
@@ -121,7 +121,7 @@ class ModuleThreeController extends Controller
         $newinvestment->save();
 
         $costofnew = new CostOfNew();
-        $costofnew->username = Auth::user()->username;
+        $costofnew->userid = Auth::user()->id;
         $costofnew->Month_1 = $request->input('cnai1');
         $costofnew->Month_2 = $request->input('cnai2');
         $costofnew->Month_3 = $request->input('cnai3');
@@ -131,7 +131,7 @@ class ModuleThreeController extends Controller
         $dischargeLocation = $request->input('dischargeLocation');
         for ($x=0; $x<count($dischargeLocation); $x+=3 ){
             $DBdischargeLocation = new DischargeLocation();
-            $DBdischargeLocation->username = Auth::user()->username;
+            $DBdischargeLocation->userid = Auth::user()->id;
             $DBdischargeLocation->Outlet_Number = $dischargeLocation[$x];
             $DBdischargeLocation->Location_of_Outlet = $dischargeLocation[$x+1];
             $DBdischargeLocation->Name_of_Receiving_water_body = $dischargeLocation[$x+2];
@@ -142,7 +142,7 @@ class ModuleThreeController extends Controller
         $dreportofwaste = $request->input('dreportofwaste');
         for ($x=0; $x<count($dreportofwaste); $x+=9 ){
             $DBdreportofwaste = new DreportofWaste();
-            $DBdreportofwaste->username = Auth::user()->username;
+            $DBdreportofwaste->userid = Auth::user()->id;
             $DBdreportofwaste->Outlet_No = $dreportofwaste[$x];
             $DBdreportofwaste->date = $dreportofwaste[$x+1];
             $DBdreportofwaste->NEffluent_Flow_Rate = $dreportofwaste[$x+2];
@@ -158,7 +158,7 @@ class ModuleThreeController extends Controller
         }
 
         $drowcfop = new Drowcfop();
-        $drowcfop->username = Auth::user()->username;
+        $drowcfop->userid = Auth::user()->id;
         $drowcfop->name1 = $request->input('name1');
         $drowcfop->name2 = $request->input('name2');
         $drowcfop->name3 = $request->input('name3');
@@ -179,7 +179,7 @@ class ModuleThreeController extends Controller
         $drowcfop1 = $request->input('drowcfop1');
         for ($x=0; $x<count($drowcfop1); $x+=9 ){
             $DBdrowcfop1 = new Drowcfop1();
-            $DBdrowcfop1->username = Auth::user()->username;
+            $DBdrowcfop1->userid = Auth::user()->id;
             $DBdrowcfop1->Outlet_No = $drowcfop1[$x];
             $DBdrowcfop1->Date = $drowcfop1[$x+1];
             $DBdrowcfop1->Effluent_Flow_Rate_m3_day = $drowcfop1[$x+2];

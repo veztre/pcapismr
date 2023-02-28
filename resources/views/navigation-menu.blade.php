@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
 
-{{--    @if($usertype == 'admin')
+    @if(Auth::user()->usertype == 'admin')
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h-1 mx-auto">
                 <div class="m-auto mt-8 text-primary text-center text-4xl p-1 text-blue-600 mb-4" >
@@ -19,17 +19,7 @@
                 </div>
             </span>
         </div>
-    @endif--}}
-
-
-        <div class="container-fluid">
-            <span class="navbar-brand mb-0 h-1 mx-auto">
-                <div class="m-auto mt-8 text-primary text-center text-4xl p-1 text-blue-600 mb-4" >
-                       <x-jet-application-mark class="block h-9 w-auto inline-block flex-wrap" />
-                    TRAINER - SMR
-                </div>
-            </span>
-        </div>
+    @endif
 
 
 

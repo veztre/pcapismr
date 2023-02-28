@@ -34,7 +34,7 @@ class ModuleTwoController extends Controller
         $hwGeneration = $request->input('hwGeneration');
         for ($x=0; $x<count($hwGeneration); $x+=8 ){
             $DBhwGeneration = new HwGeneration();
-            $DBhwGeneration->username = Auth::user()->username;
+            $DBhwGeneration->userid = Auth::user()->id;
             $DBhwGeneration->Hwno = $hwGeneration[$x];
             $DBhwGeneration->HWclass = $hwGeneration[$x+1];
             $DBhwGeneration->HWNature = $hwGeneration[$x+2];
@@ -49,7 +49,7 @@ class ModuleTwoController extends Controller
             $hwDetails = $request->input('hwDetails');
             for ($x=0; $x<count($hwDetails); $x+=5 ){
                 $DBhwDetails = new HWDetails();
-                $DBhwDetails->username = Auth::user()->username;
+                $DBhwDetails ->userid = Auth::user()->id;
                 $DBhwDetails->HWno = $hwDetails[$x];
                 $DBhwDetails->HWclass = $hwDetails[$x+1];
                 $DBhwDetails->QtyOfHWTreated = $hwDetails[$x+2];
@@ -61,7 +61,7 @@ class ModuleTwoController extends Controller
                 $storage = $request->input('storage');
                 for ($x=0; $x<count($storage); $x+=2 ){
                     $DBstorage = new Storage();
-                    $DBstorage->username = Auth::user()->username;
+                    $DBstorage->userid = Auth::user()->id;
                     $DBstorage->name = $storage[$x];
                     $DBstorage->method = $storage[$x+1];
                     $DBstorage->save();
@@ -69,7 +69,7 @@ class ModuleTwoController extends Controller
                 $transporter = $request->input('transporter');
                 for ($x=0; $x<count($transporter); $x+=4){
                     $DBtransporter = new Transporter();
-                    $DBtransporter->username = Auth::user()->username;
+                    $DBtransporter->userid = Auth::user()->id;
                     $DBtransporter->transpo_id = $transporter[$x];
                     $DBtransporter->name = $transporter[$x+1];
                     $DBtransporter->method = $transporter[$x+2];
@@ -79,7 +79,7 @@ class ModuleTwoController extends Controller
                 $treater = $request->input('treater');
                 for ($x=0; $x<count($treater); $x+=4){
                     $DBtreater = new Treater();
-                    $DBtreater->username = Auth::user()->username;
+                    $DBtreater->userid = Auth::user()->id;
                     $DBtreater->treater_id = $treater[$x];
                     $DBtreater->name = $treater[$x+1];
                     $DBtreater->method = $treater[$x+2];
@@ -89,7 +89,7 @@ class ModuleTwoController extends Controller
                 $disposal = $request->input('disposal');
                 for ($x=0; $x<count($disposal); $x+=4){
                     $DBdisposal = new Disposal();
-                    $DBdisposal->username = Auth::user()->username;
+                    $DBdisposal->userid = Auth::user()->id;
                     $DBdisposal->disposal_id = $disposal[$x];
                     $DBdisposal->name = $disposal[$x+1];
                     $DBdisposal->method = $disposal[$x+2];
@@ -100,7 +100,7 @@ class ModuleTwoController extends Controller
                 $osisa = $request->input('osisa');
                 for ($x=0; $x<count($disposal); $x+=4){
                     $DBosisa = new Osisa();
-                    $DBosisa->username = Auth::user()->username;
+                    $DBosisa->userid = Auth::user()->id;
                     $DBosisa->DateConducted = $osisa[$x];
                     $DBosisa->PremisesAreaInspected = $osisa[$x+1];
                     $DBosisa->FindingsAndObservations = $osisa[$x+2];

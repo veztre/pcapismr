@@ -83,7 +83,7 @@ class User extends Authenticatable
      public function denrid(){
         return $this->hasOne(Denrid::class);
     }
-     public function transportedReg(){
+     public function transporterReg(){
         return $this->hasOne(TransporterReg::class);
     }
 
