@@ -124,6 +124,7 @@ public function save(Request $request){
         $total_consumption_of_electricity->save();
 
     $administrative_and_overhead_costs = new Administrative_and_Overhead_Costs();
+    $administrative_and_overhead_costs->userid = Auth::user()->id;
         $administrative_and_overhead_costs->month1 = $request->input('AAOCMonth1');
         $administrative_and_overhead_costs->month2 = $request->input('AAOCMonth2');
         $administrative_and_overhead_costs->month3 = $request->input('AAOCMonth3');
@@ -131,6 +132,7 @@ public function save(Request $request){
         $administrative_and_overhead_costs->save();
 
     $cost_of_operating_in_house_laboratory = new Cost_of_operating_in_house_laboratory();
+    $cost_of_operating_in_house_laboratory->userid = Auth::user()->id;
         $cost_of_operating_in_house_laboratory->month1 = $request->input('COPIHLMonth1');
         $cost_of_operating_in_house_laboratory->month2 = $request->input('COPIHLMonth2');
         $cost_of_operating_in_house_laboratory->month3 = $request->input('COPIHLMonth3');
@@ -138,13 +140,15 @@ public function save(Request $request){
         $cost_of_operating_in_house_laboratory->save();
 
     $improvement_or_modification = new Improvement_or_modification();
-        $improvement_or_modification->month1 = $request->input('IOMMonth1');
+    $improvement_or_modification->userid = Auth::user()->id;
+    $improvement_or_modification->month1 = $request->input('IOMMonth1');
         $improvement_or_modification->month2 = $request->input('IOMMonth2');
         $improvement_or_modification->month3 = $request->input('IOMMonth3');
 
         $improvement_or_modification->save();
 
     $cost_of_improvement_of_modification = new Cost_of_improvement_of_modification();
+    $cost_of_improvement_of_modification->userid = Auth::user()->id;
         $cost_of_improvement_of_modification->month1 = $request->input('COIOMonth1');
         $cost_of_improvement_of_modification->month2 = $request->input('COIOMonth2');
         $cost_of_improvement_of_modification->month3 = $request->input('COIOMonth3');
@@ -158,6 +162,7 @@ public function save(Request $request){
     $detailreport = $request->input('detailreport');
     for ($x=0; $x<count($detailreport); $x+=7 ){
         $DBdetailreport = new DetailReport();
+        $DBdetailreport->userid = Auth::user()->id;
         $DBdetailreport->FBE_No = $detailreport[$x];
         $DBdetailreport->Date = $detailreport[$x+1];
         $DBdetailreport->Flow_Rate_Ncm_day = $detailreport[$x+2];

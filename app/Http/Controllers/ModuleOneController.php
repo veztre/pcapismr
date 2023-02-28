@@ -324,15 +324,15 @@ class ModuleOneController extends Controller
 
     public static function generate(){
 
-        $existing_referencen = Referencen::where('userid', Auth::user()->id)->first();
+        $existing_referencen = referencen::where('userid', Auth::user()->id)->first();
 
         if ($existing_referencen) {
             $reference_no = $existing_referencen->ref_no;
         } else {
             $reference_no = Helper::IDGenerator(new referencen, 'ref_no', 5 , 'DENR');
-            $data = new referencen;
+            $data = new referencen();
             $data->ref_no = $reference_no;
-            $data->userid = Auth::user()->username;
+            $data->userid = Auth::user()->id;
             $data->save();
         }
 

@@ -259,7 +259,7 @@
             "iDisplayLength": 10,
             "language": {
                 "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
-                "lengthMenu": "_MENU_records per page",
+                "lengthMenu": "_MENU_records per paged",
                 "zeroRecords": "No matching record found",
                 "emptyTable": "No entries found",
                 "loadingRecords": "Loading data from server",
