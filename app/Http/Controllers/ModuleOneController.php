@@ -56,7 +56,7 @@ class ModuleOneController extends Controller
         $upload = Upload::all();
 
         return view('module.moduleOne')
-            ->with(['aircon'=>$aircon,'dpno'=>$dpno,'gic'=>$gic, 'acno'=> $acno,'dpno'=>$dpno,'cncno'=>$cncno,'denrid'=>$denrid,
+            ->with(['aircon'=>$aircon,'gic'=>$gic, 'acno'=> $acno,'dpno'=>$dpno,'cncno'=>$cncno,'denrid'=>$denrid,
                 'transporterReg'=>$transporterReg,'tsdreg'=>$tsdreg,'ccoreg'=>$ccoreg,'import'=>$import,'permit'=>$permit,'smallquan'=>$smallquan,
                 'priority'=>$priority,'piccs'=>$piccs,'pmpin'=>$pmpin,'pono'=>$pono,'operation'=>$operation,'production'=>$production,'referencens'=>$reference_no, 'uploads'=>$upload
             ]);
@@ -314,17 +314,17 @@ class ModuleOneController extends Controller
         }
 
         // Save to the database
-        $item = new Item;
-        $item->date_issued = $dateIssued;
-        $item->expiry_date = $expiryDate;
-        $item->save();
+        // $item = new Item;
+        // $item->date_issued = $dateIssued;
+        // $item->expiry_date = $expiryDate;
+        // $item->save();
 
         return redirect()->route('module.moduleOne');
     }
 
     public static function generate(){
 
-        $existing_referencen = \App\Models\referencen::where('userid', Auth::user()->username)->first();
+        $existing_referencen = Referencen::where('userid', Auth::user()->id)->first();
 
         if ($existing_referencen) {
             $reference_no = $existing_referencen->ref_no;
