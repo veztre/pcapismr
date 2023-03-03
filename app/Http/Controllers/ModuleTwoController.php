@@ -97,7 +97,7 @@ class ModuleTwoController extends Controller
                     $DBtreater->treater_id = $treater[$x];
                     $DBtreater->name = $treater[$x+1];
                     $DBtreater->method = $treater[$x+2];
-                    $DBtreater->date = $treater[$x+3];
+                    $DBtreater->date = date('Y-m-d' ,$treater[$x+3]);
                     $DBtreater->save();
                 }
                 $disposal = $request->input('disposal');
@@ -107,7 +107,7 @@ class ModuleTwoController extends Controller
                     $DBdisposal->disposal_id = $disposal[$x];
                     $DBdisposal->name = $disposal[$x+1];
                     $DBdisposal->method = $disposal[$x+2];
-                    $DBdisposal->date = $disposal[$x+3];
+                    $DBdisposal->date = date('Y-m-d',$disposal[$x+3]);
                     $DBdisposal->save();
                 }
 
