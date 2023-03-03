@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
 use App\Models\AccidentRecord;
 use App\Models\PersonelStaff;
+use App\Models\referencen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -14,10 +16,14 @@ class ModuleSixController extends Controller
     public function index(){
             $accident_records = Auth::user()->accident_records();
             $personel_staff = Auth::user()->personel_staff();
+            $reference= Auth::user()->reference_no()->first();
 
-
-        return view('module.moduleSix');
-        -with (['accident_records'=>$accident_records,'personel_staff'=>$personel_staff]);
+        return view('module.moduleSix')
+        ->with ([
+            'accident_records'=>$accident_records,
+            'personel_staff'=>$personel_staff,
+            'referencen'=>$reference->ref_no
+        ]);
     }
 
     public function save(Request $request){
@@ -66,4 +72,19 @@ public function pdf(){
 
 }
 
+    public static function generate(){
+        // ... existing code ...
+        $exist = Auth::user()->reference_no()->first();
+
+        if ($exist==null) {
+            $reference_no = Helper::IDGenerator(new referencen, 'ref_no', 5 , 'DENR');
+            $data = new referencen();
+            $data->ref_no = $reference_no;
+            $data->userid = Auth::user()->id;
+            $data->save();
+        }
+        return redirect('moduleSix');
+    }
 }
+
+

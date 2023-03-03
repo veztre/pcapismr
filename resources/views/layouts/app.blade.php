@@ -60,9 +60,13 @@
     @endif
 
     <!-- Page Content -->
-    <main>
-        {{ $slot }}
-    </main>
+
+            <main>
+                {{ $slot }}
+            </main>
+
+
+
 </div>
 
 @stack('modals')
@@ -81,6 +85,16 @@
         font-size: 20px;
         color: gray;
     }
+
+    #example {
+        overflow: hidden;
+    }
+
+    #example1 {
+        overflow: hidden;
+    }
+
+
 
 
     /*Overrides for Tailwind CSS */
@@ -107,7 +121,7 @@
         /*border-gray-200*/
         background-color: #edf2f7;
         /*bg-gray-200*/
-        width: 45% !important;
+        /*width: 45% !important;*/
 
 
     }
@@ -133,6 +147,7 @@
         /*bg-gray-200*/
         width: 80% !important;
     }
+
 
     /*Row Hover*/
     table.dataTable.hover tbody tr:hover,
@@ -198,16 +213,6 @@
         /*bg-indigo-500*/
     }
 
-
-
-    table {
-        counter-reset: tableCount;
-    }
-    .counterCell:before {
-        content: counter(tableCount);
-        counter-increment: tableCount;
-
-    }
 </style>
 {{-- Timezone--}}
 <script type="text/javascript" id="gwt-pst">
@@ -227,24 +232,25 @@
 {{-- Sorting, Pagination, Search--}}
 <script>
     $(document).ready(function() {
-
         var table = $('#example').DataTable({
             "scrollCollapse": true,
             "sScrollY": "500px",
             "iDisplayLength": 10,
             "language": {
                 "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
-                "lengthMenu": "_MENU_records per page",
+                "lengthMenu": "_MENU_ records per page",
                 "zeroRecords": "No matching record found",
                 "emptyTable": "No entries found",
                 "loadingRecords": "Loading data from server",
                 "processing": "Processing...",
-                "search": "Search:",
+                "search": "Se",
                 "info": "Showing page _PAGE_ of _PAGES_",
                 "infoEmpty": "No records available",
                 "infoFiltered": "(filtered from _MAX_ total entries)"},
+
             responsive: true
         })
+
             .columns.adjust()
             .responsive.recalc();
 
@@ -259,7 +265,31 @@
             "iDisplayLength": 10,
             "language": {
                 "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
-                "lengthMenu": "_MENU_records per paged",
+                "lengthMenu": "_MENU_ records per page",
+                "zeroRecords": "No matching record found",
+                "emptyTable": "No entries found",
+                "loadingRecords": "Loading data from server",
+                "processing": "Processing...",
+                "search": "Search:",
+                "info": "Showing page _PAGE_ of _PAGES_",
+                "infoEmpty": "No records available",
+                "infoFiltered": "(filtered from _MAX_ total entries)"},
+            responsive: true
+        })
+            .columns.adjust()
+            .responsive.recalc();
+    });
+</script>
+<script>
+    $(document).ready(function() {
+
+        var table = $('#example2').DataTable({
+            "scrollCollapse": true,
+            "sScrollY": "500px",
+            "iDisplayLength": 10,
+            "language": {
+                "lengthMenu": [ [10, 25, 50, -1], [10, 25, 50, "All"] ],
+                "lengthMenu": "_MENU_ records per page",
                 "zeroRecords": "No matching record found",
                 "emptyTable": "No entries found",
                 "loadingRecords": "Loading data from server",

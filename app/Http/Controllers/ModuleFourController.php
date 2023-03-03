@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
 use App\Models\Administrative_and_Overhead_Costs;
 use App\Models\Cost_of_improvement_of_modification;
 use App\Models\Cost_of_operating_in_house_laboratory;
 use App\Models\Cost_of_person_employed;
 use App\Models\DetailReport;
 use App\Models\Improvement_or_modification;
+use App\Models\referencen;
 use App\Models\Summary1;
 use App\Models\Summary2;
 use App\Models\Summary3;
@@ -34,17 +36,25 @@ class ModuleFourController extends Controller
         $improvement_or_modification = Auth::user()->improvement_or_modification();
         $cost_of_improvement_of_modification = Auth::user()->cost_of_improvement_of_modification();
         $detailreport = Auth::user()->detailreport();
+        $reference= Auth::user()->reference_no()->first();
 
 
 
-
-        return view('module.moduleFour');
-        -with(['summary1'=>$summary1,'summary2'=>$summary2,'summary3'=>$summary3,
-        'cost_of_person_employed'=>$cost_of_person_employed,'total_consumption_of_water'=>$total_consumption_of_water,
-        'total_cost_of_chemicals_used'=>$total_cost_of_chemicals_used,'total_consumption_of_electricity'=>$total_consumption_of_electricity,
-        'administrative_and_overhead_costs'=>$administrative_and_overhead_costs,'cost_of_operating_in_house_laboratory'=>$cost_of_operating_in_house_laboratory
-        ,'improvement_or_modification'=>$improvement_or_modification,'cost_of_improvement_of_modification'=>$cost_of_improvement_of_modification,
-        'detailreport'=>$detailreport,
+        return view('module.moduleFour')
+        ->with([
+            'summary1'=>$summary1,
+            'summary2'=>$summary2,
+            'summary3'=>$summary3,
+            'cost_of_person_employed'=>$cost_of_person_employed,
+            'total_consumption_of_water'=>$total_consumption_of_water,
+            'total_cost_of_chemicals_used'=>$total_cost_of_chemicals_used,
+            'total_consumption_of_electricity'=>$total_consumption_of_electricity,
+            'administrative_and_overhead_costs'=>$administrative_and_overhead_costs,
+            'cost_of_operating_in_house_laboratory'=>$cost_of_operating_in_house_laboratory,
+            'improvement_or_modification'=>$improvement_or_modification,
+            'cost_of_improvement_of_modification'=>$cost_of_improvement_of_modification,
+            'detailreport'=>$detailreport,
+            'referencen'=>$reference->ref_no
 
     ]);
 
@@ -224,6 +234,21 @@ public function save(Request $request){
         ]);
         return $pdf->download('moduleFour.pdf');
 
+    }
+
+
+    public static function generate(){
+        // ... existing code ...
+        $exist = Auth::user()->reference_no()->first();
+
+        if ($exist==null) {
+            $reference_no = Helper::IDGenerator(new referencen, 'ref_no', 5 , 'DENR');
+            $data = new referencen();
+            $data->ref_no = $reference_no;
+            $data->userid = Auth::user()->id;
+            $data->save();
+        }
+        return redirect('moduleFour');
     }
 
 

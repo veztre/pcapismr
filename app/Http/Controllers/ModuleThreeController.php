@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
 use App\Models\AdministrativeCost;
 use App\Models\CostOfChemical;
 use App\Models\CostOfNew;
@@ -13,6 +14,7 @@ use App\Models\Drowcfop1;
 use App\Models\NewInvestment;
 use App\Models\PersonEmployed;
 use App\Models\PersonEmployedCost;
+use App\Models\referencen;
 use App\Models\UtilityCost;
 use App\Models\WaterPolutionData;
 use Illuminate\Http\Request;
@@ -36,17 +38,28 @@ class ModuleThreeController extends Controller
         $dreportofwaste = Auth::user()->dreportofwaste();
         $drowcfop = Auth::user()->drowcfop();
         $drowcfop1 = Auth::user()->drowcfop1();
+        $reference= Auth::user()->reference_no()->first();
 
 
+        return view('module.moduleThree')
+            ->with([
+                'waterpolutiondata'=>$waterpolutiondata,
+                'personEmployed'=>$personEmployed,
+                'personEmployedCost'=>$personEmployedCost,
+                'costofchemical'=>$costofchemical,
+                'utilitycost'=>$utilitycost,
+                'administrativecosts'=>$administrativecosts,
+                'costofoperating'=>$costofoperating,
+                'newinvestment'=>$newinvestment,
+                'costofnew'=>$costofnew,
+                'dischargeLocation'=>$dischargeLocation,
+                'dreportofwaste'=>$dreportofwaste,
+                'drowcfop'=>$drowcfop,
+                'drowcfop1'=>$drowcfop1,
+                'referencen'=>$reference->ref_no
+            ]);
 
 
-        return view('module.moduleThree');
-        -with(['waterpolutiondata'=>$waterpolutiondata,'personEmployed'=>$personEmployed,'personEmployedCost'=>$personEmployedCost,
-        'costofchemical'=>$costofchemical,'utilitycost'=>$utilitycost,'administrativecosts'=>$administrativecosts,'costofoperating'=>$costofoperating,
-        'newinvestment'=>$newinvestment,'costofnew'=>$costofnew,'dischargeLocation'=>$dischargeLocation,'dreportofwaste'=>$dreportofwaste,'drowcfop'=>$drowcfop,
-        'drowcfop1'=>$drowcfop1
-
-    ]);
     }
 
     public function save(Request $request){
@@ -227,5 +240,19 @@ class ModuleThreeController extends Controller
             return $pdf->download('moduleThree.pdf');
 
         }
+
+    public static function generate(){
+        // ... existing code ...
+        $exist = Auth::user()->reference_no()->first();
+
+        if ($exist==null) {
+            $reference_no = Helper::IDGenerator(new referencen, 'ref_no', 5 , 'DENR');
+            $data = new referencen();
+            $data->ref_no = $reference_no;
+            $data->userid = Auth::user()->id;
+            $data->save();
+        }
+        return redirect('moduleThree');
+    }
     }
 

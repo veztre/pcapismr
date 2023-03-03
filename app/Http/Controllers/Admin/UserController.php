@@ -12,13 +12,18 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
 
+        $users = User::all();
         return view('admin.users.index', compact('users'));
 
 
+        $users = User::get();
+        return view('/dashboard', compact('users'));
+
         $usertype = 'admin';
         return view('navigation-menu', compact('usertype'));
+
+
     }
 
     public function show(User $user)
@@ -76,6 +81,5 @@ class UserController extends Controller
 
         return back()->with('message', 'User deleted.');
     }
-
 
 }

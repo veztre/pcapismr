@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
 use App\Models\Disposal;
 use App\Models\HWDetails;
 use App\Models\HwGeneration;
 use App\Models\Osisa;
+use App\Models\referencen;
 use App\Models\Storage;
 use App\Models\Transporter;
 use App\Models\Treater;
@@ -23,10 +25,22 @@ class ModuleTwoController extends Controller
         $treater = Auth::user()->treater();
         $disposal = Auth::user()->disposal();
         $osisa = Auth::user()->osisa();
+        $reference= Auth::user()->reference_no()->first();
 
-        return view('module.moduleTwo');
-        -with(['hwGeneration'=>$hwGeneration,'hwDetails'=>$hwDetails,'storage'=>$storage,'trasporter'=>$transporter,
-        'treater'=>$treater,'disposal'=>$disposal,'osisa'=>$osisa]);
+
+
+        return view('module.moduleTwo')
+            ->with([
+                'hwGeneration'=>$hwGeneration,
+                'hwDetails'=>$hwDetails,
+                'storage'=>$storage,
+                'trasporter'=>$transporter,
+                'treater'=>$treater,
+                'disposal'=>$disposal,
+                'osisa'=>$osisa,
+                'referencen'=>$reference->ref_no
+            ]);
+
     }
 
     public function save(Request $request){
@@ -132,5 +146,20 @@ class ModuleTwoController extends Controller
 
 
     }
+
+    public static function generate(){
+        // ... existing code ...
+        $exist = Auth::user()->reference_no()->first();
+
+        if ($exist==null) {
+            $reference_no = Helper::IDGenerator(new referencen, 'ref_no', 5 , 'DENR');
+            $data = new referencen();
+            $data->ref_no = $reference_no;
+            $data->userid = Auth::user()->id;
+            $data->save();
+        }
+        return redirect('moduleTwo');
+    }
+
 }
 

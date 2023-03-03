@@ -306,7 +306,7 @@ class User extends Authenticatable
 /*    Module 6 end*/
 
     public function reference_no (){
-        return $this->hasOne(referencen::class,foreignKey: 'userid');
+        return $this->hasOne(Referencen::class,foreignKey: 'userid');
     }
 
 

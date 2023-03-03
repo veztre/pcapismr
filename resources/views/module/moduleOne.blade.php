@@ -68,9 +68,7 @@
                                 </div>
 
                                 <div class="card-body">
-                                    @if($referencens)
-                                        <input type="text" class="form-control mt-0" placeholder=""  value="{{$referencens->ref_no}}" readonly >
-                                    @endif
+                                    <input type="text" class="form-control mt-0" placeholder="" value="{{ $referencen }}" readonly>
 
                                 </div>
 

@@ -13,6 +13,8 @@ use App\Http\Controllers\ModuleThreeController;
 use App\Http\Controllers\ModuleFourController;
 use App\Http\Controllers\ModuleFiveController;
 use App\Http\Controllers\ModuleSixController;
+use App\Http\Controllers\AdminController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,7 +31,11 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
+    if (Auth::user()->usertype== 'admin'){
+        return redirect('/admin/dashboard');
+    }else{
     return view('dashboard');
+    }
 })->middleware(['auth'])->name('dashboard');
 
 
@@ -49,9 +55,16 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::delete('/users/{user}/roles/{role}', [UserController::class, 'removeRole'])->name('users.roles.remove');
     Route::post('/users/{user}/permissions', [UserController::class, 'givePermission'])->name('users.permissions');
     Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('users.permissions.revoke');
+
 });
 
 Route::redirect('/', destination: 'login');
+Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/create/user', [AdminController::class, 'create'])->name('create');
+// admin controller end
+
+
+
 
 Route::get('/moduleOne', [ModuleOneController::class, 'index'])->name('module.moduleOne');
 
@@ -67,6 +80,7 @@ Route::get('/moduleTwo', [ModuleTwoController::class, 'index'])->name('module.mo
 Route::get('/saveData2', [ModuleTwoController::class, 'save'])->name('module.moduleTwo');
 
 Route::get('/pdf2', [ModuleTwoController::class, 'pdf']);
+Route::get('/reference2', [ModuleTwoController::class, 'generate']);
 
 /* Module Three Controller */
 Route::get('/moduleThree', [ModuleThreeController::class, 'index'])->name('module.moduleThree');
@@ -96,3 +110,5 @@ Route::get('/moduleSix', [ModuleSixController::class, 'index'])->name('module.mo
 Route::get('/saveData6', [ModuleSixController::class, 'save']);
 
 Route::get('/pdf6', [ModuleSixController::class, 'pdf']);
+
+

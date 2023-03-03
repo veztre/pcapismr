@@ -45,8 +45,8 @@
     }
 </style>
 
-<div class="container mt-2">
-<nav class="navbar navbar-expand-lg">
+<div class="container mt-2 ">
+<nav class="navbar navbar-expand-lg relative">
 
 
       <form class="d-flex">
@@ -87,8 +87,9 @@
         </li>
       </form>
 
-
+</nav>
     </div> <!-- collapse navbar-collapse -->
+
   </div> <!-- container -->
 </nav>
 

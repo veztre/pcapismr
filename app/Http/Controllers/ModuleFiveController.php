@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
 use App\Models\AAQmonitoring;
 use App\Models\AQC;
 use App\Models\AQG;
@@ -11,6 +12,7 @@ use App\Models\Description;
 use App\Models\EICC;
 use App\Models\EVMPprogram;
 use App\Models\OECondition;
+use App\Models\referencen;
 use App\Models\TQC;
 use App\Models\TQG;
 use Illuminate\Http\Request;
@@ -31,11 +33,22 @@ class ModuleFiveController extends Controller
         $description = Auth::user()->description();
         $awqmonitoring = Auth::user()->awqmonitoring();
         $awqmonitoring1 = Auth::user()->awqmonitoring1();
+        $reference= Auth::user()->reference_no()->first();
 
-
-        return view('module.moduleFive');
-        -with(['aaqmonitoring'=>$aaqmonitoring,'oecondition'=>$oecondition,'evmpprogram'=>$evmpprogram,'aqg'=>$aqg,'tqg'=>$tqg,
-        'aqc'=>$aqc,'tqc'=>$tqc,'eicc'=>$eicc,'description'=>$description,'awqmonitoring'=>$awqmonitoring,'awqmonitoring1'=>$awqmonitoring1
+        return view('module.moduleFive')
+        ->with([
+            'aaqmonitoring'=>$aaqmonitoring,
+            'oecondition'=>$oecondition,
+            'evmpprogram'=>$evmpprogram,
+            'aqg'=>$aqg,
+            'tqg'=>$tqg,
+            'aqc'=>$aqc,
+            'tqc'=>$tqc,
+            'eicc'=>$eicc,
+            'description'=>$description,
+            'awqmonitoring'=>$awqmonitoring,
+            'awqmonitoring1'=>$awqmonitoring1,
+            'referencen'=>$reference->ref_no
     ]);
 
     }
@@ -170,5 +183,19 @@ class ModuleFiveController extends Controller
     public function pdf(){
 
 
+    }
+
+    public static function generate(){
+        // ... existing code ...
+        $exist = Auth::user()->reference_no()->first();
+
+        if ($exist==null) {
+            $reference_no = Helper::IDGenerator(new referencen, 'ref_no', 5 , 'DENR');
+            $data = new referencen();
+            $data->ref_no = $reference_no;
+            $data->userid = Auth::user()->id;
+            $data->save();
+        }
+        return redirect('moduleFive');
     }
 }

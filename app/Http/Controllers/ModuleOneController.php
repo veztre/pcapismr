@@ -52,16 +52,33 @@ class ModuleOneController extends Controller
         $pono = Auth::user()->pono();
         $operation = Auth::user()->operation();
         $production = Auth::user()->production();
-        $reference_no = Auth::user()->reference_no()->find(1);
-        ($reference_no->ref_no);
+        $reference= Auth::user()->reference_no()->first();
 
 
 
-            return view('module.moduleOne')
-                ->with(['aircon' => $aircon, 'gic' => $gic, 'acno' => $acno, 'dpno' => $dpno, 'cncno' => $cncno, 'denrid' => $denrid,
-                    'transporterReg' => $transporterReg, 'tsdreg' => $tsdreg, 'ccoreg' => $ccoreg, 'import' => $import, 'permit' => $permit, 'smallquan' => $smallquan,
-                    'priority' => $priority, 'piccs' => $piccs, 'pmpin' => $pmpin, 'pono' => $pono, 'operation' => $operation, 'production' => $production, 'referencens' => $reference_no
-                ]);
+
+        return view('module.moduleOne')
+            ->with([
+                'aircon' => $aircon,
+                'gic' => $gic,
+                'acno' => $acno,
+                'dpno' => $dpno,
+                'cncno' => $cncno,
+                'denrid' => $denrid,
+                'transporterReg' => $transporterReg,
+                'tsdreg' => $tsdreg,
+                'ccoreg' => $ccoreg,
+                'import' => $import,
+                'permit' => $permit,
+                'smallquan' => $smallquan,
+                'priority' => $priority,
+                'piccs' => $piccs,
+                'pmpin' => $pmpin,
+                'pono' => $pono,
+                'operation' => $operation,
+                'production' => $production,
+                'referencen'=>$reference->ref_no
+            ]);
 
 
 
@@ -277,7 +294,8 @@ class ModuleOneController extends Controller
         $pono =Pono::get();
         $operation = Operation::get();
         $production =Production::get();
-        $pdf = PDF::loadView('module.pdf1' , ['gic'=>$gic,'aircon'=>$aircon,'dpno'=>$dpno,'cncno'=>$cncno,'denrid'=>$denrid,
+        $pdf = PDF::loadView('module.pdf1' , ['gic'=>$gic,
+            'aircon'=>$aircon,'dpno'=>$dpno,'cncno'=>$cncno,'denrid'=>$denrid,
             'transporterReg'=>$transporterReg,'tsdreg'=>$tsdreg,'ccoreg'=>$ccoreg,'import'=>$import,'permit'=>$permit,'smallquan'=>$smallquan,
             'priority'=>$priority,'piccs'=>$piccs,'pmpin'=>$pmpin,'acno'=>$acno,'pono'=>$pono,'operation'=>$operation,'production'=>$production
 
@@ -324,20 +342,16 @@ class ModuleOneController extends Controller
     }
 
     public static function generate(){
+        // ... existing code ...
+        $exist = Auth::user()->reference_no()->first();
 
-        $existing_referencen = Auth::user()->reference_no()->find(1);
-
-
-        if ($existing_referencen) {
-            $reference_no = $existing_referencen->ref_no;
-        } else {
+        if ($exist==null) {
             $reference_no = Helper::IDGenerator(new referencen, 'ref_no', 5 , 'DENR');
             $data = new referencen();
             $data->ref_no = $reference_no;
             $data->userid = Auth::user()->id;
             $data->save();
         }
-
         return redirect('moduleOne');
     }
 

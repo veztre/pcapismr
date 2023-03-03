@@ -12,5 +12,4 @@ class referencen extends Model
     protected $table = 'referencens';
 
 
-
 }
