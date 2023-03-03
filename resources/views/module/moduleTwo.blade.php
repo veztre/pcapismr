@@ -22,184 +22,186 @@
 <body>--}}
 <x-app-layout>
     <title>Environmental Management Bureau Online Services - SMR - RA 6969</title>
-    <div class="py-12">
+    <div class="py-12 ">
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div>
-                {{View::make('module.tabs')}}</div>
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
+                {{View::make('module.tabs')}}
+
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <div class="container m-auto mb-4" style="align-content: center">
-                        <div class="card m-auto mb-4">
-                        <div class="col">
+                    <div class="mt-4 container m-auto mb-4" style="align-content: center">
+                        <div class="card m-auto ml-2 mb-4">
+                            <div class="col">
 
-                            <form action="/saveData2" post="post">
-                                @csrf
-                                <!-- {{csrf_field()}}-->
-                                <br>
+                                <form action="/saveData2" post="post">
+                                    @csrf
+                                    <!-- {{csrf_field()}}-->
+                                    <br>
 
-                                <div class="row">
-                                    <div class="col">
-
-                                        <h1 style="text-align:center"> POLLUTION CONTROL ASSOCIATION OF THE PHILIPPINES, INC. (PCAPI)</h1>
-                                        <h2 style="text-align:center">SELF- MONITORING REPORT TRAINING MODULE</h2>
-
-                                    </div>
-
-                                    <div class="card col-5 mr-6" style="float:right">
-
-                                        <div class="mt-1 mx-3">
-                                            Reference no.
-                                        </div>
-
-                                        <div class="card-body">
-                                            <input type="text" class="form-control mt-0" placeholder="" value="{{ $referencen }}" readonly>
-
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                                <!-- Message Input -->
-                                <div class="col">
-                                    <p class="text-primary my-0">Note.</p>
-                                    <p class="text-primary my-0">1. Put "N/A" for field not applicable to you.</p>
-                                    <p class="text-primary my-0">2. You Can now Export data on Each module by clicking "EXPORT" Link Below.</p>
-                                </div>
-
-                                <div class="container">
                                     <div class="row">
-                                        <p class="p-1 mt-3  text-light" style="background-color:gray; font-size:20px ">
-                                            MODULE 2: RA 6969
-                                            <a href="/pdf2" class="btn btn-lg float-right " ><img src="/images/printpdflogo.png" class="inline" height="40px" width="50px" style="backgorund-color:gray;"> EXPORT PDF</a>
-                                        </p>
-                                    </div>
-                                </div>
+                                        <div class="col">
 
-                                <div class="container">
-                                    <table class="table table-borderless table-hover" >
-                                        <thead>
-                                        <tr><h3 class="mt-3 mx-2 text-success">B. HAZARDOUS WASTE GENERATOR</h3></tr>
-                                        </thead>
+                                            <h1 style="text-align:center"> POLLUTION CONTROL ASSOCIATION OF THE PHILIPPINES, INC. (PCAPI)</h1>
+                                            <h2 style="text-align:center">SELF- MONITORING REPORT TRAINING MODULE</h2>
 
-                                        <thead>
-                                        <tr><h3 class="mt-3 mx-2 text-success">HAZARDOUS WASTE GENERATION</h3></tr>
-                                        </thead>
-                                    </table>
+                                        </div>
 
-                                    <table class="w3-table">
+                                        <div class="card col-5 mr-6" style="float:right">
 
-                                        <tbody id="hazzardous">
-                                        <tr>
-                                            <td></td>
-                                            <td>HW No.</td>
-                                            <td>HW Class</td>
-                                            <td>HW Nature</td>
-                                            <td>HW Cataloguing</td>
-                                            <td></td>
-                                            <td scope="col" colspan="4" style="text-align:center">Remaining HW from Previous Reports</td>
-                                            <td scope="col" colspan="4" style="text-align:center">HW Generated for the Quarter</td>
-                                        </tr>
+                                            <div class="mt-1 mx-3">
+                                                Reference no.
+                                            </div>
 
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td style="text-align:center">Quantity</td>
-                                            <td style="text-align:center">Unit</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td style="text-align:center">Quantity</td>
-                                            <td style="text-align:center">Unit</td>
-                                            <td></td>
-                                        </tr>
+                                            <div class="card-body">
+                                                <input type="text" class="form-control mt-0" placeholder="" value="{{ $referencen }}" readonly>
 
-                                        <tr>
+                                            </div>
 
-                                            <td></td>
-                                        </tr>
+                                        </div>
 
-
-                                        </tbody>
-                                        <td></td>
-                                        <td><button type="button" name="add" id="haz" class="btn btn-outline-primary" >+</button></td>
-                                    </table>
-
-                                    <table class="table table-borderless table-hover">
-                                        <thead>
-                                        <tr><h3 class="mt-3 mx-2 text-success">WASTE STORAGE, TREATMENT AND DISPOSAL (PLEASE FILL-UP ONE TABLE PER HW) </h3></tr>
-                                        </thead>
-                                    </table>
-
-                                    <div class="container" id="wstad">
-
-                                        <table class="table table-borderless p-3">
-
-
-
-
-                                        </table>
                                     </div>
 
-                                </div>
-                                <td>
-                                    <button type="button" name="add" id="wstd" class="btn btn-outline-primary" style="margin-left: 2.5%" >+</button>
-                                </td>
+                                    <!-- Message Input -->
+                                    <div class="col">
+                                        <p class="text-primary my-0">Note.</p>
+                                        <p class="text-primary my-0">1. Put "N/A" for field not applicable to you.</p>
+                                        <p class="text-primary my-0">2. You Can now Export data on Each module by clicking "EXPORT" Link Below.</p>
+                                    </div>
 
-                                <table class="table table-borderless mt-3">
-                                    <thead>
-                                    <tr>
-                                        <th class="text-success">ON-SITE SELF INSPECTION OF STORAGE AREA</th>
-                                    </tr>
-                                    </thead>
-                                </table>
-
-                                <!-- table for on site self inspection of storage area -->
-                                <div class="card mb-3 m-auto" >
-                                    <table class="table table-borderless" id="ossisa">
-
-                                        <thead>
-                                        <tr>
-                                            <th>Date Conducted</th>
-                                            <th>Premises / Area Inspected</th>
-                                            <th>Findings and Observations</th>
-                                            <th>Corrective Actions Taken</th>
-                                        </tr>
-                                        </thead>
-
-                                        <!-- <table class="table table-borderless" id="onsite"> -->
-                                        <tbody id="onsite">
-
-                                        </tbody>
-                                        <td>
-                                            <button type="button" name="add" id="onSite" class="btn btn-outline-primary">+</button>
-                                        </td>
-                                    </table>
-
-
-
-
-                                </div>
-
-
-                                <div class="container">
-                                    <div class="col mb-3">
-                                        <div class="mb-3" style="float: right">
-                                            <a href="{{ route('module.moduleOne') }}" class="btn btn-lg border bg-light">Previous</a>
-                                            <a href="{{ route('module.moduleThree') }}" class="btn btn-lg btn-info">Next</a>
-                                            <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
+                                    <div class="container">
+                                        <div class="row">
+                                            <p class="p-1 mt-3  text-light" style="background-color:gray; font-size:20px ">
+                                                MODULE 2: RA 6969
+                                                <a href="/pdf2" class="btn btn-lg float-right " ><img src="/images/printpdflogo.png" class="inline" height="40px" width="50px" style="backgorund-color:gray;"> EXPORT PDF</a>
+                                            </p>
                                         </div>
                                     </div>
-                                </div>
 
-                            </form>
+                                    <div class="container">
+                                        <table class="table table-borderless table-hover" >
+                                            <thead>
+                                            <tr><h3 class="mt-3 mx-2 text-success">B. HAZARDOUS WASTE GENERATOR</h3></tr>
+                                            </thead>
 
-                        </div>
+                                            <thead>
+                                            <tr><h3 class="mt-3 mx-2 text-success">HAZARDOUS WASTE GENERATION</h3></tr>
+                                            </thead>
+                                        </table>
+
+                                        <table class="w3-table">
+
+                                            <tbody id="hazzardous">
+                                            <tr>
+                                                <td></td>
+                                                <td>HW No.</td>
+                                                <td>HW Class</td>
+                                                <td>HW Nature</td>
+                                                <td>HW Cataloguing</td>
+                                                <td></td>
+                                                <td scope="col" colspan="4" style="text-align:center">Remaining HW from Previous Reports</td>
+                                                <td scope="col" colspan="4" style="text-align:center">HW Generated for the Quarter</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td style="text-align:center">Quantity</td>
+                                                <td style="text-align:center">Unit</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td style="text-align:center">Quantity</td>
+                                                <td style="text-align:center">Unit</td>
+                                                <td></td>
+                                            </tr>
+
+                                            <tr>
+
+                                                <td></td>
+                                            </tr>
+
+
+                                            </tbody>
+                                            <td></td>
+                                            <td><button type="button" name="add" id="haz" class="btn btn-outline-primary" >+</button></td>
+                                        </table>
+
+                                        <table class="table table-borderless table-hover">
+                                            <thead>
+                                            <tr><h3 class="mt-3 mx-2 text-success">WASTE STORAGE, TREATMENT AND DISPOSAL (PLEASE FILL-UP ONE TABLE PER HW) </h3></tr>
+                                            </thead>
+                                        </table>
+
+                                        <div class="container" id="wstad">
+
+                                            <table class="table table-borderless p-3">
+
+
+
+
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                    <td>
+                                        <button type="button" name="add" id="wstd" class="btn btn-outline-primary" style="margin-left: 2.5%" >+</button>
+                                    </td>
+
+                                    <table class="table table-borderless mt-3">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-success">ON-SITE SELF INSPECTION OF STORAGE AREA</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+
+                                    <!-- table for on site self inspection of storage area -->
+                                    <div class="card mb-3 m-auto" >
+                                        <table class="table table-borderless" id="ossisa">
+
+                                            <thead>
+                                            <tr>
+                                                <th>Date Conducted</th>
+                                                <th>Premises / Area Inspected</th>
+                                                <th>Findings and Observations</th>
+                                                <th>Corrective Actions Taken</th>
+                                            </tr>
+                                            </thead>
+
+                                            <!-- <table class="table table-borderless" id="onsite"> -->
+                                            <tbody id="onsite">
+
+                                            </tbody>
+                                            <td>
+                                                <button type="button" name="add" id="onSite" class="btn btn-outline-primary">+</button>
+                                            </td>
+                                        </table>
+
+
+
+
+                                    </div>
+
+
+                                    <div class="container">
+                                        <div class="col mb-3">
+                                            <div class="mb-3" style="float: right">
+                                                <a href="{{ route('module.moduleOne') }}" class="btn btn-lg border bg-light">Previous</a>
+                                                <a href="{{ route('module.moduleThree') }}" class="btn btn-lg btn-info">Next</a>
+                                                <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+
+                            </div>
 
 
                         </div>

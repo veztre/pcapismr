@@ -106,16 +106,6 @@
             color: gray;
         }
 
-        #example {
-            overflow: hidden;
-        }
-
-        #example1 {
-            overflow: hidden;
-        }
-
-
-
 
         /*Overrides for Tailwind CSS */
 
@@ -141,7 +131,7 @@
             /*border-gray-200*/
             background-color: #edf2f7;
             /*bg-gray-200*/
-            /*width: 45% !important;*/
+            width: 45% !important;
 
 
         }
@@ -167,7 +157,6 @@
             /*bg-gray-200*/
             width: 80% !important;
         }
-
 
         /*Row Hover*/
         table.dataTable.hover tbody tr:hover,
@@ -233,6 +222,49 @@
             /*bg-indigo-500*/
         }
 
+
+        @media only screen and (max-width: 700px) {
+            section {
+                flex-direction: column;
+            }
+        }
+
+
+
+        input[type='radio'] {
+            -webkit-appearance: none;
+            width: 50px;
+            height: 50px;
+
+
+        }
+
+        input[type='radio']:hover {
+            box-shadow: 0 0 5px 0px green inset;
+
+        }
+
+        input[type='radio']:before {
+            content: '';
+            width: 60%;
+            height: 60%;
+            margin: 20% auto;
+
+        }
+
+        input[type='radio']:checked:before {
+            background: green;
+            border-radius: 100%;
+        }
+
+        table {
+            counter-reset: tableCount;
+        }
+        .counterCell:before {
+            content: counter(tableCount);
+            counter-increment: tableCount;
+
+        }
     </style>
     {{-- Timezone--}}
     <script type="text/javascript" id="gwt-pst">
@@ -263,7 +295,7 @@
                     "emptyTable": "No entries found",
                     "loadingRecords": "Loading data from server",
                     "processing": "Processing...",
-                    "search": "Se",
+                    "search": "Search",
                     "info": "Showing page _PAGE_ of _PAGES_",
                     "infoEmpty": "No records available",
                     "infoFiltered": "(filtered from _MAX_ total entries)"},
@@ -279,7 +311,7 @@
     <script>
         $(document).ready(function() {
 
-            var table = $('#example').DataTable({
+            var table = $('#example1').DataTable({
                 "scrollCollapse": true,
                 "sScrollY": "500px",
                 "iDisplayLength": 10,
@@ -303,7 +335,7 @@
     <script>
         $(document).ready(function() {
 
-            var table = $('#example1').DataTable({
+            var table = $('#example2').DataTable({
                 "scrollCollapse": true,
                 "sScrollY": "500px",
                 "iDisplayLength": 10,

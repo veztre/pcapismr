@@ -53,7 +53,7 @@ class ModuleOneController extends Controller
         $operation = Auth::user()->operation();
         $production = Auth::user()->production();
         $reference= Auth::user()->reference_no()->first();
-
+        $upload = Upload::all();
 
 
 
@@ -77,7 +77,8 @@ class ModuleOneController extends Controller
                 'pono' => $pono,
                 'operation' => $operation,
                 'production' => $production,
-                'referencen'=>$reference->ref_no
+                'referencen'=>$reference->ref_no,
+                'uploads'=>$upload,
             ]);
 
 
@@ -91,13 +92,17 @@ class ModuleOneController extends Controller
 
     public function save(Request $request ){
 
+        $userId = Auth::user()->id;
+
+
+
         $gic = new Gic();
-        $gic->userid = Auth::user()->id;
+        $gic->userid = $userId;
         $gic->description = $request->input('description');
         $gic->save();
 
-        $aircon  = new Aircon();
-        $aircon->userid = Auth::user()->id;
+        $aircon = new Aircon();
+        $aircon->userid = $userId;
         $aircon->permit = $request->input('ACPermit');
         $aircon->dateIssued = $request->input('ACIssued');
         $aircon->dateExpired = $request->input('ACExpire');
@@ -105,35 +110,35 @@ class ModuleOneController extends Controller
 
 
         $denrid  = new Denrid();
-        $denrid->userid = Auth::user()->id;
+        $denrid->userid = $userId;
         $denrid->permit = $request->input('DENRpermit');
         $denrid->dateIssued = $request->input('DENRdateIssued');
         $denrid->dateExpired = $request->input('DENRdateExpired');
         $denrid->save();
 
         $transporterReg  = new TransporterReg();
-        $transporterReg->userid = Auth::user()->id;
+        $transporterReg->userid = $userId;
         $transporterReg->permit = $request->input('Transportpermit');
         $transporterReg->dateIssued = $request->input('TransportdateIssued');
         $transporterReg->dateExpired = $request->input('TransportdateExpired');
         $transporterReg->save();
 
         $tsdreg  = new Tsdreg();
-        $tsdreg->userid = Auth::user()->id;
+        $tsdreg->userid = $userId;
         $tsdreg->permit = $request->input('TSDpermit');
         $tsdreg->dateIssued = $request->input('TSDdateIssued');
         $tsdreg->dateExpired = $request->input('TSDdateExpired');
         $tsdreg->save();
 
         $acno  = new Acno();
-        $acno->userid = Auth::user()->id;
+        $acno->userid = $userId;
         $acno->permit = $request->input('ACNOPermit');
         $acno->dateIssued = $request->input('ACNOIssued');
         $acno->dateExpired = $request->input('ACNOExpired');
         $acno->save();
 
         $operation  = new Operation();
-        $operation->userid= Auth::user()->id;
+        $operation->userid= $userId;
         $operation->aveOPhours = $request->input('aveOPhours');
         $operation->aveOPdays = $request->input('aveOPdays');
         $operation->aveOPshift = $request->input('aveOPshift');
@@ -143,7 +148,7 @@ class ModuleOneController extends Controller
         $operation->save();
 
         $production  = new Production();
-        $production->userid = Auth::user()->id;
+        $production->userid = $userId;
         $production->aveProduction = $request->input('aveProduction');
         $production->totalOutput = $request->input('totalOutput');
         $production->totalConsumption = $request->input('totalConsumption');
@@ -154,7 +159,7 @@ class ModuleOneController extends Controller
         $dpno = $request->input('dpno');
         for ($x=0; $x<count($dpno); $x+=3){
             $DBdpno = new Dpno();
-            $DBdpno->userid = Auth::user()->id;
+            $DBdpno->userid = $userId;
             $DBdpno->permit = $dpno[$x];
             $DBdpno->dateIssued = $dpno[$x+1];
             $DBdpno->dateExpired = $dpno[$x+2];
@@ -164,7 +169,7 @@ class ModuleOneController extends Controller
         $cncno = $request->input('cncno');
         for ($x=0; $x<count($cncno); $x+=3){
             $DBcncno = new Cncno();
-            $DBcncno->userid = Auth::user()->id;
+            $DBcncno->userid = $userId;
             $DBcncno->permit = $cncno[$x];
             $DBcncno->dateIssued = $cncno[$x+1];
             $DBcncno->dateExpired = $cncno[$x+2];
@@ -175,7 +180,7 @@ class ModuleOneController extends Controller
         $ccoreg = $request->input('ccoreg');
         for ($x=0; $x<count($ccoreg); $x+=3){
             $DBccoreg = new Ccoreg();
-            $DBccoreg->userid = Auth::user()->id;
+            $DBccoreg->userid = $userId;
             $DBccoreg->permit = $ccoreg[$x];
             $DBccoreg->dateIssued = $ccoreg[$x+1];
             $DBccoreg->dateExpired = $ccoreg[$x+2];
@@ -186,7 +191,7 @@ class ModuleOneController extends Controller
         $import = $request->input('import');
         for ($x=0; $x<count($import); $x+=3){
             $DBimport = new Import();
-            $DBimport->userid = Auth::user()->id;
+            $DBimport->userid = $userId;
             $DBimport->permit = $import[$x];
             $DBimport->dateIssued = $import[$x+1];
             $DBimport->dateExpired = $import[$x+2];
@@ -196,7 +201,7 @@ class ModuleOneController extends Controller
         $permit = $request->input('permit');
         for ($x=0; $x<count($permit); $x+=3){
             $DBpermit = new Permmit();
-            $DBpermit->userid = Auth::user()->id;
+            $DBpermit->userid = $userId;
             $DBpermit->permit = $permit[$x];
             $DBpermit->dateIssued = $permit[$x+1];
             $DBpermit->dateExpired = $permit[$x+2];
@@ -207,7 +212,7 @@ class ModuleOneController extends Controller
         $smallquan = $request->input('smallquan');
         for ($x=0; $x<count($permit); $x+=3){
             $DBsmallquan = new Smallquan();
-            $DBsmallquan->userid = Auth::user()->id;
+            $DBsmallquan->userid = $userId;
             $DBsmallquan->permit = $smallquan[$x];
             $DBsmallquan->dateIssued = $smallquan[$x+1];
             $DBsmallquan->dateExpired = $smallquan[$x+2];
@@ -217,7 +222,7 @@ class ModuleOneController extends Controller
         $priority = $request->input('priority');
         for ($x=0; $x<count($priority); $x+=3){
             $DBpriority = new Priority();
-            $DBpriority->userid = Auth::user()->id;
+            $DBpriority->userid = $userId;
             $DBpriority->permit = $priority[$x];
             $DBpriority->dateIssued = $priority[$x+1];
             $DBpriority->dateExpired = $priority[$x+2];
@@ -228,7 +233,7 @@ class ModuleOneController extends Controller
         $piccs = $request->input('piccs');
         for ($x=0; $x<count($piccs); $x+=3){
             $DBpiccs = new Piccs();
-            $DBpiccs->userid = Auth::user()->id;
+            $DBpiccs->userid = $userId;
             $DBpiccs->permit = $piccs[$x];
             $DBpiccs->dateIssued = $piccs[$x+1];
             $DBpiccs->dateExpired = $piccs[$x+2];
@@ -239,7 +244,7 @@ class ModuleOneController extends Controller
         $pmpin = $request->input('pmpin');
         for ($x=0; $x<count($pmpin); $x+=3){
             $DBpmpin = new Pmpin();
-            $DBpmpin->userid = Auth::user()->id;
+            $DBpmpin->userid = $userId;
             $DBpmpin->permit = $pmpin[$x];
             $DBpmpin->dateIssued = $pmpin[$x+1];
             $DBpmpin->dateExpired = $pmpin[$x+2];
@@ -250,7 +255,7 @@ class ModuleOneController extends Controller
         $pono = $request->input('pono');
         for ($x=0; $x<count($pono); $x+=3){
             $DBpono = new Pono();
-            $DBpono->userid = Auth::user()->id;
+            $DBpono->userid = $userId;
             $DBpono->permit = $pono[$x];
             $DBpono->dateIssued = $pono[$x+1];
             $DBpono->dateExpired = $pono[$x+2];
@@ -268,7 +273,7 @@ class ModuleOneController extends Controller
 
             };
         }
-        return redirect('moduleTwo');
+        return redirect('moduleTwo')->back()->with('success', 'Data saved successfully.');
 
 
     }
