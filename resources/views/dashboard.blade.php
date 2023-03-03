@@ -12,7 +12,11 @@
                             Trainee Accounts
                         </h1>
                         <div class="m-auto flex justify-end p-2 ">
-                            <a href="{{ route('module.moduleOne.generate.save') }}" class="px-4 py-2 mb-6 text-white no-underline rounded-full transition ease-in-out delay-150 bg-indigo-400 hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 duration-300">Create SMR</a>
+                            @if (Route::has('register'))
+
+                                    <a href="{{ route('create') }}" class="px-4 py-2 mb-6 text-white no-underline rounded-full transition ease-in-out delay-150 bg-indigo-400 hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 duration-300">Create Trainee</a>
+
+                            @endif
                         </div>
 
                         <div id="example_wrapper" class="mb-2 dataTables_wrapper no-footer mr-2">
