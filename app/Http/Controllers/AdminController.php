@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Actions\Fortify\PasswordValidationRules;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Concerns\ValidatesAttributes;
+use Laravel\Jetstream\Jetstream;
 
 
 class AdminController extends Controller
 {
+   use PasswordValidationRules;
+   use ValidatesAttributes;
     public function index()
     {
-
 
         $users = User::all();
         return view('dashboard', compact('users'));
@@ -41,6 +48,17 @@ class AdminController extends Controller
         $data->password = Hash::make($request->input('password'));
         $data->save();
 
+        Validator::make($request, [
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'position' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'company' => ['required', 'string', 'max:255'],
+            'region' => ['required', 'string'],
+            'password' => $this->passwordRules(),
+            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
+        ])->validate();
         return redirect('/admin/dashboard');
     }
 

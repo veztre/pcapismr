@@ -7,7 +7,7 @@
                 <table class="w-full font-bold" >
                     <tbody><tr class="text-lg">
                         <td class="w-50 text-white" ><img class="inline bg-transparent w-50 h-50 mr-4" src="/images/rep-bg-logo.gif" alt="logo-denr" >User Registration</td>
-                        <td class="text-right text-white mr-6" >Environmental Management Bureau</td>
+                        <td class="text-right text-white mr-6" >POLLUTION CONTROL ASSOCIATION OF THE PHILIPPINES INC. (PCAPI)</td>
                     </tr>
                     </tbody></table>
             </div>

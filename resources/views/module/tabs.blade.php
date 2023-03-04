@@ -46,7 +46,7 @@
 </style>
 
 <div class="container mt-2 ">
-<nav class="navbar navbar-expand-lg relative">
+<nav class="navbar navbar-expand-lg ">
 
 
       <form class="d-flex">

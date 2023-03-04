@@ -61,6 +61,8 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
 Route::redirect('/', destination: 'login');
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/create/user', [AdminController::class, 'create'])->name('create');
+Route::post('/save', [AdminController::class, 'store']);
+Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 // admin controller end
 
 

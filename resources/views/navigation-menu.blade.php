@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 relative">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 relative  ">
 
     @if(Auth::user()->usertype == 'admin')
         <div class="container-fluid">
@@ -24,8 +24,8 @@
 
 
     <!-- Primary Navigation Menu -->
-    <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 shadow drop-shadow-2xl hover:shadow-lg border-t-8 border-blue-600 mb-4 relative">
-        <div class="flex justify-between h-16 mt-4 relative">
+    <div class="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 shadow drop-shadow-2xl hover:shadow-lg border-t-8 border-blue-600 mb-4 ">
+        <div class="flex justify-between h-16 mt-4 ">
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
@@ -116,9 +116,9 @@
                 @endif
 
                 <!-- Settings Dropdown -->
-                <div class="ml-3 ">
+                <div class="ml-3 relative  ">
                     <div id="pst-container ">
-                        <div id="pst-time" class="m-auto mb-2  text-right sm:text-sm"></div>
+                        <div id="pst-time" class="m-auto mb-2 text-right sm:text-sm"></div>
                         <div><a href="https://gwhs.i.gov.ph/pst/" id="pst-source"  target="_blank"></a></div>
                     </div>
                     <x-jet-dropdown align="right" width="48" >
@@ -142,7 +142,7 @@
                             @endif
                         </x-slot>
 
-                        <x-slot name="content" class="relative" >
+                        <x-slot name="content"  >
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-gray-400 ">
                                 {{ __('Manage Account') }}
@@ -178,7 +178,7 @@
                                 @csrf
 
                                 <x-jet-dropdown-link href="{{ route('logout') }}"
-                                         @click.prevent="$root.submit();">
+                                         @click.prevent="$root.submit();" >
                                     {{ __('Log Out') }}
                                 </x-jet-dropdown-link>
                             </form>

@@ -6,8 +6,8 @@
                 <!-- <a class="navbar-brand text-center" href="#"> </a> -->
                 <table class="w-full font-bold" >
                     <tbody><tr class="text-lg">
-                        <td class="w-50 text-white" ><img class="inline bg-transparent w-50 h-50 mr-4" src="/images/rep-bg-logo.gif" alt="logo-denr" >User Registration</td>
-                        <td class="text-right text-white mr-6" >Environmental Management Bureau</td>
+                        <td class="w-50 text-white" > <a href="{{ route('admin.index') }}" ><img class="inline bg-transparent w-50 h-50 mr-4" src="/images/rep-bg-logo.gif" alt="logo-denr" >User Registration</a></td>
+                        <td class="text-right text-white mr-6" >POLLUTION CONTROL ASSOCIATION OF THE PHILIPPINES INC. (PCAPI)</td>
                     </tr>
                     </tbody></table>
             </div>
@@ -117,9 +117,6 @@
                 @endif
 
                 <div class="flex items-center justify-center mt-8">
-                    <a class="underline text-sm text-indigo-400 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                        {{ __('Already registered?') }}
-                    </a>
 
                     <x-jet-button   class="ml-4 transition ease-in-out delay-150 bg-indigo-400 hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 duration-300">
                         {{ __('Register') }}

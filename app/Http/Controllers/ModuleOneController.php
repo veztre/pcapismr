@@ -309,6 +309,25 @@ class ModuleOneController extends Controller
         return $pdf->download('moduleOne.pdf');
     }
 
+    public function show($id)
+    {
+
+
+        return view('updatemoduleOne.show', compact(''));
+    }
+
+    public function edit($id)
+    {
+
+
+        return view('updatemoduleOne.edit', compact(''));
+    }
+    public function update(Request $request, $id)
+    {
+
+
+        return redirect('updatemoduleOne')->with('success', 'Product has been updated.');
+    }
     public function store(Request $request)
     {
         $dateIssued = $request->input('date_issued');
