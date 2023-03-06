@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Actions\Fortify\PasswordValidationRules;
+use App\Models\Region;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -68,7 +69,10 @@ class AdminController extends Controller
     public function edit($id)
     {
         $users = User::find($id);
-        return view('module.editaccount', compact('users'));
+        $regions = Region::all();
+        $userTypes = ['admin', 'trainee'];
+
+        return view('module.editaccount', compact('users','regions', 'userTypes'));
     }
 
 

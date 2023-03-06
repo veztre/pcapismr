@@ -76,8 +76,10 @@
                 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
                                  aria-required="true" aria-invalid="false" >
                             <option selected disabled value=" ">SELECT USER TYPE - (user role)</option>
-                            <option >admin</option>
-                            <option >trainee</option>
+                            @foreach($userTypes as $type)
+                                <option value="{{ $type }}" {{ old('usertype', $users->usertype) == $type ? 'selected' : '' }}>{{ $type }}</option>
+                            @endforeach
+
                         </select>
                     </div >
 
@@ -85,14 +87,12 @@
                 </div>
                 <div class="form-group mt-4 mb-3 ">
                     <x-jet-label for="region" value="{{ __('Region') }}" />
-                    <select  id="region" name="region" class="form-control valid w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500
+                    <select  id="region" name="region" value="{{$users->region}}" class="form-control valid w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500
                 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
                              aria-required="true" aria-invalid="false" >
                         <option selected disabled value=" ">SELECT REGION - (user location)</option>
-                        @foreach ($regionn as $data)
-                            <option value="{{$data->regionname}}" @if(old('region') == $data->regionname) selected @endif >
-                                {{$data->regionname}}
-                            </option>
+                        @foreach ($regions as $region)
+                            <option value="{{ $region->regionname }}" {{ old('region', $users->region) == $region->regionname ? 'selected' : '' }}>{{ $region->regionname }}</option>
                         @endforeach
                     </select>
                 </div>
