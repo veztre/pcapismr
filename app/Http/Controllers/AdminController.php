@@ -34,6 +34,20 @@ class AdminController extends Controller
 
     public function store(Request $request){
 
+        $validator = Validator::make($request->all(), [
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'company' => ['required', 'string', 'max:255'],
+            'region' => ['required', 'string'],
+            'usertype' => ['required', 'string'],
+            'password' => $this->passwordRules(),
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
 
         $data = new User();
@@ -48,26 +62,28 @@ class AdminController extends Controller
         $data->password = Hash::make($request->input('password'));
         $data->save();
 
-        Validator::make($request, [
-            'username' => ['required', 'string', 'max:255', 'unique:users'],
-            'firstname' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string', 'max:255'],
-            'position' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'company' => ['required', 'string', 'max:255'],
-            'region' => ['required', 'string'],
-            'password' => $this->passwordRules(),
-            'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
-        ])->validate();
         return redirect('/admin/dashboard');
     }
 
-    public function edit()
+    public function edit($id)
     {
-        $users = User::all();
+        $users = User::find($id);
+        return view('module.editaccount', compact('users'));
+    }
 
 
-        return view('module.edit',compact('users'));
+    public function update(Request $request, $id){
+        $users = User::find($id);
+        $users->username = $request->input('username');
+        $users->firstname = $request->input('firstname');
+        $users->lastname = $request->input('lastname');
+        $users->company = $request->input('company');
+        $users->contact = $request->input('contact');
+        $users->email = $request->input('email');
+        $users->usertype = $request->input('usertype');
+        $users->region = $request->input('region');
+        $users->update();
+        return redirect('/admin/dashboard');
     }
 
 }

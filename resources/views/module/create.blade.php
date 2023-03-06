@@ -70,10 +70,11 @@
                         <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
                     </div>
                     <div class="mt-4">
+                        <x-jet-label for="usertype" value="{{ __('User Type') }}" />
                         <select  id="usertype" name="usertype" class="form-control valid w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500
                 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
                                  aria-required="true" aria-invalid="false" >
-
+                            <option selected disabled value=" ">SELECT USER TYPE - (user role)</option>
                             <option >admin</option>
                             <option >trainee</option>
                         </select>
@@ -82,6 +83,7 @@
 
                 </div>
                 <div class="form-group mt-4 mb-3 ">
+                    <x-jet-label for="region" value="{{ __('Region') }}" />
                     <select  id="region" name="region" class="form-control valid w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500
                 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
                              aria-required="true" aria-invalid="false" >

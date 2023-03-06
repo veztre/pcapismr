@@ -116,12 +116,12 @@
                 @endif
 
                 <!-- Settings Dropdown -->
-                <div class="ml-3 relative  ">
+                <div class="ml-3  ">
                     <div id="pst-container ">
                         <div id="pst-time" class="m-auto mb-2 text-right sm:text-sm"></div>
                         <div><a href="https://gwhs.i.gov.ph/pst/" id="pst-source"  target="_blank"></a></div>
                     </div>
-                    <x-jet-dropdown align="right" width="48" >
+                    <x-jet-dropdown align="right" width="48" class="relative" >
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                 <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
@@ -152,7 +152,7 @@
                                 {{ __('Profile') }}
                             </x-jet-dropdown-link>
 
-                            @role('admin')
+                     {{--       @role('admin')
 
                             <x-jet-dropdown-link href="{{ route('admin.roles.index') }}" :active="request()->routeIs('admin.roles.index')" >
                                 {{ __('Add Role') }}
@@ -163,7 +163,7 @@
                             <x-jet-dropdown-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('admin.users.index')">
                                 {{ __("Assign User's role and permission") }}
                             </x-jet-dropdown-link>
-                            @endrole
+                            @endrole--}}
 
                             @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                 <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
@@ -178,7 +178,7 @@
                                 @csrf
 
                                 <x-jet-dropdown-link href="{{ route('logout') }}"
-                                         @click.prevent="$root.submit();" >
+                                         @click.prevent="$root.submit();" class="m-auto" >
                                     {{ __('Log Out') }}
                                 </x-jet-dropdown-link>
                             </form>
