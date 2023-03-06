@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Concerns\ValidatesAttributes;
 use Laravel\Jetstream\Jetstream;
-
+use Illuminate\Validation\Rule;
 
 class AdminController extends Controller
 {
@@ -66,9 +66,11 @@ class AdminController extends Controller
         return redirect('/admin/dashboard');
     }
 
-    public function edit($id)
+    public function edit( $id)
     {
-        $users = User::find($id);
+
+
+        $users = User::findOrFail($id);
         $regions = Region::all();
         $userTypes = ['admin', 'trainee'];
 
@@ -77,6 +79,22 @@ class AdminController extends Controller
 
 
     public function update(Request $request, $id){
+
+        $validator = Validator::make($request->all(), [
+            'username' => ['required', 'string', 'max:255', Rule::unique('users')->ignore($id)],
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($id)],
+            'company' => ['required', 'string', 'max:255'],
+            'region' => ['required', 'string'],
+            'usertype' => ['required', 'string'],
+            'password' => $this->passwordRules(),
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $users = User::find($id);
         $users->username = $request->input('username');
         $users->firstname = $request->input('firstname');
