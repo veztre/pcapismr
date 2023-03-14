@@ -119,8 +119,56 @@
                                         </tr>
 
                                         <tr>
-
                                             <td></td>
+                                            @foreach ($hwGeneration as $hwGen)
+                                                @if ($hwGen->userid == Auth::id())
+                                        <tr>
+                                            <td class="counterCell " style="text-align: right" >
+                                            </td>
+                                            <td><select class="form-select" name="hwGeneration[]" style="width: fit-content" >
+                                                    <option value="{{ $hwGen->HWno }}">{{ $hwGen->HWno }}</option>
+                                                </select>
+                                            </td>
+
+                                            <td>
+                                                <input type="text" class="form-control" name="hwGeneration[]" value="{{$hwGen->HWclass}}">
+                                            </td>
+                                            <td>
+                                                <select class="form-select" name="hwGeneration[]" style="width: fit-content">
+                                                    <option value="{{$hwGen->HWNature}}">{{$hwGen->HWNature}}</option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <select class="form-select" name="hwGeneration[]" style="width: fit-content">
+                                                    <option value="{{$hwGen->HWcataloguing}}">{{$hwGen->HWcataloguing}}</option>
+                                                </select>
+                                            </td>
+                                            <td></td>
+                                            <td>
+                                                <input type="text" class="form-control" name="hwGeneration[]" value="{{$hwGen->RemainingQty}}">
+                                            </td>
+                                            <td>
+                                                <select class="form-select" name="hwGeneration[]" style="width: fit-content">
+                                                    <option value="{{$hwGen->PreviousReportUnit}}">{{$hwGen->PreviousReportUnit}}</option>
+                                                </select>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+
+                                            <td>
+                                                <input type="text" class="form-control" name="hwGeneration[]" value="{{$hwGen->HWGeneratedQty}}">
+                                            </td>
+
+                                            <td><select class="form-select" name="hwGeneration[]" style="width: fit-content">
+                                                    <option value="{{$hwGen->QuarterUnit}}"></option>
+                                                </select>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        @endif
+                                        @endforeach
                                         </tr>
 
 
@@ -139,7 +187,184 @@
 
                                         <table class="table table-borderless p-3">
 
+                                            <div class="container" id="wstad">
+                                                <div class="card border-3 border-secondary mb-3" >
+                                                    <table class="table table-borderless p-3">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>HW Details</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>HW No.</td>
+                                                            <td>HW Class</td>
+                                                        </tr>
 
+                                                        @foreach ($hwDetails as $hwDetail)
+                                                            @if ($hwDetail->userid == Auth::id())
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td><select class="form-select" name="hwDetails[]" style="width: fit-content">
+                                                                            <option value="{{$hwDetail->HWno}}">{{$hwDetail->HWno}}</option>
+                                                                        </select>
+                                                                    </td>
+                                                                    <td><input type="text" class="form-control" name="hwDetails[]" value="{{$hwDetail->HWclass}}"></td>
+                                                                </tr><tr>
+                                                                    <td></td>
+                                                                    <td>Qty of HW Treated</td>
+                                                                    <td>Unit</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td><input type="text" class="form-control" name="hwDetails[]" value="{{$hwDetail->QtyOfHWTreated}}"></td>
+                                                                    <td><select class="form-select" name="hwDetails[]" style="width: fit-content">
+                                                                            <option value="{{$hwDetail->Unit}}">{{$hwDetail->Unit}}</option>
+
+                                                                        </select>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>TSD Locations</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td><input type="text" class="form-control" name="hwDetails[]" value="{{$hwDetail->TSDLocation}}"></td>
+                                                                </tr>
+                                                        </tbody>
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Storage</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>Name</td>
+                                                        </tr>
+                                                        @endif
+                                                        @endforeach
+
+                                                        @foreach ($storage as $store)
+                                                            @if ($store->userid == Auth::id())
+
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td><input type="text" class="form-control" name="storage[]" value="{{$store->name}}"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>Method</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td><input type="text" class="form-control" name="storage[]" value="{{$store->method}}"></td>
+                                                                </tr>
+                                                            @endif
+                                                        @endforeach
+                                                        </tbody>
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Transporter</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>ID</td>
+                                                            <td>Name</td>
+                                                        </tr>
+                                                        @foreach ($transporter as $trans)
+                                                            @if ($trans->userid == Auth::id())
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td><input type="text" class="form-control" name="transporter[]" value="{{$trans->transpo_id}}"></td>
+                                                                    <td><input type="text" class="form-control" name="transporter[]"value="{{$trans->name}}"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>Method</td>
+                                                                    <td>Date</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td><input type="text" class="form-control" name="transporter[]" value="{{$trans->method}}"></td>
+                                                                    <td><input type="date" class="form-control" name="transporter[]" value="{{$trans->date}}"></td>
+                                                                </tr>
+                                                            @endif
+                                                        @endforeach
+                                                        </tbody>
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Treater</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>ID</td>
+                                                            <td>Name</td>
+                                                        </tr>
+                                                        @foreach ($treater as $treat)
+                                                            @if ($treat->userid == Auth::id())
+                                                                <tr>
+                                                                    <td>
+                                                                    </td>
+                                                                    <td><input type="text" class="form-control" name="treater[]" value="{{$treat->treater_id}}"></td>
+                                                                    <td><input type="text" class="form-control" name="treater[]"value="{{$treat->name}}"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>Method</td>
+                                                                    <td>Date</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td><input type="text" class="form-control" name="treater[]" value="{{$treat->method}}">
+                                                                    </td>
+                                                                    <td><input type="date" class="form-control" name="treater[]" value="{{$treat->date}}"></td>
+                                                                </tr>
+                                                            @endif
+                                                        @endforeach
+                                                        </tbody>
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Disposal</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>ID</td>
+                                                            <td>Name</td>
+                                                        </tr>
+                                                        @foreach ($disposal as $disp)
+                                                            @if ($disp->userid == Auth::id())
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td><input type="text" class="form-control" name="disposal[]" value="{{$disp->disposal_id}}"></td>
+                                                                    <td><input type="text" class="form-control" name="disposal[]"value="{{$disp->name}}"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>Method</td>
+                                                                    <td>Date</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td><input type="text" class="form-control" name="disposal[]" value="{{$disp->method}}"></td>
+                                                                    <td><input type="date" class="form-control" name="disposal[]" value="{{$disp->date}}" ></td>
+                                                                </tr>
+                                                            @endif
+                                                        @endforeach
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
 
 
                                         </table>
@@ -173,6 +398,16 @@
 
                                         <!-- <table class="table table-borderless" id="onsite"> -->
                                         <tbody id="onsite">
+                                        @foreach ($osisa as $osis)
+                                            @if ($osis->userid == Auth::id())
+                                                <tr>
+                                                    <td><input type="date" class="form-control" name="osisa[]" value="{{$osis->DateConducted}}"></td>
+                                                    <td><input type="text" class="form-control" name="osisa[]" value="{{$osis->PremisesAreaInspected}}"></td>
+                                                    <td><input type="text" class="form-control" name="osisa[]" value="{{$osis->FindingsAndObservations}}"></td>
+                                                    <td><input type="text" class="form-control" name="osisa[]" value="{{$osis->CorrectiveActionsTaken}}"></td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
 
                                         </tbody>
                                         <td>

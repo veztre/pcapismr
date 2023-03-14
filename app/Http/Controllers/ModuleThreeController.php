@@ -148,7 +148,6 @@ class ModuleThreeController extends Controller
             $DBdischargeLocation->Outlet_Number = $dischargeLocation[$x];
             $DBdischargeLocation->Location_of_Outlet = $dischargeLocation[$x+1];
             $DBdischargeLocation->Name_of_Receiving_water_body = $dischargeLocation[$x+2];
-
             $DBdischargeLocation->save();
         }
 
@@ -157,7 +156,7 @@ class ModuleThreeController extends Controller
             $DBdreportofwaste = new DreportofWaste();
             $DBdreportofwaste->userid = Auth::user()->id;
             $DBdreportofwaste->Outlet_No = $dreportofwaste[$x];
-            $DBdreportofwaste->date = $dreportofwaste[$x+1];
+            $DBdreportofwaste->date = date('Y-m-d', intval($dreportofwaste[$x+3]));
             $DBdreportofwaste->NEffluent_Flow_Rate = $dreportofwaste[$x+2];
             $DBdreportofwaste->BOD_mg_L = $dreportofwaste[$x+3];
             $DBdreportofwaste->TSS_mg_L = $dreportofwaste[$x+4];
@@ -190,25 +189,25 @@ class ModuleThreeController extends Controller
 
 
         $drowcfop1 = $request->input('drowcfop1');
-        for ($x=0; $x<count($drowcfop1); $x+=9 ){
+        for ($x=0; $x<count($drowcfop1); $x+=10 ){
             $DBdrowcfop1 = new Drowcfop1();
             $DBdrowcfop1->userid = Auth::user()->id;
             $DBdrowcfop1->Outlet_No = $drowcfop1[$x];
-            $DBdrowcfop1->Date = $drowcfop1[$x+1];
-            $DBdrowcfop1->Effluent_Flow_Rate_m3_day = $drowcfop1[$x+2];
-            $DBdrowcfop1->value1 = $drowcfop1[$x+3];
-            $DBdrowcfop1->value2 = $drowcfop1[$x+4];
-            $DBdrowcfop1->value3 = $drowcfop1[$x+5];
-            $DBdrowcfop1->value4 = $drowcfop1[$x+6];
-            $DBdrowcfop1->value5 = $drowcfop1[$x+7];
-            $DBdrowcfop1->value6 = $drowcfop1[$x+8];
+            $DBdrowcfop1->date = date('Y-m-d', intval($drowcfop1[$x+2]));
+            $DBdrowcfop1->Effluent_Flow_Rate_m3_day = $drowcfop1[$x+3];
+            $DBdrowcfop1->value1 = $drowcfop1[$x+4];
+            $DBdrowcfop1->value2 = $drowcfop1[$x+5];
+            $DBdrowcfop1->value3 = $drowcfop1[$x+6];
+            $DBdrowcfop1->value4 = $drowcfop1[$x+7];
+            $DBdrowcfop1->value5 = $drowcfop1[$x+8];
+            $DBdrowcfop1->value6 = $drowcfop1[$x+9];
 
             $DBdrowcfop1->save();
 
         }
 
 
-        return redirect('/module.moduleThree');
+        return redirect('moduleFour');
 
 }
         public function pdf(){

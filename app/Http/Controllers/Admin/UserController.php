@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\referencen;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,13 +15,12 @@ class UserController extends Controller
     public function index()
     {
 
-        $users = User::all();
-        return view('admin.users.index', compact('users'));
 
 
         $users = User::get();
+        $ref_no = referencen::get();
 
-        return view('/dashboard', compact('users'));
+        return view('/dashboard', compact('users', 'ref_no'));
 
         $usertype = 'admin';
         return view('navigation-menu', compact('usertype'));

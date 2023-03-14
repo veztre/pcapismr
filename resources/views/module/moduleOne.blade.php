@@ -52,8 +52,8 @@
                                 <div class="row mt-4">
 
                                     <div class="col-2">
-                                        <label for="validationCustom04" hidden></label>
-                                        <select class="form-select" id="validationCustom04" name="validationCustom04" required>
+                                        <label for="year" hidden></label>
+                                        <select class="form-select" id="year" name="year" required>
                                             <option selected disabled value="">SELECT</option>
                                             <option class="">2025</option>
                                             <option class="">2024</option>
@@ -75,8 +75,8 @@
                                     </div>
 
                                     <div class="col-2">
-                                        <label for="validationCustom04" hidden></label>
-                                        <select class="form-select" id="validationCustom04" required>
+                                        <label for="quarter" hidden></label>
+                                        <select class="form-select" id="quarter" name="quarter" required>
                                             <option selected disabled value="">SELECT</option>
                                             <option class="">1st Quarter</option>
                                             <option class="">2nd Quarter</option>

@@ -11,6 +11,7 @@ use App\Models\referencen;
 use App\Models\Storage;
 use App\Models\Transporter;
 use App\Models\Treater;
+use App\Models\User;
 use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,6 +41,7 @@ class ModuleTwoController extends Controller
                 'osisa'=>$osisa,
                 'referencen'=>$reference->ref_no
             ]);
+
 
     }
 
@@ -87,7 +89,7 @@ class ModuleTwoController extends Controller
                     $DBtransporter->transpo_id = $transporter[$x];
                     $DBtransporter->name = $transporter[$x+1];
                     $DBtransporter->method = $transporter[$x+2];
-                    $DBtransporter->date = date('Y-m-d',$transporter[$x+3]);
+                    $DBtransporter->date = date('Y-m-d', intval($transporter[$x+3]));
                     $DBtransporter->save();
                 }
                 $treater = $request->input('treater');
@@ -97,7 +99,7 @@ class ModuleTwoController extends Controller
                     $DBtreater->treater_id = $treater[$x];
                     $DBtreater->name = $treater[$x+1];
                     $DBtreater->method = $treater[$x+2];
-                    $DBtreater->date = date('Y-m-d' ,$treater[$x+3]);
+                    $DBtreater->date = date('Y-m-d', intval($treater[$x+3]));
                     $DBtreater->save();
                 }
                 $disposal = $request->input('disposal');
@@ -107,7 +109,7 @@ class ModuleTwoController extends Controller
                     $DBdisposal->disposal_id = $disposal[$x];
                     $DBdisposal->name = $disposal[$x+1];
                     $DBdisposal->method = $disposal[$x+2];
-                    $DBdisposal->date = date('Y-m-d',$disposal[$x+3]);
+                    $DBdisposal->date = date('Y-m-d', intval($disposal[$x+3]));
                     $DBdisposal->save();
                 }
 
@@ -123,7 +125,7 @@ class ModuleTwoController extends Controller
                 }
 
 
-            return view('module.moduleThree');
+            return redirect('moduleThree');
     }
 
     public function pdf (){
@@ -145,6 +147,49 @@ class ModuleTwoController extends Controller
         return $pdf->download('moduleTwo.pdf');
 
 
+    }
+
+    public function edit($id){
+
+        $referencens = referencen::get();
+        $hwGeneration = HwGeneration::get();
+        $hwDetails = HWDetails::get();
+        $storage = Storage::get();
+        $treater = Treater::get();
+        $transporter = Transporter::get();
+        $disposal = Disposal::get();
+        $osisa = Osisa::get();
+
+        $users = User::find($id);
+        return view('module.updatemoduleTwo',
+            compact('users',
+                'referencens',
+                'hwGeneration',
+                'hwDetails',
+                'storage',
+                'treater',
+                'disposal',
+                'transporter',
+                'osisa',
+
+
+            ));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $users = User::find($id);
+        $users->hwGeneration = $request->input('hwGeneration');
+        $users->hwDetails = $request->input('hwDetails');
+        $users->storage = $request->input('storage');
+        $users->treater = $request->input('treater');
+        $users->disposal = $request->input('disposal');
+        $users->transporter = $request->input('transporter');
+        $users->osisa = $request->input('osisa');
+
+
+
+        return redirect('updatemoduleTwo')->with('success', 'Module has been updated.');
     }
 
     public static function generate(){

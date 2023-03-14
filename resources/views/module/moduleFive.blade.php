@@ -303,7 +303,7 @@
                                                         </label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name=""
+                                                        <input class="form-check-input" type="radio" name="evmpprogram[]"
                                                                id="emppRadio2" value="option2">
                                                         <label class="form-check-label" for="emppRadio2">
                                                             <p class="mt-3 mx-1">No</p>

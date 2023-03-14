@@ -36,7 +36,7 @@ return new class extends Migration
 
             $table->id();
             $table->integer('userid');
-            $table->string('username');
+
             $table->string('Outlet_No');
             $table->date('Date');
             $table->string('Effluent_Flow_Rate_m3_day');

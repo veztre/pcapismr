@@ -187,7 +187,7 @@ public function save(Request $request){
 
     }
 
-    return view('module.moduleFour');
+    return redirect('moduleFive');
 }
 
     public function delete (){
@@ -206,7 +206,7 @@ public function save(Request $request){
         DB::table('cost_of_improvement_of_modification')->delete();
         DB::table('detailreport')->delete();
 
-        return view('module.moduleFour');
+        return redirect('moduleFive');
     }
 
 

@@ -23,7 +23,7 @@ class AdminController extends Controller
         $users = User::all();
         return view('dashboard', compact('users'));
 
-        $usertype = 'admin';
+        $usertype = ['admin', 'trainee'];
         return view('navigation-menu', compact('usertype'));
 
 

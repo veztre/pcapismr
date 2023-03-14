@@ -58,6 +58,7 @@ class ModuleFiveController extends Controller
         $aaqmonitoring = $request->input('aaqmonitoring');
         for ($x=0; $x<count($aaqmonitoring); $x+=6 ){
             $DBaaqmonitoring = new AAQmonitoring();
+            $DBaaqmonitoring->userid = Auth::user()->id;
             $DBaaqmonitoring->station_description = $aaqmonitoring[$x];
             $DBaaqmonitoring->date = $aaqmonitoring[$x+1];
             $DBaaqmonitoring->noise_level_db = $aaqmonitoring[$x+2];
@@ -73,6 +74,7 @@ class ModuleFiveController extends Controller
 
         for ($x=0; $x<count($oecondition); $x+=3 ){
             $DBoecondition = new OECondition();
+            $DBoecondition->userid = Auth::user()->id;
             $DBoecondition->ECC_Condition = $oecondition[$x];
             $DBoecondition->Status_of_Compliance = $oecondition[$x+1];
             $DBoecondition->Actions_Taken = $oecondition[$x+2];
@@ -83,19 +85,21 @@ class ModuleFiveController extends Controller
 
 
 
-      //  $evmpprogram = $request->input('evmpprogram');
-      //  for ($x=0; $x<count($evmpprogram); $x+=3 ){
-          //  $DBevmpprogram = new EVMPprogram();
-          //  $DBevmpprogram->Enhancement_Mitigation_Measures = $evmpprogram[$x];
-          //  $DBevmpprogram->Status_of_Compliance = $evmpprogram[$x+1];
-          //  $DBevmpprogram->Actions_Taken = $evmpprogram[$x+2];
+        $evmpprogram = $request->input('evmpprogram');
+        for ($x=0; $x<count($evmpprogram); $x+=3 ){
+            $DBevmpprogram = new EVMPprogram();
+            $DBevmpprogram->userid = Auth::user()->id;
+            $DBevmpprogram->Enhancement_Mitigation_Measures = $evmpprogram[$x];
+           $DBevmpprogram->Status_of_Compliance = $evmpprogram[$x+1];
+            $DBevmpprogram->Actions_Taken = $evmpprogram[$x+2];
 
-           // $DBevmpprogram->save();
-      //  }
+            $DBevmpprogram->save();
+        }
 
 
 
         $aqg  = new AQG();
+        $aqg->userid = Auth::user()->id;
         $aqg->Recyclable = $request->input('AQG1');
         $aqg->Biodegradable = $request->input('AQG2');
         $aqg->Residual = $request->input('AQG3');
@@ -103,6 +107,7 @@ class ModuleFiveController extends Controller
         $aqg->save();
 
         $tqg  = new TQG();
+        $tqg->userid = Auth::user()->id;
         $tqg->Recyclable = $request->input('TQG1');
         $tqg->Biodegradable = $request->input('TQG2');
         $tqg->Residual = $request->input('TQG3');
@@ -110,6 +115,7 @@ class ModuleFiveController extends Controller
         $tqg->save();
 
         $aqc  = new AQC();
+        $aqc->userid = Auth::user()->id;
         $aqc->Recyclable = $request->input('AQC1');
         $aqc->Biodegradable = $request->input('AQC2');
         $aqc->Residual = $request->input('AQC3');
@@ -117,6 +123,7 @@ class ModuleFiveController extends Controller
         $aqc->save();
 
         $tqc  = new TQC();
+        $tqc->userid = Auth::user()->id;
         $tqc->Recyclable = $request->input('TQC1');
         $tqc->Biodegradable = $request->input('TQC2');
         $tqc->Residual = $request->input('TQC3');
@@ -124,6 +131,7 @@ class ModuleFiveController extends Controller
         $tqc->save();
 
         $eicc  = new EICC();
+        $eicc->userid = Auth::user()->id;
         $eicc->Recyclable = $request->input('EICC1');
         $eicc->Biodegradable = $request->input('EICC2');
         $eicc->Residual = $request->input('EICC3');
@@ -131,11 +139,13 @@ class ModuleFiveController extends Controller
         $eicc->save();
 
         $description = new Description();
+        $description->userid = Auth::user()->id;
         $description->description = $request->input('description');
 
         $description->save();
 
         $awqmonitoring = new Awqmonitoring();
+        $awqmonitoring->userid = Auth::user()->id;
         $awqmonitoring->name1 = $request->input('name1');
         $awqmonitoring->name2 = $request->input('name2');
         $awqmonitoring->name3 = $request->input('name3');
@@ -160,6 +170,7 @@ class ModuleFiveController extends Controller
         $awqmonitoring1 = $request->input('awqmonitoring1');
         for ($x=0; $x<count($awqmonitoring1); $x+=10 ){
             $DBawqmonitoring1 = new Awqmonitoring1();
+            $DBawqmonitoring1->userid = Auth::user()->id;
             $DBawqmonitoring1->Outlet_No = $awqmonitoring1[$x];
             $DBawqmonitoring1->Date = $awqmonitoring1[$x+1];
             $DBawqmonitoring1->value1 = $awqmonitoring1[$x+2];
@@ -177,7 +188,7 @@ class ModuleFiveController extends Controller
 
 
 
-        return view('module.moduleFive');
+        return redirect('moduleSix');
     }
 
     public function pdf(){

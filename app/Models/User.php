@@ -310,5 +310,12 @@ class User extends Authenticatable
         return $this->hasOne(Referencen::class,foreignKey: 'userid');
     }
 
+    public function year (){
+        return $this->hasOne(Yeardd::class,foreignKey: 'userid');
+    }
+
+    public function quarter (){
+        return $this->hasOne(Quarterdd::class,foreignKey: 'userid');
+    }
 
 }

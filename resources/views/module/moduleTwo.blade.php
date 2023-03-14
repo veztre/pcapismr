@@ -55,6 +55,7 @@
                                             </div>
 
                                             <div class="card-body">
+
                                                 <input type="text" class="form-control mt-0" placeholder="" value="{{ $referencen }}" readonly>
 
                                             </div>

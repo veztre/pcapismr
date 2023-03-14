@@ -19,21 +19,27 @@ use App\Models\Pmpin;
 use App\Models\Pono;
 use App\Models\Priority;
 use App\Models\Production;
+use App\Models\Quarterdd;
 use App\Models\referencen;
 use App\Models\Smallquan;
 use App\Models\TransporterReg;
 use App\Models\Tsdreg;
 use App\Models\Upload;
 use App\Models\User;
+use App\Models\Yeardd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDF;
 use Illuminate\Support\Carbon;
+use League\CommonMark\Reference\Reference;
 
 class ModuleOneController extends Controller
 {
     public function index(){
-
+        //updated value
+        $year = Auth::user()->year();
+        $quarter = Auth::user()->quarter();
+        // end of updated value
         $aircon = Auth::user()->aircon();
         $gic = Auth::user()->gic();
         $acno = Auth::user()->acno();
@@ -56,9 +62,12 @@ class ModuleOneController extends Controller
         $upload = Upload::all();
 
 
+        $users = User::all();
 
-        return view('module.moduleOne')
+        return view('module.moduleOne', compact('users'))
             ->with([
+                'yeardds'=>$year,
+                'quarterdds'=>$quarter,
                 'aircon' => $aircon,
                 'gic' => $gic,
                 'acno' => $acno,
@@ -94,8 +103,17 @@ class ModuleOneController extends Controller
 
         $userId = Auth::user()->id;
 
+// updated value
+        $year = new Yeardd();
+        $year->userid = $userId;
+        $year->year = $request->input('year');
+        $year->save();
 
-
+        $quarter = new Quarterdd();
+        $quarter->userid = $userId;
+        $quarter->quarter = $request->input('quarter');
+        $quarter->save();
+// end updated value
         $gic = new Gic();
         $gic->userid = $userId;
         $gic->description = $request->input('description');
@@ -273,7 +291,7 @@ class ModuleOneController extends Controller
 
             };
         }
-        return redirect('moduleTwo')->back()->with('success', 'Data saved successfully.');
+        return redirect('moduleTwo');
 
 
     }
@@ -313,20 +331,88 @@ class ModuleOneController extends Controller
     {
 
 
-        return view('updatemoduleOne.show', compact(''));
     }
 
     public function edit($id)
     {
 
+        $year = Yeardd::get();
+        $quarter = Quarterdd::get();
+        $referencens = Referencen::get();
+        $aircon = Aircon::get();
+        $gic = Gic::get();
+        $dpno = Dpno::get();
+        $cncno = Cncno::get();
+        $denrid = Denrid::get();
+        $transporterReg = TransporterReg::get();
+        $tsdreg = Tsdreg::get();
+        $ccoreg = Ccoreg::get();
+        $import = Import::get();
+        $permit = Permmit::get();
+        $smallquan = Smallquan::get();
+        $priority = Priority::get();
+        $piccs = Piccs::get();
+        $pmpin = Pmpin::get();
+        $acno = Acno::get();
+        $pono = Pono::get();
+        $operation = Operation::get();
+        $production = Production::get();
+        $users = User::find($id);
+        return view('module.updatemoduleOne',
+            compact('users',
+                'year',
+                'quarter',
+                'referencens',
+                'dpno',
+                'gic',
+                'aircon',
+                'cncno',
+                'denrid',
+                'transporterReg',
+                'tsdreg',
+                'ccoreg',
+                'import',
+                'permit',
+                'smallquan',
+                'priority',
+                'piccs',
+                'pmpin',
+                'acno',
+                'pono',
+                'operation',
+                'production',
 
-        return view('updatemoduleOne.edit', compact(''));
+
+
+            ));
     }
     public function update(Request $request, $id)
     {
+        $users = User::find($id);
+        $users->year = $request->input('year');
+        $users->quarter = $request->input('quarter');
+        $users->aircon = $request->input('aircon');
+        $users->gic = $request->input('gic');
+        $users->dpno = $request->input('dpno');
+        $users->cncno = $request->input('cncno');
+        $users->denrid = $request->input('denrid');
+        $users->transporterReg = $request->input('transporterReg');
+        $users->tsdreg = $request->input('tsdreg');
+        $users->ccoreg = $request->input('ccoreg');
+        $users->import = $request->input('import');
+        $users->permit = $request->input('permit');
+        $users->smallquan = $request->input('smallquan');
+        $users->priority = $request->input('priority');
+        $users->piccs = $request->input('piccs');
+        $users->pmpin = $request->input('pmpin');
+        $users->acno = $request->input('acno');
+        $users->pono = $request->input('pono');
+        $users->operation = $request->input('operation');
+        $users->production = $request->input('production');
 
 
-        return redirect('updatemoduleOne')->with('success', 'Product has been updated.');
+
+        return redirect('updatemoduleOne')->with('success', 'Module has been updated.');
     }
     public function store(Request $request)
     {
