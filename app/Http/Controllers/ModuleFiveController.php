@@ -60,7 +60,7 @@ class ModuleFiveController extends Controller
             $DBaaqmonitoring = new AAQmonitoring();
             $DBaaqmonitoring->userid = Auth::user()->id;
             $DBaaqmonitoring->station_description = $aaqmonitoring[$x];
-            $DBaaqmonitoring->date = $aaqmonitoring[$x+1];
+            $DBaaqmonitoring->date = empty($aaqmonitoring[$x+1]) ? '2001-01-01' : $aaqmonitoring[$x+1];
             $DBaaqmonitoring->noise_level_db = $aaqmonitoring[$x+2];
             $DBaaqmonitoring->CO_mg_ncm = $aaqmonitoring[$x+3];
             $DBaaqmonitoring->NOx_mg_ncm = $aaqmonitoring[$x+4];
@@ -69,29 +69,24 @@ class ModuleFiveController extends Controller
             $DBaaqmonitoring->save();
         }
 
-
         $oecondition = $request->input('oecondition');
-
-        for ($x=0; $x<count($oecondition); $x+=3 ){
+        for ($x=0; $x<count($oecondition); $x++){
             $DBoecondition = new OECondition();
             $DBoecondition->userid = Auth::user()->id;
             $DBoecondition->ECC_Condition = $oecondition[$x];
-            $DBoecondition->Status_of_Compliance = $oecondition[$x+1];
-            $DBoecondition->Actions_Taken = $oecondition[$x+2];
-
+            $DBoecondition->Status_of_Compliance = $oecondition[$x];
+            $DBoecondition->Actions_Taken = $oecondition[$x];
 
             $DBoecondition->save();
         }
 
-
-
         $evmpprogram = $request->input('evmpprogram');
-        for ($x=0; $x<count($evmpprogram); $x+=3 ){
+        for ($x=0; $x<count($evmpprogram); $x++){
             $DBevmpprogram = new EVMPprogram();
             $DBevmpprogram->userid = Auth::user()->id;
             $DBevmpprogram->Enhancement_Mitigation_Measures = $evmpprogram[$x];
-           $DBevmpprogram->Status_of_Compliance = $evmpprogram[$x+1];
-            $DBevmpprogram->Actions_Taken = $evmpprogram[$x+2];
+            $DBevmpprogram->Status_of_Compliance = $evmpprogram[$x];
+            $DBevmpprogram->Actions_Taken = $evmpprogram[$x];
 
             $DBevmpprogram->save();
         }
@@ -171,7 +166,7 @@ class ModuleFiveController extends Controller
         for ($x=0; $x<count($awqmonitoring1); $x+=10 ){
             $DBawqmonitoring1 = new Awqmonitoring1();
             $DBawqmonitoring1->userid = Auth::user()->id;
-            $DBawqmonitoring1->Outlet_No = $awqmonitoring1[$x];
+            $DBawqmonitoring1->Station_Description = $awqmonitoring1[$x];
             $DBawqmonitoring1->Date = $awqmonitoring1[$x+1];
             $DBawqmonitoring1->value1 = $awqmonitoring1[$x+2];
             $DBawqmonitoring1->value2 = $awqmonitoring1[$x+3];

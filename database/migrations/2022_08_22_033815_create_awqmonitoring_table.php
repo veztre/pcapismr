@@ -38,7 +38,7 @@ return new class extends Migration
 
             $table->id();
             $table->integer('userid');
-            $table->string('Outlet_No');
+            $table->string('Station_Description');
             $table->date('Date');
             $table->string('value1');
             $table->string('value2');

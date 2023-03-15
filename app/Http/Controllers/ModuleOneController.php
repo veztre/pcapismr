@@ -357,6 +357,7 @@ class ModuleOneController extends Controller
         $pono = Pono::get();
         $operation = Operation::get();
         $production = Production::get();
+        $uploads = Upload::get();
         $users = User::find($id);
         return view('module.updatemoduleOne',
             compact('users',
@@ -381,6 +382,7 @@ class ModuleOneController extends Controller
                 'pono',
                 'operation',
                 'production',
+                'uploads',
 
 
 
@@ -388,32 +390,157 @@ class ModuleOneController extends Controller
     }
     public function update(Request $request, $id)
     {
-        $users = User::find($id);
-        $users->year = $request->input('year');
-        $users->quarter = $request->input('quarter');
-        $users->aircon = $request->input('aircon');
-        $users->gic = $request->input('gic');
-        $users->dpno = $request->input('dpno');
-        $users->cncno = $request->input('cncno');
-        $users->denrid = $request->input('denrid');
-        $users->transporterReg = $request->input('transporterReg');
-        $users->tsdreg = $request->input('tsdreg');
-        $users->ccoreg = $request->input('ccoreg');
-        $users->import = $request->input('import');
-        $users->permit = $request->input('permit');
-        $users->smallquan = $request->input('smallquan');
-        $users->priority = $request->input('priority');
-        $users->piccs = $request->input('piccs');
-        $users->pmpin = $request->input('pmpin');
-        $users->acno = $request->input('acno');
-        $users->pono = $request->input('pono');
-        $users->operation = $request->input('operation');
-        $users->production = $request->input('production');
+
+
+        $aircon = Aircon::where('userid', $id)->first();
+        $aircon->permit = $request->input('ACPermit');
+        $aircon->dateIssued = $request->input('ACIssued');
+        $aircon->dateExpired = $request->input('ACExpire');
+        $aircon->update();
+
+
+        $denrid = Denrid::where('userid', $id)->first();
+        $denrid->permit = $request->input('DENRpermit');
+        $denrid->dateIssued = $request->input('DENRdateIssued');
+        $denrid->dateExpired = $request->input('DENRdateExpired');
+        $denrid->update();
+
+        $transporterReg = TransporterReg::where('userid', $id)->first();
+        $transporterReg->permit = $request->input('Transportpermit');
+        $transporterReg->dateIssued = $request->input('TransportdateIssued');
+        $transporterReg->dateExpired = $request->input('TransportdateExpired');
+        $transporterReg->update();
+
+        $tsdreg = Tsdreg::where('userid', $id)->first();
+        $tsdreg->permit = $request->input('TSDpermit');
+        $tsdreg->dateIssued = $request->input('TSDdateIssued');
+        $tsdreg->dateExpired = $request->input('TSDdateExpired');
+        $tsdreg->update();
+
+        $acno = Acno::where('userid', $id)->first();
+        $acno->permit = $request->input('ACNOPermit');
+        $acno->dateIssued = $request->input('ACNOIssued');
+        $acno->dateExpired = $request->input('ACNOExpired');
+        $acno->update();
+
+        $operation = Operation::where('userid', $id)->first();
+        $operation->aveOPhours = $request->input('aveOPhours');
+        $operation->aveOPdays = $request->input('aveOPdays');
+        $operation->aveOPshift = $request->input('aveOPshift');
+        $operation->maxOPhours = $request->input('maxOPhours');
+        $operation->maxOPdays = $request->input('maxOPdays');
+        $operation->maxOPshift = $request->input('maxOPshift');
+        $operation->update();
+
+        $production = Production::where('userid', $id)->first();
+        $production->aveProduction = $request->input('aveProduction');
+        $production->totalOutput = $request->input('totalOutput');
+        $production->totalConsumption = $request->input('totalConsumption');
+        $production->totalElectric = $request->input('totalElectric');
+        $production->save();
+
+        $dpno = $request->input('dpno');
+        for ($x=0; $x<count($dpno); $x+=3){
+            $DBdpno = Dpno::where('userid', $id)->first();
+            $DBdpno->permit = $dpno[$x];
+            $DBdpno->dateIssued = $dpno[$x+1];
+            $DBdpno->dateExpired = $dpno[$x+2];
+            $DBdpno->update();
+        }
+
+        $cncno = $request->input('cncno');
+        for ($x=0; $x<count($cncno); $x+=3){
+            $DBcncno = Cncno::where('userid', $id)->first();
+            $DBcncno->permit = $cncno[$x];
+            $DBcncno->dateIssued = $cncno[$x+1];
+            $DBcncno->dateExpired = $cncno[$x+2];
+            $DBcncno->update();
+        }
 
 
 
-        return redirect('updatemoduleOne')->with('success', 'Module has been updated.');
+        $import = $request->input('import');
+        for ($x=0; $x<count($import); $x+=3){
+            $DBimport = Import::where('userid', $id)->first();
+            $DBimport->permit = $import[$x];
+            $DBimport->dateIssued = $import[$x+1];
+            $DBimport->dateExpired = $import[$x+2];
+            $DBimport->update();
+        }
+
+        $ccoreg = $request->input('ccoreg');
+        for ($x=0; $x<count($ccoreg); $x+=3){
+            $DBccoreg = Ccoreg::where('userid', $id)->first();
+            $DBccoreg->permit = $ccoreg[$x];
+            $DBccoreg->dateIssued = $ccoreg[$x+1];
+            $DBccoreg->dateExpired = $ccoreg[$x+2];
+            $DBccoreg->update();
+
+        }
+
+        $permit = $request->input('permit');
+        for ($x=0; $x<count($permit); $x+=3){
+            $DBpermit = Permmit::where('userid', $id)->first();
+            $DBpermit->permit = $permit[$x];
+            $DBpermit->dateIssued = $permit[$x+1];
+            $DBpermit->dateExpired = $permit[$x+2];
+            $DBpermit->update();
+
+        }
+
+        $smallquan = $request->input('smallquan');
+        for ($x=0; $x<count($permit); $x+=3){
+            $DBsmallquan = Smallquan::where('userid', $id)->first();
+            $DBsmallquan->permit = $smallquan[$x];
+            $DBsmallquan->dateIssued = $smallquan[$x+1];
+            $DBsmallquan->dateExpired = $smallquan[$x+2];
+            $DBsmallquan->update();
+
+        }
+
+        $priority = $request->input('priority');
+        for ($x=0; $x<count($priority); $x+=3){
+            $DBpriority = Priority::where('userid', $id)->first();
+            $DBpriority->permit = $priority[$x];
+            $DBpriority->dateIssued = $priority[$x+1];
+            $DBpriority->dateExpired = $priority[$x+2];
+            $DBpriority->update();
+
+        }
+
+        $piccs = $request->input('piccs');
+        for ($x=0; $x<count($piccs); $x+=3){
+            $DBpiccs = Piccs::where('userid', $id)->first();
+            $DBpiccs->permit = $piccs[$x];
+            $DBpiccs->dateIssued = $piccs[$x+1];
+            $DBpiccs->dateExpired = $piccs[$x+2];
+            $DBpiccs->update();
+
+        }
+
+        $pmpin = $request->input('pmpin');
+        for ($x=0; $x<count($pmpin); $x+=3){
+            $DBpmpin = Pmpin::where('userid', $id)->first();
+            $DBpmpin->permit = $pmpin[$x];
+            $DBpmpin->dateIssued = $pmpin[$x+1];
+            $DBpmpin->dateExpired = $pmpin[$x+2];
+            $DBpmpin->update();
+
+        }
+
+        $pono = $request->input('pono');
+        for ($x=0; $x<count($pono); $x+=3){
+            $DBpono = Pono::where('userid', $id)->first();
+            $DBpono->permit = $pono[$x];
+            $DBpono->dateIssued = $pono[$x+1];
+            $DBpono->dateExpired = $pono[$x+2];
+            $DBpono->update();
+
+        }
+        return redirect()->back();
+
     }
+
     public function store(Request $request)
     {
         $dateIssued = $request->input('date_issued');
