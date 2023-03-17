@@ -2,6 +2,7 @@
 
 
 
+
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
@@ -15,6 +16,8 @@ use App\Http\Controllers\ModuleFiveController;
 use App\Http\Controllers\ModuleSixController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TraineeController;
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -76,8 +79,9 @@ Route::get('/trainee/dashboard', [TraineeController::class, 'index']);
 Route::get('/moduleOne', [ModuleOneController::class, 'index'])->name('module.moduleOne');
 
 Route::post('/saveData', [ModuleOneController::class, 'save'])->name('saveData');
-Route::get('/view/moduleoneUpdate-{id}', [ModuleOneController::class, 'edit'])->name('view');
+Route::get('/view/moduleoneUpdate/{id}', [ModuleOneController::class, 'edit'])->name('view');
 Route::get('/pdf', [ModuleOneController::class, 'pdf']);
+Route::put('/view/updatemoduleOne/{id}', [ModuleOneController::class, 'update'])->name('update1');
 
 Route::get('/reference', [ModuleOneController::class, 'generate'])->name('module.moduleOne.generate.save');
 
@@ -88,12 +92,15 @@ Route::get('/saveData2', [ModuleTwoController::class, 'save']);
 Route::get('/view/moduleTwoUpdate/{id}', [ModuleTwoController::class, 'edit']);
 Route::get('/pdf2', [ModuleTwoController::class, 'pdf']);
 Route::get('/reference2', [ModuleTwoController::class, 'generate']);
+Route::put('/view/updatemoduleTwo/{id}', [ModuleTwoController::class, 'update'])->name('update2');
+
 
 /* Module Three Controller */
 Route::get('/moduleThree', [ModuleThreeController::class, 'index'])->name('module.moduleThree');
 
 Route::get('/saveData3', [ModuleThreeController::class, 'save'])->name('module.moduleThree');
-
+Route::get('/view/moduleThreeUpdate/{id}', [ModuleThreeController::class, 'edit']);
+Route::put('/view/updatemoduleThree/{id}', [ModuleThreeController::class, 'update'])->name('update3');
 Route::get('/pdf3', [ModuleThreeController::class, 'pdf']);
 Route::get('/reference3', [ModuleThreeController::class, 'generate']);
 
@@ -101,7 +108,8 @@ Route::get('/reference3', [ModuleThreeController::class, 'generate']);
 Route::get('/moduleFour', [ModuleFourController::class, 'index'])->name('module.moduleFour');
 
 Route::get('/saveData4', [ModuleFourController::class, 'save']);
-
+Route::get('/view/moduleFourUpdate/{id}', [ModuleFourController::class, 'edit']);
+Route::put('/view/updatemoduleFour/{id}', [ModuleFourController::class, 'update'])->name('update4');
 Route::get('/pdf4', [ModuleFourController::class, 'pdf']);
 Route::get('/reference4', [ModuleFourController::class, 'generate']);
 

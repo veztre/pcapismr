@@ -22,12 +22,14 @@ return new class extends Migration
             $table->string('name4');
             $table->string('name5');
             $table->string('name6');
+            $table->string('name7');
             $table->string('unit1');
             $table->string('unit2');
             $table->string('unit3');
             $table->string('unit4');
             $table->string('unit5');
             $table->string('unit6');
+            $table->string('unit7');
             $table->timestamps();
         });
 
@@ -46,6 +48,7 @@ return new class extends Migration
             $table->string('value4');
             $table->string('value5');
             $table->string('value6');
+            $table->string('value7');
              $table->timestamps();
         });
 

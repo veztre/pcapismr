@@ -287,6 +287,7 @@ class ModuleOneController extends Controller
 
                 $upload = new Upload();
                 $upload->file = $name;
+                $upload->userid = $userId;
                 $upload->save();
 
             };
@@ -391,6 +392,10 @@ class ModuleOneController extends Controller
     public function update(Request $request, $id)
     {
 
+        $gic = Gic::where('userid', $id)->first();
+        $gic->description = $request->input('description');
+        $gic->update();
+
 
         $aircon = Aircon::where('userid', $id)->first();
         $aircon->permit = $request->input('ACPermit');
@@ -439,104 +444,233 @@ class ModuleOneController extends Controller
         $production->totalElectric = $request->input('totalElectric');
         $production->save();
 
+
+
         $dpno = $request->input('dpno');
-        for ($x=0; $x<count($dpno); $x+=3){
-            $DBdpno = Dpno::where('userid', $id)->first();
-            $DBdpno->permit = $dpno[$x];
-            $DBdpno->dateIssued = $dpno[$x+1];
-            $DBdpno->dateExpired = $dpno[$x+2];
-            $DBdpno->update();
+        $userId = Auth::user()->id;
+
+        // Get all records for the current user
+        $DBdpno = Dpno::where('userid', $userId)->get();
+
+        // Loop through all records and update each one
+        foreach ($DBdpno as $index => $record) {
+            $record->permit = $dpno[$index*3];
+            $record->dateIssued = $dpno[$index*3+1];
+            $record->dateExpired = $dpno[$index*3+2];
+            $record->update();
         }
 
-        $cncno = $request->input('cncno');
-        for ($x=0; $x<count($cncno); $x+=3){
-            $DBcncno = Cncno::where('userid', $id)->first();
-            $DBcncno->permit = $cncno[$x];
-            $DBcncno->dateIssued = $cncno[$x+1];
-            $DBcncno->dateExpired = $cncno[$x+2];
-            $DBcncno->update();
+        // Create a new record for any remaining data
+        for ($x = count($DBdpno)*3; $x < count($dpno); $x += 3) {
+            $newRecord = new Dpno();
+            $newRecord->userid = $userId;
+            $newRecord->permit = $dpno[$x];
+            $newRecord->dateIssued = $dpno[$x+1];
+            $newRecord->dateExpired = $dpno[$x+2];
+            $newRecord->save();
         }
-
 
 
         $import = $request->input('import');
-        for ($x=0; $x<count($import); $x+=3){
-            $DBimport = Import::where('userid', $id)->first();
-            $DBimport->permit = $import[$x];
-            $DBimport->dateIssued = $import[$x+1];
-            $DBimport->dateExpired = $import[$x+2];
-            $DBimport->update();
+        $userId = Auth::user()->id;
+        // Get all records for the current user
+        $DBimport = Import::where('userid', $userId)->get();
+        // Loop through all records and update each one
+        foreach ($DBimport as $index => $record) {
+            $record->permit = $import[$index*3];
+            $record->dateIssued = $import[$index*3+1];
+            $record->dateExpired = $import[$index*3+2];
+            $record->update();
         }
 
+        // Create a new record for any remaining data
+        for ($x = count($DBimport)*3; $x < count($import); $x += 3) {
+            $newRecord = new Import();
+            $newRecord->userid = $userId;
+            $newRecord->permit = $dpno[$x];
+            $newRecord->dateIssued = $import[$x+1];
+            $newRecord->dateExpired = $import[$x+2];
+            $newRecord->save();
+        }
+
+//CCOREG STARTS
         $ccoreg = $request->input('ccoreg');
-        for ($x=0; $x<count($ccoreg); $x+=3){
-            $DBccoreg = Ccoreg::where('userid', $id)->first();
-            $DBccoreg->permit = $ccoreg[$x];
-            $DBccoreg->dateIssued = $ccoreg[$x+1];
-            $DBccoreg->dateExpired = $ccoreg[$x+2];
-            $DBccoreg->update();
-
+        $userId = Auth::user()->id;
+        // Get all records for the current user
+        $DBccoreg = Ccoreg::where('userid', $userId)->get();
+        // Loop through all records and update each one
+        foreach ($DBccoreg as $index => $record) {
+            $record->permit = $ccoreg[$index*3];
+            $record->dateIssued = $ccoreg[$index*3+1];
+            $record->dateExpired = $ccoreg[$index*3+2];
+            $record->update();
         }
+        // Create a new record for any remaining data
+        for ($x = count($DBccoreg)*3; $x < count($ccoreg); $x += 3) {
+            $newRecord = new Ccoreg();
+            $newRecord->userid = $userId;
+            $newRecord->permit = $ccoreg[$x];
+            $newRecord->dateIssued = $ccoreg[$x+1];
+            $newRecord->dateExpired = $ccoreg[$x+2];
+            $newRecord->save();
+        }
+//END
+
+        $cncno = $request->input('cncno');
+        $userId = Auth::user()->id;
+// Get all records for the current user
+        $DBcncno = Cncno::where('userid', $userId)->get();
+// Loop through all records and update each one
+        foreach ($DBcncno as $index => $record) {
+            $record->permit = $cncno[$index*3];
+            $record->dateIssued = $cncno[$index*3+1];
+            $record->dateExpired = $cncno[$index*3+2];
+            $record->update();
+        }
+// Create a new record for any remaining data
+        for ($x = count($DBcncno)*3; $x < count($cncno); $x += 3) {
+            $newRecord = new Cncno();
+            $newRecord->userid = $userId;
+            $newRecord->permit = $cncno[$x];
+            $newRecord->dateIssued = $cncno[$x+1];
+            $newRecord->dateExpired = $cncno[$x+2];
+            $newRecord->save();
+        }
+
 
         $permit = $request->input('permit');
-        for ($x=0; $x<count($permit); $x+=3){
-            $DBpermit = Permmit::where('userid', $id)->first();
-            $DBpermit->permit = $permit[$x];
-            $DBpermit->dateIssued = $permit[$x+1];
-            $DBpermit->dateExpired = $permit[$x+2];
-            $DBpermit->update();
-
+        $userId = Auth::user()->id;
+        // Get all records for the current user
+        $DBpermit = Permmit::where('userid', $userId)->get();
+        // Loop through all records and update each one
+        foreach ($DBpermit as $index => $record) {
+            $record->permit = $permit[$index*3];
+            $record->dateIssued = $permit[$index*3+1];
+            $record->dateExpired = $permit[$index*3+2];
+            $record->update();
         }
+        // Create a new record for any remaining data
+        for ($x = count($DBpermit)*3; $x < count($permit); $x += 3) {
+            $newRecord = new Permmit();
+            $newRecord->userid = $userId;
+            $newRecord->permit = $permit[$x];
+            $newRecord->dateIssued = $permit[$x+1];
+            $newRecord->dateExpired = $permit[$x+2];
+            $newRecord->save();
+        }
+
 
         $smallquan = $request->input('smallquan');
-        for ($x=0; $x<count($permit); $x+=3){
-            $DBsmallquan = Smallquan::where('userid', $id)->first();
-            $DBsmallquan->permit = $smallquan[$x];
-            $DBsmallquan->dateIssued = $smallquan[$x+1];
-            $DBsmallquan->dateExpired = $smallquan[$x+2];
-            $DBsmallquan->update();
-
+        $userId = Auth::user()->id;
+        // Get all records for the current user
+        $DBsmallquan = Smallquan::where('userid', $userId)->get();
+        // Loop through all records and update each one
+        foreach ($DBsmallquan as $index => $record) {
+            $record->permit = $smallquan[$index*3];
+            $record->dateIssued = $smallquan[$index*3+1];
+            $record->dateExpired = $smallquan[$index*3+2];
+            $record->update();
         }
+        // Create a new record for any remaining data
+        for ($x = count($DBsmallquan)*3; $x < count($smallquan); $x += 3) {
+            $newRecord = new Smallquan();
+            $newRecord->userid = $userId;
+            $newRecord->permit = $smallquan[$x];
+            $newRecord->dateIssued = $smallquan[$x+1];
+            $newRecord->dateExpired = $smallquan[$x+2];
+            $newRecord->save();
+        }
+
 
         $priority = $request->input('priority');
-        for ($x=0; $x<count($priority); $x+=3){
-            $DBpriority = Priority::where('userid', $id)->first();
-            $DBpriority->permit = $priority[$x];
-            $DBpriority->dateIssued = $priority[$x+1];
-            $DBpriority->dateExpired = $priority[$x+2];
-            $DBpriority->update();
-
+        $userId = Auth::user()->id;
+        // Get all records for the current user
+        $DBpriority = Priority::where('userid', $userId)->get();
+        // Loop through all records and update each one
+        foreach ($DBpriority as $index => $record) {
+            $record->permit = $priority[$index*3];
+            $record->dateIssued = $priority[$index*3+1];
+            $record->dateExpired = $priority[$index*3+2];
+            $record->update();
         }
+        // Create a new record for any remaining data
+        for ($x = count($DBpriority)*3; $x < count($priority); $x += 3) {
+            $newRecord = new Priority();
+            $newRecord->userid = $userId;
+            $newRecord->permit = $priority[$x];
+            $newRecord->dateIssued = $priority[$x+1];
+            $newRecord->dateExpired = $priority[$x+2];
+            $newRecord->save();
+        }
+
 
         $piccs = $request->input('piccs');
-        for ($x=0; $x<count($piccs); $x+=3){
-            $DBpiccs = Piccs::where('userid', $id)->first();
-            $DBpiccs->permit = $piccs[$x];
-            $DBpiccs->dateIssued = $piccs[$x+1];
-            $DBpiccs->dateExpired = $piccs[$x+2];
-            $DBpiccs->update();
-
+        $userId = Auth::user()->id;
+        // Get all records for the current user
+        $DBpiccs = Piccs::where('userid', $userId)->get();
+        // Loop through all records and update each one
+        foreach ($DBpiccs as $index => $record) {
+            $record->permit = $piccs[$index*3];
+            $record->dateIssued = $piccs[$index*3+1];
+            $record->dateExpired = $piccs[$index*3+2];
+            $record->update();
         }
+        // Create a new record for any remaining data
+        for ($x = count($DBpiccs)*3; $x < count($piccs); $x += 3) {
+            $newRecord = new Piccs();
+            $newRecord->userid = $userId;
+            $newRecord->permit = $piccs[$x];
+            $newRecord->dateIssued = $piccs[$x+1];
+            $newRecord->dateExpired = $piccs[$x+2];
+            $newRecord->save();
+        }
+
 
         $pmpin = $request->input('pmpin');
-        for ($x=0; $x<count($pmpin); $x+=3){
-            $DBpmpin = Pmpin::where('userid', $id)->first();
-            $DBpmpin->permit = $pmpin[$x];
-            $DBpmpin->dateIssued = $pmpin[$x+1];
-            $DBpmpin->dateExpired = $pmpin[$x+2];
-            $DBpmpin->update();
-
+        $userId = Auth::user()->id;
+        // Get all records for the current user
+        $DBpmpin = Pmpin::where('userid', $userId)->get();
+        // Loop through all records and update each one
+        foreach ($DBpmpin as $index => $record) {
+            $record->permit = $pmpin[$index*3];
+            $record->dateIssued = $pmpin[$index*3+1];
+            $record->dateExpired = $pmpin[$index*3+2];
+            $record->update();
         }
+        // Create a new record for any remaining data
+        for ($x = count($DBpmpin)*3; $x < count($pmpin); $x += 3) {
+            $newRecord = new Pmpin();
+            $newRecord->userid = $userId;
+            $newRecord->permit = $pmpin[$x];
+            $newRecord->dateIssued = $pmpin[$x+1];
+            $newRecord->dateExpired = $pmpin[$x+2];
+            $newRecord->save();
+        }
+
 
         $pono = $request->input('pono');
-        for ($x=0; $x<count($pono); $x+=3){
-            $DBpono = Pono::where('userid', $id)->first();
-            $DBpono->permit = $pono[$x];
-            $DBpono->dateIssued = $pono[$x+1];
-            $DBpono->dateExpired = $pono[$x+2];
-            $DBpono->update();
-
+        $userId = Auth::user()->id;
+        // Get all records for the current user
+        $DBpono = Pono::where('userid', $userId)->get();
+        // Loop through all records and update each one
+        foreach ($DBpono as $index => $record) {
+            $record->permit = $pono[$index*3];
+            $record->dateIssued = $pono[$index*3+1];
+            $record->dateExpired = $pono[$index*3+2];
+            $record->update();
         }
+        // Create a new record for any remaining data
+        for ($x = count($DBpono)*3; $x < count($pono); $x += 3) {
+            $newRecord = new Pono();
+            $newRecord->userid = $userId;
+            $newRecord->permit = $pono[$x];
+            $newRecord->dateIssued = $pono[$x+1];
+            $newRecord->dateExpired = $pono[$x+2];
+            $newRecord->save();
+        }
+
+
+
         return redirect()->back();
 
     }

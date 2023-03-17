@@ -283,7 +283,7 @@
                                         <td><input class="form-control" type="text"  id="phl" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td>
                                         <td><input class="form-control" type="text"  id="oag" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td>
                                         <td><input class="form-control" type="text"  id="tempr" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text" name= value="{{ old('dreportofwaste[]', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text" ></td>
                                         <td></td>
                                     </tr>
                                     </tbody>

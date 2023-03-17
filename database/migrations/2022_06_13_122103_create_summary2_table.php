@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('summary2', function (Blueprint $table) {
             $table->id();
-            $table->string('userid');
+            $table->integer('userid');
             $table->string('Fuel_Burning_Equipment');
             $table->string('Rated_Capacity');
             $table->string('Location');

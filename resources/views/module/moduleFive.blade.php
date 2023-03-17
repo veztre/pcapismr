@@ -120,12 +120,12 @@
                                         </tr>
 
                                         <tr>
-                                            <td><input class="form-control" type="text" name="aaqmonitoring[]"></td>
-                                            <td><input class="form-control" type="date" name="aaqmonitoring[]"></td>
-                                            <td><input class="form-control" type="text" name="aaqmonitoring[]"></td>
-                                            <td><input class="form-control" type="text" name="aaqmonitoring[]"></td>
-                                            <td><input class="form-control" type="text" name="aaqmonitoring[]"></td>
-                                            <td><input class="form-control" type="text" name="aaqmonitoring[]"></td>
+                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="date" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', '2001-01-01') }}"></td>
+                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td>
                                             <td><input class="form-control" type="text" name=" "></td>
                                             <td><input class="form-control" type="text" name=" "></td>
                                             <td><input class="form-control" type="text" name=" "></td>
@@ -157,29 +157,30 @@
 
                                         <tr>
                                             <td class="counterCell " style="text-align: right" ></td>
-                                            <td><input class="form-control" type="text" name="oecondition[]"></td>
+                                            <td><input class="form-control" type="text" name="oecondition[]" value="{{ old('oecondition[]') }}"></td>
 
                                             <td style="text-align: center">
                                                 <form action="">
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="oecondition[]"
-                                                               id="oecRadio1" value="Yes">
+                                                        <input class="form-check-input" type="radio" name="oecondition[]" id="oecRadio1" value="Yes"
+                                                               @if(old('oecondition[]') == 'Yes') checked @endif>
                                                         <label class="form-check-label" for="oecRadio1">
                                                             <p class="mt-3 mx-1">Yes</p>
                                                         </label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="oecondition[]"
-                                                               id="oecRadio2" value="No">
+                                                        <input class="form-check-input" type="radio" name="oecondition[]" id="oecRadio2" value="No"
+                                                               @if(old('oecondition[]') == 'No') checked @endif>
                                                         <label class="form-check-label" for="oecRadio2">
                                                             <p class="mt-3 mx-1">No</p>
                                                         </label>
                                                     </div>
                                                 </form>
+
                                             </td>
 
-                                            <td><textarea class="form-control" type="text" name="oecondition[]"
-                                                          style="overflow:scroll; overflow: hidden visible;"></textarea></td>
+                                            <td><textarea class="form-control" type="text" name="oecondition[]" style="overflow:scroll; overflow: hidden visible;">{{ old('oecondition.') }}</textarea>
+                                            </td>
 
                                         </tr>
 
@@ -205,14 +206,14 @@
                                         <tr>
                                             <td></td>
                                             <td></td>
-                                            <td><input class="form-control" type="text" name="name1"></td>
-                                            <td><input class="form-control" type="text" name="name2"></td>
-                                            <td><input class="form-control" type="text" name="name3"></td>
-                                            <td><input class="form-control" type="text" name="name4"></td>
-                                            <td><input class="form-control" type="text" name="name5"></td>
-                                            <td><input class="form-control" type="text" name="name6"></td>
-                                            <td><input class="form-control" type="text" name="name7"></td>
-                                            <td><input class="form-control" type="text" name="name8"></td>
+                                            <td><input class="form-control" type="text" name="name1" value="{{ old('name1', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="name2" value="{{ old('name2', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="name3" value="{{ old('name3', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="name4" value="{{ old('name4', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="name5" value="{{ old('name5', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="name6" value="{{ old('name6', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="name7" value="{{ old('name7', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="name8" value="{{ old('name8', 'N/A') }}"></td>
                                         </tr>
 
                                         <tr>
@@ -231,14 +232,14 @@
                                         <tr>
                                             <td></td>
                                             <td></td>
-                                            <td><input class="form-control" type="text" name="unit1"></td>
-                                            <td><input class="form-control" type="text" name="unit2"></td>
-                                            <td><input class="form-control" type="text" name="unit3"></td>
-                                            <td><input class="form-control" type="text" name="unit4"></td>
-                                            <td><input class="form-control" type="text" name="unit5"></td>
-                                            <td><input class="form-control" type="text" name="unit6"></td>
-                                            <td><input class="form-control" type="text" name="unit7"></td>
-                                            <td><input class="form-control" type="text" name="unit8"></td>
+                                            <td><input class="form-control" type="text" name="unit1" value="{{ old('unit1', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="unit2" value="{{ old('unit2', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="unit3" value="{{ old('unit3', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="unit4" value="{{ old('unit4', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="unit5" value="{{ old('unit5', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="unit6" value="{{ old('unit6', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="unit7" value="{{ old('unit7', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="unit8" value="{{ old('unit8', 'N/A') }}"></td>
                                         </tr>
 
                                         <tr>
@@ -255,16 +256,16 @@
                                         </tr>
 
                                         <tr>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]"></td>
-                                            <td><input class="form-control" type="date" name="awqmonitoring1[]"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]"></td>
+                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="date" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', '2001-01-01') }}"></td>
+                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td>
 
                                         </tr>
 
@@ -291,29 +292,31 @@
 
                                         <tr>
                                             <td class="counterCell " style="text-align: right" ></td>
-                                            <td><input class="form-control" type="text" name="evmpprogram[]"></td>
+                                            <td><input class="form-control" type="text" name="evmpprogram[]" value="{{ old('evmpprogram[]') }}"></td>
+
 
                                             <td style="text-align: center">
                                                 <form action="">
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="evmpprogram[]"
-                                                               id="emppRadio1" value="option1">
+                                                        <input class="form-check-input" type="radio" name="evmpprogram[]" id="emppRadio1" value="option1"
+                                                               @if(old('evmpprogram[]') == 'option1') checked @endif>
                                                         <label class="form-check-label" for="emppRadio1">
                                                             <p class="mt-3 mx-1">Yes</p>
                                                         </label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="evmpprogram[]"
-                                                               id="emppRadio2" value="option2">
+                                                        <input class="form-check-input" type="radio" name="evmpprogram[]" id="emppRadio2" value="option2"
+                                                               @if(old('evmpprogram[]') == 'option2') checked @endif>
                                                         <label class="form-check-label" for="emppRadio2">
                                                             <p class="mt-3 mx-1">No</p>
                                                         </label>
                                                     </div>
                                                 </form>
+
                                             </td>
 
                                             <td><textarea class="form-control" type="text" name="evmpprogram[]"
-                                                          style="overflow:scroll; overflow: hidden visible;"></textarea></td>
+                                                          style="overflow:scroll; overflow: hidden visible;" value="{{ old('evmpprogram[]') }}"></textarea></td>
 
 
                                         </tr>
@@ -343,37 +346,37 @@
 
                                         <tr>
                                             <td>Average Quantity Generated (tons/ month)</td>
-                                            <td><input class="form-control" type="text" name="AQG1"></td>
-                                            <td><input class="form-control" type="text" name="AQG2"></td>
-                                            <td><input class="form-control" type="text" name="AQG3"></td>
+                                            <td><input class="form-control" type="text" name="AQG1" value="{{ old('AQG1', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="AQG2" value="{{ old('AQG2', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="AQG3" value="{{ old('AQG3', 'N/A') }}"></td>
                                         </tr>
 
                                         <tr>
                                             <td>Total Quantity Generated (tons/ quarter)</td>
-                                            <td><input class="form-control" type="text" name="TQG1"></td>
-                                            <td><input class="form-control" type="text" name="TQG2"></td>
-                                            <td><input class="form-control" type="text" name="TQG3"></td>
+                                            <td><input class="form-control" type="text" name="TQG1" value="{{ old('TQG1', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="TQG2" value="{{ old('TQG2', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="TQG3" value="{{ old('TQG3', 'N/A') }}"></td>
                                         </tr>
 
                                         <tr>
                                             <td>Average Quantity Collected (tons/ month)</td>
-                                            <td><input class="form-control" type="text" name="AQC1"></td>
-                                            <td><input class="form-control" type="text" name="AQC2"></td>
-                                            <td><input class="form-control" type="text" name="AQC3"></td>
+                                            <td><input class="form-control" type="text" name="AQC1" value="{{ old('AQC1', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="AQC2" value="{{ old('AQC2', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="AQC3" value="{{ old('AQC3', 'N/A') }}"></td>
                                         </tr>
 
                                         <tr>
                                             <td>Total Quantity Collected (tons/quarter)</td>
-                                            <td><input class="form-control" type="text" name="TQC1"></td>
-                                            <td><input class="form-control" type="text" name="TQC2"></td>
-                                            <td><input class="form-control" type="text" name="TQC3"></td>
+                                            <td><input class="form-control" type="text" name="TQC1" value="{{ old('TQC1', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="TQC2" value="{{ old('TQC2', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="TQC3" value="{{ old('TQC3', 'N/A') }}"></td>
                                         </tr>
 
                                         <tr>
                                             <td>Entity in charge of collection</td>
-                                            <td><input class="form-control" type="text" name="EICC1"></td>
-                                            <td><input class="form-control" type="text" name="EICC2"></td>
-                                            <td><input class="form-control" type="text" name="EICC3"></td>
+                                            <td><input class="form-control" type="text" name="EICC1" value="{{ old('EICC1', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="EICC2" value="{{ old('EICC2', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="EICC3" value="{{ old('EICC3', 'N/A') }}"></td>
                                         </tr>
 
                                         </tbody>
@@ -397,7 +400,7 @@
 
                             <tr>
                                 <td><textarea class="form-control" type="text" name="description"
-                                              style="overflow:scroll; overflow: hidden visible; width: 100%;"></textarea></td>
+                                              style="overflow:scroll; overflow: hidden visible; width: 100%;" value="{{ old('EICC3') }}"></textarea></td>
                             </tr>
                             </tbody>
 

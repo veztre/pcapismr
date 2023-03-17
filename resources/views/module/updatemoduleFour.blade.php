@@ -29,7 +29,7 @@
             <div>
                 {{View::make('module.tabs')}}</div>
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-auto">
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg mt-auto">
 
 
                     <div class="container mt-auto" style="align-content: center">
@@ -40,10 +40,9 @@
                  </form>--}}
                         <div class="card">
                             <div class="col">
-                                <form action="/saveData4" post="post">
+                                <form action="{{ route('update4', $users->id) }}" method="POST">
                                     @csrf
-                                    <!-- {{ csrf_field() }} -->
-                                    <br>
+                                    @method('PUT')
 
 
                                     <div class="row">
@@ -95,13 +94,16 @@
                                                     <td style="text-align: center">Location</td>
                                                     <td style="text-align: center"># of hours of operation for the quarter</td>
                                                 </tr>
-
-                                                <tr>
-                                                    <td class="counterCell " style="text-align: right" ></td>
-                                                    <td ><input type="text" class="form-control " name="summary1[]"></td>
-                                                    <td><input type="text" class="form-control" name="summary1[]"></td>
-                                                    <td><input type="text" class="form-control" name="summary1[]"></td>
-                                                </tr>
+                                                @foreach ($summary1 as $sum1)
+                                                    @if ($sum1->userid == Auth::id())
+                                                        <tr>
+                                                            <td class="counterCell " style="text-align: right" ></td>
+                                                            <td ><input type="text" class="form-control " name="summary1[]" value="{{$sum1->Process_Equipment}}"></td>
+                                                            <td><input type="text" class="form-control" name="summary1[]" value="{{$sum1->Location}}"></td>
+                                                            <td><input type="text" class="form-control" name="summary1[]" value="{{$sum1->no_of_hours_of_operation_for_the_quarter}}"></td>
+                                                        </tr>
+                                                    @endif
+                                                @endforeach
                                                 </tbody>
                                                 <td></td>
                                                 <td><button type="button" name="add" id="sum1" class="btn btn-outline-primary" >+</button></td>
@@ -112,6 +114,7 @@
 
                                             <table class="w3-table w3-striped w3-border" id ="summaryy2">
                                                 <tbody>
+
                                                 <tr>
                                                     <td></td>
                                                     <td style="text-align:center">Fuel Burning Equipment</td>
@@ -134,29 +137,32 @@
                                                     <td></td>
                                                     <td></td>
                                                 </tr>
-
-                                                <tr>
-                                                    <td class="counterCell " style="text-align: right" ></td>
-                                                    <td><input type="text" class="form-control" name="summary2[]"></td>
-                                                    <td><input type="text" class="form-control" name="summary2[]"></td>
-                                                    <td><input type="text" class="form-control" name="summary2[]"></td>
-                                                    <td><input type="text" class="form-control" name="summary2[]"></td>
-                                                    <td><input type="text" class="form-control" name="summary2[]"></td>
-                                                    <td>
-                                                        <select class="form-select" name="summary2[]" style="width: fit-content">
-                                                            <option selected disabled value="">-- Select --</option>
-                                                            <option>kg</option>
-                                                            <option>liter</option>
-                                                            <option>m3</option>
-                                                            <option>n/a</option>
-                                                            <option>pc</option>
-                                                            <option>ton</option>
-                                                        </select>
-                                                    </td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td><input type="text" class="form-control" name="summary2[]"></td>
-                                                </tr>
+                                                @foreach ($summary2 as $sum2)
+                                                    @if ($sum2->userid == Auth::id())
+                                                        <tr>
+                                                            <td class="counterCell " style="text-align: right" ></td>
+                                                            <td><input type="text" class="form-control" name="summary2[]" value="{{$sum2->Fuel_Burning_Equipment}}"></td>
+                                                            <td><input type="text" class="form-control" name="summary2[]" value="{{$sum2->Rated_Capacity}}"></td>
+                                                            <td><input type="text" class="form-control" name="summary2[]" value="{{$sum2->Location}}"></td>
+                                                            <td><input type="text" class="form-control" name="summary2[]" value="{{$sum2->Fuel_Used}}"></td>
+                                                            <td><input type="text" class="form-control" name="summary2[]" value="{{$sum2->Quantity_Consumed_for_the_quarter}}"></td>
+                                                            <td>
+                                                                <select class="form-select" name="summary2[]" style="width: fit-content">
+                                                                    <option selected disabled value="">-- Select --</option>
+                                                                    <option value ="kg"  {{ $sum2->Unit_Consumed_for_the_quarter === 'kg' ? 'selected' : '' }}>kg</option>
+                                                                    <option  value ="liter" {{ $sum2->Unit_Consumed_for_the_quarter === 'liter' ? 'selected' : '' }}>liter</option>
+                                                                    <option value ="m3"  {{ $sum2->Unit_Consumed_for_the_quarter === 'm3' ? 'selected' : '' }}>m3</option>
+                                                                    <option value ="n/a"  {{ $sum2->Unit_Consumed_for_the_quarter === 'n/a' ? 'selected' : '' }}>n/a</option>
+                                                                    <option value ="pc"  {{ $sum2->Unit_Consumed_for_the_quarter === 'pc' ? 'selected' : '' }}>pc</option>
+                                                                    <option value ="ton"  {{ $sum2->Unit_Consumed_for_the_quarter === 'ton' ? 'selected' : '' }}>ton</option>
+                                                                </select>
+                                                            </td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td><input type="text" class="form-control" name="summary2[]" value="{{$sum2->no_of_hours_of_operation_for_the_quarter}}"></td>
+                                                        </tr>
+                                                    @endif
+                                                @endforeach
                                                 </tbody>
                                                 <td></td>
                                                 <td><button type="button" name="add" id="sum2" class="btn btn-outline-primary">+</button></td>
@@ -172,13 +178,17 @@
                                                     <td>Location</td>
                                                     <td># of hours of operation for the quarter</td>
                                                 </tr>
+                                                @foreach ($summary3 as $sum3)
+                                                    @if ($sum3->userid == Auth::id())
+                                                        <tr>
+                                                            <td class="counterCell " style="text-align: right" ></td>
+                                                            <td><input type="text" class="form-control" name="summary3[]" value="{{$sum3->Pollution_Control_Facility}}"></td>
+                                                            <td><input type="text" class="form-control" name="summary3[]" value="{{$sum3->Location}}"></td>
+                                                            <td><input type="text" class="form-control" name="summary3[]" value="{{$sum3->no_of_hours_of_operation_for_the_quarter}}"></td>
+                                                        </tr>
+                                                    @endif
+                                                @endforeach
 
-                                                <tr>
-                                                    <td class="counterCell " style="text-align: right" ></td>
-                                                    <td><input type="text" class="form-control" name="summary3[]"></td>
-                                                    <td><input type="text" class="form-control" name="summary3[]"></td>
-                                                    <td><input type="text" class="form-control" name="summary3[]"></td>
-                                                </tr>
                                                 </tbody>
                                                 <td></td>
                                                 <td><button type="button" name="add" id="sum3" class="btn btn-outline-primary">+</button></td>
@@ -205,61 +215,93 @@
                                                         </thead>
 
                                                         <tbody>
-                                                        <tr>
-                                                            <td>Cost of Person employed, (# of employess)</td>
-                                                            <td><input type="text" class="form-control" name="COPEMonth1"></td>
-                                                            <td><input type="text" class="form-control" name="COPEMonth2"></td>
-                                                            <td><input type="text" class="form-control" name="COPEMonth3"></td>
-                                                        </tr>
+                                                        @foreach ($cost_of_person_employed as $cope)
+                                                            @if ($cope->userid == Auth::id())
+                                                                <tr>
+                                                                    <td>Cost of Person employed, (# of employess)</td>
+                                                                    <td><input type="text" class="form-control" name="cost_of_person_employed[]" value="{{$cope->month1}}"></td>
+                                                                    <td><input type="text" class="form-control" name="cost_of_person_employed[]" value="{{$cope->month2}}"></td>
+                                                                    <td><input type="text" class="form-control" name="cost_of_person_employed[]" value="{{$cope->month3}}"></td>
+                                                                </tr>
+                                                            @endif
+                                                        @endforeach
 
-                                                        <tr>
-                                                            <td>Total Consumption of Water (cubic meters)</td>
-                                                            <td><input type="text" class="form-control" name="TCOWMonth1"></td>
-                                                            <td><input type="text" class="form-control" name="TCOWMonth2"></td>
-                                                            <td><input type="text" class="form-control" name="TCOWMonth3"></td>
-                                                        </tr>
+                                                        @foreach ($total_consumption_of_water as $tcow)
+                                                            @if ($tcow->userid == Auth::id())
+                                                                <tr>
+                                                                    <td>Total Consumption of Water (cubic meters)</td>
+                                                                    <td><input type="text" class="form-control" name="total_consumption_of_water[]" value="{{$tcow->month1}}"></td>
+                                                                    <td><input type="text" class="form-control" name="total_consumption_of_water[]" value="{{$tcow->month2}}"></td>
+                                                                    <td><input type="text" class="form-control" name="total_consumption_of_water[]" value="{{$tcow->month3}}"></td>
+                                                                </tr>
+                                                            @endif
+                                                        @endforeach
 
-                                                        <tr>
-                                                            <td>Total Cost of Chemicals used (e.g., activated carbon, KMnO4)</td>
-                                                            <td><input type="text" class="form-control" name="TCOCMonth1"></td>
-                                                            <td><input type="text" class="form-control" name="TCOCMonth2"></td>
-                                                            <td><input type="text" class="form-control" name="TCOCMonth3"></td>
-                                                        </tr>
+                                                        @foreach ($total_cost_of_chemicals_used as $tcoc)
+                                                            @if ($tcoc->userid == Auth::id())
+                                                                <tr>
+                                                                    <td>Total Cost of Chemicals used (e.g., activated carbon, KMnO4)</td>
+                                                                    <td><input type="text" class="form-control" name="total_cost_of_chemicals_used[]" value="{{$tcoc->month1}}"></td>
+                                                                    <td><input type="text" class="form-control" name="total_cost_of_chemicals_used[]" value="{{$tcoc->month2}}"></td>
+                                                                    <td><input type="text" class="form-control" name="total_cost_of_chemicals_used[]" value="{{$tcoc->month3}}"></td>
+                                                                </tr>
+                                                            @endif
+                                                        @endforeach
 
-                                                        <tr>
-                                                            <td>Total Consumption of Electricity (kWh)</td>
-                                                            <td><input type="text" class="form-control" name="TCOEMonth1"></td>
-                                                            <td><input type="text" class="form-control" name="TCOEMonth2"></td>
-                                                            <td><input type="text" class="form-control" name="TCOEMonth3"></td>
-                                                        </tr>
+                                                        @foreach ($total_consumption_of_electricity as $tcoe)
+                                                            @if ($tcoe->userid == Auth::id())
+                                                                <tr>
+                                                                    <td>Total Consumption of Electricity (kWh)</td>
+                                                                    <td><input type="text" class="form-control" name="total_consumption_of_electricity[]1" value="{{$tcoe->month1}}"></td>
+                                                                    <td><input type="text" class="form-control" name="total_consumption_of_electricity[]" value="{{$tcoe->month2}}"></td>
+                                                                    <td><input type="text" class="form-control" name="total_consumption_of_electricity[]" value="{{$tcoe->month3}}"></td>
+                                                                </tr>
+                                                            @endif
+                                                        @endforeach
 
-                                                        <tr>
-                                                            <td>Administrative and Overhead Costs</td>
-                                                            <td><input type="text" class="form-control" name="AAOCMonth1"></td>
-                                                            <td><input type="text" class="form-control" name="AAOCMonth2"></td>
-                                                            <td><input type="text" class="form-control" name="AAOCMonth3"></td>
-                                                        </tr>
+                                                        @foreach ($administrative_and_overhead_costs as $aaoc)
+                                                            @if ($aaoc->userid == Auth::id())
+                                                                <tr>
+                                                                    <td>Administrative and Overhead Costs</td>
+                                                                    <td><input type="text" class="form-control" name="administrative_and_overhead_costs[]" value="{{$aaoc->month1}}"></td>
+                                                                    <td><input type="text" class="form-control" name="administrative_and_overhead_costs[]" value="{{$aaoc->month2}}"></td>
+                                                                    <td><input type="text" class="form-control" name="administrative_and_overhead_costs[]" value="{{$aaoc->month3}}"></td>
+                                                                </tr>
+                                                            @endif
+                                                        @endforeach
 
-                                                        <tr>
-                                                            <td>Cost of operating in-house laboratory</td>
-                                                            <td><input type="text" class="form-control" name="COPIHLMonth1"></td>
-                                                            <td><input type="text" class="form-control" name="COPIHLMonth2"></td>
-                                                            <td><input type="text" class="form-control" name="COPIHLMonth3"></td>
-                                                        </tr>
+                                                        @foreach ($cost_of_operating_in_house_laboratory as $cooihl)
+                                                            @if ($cooihl->userid == Auth::id())
+                                                                <tr>
+                                                                    <td>Cost of operating in-house laboratory</td>
+                                                                    <td><input type="text" class="form-control" name="cost_of_operating_in_house_laboratory[]" value="{{$cooihl->month1}}"></td>
+                                                                    <td><input type="text" class="form-control" name="cost_of_operating_in_house_laboratory[]" value="{{$cooihl->month2}}"></td>
+                                                                    <td><input type="text" class="form-control" name="cost_of_operating_in_house_laboratory[]" value="{{$cooihl->month3}}"></td>
+                                                                </tr>
+                                                            @endif
+                                                        @endforeach
 
-                                                        <tr>
-                                                            <td>improvement or modification, if any. (description)</td>
-                                                            <td><input type="text" class="form-control" name="IOMMonth1"></td>
-                                                            <td><input type="text" class="form-control" name="IOMMonth2"></td>
-                                                            <td><input type="text" class="form-control" name="IOMMonth3"></td>
-                                                        </tr>
+                                                        @foreach ($improvement_or_modification as $iom)
+                                                            @if ($iom->userid == Auth::id())
+                                                                <tr>
+                                                                    <td>improvement or modification, if any. (description)</td>
+                                                                    <td><input type="text" class="form-control" name="improvement_or_modification[]" value="{{$iom->month1}}"></td>
+                                                                    <td><input type="text" class="form-control" name="improvement_or_modification[]" value="{{$iom->month2}}"></td>
+                                                                    <td><input type="text" class="form-control" name="improvement_or_modification[]" value="{{$iom->month3}}"></td>
+                                                                </tr>
+                                                            @endif
+                                                        @endforeach
 
-                                                        <tr>
-                                                            <td>Cost of improvement of modification</td>
-                                                            <td><input type="text" class="form-control" name="COIOMonth1"></td>
-                                                            <td><input type="text" class="form-control" name="COIOMonth2"></td>
-                                                            <td><input type="text" class="form-control" name="COIOMonth3"></td>
-                                                        </tr>
+                                                        @foreach ($cost_of_improvement_of_modification as $coiom)
+                                                            @if ($coiom->userid == Auth::id())
+                                                                <tr>
+                                                                    <td>Cost of improvement of modification</td>
+                                                                    <td><input type="text" class="form-control" name="cost_of_improvement_of_modification[]" value="{{$coiom->month1}}"></td>
+                                                                    <td><input type="text" class="form-control" name="cost_of_improvement_of_modification[]" value="{{$coiom->month2}}"></td>
+                                                                    <td><input type="text" class="form-control" name="cost_of_improvement_of_modification[]" value="{{$coiom->month3}}"></td>
+                                                                </tr>
+                                                            @endif
+                                                        @endforeach
                                                         </tbody>
 
                                                     </table>
@@ -304,18 +346,22 @@
                                                 <td style="text-align:center">mg/Ncm</td>
                                                 </td>
 
-                                                <tr>
-                                                    <td><input type="text" class="form-control" name="detailreport[]"></td>
-                                                    <td><input type="date" class="form-control" name="detailreport[]"></td>
-                                                    <td><input type="text" class="form-control" name="detailreport[]"></td>
-                                                    <td><input type="text" class="form-control" name="detailreport[]"></td>
-                                                    <td><input type="text" class="form-control" name="detailreport[]"></td>
-                                                    <td><input type="text" class="form-control" name="detailreport[]"></td>
-                                                    <td><input type="text" class="form-control" name="detailreport[]"></td>
-                                                    <td><input type="text" class="form-control" name=""></td>
-                                                    <td><input type="text" class="form-control" name=""></td>
-                                                    <td><input type="text" class="form-control" name=""></td>
-                                                </tr>
+                                                @foreach ($detailreport as $detail)
+                                                    @if ($detail->userid == Auth::id())
+                                                        <tr>
+                                                            <td><input type="text" class="form-control" name="detailreport[]" value="{{$detail->FBE_No}}"></td>
+                                                            <td><input type="date" class="form-control" name="detailreport[]" value="{{$detail->Date}}"></td>
+                                                            <td><input type="text" class="form-control" name="detailreport[]" value="{{$detail->Flow_Rate_Ncm_day}}"></td>
+                                                            <td><input type="text" class="form-control" name="detailreport[]" value="{{$detail->CO_mg_Ncm}}"></td>
+                                                            <td><input type="text" class="form-control" name="detailreport[]" value="{{$detail->NOx_mg_Ncm}}"></td>
+                                                            <td><input type="text" class="form-control" name="detailreport[]" value="{{$detail->Particulates_mg_Ncm}}"></td>
+                                                            <td><input type="text" class="form-control" name="detailreport[]" value="{{$detail->SOx_mg_Ncm}}"></td>
+                                                            <td><input type="text" class="form-control" name=""></td>
+                                                            <td><input type="text" class="form-control" name=""></td>
+                                                            <td><input type="text" class="form-control" name=""></td>
+                                                        </tr>
+                                                    @endif
+                                                @endforeach
 
                                                 </tbody>
                                                 <td><button type="button" name="add" id="droaecb" class="btn btn-outline-primary mt-3">+</button></td>
@@ -329,7 +375,7 @@
                                         <div class="col mb-3" >
                                             <div style="float: right" class="mb-3">
                                                 <a href="{{ route('module.moduleThree') }}" class="btn btn-lg border bg-light">Previous</a>
-                                                 <a href="{{ route('module.moduleFour') }}" class="btn btn-lg btn-info">Next</a>
+                                                <a href="{{ route('module.moduleFour') }}" class="btn btn-lg btn-info">Next</a>
                                                 <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
                                             </div>
                                         </div>
@@ -340,7 +386,7 @@
                         </div>
                     </div>
 
-            </div>
+                </div>
             </div>
         </div>
     </div>

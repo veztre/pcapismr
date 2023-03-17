@@ -49,8 +49,9 @@
 
 
                     <div class="container col ml-4" style="align-content: center">
-                        <form action="/updateData" method="post"  enctype="multipart/form-data">
+                        <form action="{{ route('update1', $users->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <!-- {{ csrf_field() }} -->
                             <br>
 
@@ -91,6 +92,17 @@
                                         <select class="form-select" id="year" name="year"  required>
                                             @foreach ($year as $years)
                                                 <option value="{{ $years->year }}">{{ $years->year }}</option>
+                                                <option value="2025" {{  $years->year  === '2025' ? 'selected' : '' }}>2025</option>
+                                                <option value="2024" {{  $years->year  === '2024' ? 'selected' : '' }}>2024</option>
+                                                <option value="2023" {{  $years->year  === '2023' ? 'selected' : '' }}>2023</option>
+                                                <option value="2022" {{  $years->year  === '2022' ? 'selected' : '' }}>2022</option>
+                                                <option value="2021" {{  $years->year  === '2021' ? 'selected' : '' }}>2021</option>
+                                                <option value="2020" {{  $years->year  === '2020' ? 'selected' : '' }}>2020</option>
+                                                <option value="2019" {{  $years->year  === '2019' ? 'selected' : '' }}>2019</option>
+                                                <option value="2018" {{  $years->year  === '2018' ? 'selected' : '' }}>2018</option>
+                                                <option value="2017" {{  $years->year  === '2017' ? 'selected' : '' }}>2017</option>
+                                                <option value="2016" {{  $years->year  === '2016' ? 'selected' : '' }}>2016</option>
+                                                <option value="2015" {{  $years->year  === '2015' ? 'selected' : '' }}>2015</option>
                                             @endforeach
                                         </select>
 
@@ -105,6 +117,10 @@
                                         <select class="form-select" id="quarter" required>
                                             @foreach ($quarter as $quarters)
                                                 <option value="{{ $quarters->quarter }}">{{ $quarters->quarter }}</option>
+                                                <option value="1st Quarter" {{ $quarters->quarter  === '1st Quarter' ? 'selected' : '' }}>1st Quarter</option>
+                                                <option value="2nd Quarter" {{  $quarters->quarter === '2nd Quarter' ? 'selected' : '' }}>2nd Quarter</option>
+                                                <option value="3rd Quarter" {{  $quarters->quarter  === '3rd Quarter' ? 'selected' : '' }}>3rd Quarter</option>
+                                                <option value="4th Quarter" {{  $quarters->quarter  === '4th Quarter' ? 'selected' : '' }}>4th Quarter</option>
                                             @endforeach
                                         </select>
 

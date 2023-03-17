@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Actions\Fortify\PasswordValidationRules;
+use App\Models\referencen;
 use App\Models\Region;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,9 +20,10 @@ class AdminController extends Controller
    use ValidatesAttributes;
     public function index()
     {
-
+        $referencens = referencen::all();
         $users = User::all();
-        return view('dashboard', compact('users'));
+
+        return view('dashboard', compact('users', 'referencens'));
 
         $usertype = ['admin', 'trainee'];
         return view('navigation-menu', compact('usertype'));

@@ -15,6 +15,7 @@ use App\Models\NewInvestment;
 use App\Models\PersonEmployed;
 use App\Models\PersonEmployedCost;
 use App\Models\referencen;
+use App\Models\User;
 use App\Models\UtilityCost;
 use App\Models\WaterPolutionData;
 use Illuminate\Http\Request;
@@ -156,7 +157,7 @@ class ModuleThreeController extends Controller
             $DBdreportofwaste = new DreportofWaste();
             $DBdreportofwaste->userid = Auth::user()->id;
             $DBdreportofwaste->Outlet_No = $dreportofwaste[$x];
-            $DBdreportofwaste->date = date('Y-m-d', intval($dreportofwaste[$x+3]));
+            $DBdreportofwaste->date = date('Y-m-d', intval($dreportofwaste[$x+1]));
             $DBdreportofwaste->NEffluent_Flow_Rate = $dreportofwaste[$x+2];
             $DBdreportofwaste->BOD_mg_L = $dreportofwaste[$x+3];
             $DBdreportofwaste->TSS_mg_L = $dreportofwaste[$x+4];
@@ -177,12 +178,14 @@ class ModuleThreeController extends Controller
         $drowcfop->name4 = $request->input('name4');
         $drowcfop->name5 = $request->input('name5');
         $drowcfop->name6 = $request->input('name6');
+        $drowcfop->name7 = $request->input('name7');
         $drowcfop->unit1 = $request->input('unit1');
         $drowcfop->unit2 = $request->input('unit2');
         $drowcfop->unit3 = $request->input('unit3');
         $drowcfop->unit4 = $request->input('unit4');
         $drowcfop->unit5 = $request->input('unit5');
         $drowcfop->unit6 = $request->input('unit6');
+        $drowcfop->unit7 = $request->input('unit7');
 
         $drowcfop->save();
 
@@ -193,52 +196,295 @@ class ModuleThreeController extends Controller
             $DBdrowcfop1 = new Drowcfop1();
             $DBdrowcfop1->userid = Auth::user()->id;
             $DBdrowcfop1->Outlet_No = $drowcfop1[$x];
-            $DBdrowcfop1->date = date('Y-m-d', intval($drowcfop1[$x+2]));
-            $DBdrowcfop1->Effluent_Flow_Rate_m3_day = $drowcfop1[$x+3];
-            $DBdrowcfop1->value1 = $drowcfop1[$x+4];
-            $DBdrowcfop1->value2 = $drowcfop1[$x+5];
-            $DBdrowcfop1->value3 = $drowcfop1[$x+6];
-            $DBdrowcfop1->value4 = $drowcfop1[$x+7];
-            $DBdrowcfop1->value5 = $drowcfop1[$x+8];
-            $DBdrowcfop1->value6 = $drowcfop1[$x+9];
-
+            $DBdrowcfop1->date = date('Y-m-d', strtotime($drowcfop1[$x+1]));
+            $DBdrowcfop1->Effluent_Flow_Rate_m3_day = $drowcfop1[$x+2];
+            $DBdrowcfop1->value1 = $drowcfop1[$x+3];
+            $DBdrowcfop1->value2 = $drowcfop1[$x+4];
+            $DBdrowcfop1->value3 = $drowcfop1[$x+5];
+            $DBdrowcfop1->value4 = $drowcfop1[$x+6];
+            $DBdrowcfop1->value5 = $drowcfop1[$x+7];
+            $DBdrowcfop1->value6 = $drowcfop1[$x+8];
+            $DBdrowcfop1->value7 = $drowcfop1[$x+9];
             $DBdrowcfop1->save();
+
+
 
         }
 
 
+
+
+
+
         return redirect('moduleFour');
 
-}
-        public function pdf(){
+    }
 
-            $waterpolutiondata = WaterPolutionData::get();
-            $personEmployed = PersonEmployed::get();
-            $personEmployedCost = PersonEmployedCost::get();
-            $costofchemical = CostOfChemical::get();
-            $utilitycost = UtilityCost::get();
-            $administrativecosts = AdministrativeCost::get();
-            $costofoperating = CostOfOperating::get();
-            $newinvestment = NewInvestment::get();
-            $costofnew = CostOfNew::get();
-            $dischargeLocation = DischargeLocation::get();
-            $dreportofwaste = DreportofWaste::get();
-            $drowcfop = Drowcfop::get();
-            $drowcfop1 = Drowcfop1::get();
 
-            $customPaper = array(0,0,800.00,800.90);
-            $pdf = PDF::loadview('module.pdf3',['waterpolutiondata'=>$waterpolutiondata,'personEmployed'=>$personEmployed,
+    public function edit($id){
+
+        $waterpolutiondata = WaterPolutionData::get();
+        $personEmployed = PersonEmployed::get();
+        $personEmployedCost = PersonEmployedCost::get();
+        $costofchemical = CostOfChemical::get();
+        $utilitycost = UtilityCost::get();
+        $administrativecosts = AdministrativeCost::get();
+        $costofoperating = CostOfOperating::get();
+        $newinvestment = NewInvestment::get();
+        $costofnew = CostOfNew::get();
+        $dischargeLocation = DischargeLocation::get();
+        $dreportofwaste = DreportofWaste::get();
+        $drowcfop = Drowcfop::get();
+        $drowcfop1 = Drowcfop1::get();
+
+        $reference = referencen::get();
+        $users = User::find($id);
+        return view ('/module.updatemoduleThree',
+            compact('users',
+                'reference',
+                'waterpolutiondata',
+                'personEmployed',
+                'personEmployedCost',
+                'costofchemical',
+                'utilitycost',
+                'administrativecosts',
+                'costofoperating',
+                'newinvestment',
+                'costofnew',
+                'dischargeLocation',
+                'dreportofwaste',
+                'drowcfop',
+                'drowcfop1',
+            ));
+
+    }
+
+    public function update(Request $request, $id){
+
+        $waterpolutiondata = WaterPolutionData::where('userid', $id)->first();
+        $waterpolutiondata->Domestic_wastewater = $request->input('domwaste');
+        $waterpolutiondata->Cooling_water = $request->input('coolingw');
+        $waterpolutiondata->Waste_water_equipment = $request->input('wequip');
+        $waterpolutiondata->Processs_wastewater = $request->input('processwaste');
+        $waterpolutiondata->others_n = $request->input('othern');
+        $waterpolutiondata->others_m = $request->input('othercm');
+        $waterpolutiondata->Waste_water_floor = $request->input('wwfloor');
+        $waterpolutiondata->update();
+
+        $personEmployed = PersonEmployed::where('userid', $id)->first();
+        $personEmployed->Month_1 = $request->input('pemonth1');
+        $personEmployed->Month_2 = $request->input('pemonth2');
+        $personEmployed->Month_3 = $request->input('pemonth3');
+
+        $personEmployed->update();
+
+        $personEmployedCost = PersonEmployedCost::where('userid', $id)->first();
+        $personEmployedCost->Month_1 = $request->input('pecmonth1');
+        $personEmployedCost->Month_2 = $request->input('pecmonth2');
+        $personEmployedCost->Month_3 = $request->input('pecmonth3');
+
+        $personEmployedCost->update();
+
+        $costofchemical = CostOfChemical::where('userid', $id)->first();
+        $costofchemical->Month_1 = $request->input('cocw1');
+        $costofchemical->Month_2 = $request->input('cocw2');
+        $costofchemical->Month_3 = $request->input('cocw3');
+
+        $costofchemical->update();
+
+        $utilitycost = UtilityCost::where('userid', $id)->first();
+        $utilitycost->Month_1 = $request->input('ucw1');
+        $utilitycost->Month_2 = $request->input('ucw2');
+        $utilitycost->Month_3 = $request->input('ucw3');
+
+        $utilitycost->update();
+
+        $administrativecosts = AdministrativeCost::where('userid', $id)->first();
+        $administrativecosts->Month_1 = $request->input('aoc1');
+        $administrativecosts->Month_2 = $request->input('aoc2');
+        $administrativecosts->Month_3 = $request->input('aoc3');
+
+        $administrativecosts->update();
+
+        $costofoperating = CostOfOperating::where('userid', $id)->first();
+        $costofoperating->Month_1 = $request->input('colab1');
+        $costofoperating->Month_2 = $request->input('colab2');
+        $costofoperating->Month_3 = $request->input('colab3');
+
+        $costofoperating->update();
+
+        $newinvestment = NewInvestment::where('userid', $id)->first();
+        $newinvestment->Month_1 = $request->input('nai1');
+        $newinvestment->Month_2 = $request->input('nai2');
+        $newinvestment->Month_3 = $request->input('nai3');
+
+        $newinvestment->update();
+
+        $costofnew = CostOfNew::where('userid', $id)->first();
+        $costofnew->Month_1 = $request->input('cnai1');
+        $costofnew->Month_2 = $request->input('cnai2');
+        $costofnew->Month_3 = $request->input('cnai3');
+
+        $costofnew->update();
+
+
+
+        $drowcfop = Drowcfop::where('userid', $id)->first();
+        $drowcfop->name1 = $request->input('name1');
+        $drowcfop->name2 = $request->input('name2');
+        $drowcfop->name3 = $request->input('name3');
+        $drowcfop->name4 = $request->input('name4');
+        $drowcfop->name5 = $request->input('name5');
+        $drowcfop->name6 = $request->input('name6');
+        $drowcfop->name7 = $request->input('name7');
+        $drowcfop->unit1 = $request->input('unit1');
+        $drowcfop->unit2 = $request->input('unit2');
+        $drowcfop->unit3 = $request->input('unit3');
+        $drowcfop->unit4 = $request->input('unit4');
+        $drowcfop->unit5 = $request->input('unit5');
+        $drowcfop->unit6 = $request->input('unit6');
+        $drowcfop->unit7 = $request->input('unit7');
+
+
+        $drowcfop->update();
+
+
+        $dischargeLocation = $request->input('dischargeLocation');
+        $userId = Auth::user()->id;
+        // Get all records for the current user
+        $DBdischargeLocation = DischargeLocation::where('userid', $userId)->get();
+        // Loop through all records and update each one
+        foreach ($DBdischargeLocation as $index => $record) {
+            $record->Outlet_Number = $dischargeLocation[$index*3];
+            $record->Location_of_Outlet = $dischargeLocation[$index*3+1];
+            $record->Name_of_Receiving_water_body = $dischargeLocation[$index*3+2];
+            $record->update();
+        }
+
+        // Create a new record for any remaining data
+        for ($x = count($DBdischargeLocation)*3; $x < count($dischargeLocation); $x += 3) {
+            $newRecord = new DischargeLocation();
+            $newRecord->userid = $userId;
+            $newRecord->Outlet_Number = $dischargeLocation[$x];
+            $newRecord->Location_of_Outlet = $dischargeLocation[$x+1];
+            $newRecord->Name_of_Receiving_water_body = $dischargeLocation[$x+2];
+            $newRecord->save();
+        }
+
+
+        $dreportofwaste = $request->input('dreportofwaste');
+        $userId = Auth::user()->id;
+
+        // Get all records for the current user
+        $DBdreportofwaste = DreportofWaste::where('userid', $userId)->get();
+
+        // Loop through all records and update each one
+        foreach ($DBdreportofwaste as $index => $record) {
+            $record->Outlet_No = $dreportofwaste[$index*9];
+            $record->date = $dreportofwaste[$index*9+1];
+            $record->NEffluent_Flow_Rate = $dreportofwaste[$index*9+2];
+            $record->BOD_mg_L = $dreportofwaste[$index*9+3];
+            $record->TSS_mg_L = $dreportofwaste[$index*9+4];
+            $record->Color = $dreportofwaste[$index*9+5];
+            $record->pH = $dreportofwaste[$index*9+6];
+            $record->Oil_Grease_mg_L = $dreportofwaste[$index*9+7];
+            $record->Temp_Rise = $dreportofwaste[$index*9+8];
+            $record->update();
+        }
+
+
+        for ($x = count($DBdreportofwaste)*9; $x < count($dreportofwaste); $x += 9) {
+            $newRecord = new DreportofWaste();
+            $newRecord->userid = $userId;
+            $newRecord->Outlet_No = $dreportofwaste[$x];
+            $newRecord->date = $dreportofwaste[$x+1];
+            $newRecord->NEffluent_Flow_Rate = $dreportofwaste[$x+2];
+            $newRecord->BOD_mg_L = $dreportofwaste[$x+3];
+            $newRecord->TSS_mg_L = $dreportofwaste[$x+4];
+            $newRecord->Color = $dreportofwaste[$x+5];
+            $newRecord->pH = $dreportofwaste[$x+6];
+            $newRecord->Oil_Grease_mg_L = $dreportofwaste[$x+7];
+            $newRecord->Temp_Rise = $dreportofwaste[$x+8];
+            $newRecord->save();
+        }
+
+
+        $drowcfop1 = $request->input('drowcfop1');
+        $userId = Auth::user()->id;
+
+        // Get all records for the current user
+        $DBdrowcfop1 = Drowcfop1::where('userid', $userId)->get();
+
+        // Loop through all records and update each one
+        foreach ($DBdrowcfop1 as $index => $record) {
+            $record->Outlet_No = $drowcfop1[$index*10];
+            $record->Date = $drowcfop1[$index*10+1];
+            $record->Effluent_Flow_Rate_m3_day = $drowcfop1[$index*10+2];
+            $record->value1 = $drowcfop1[$index*10+3];
+            $record->value2 = $drowcfop1[$index*10+4];
+            $record->value3 = $drowcfop1[$index*10+5];
+            $record->value4 = $drowcfop1[$index*10+6];
+            $record->value5 = $drowcfop1[$index*10+7];
+            $record->value6 = $drowcfop1[$index*10+8];
+            $record->value7 = $drowcfop1[$index*10+9];
+            $record->update();
+        }
+
+
+        for ($x = count($DBdrowcfop1)*10; $x < count($drowcfop1); $x += 10) {
+            $newRecord = new Drowcfop1();
+            $newRecord->userid = $userId;
+            $newRecord->Outlet_No = $drowcfop1[$x];
+            $newRecord->Date = $drowcfop1[$x+1];
+            $newRecord->Effluent_Flow_Rate_m3_day = $drowcfop1[$x+2];
+            $newRecord->value1 = $drowcfop1[$x+3];
+            $newRecord->value2 = $drowcfop1[$x+4];
+            $newRecord->value3 = $drowcfop1[$x+5];
+            $newRecord->value4 = $drowcfop1[$x+6];
+            $newRecord->value5 = $drowcfop1[$x+7];
+            $newRecord->value6 = $drowcfop1[$x+8];
+            $newRecord->value7 = $drowcfop1[$x+9];
+            $newRecord->save();
+        }
+
+
+
+        return redirect()->back();
+
+    }
+
+
+
+
+    public function pdf(){
+
+        $waterpolutiondata = WaterPolutionData::get();
+        $personEmployed = PersonEmployed::get();
+        $personEmployedCost = PersonEmployedCost::get();
+        $costofchemical = CostOfChemical::get();
+        $utilitycost = UtilityCost::get();
+        $administrativecosts = AdministrativeCost::get();
+        $costofoperating = CostOfOperating::get();
+        $newinvestment = NewInvestment::get();
+        $costofnew = CostOfNew::get();
+        $dischargeLocation = DischargeLocation::get();
+        $dreportofwaste = DreportofWaste::get();
+        $drowcfop = Drowcfop::get();
+        $drowcfop1 = Drowcfop1::get();
+
+        $customPaper = array(0,0,800.00,800.90);
+        $pdf = PDF::loadview('module.pdf3',['waterpolutiondata'=>$waterpolutiondata,'personEmployed'=>$personEmployed,
             'personEmployedCost'=>$personEmployedCost,'costofchemical'=>$costofchemical,'utilitycost'=>$utilitycost,'administrativecosts'=>$administrativecosts,
             'costofoperating'=>$costofoperating,'newinvestment'=>$newinvestment,'costofnew'=>$costofnew,'dischargeLocation'=>$dischargeLocation,
             'dreportofwaste'=>$dreportofwaste,'drowcfop'=>$drowcfop,'drowcfop1'=>$drowcfop1
 
 
-            ])->setPaper($customPaper,'A4');
+        ])->setPaper($customPaper,'A4');
 
 
-            return $pdf->download('moduleThree.pdf');
+        return $pdf->download('moduleThree.pdf');
 
-        }
+    }
 
     public static function generate(){
         // ... existing code ...
@@ -253,5 +499,4 @@ class ModuleThreeController extends Controller
         }
         return redirect('moduleThree');
     }
-    }
-
+}

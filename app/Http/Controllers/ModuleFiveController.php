@@ -60,7 +60,7 @@ class ModuleFiveController extends Controller
             $DBaaqmonitoring = new AAQmonitoring();
             $DBaaqmonitoring->userid = Auth::user()->id;
             $DBaaqmonitoring->station_description = $aaqmonitoring[$x];
-            $DBaaqmonitoring->date = empty($aaqmonitoring[$x+1]) ? '2001-01-01' : $aaqmonitoring[$x+1];
+            $DBaaqmonitoring->date = date('Y-m-d', strtotime($aaqmonitoring[$x+1]));
             $DBaaqmonitoring->noise_level_db = $aaqmonitoring[$x+2];
             $DBaaqmonitoring->CO_mg_ncm = $aaqmonitoring[$x+3];
             $DBaaqmonitoring->NOx_mg_ncm = $aaqmonitoring[$x+4];
@@ -70,15 +70,17 @@ class ModuleFiveController extends Controller
         }
 
         $oecondition = $request->input('oecondition');
-        for ($x=0; $x<count($oecondition); $x++){
+        for ($x=0; $x<count($oecondition); $x+=3){
             $DBoecondition = new OECondition();
             $DBoecondition->userid = Auth::user()->id;
             $DBoecondition->ECC_Condition = $oecondition[$x];
-            $DBoecondition->Status_of_Compliance = $oecondition[$x];
-            $DBoecondition->Actions_Taken = $oecondition[$x];
+            $DBoecondition->Status_of_Compliance = $oecondition[$x+1];
+            $DBoecondition->Actions_Taken = $oecondition[$x+2];
 
             $DBoecondition->save();
         }
+
+
 
         $evmpprogram = $request->input('evmpprogram');
         for ($x=0; $x<count($evmpprogram); $x++){
@@ -167,7 +169,7 @@ class ModuleFiveController extends Controller
             $DBawqmonitoring1 = new Awqmonitoring1();
             $DBawqmonitoring1->userid = Auth::user()->id;
             $DBawqmonitoring1->Station_Description = $awqmonitoring1[$x];
-            $DBawqmonitoring1->Date = $awqmonitoring1[$x+1];
+            $DBawqmonitoring1->date = date('Y-m-d', strtotime($awqmonitoring1[$x+1]));
             $DBawqmonitoring1->value1 = $awqmonitoring1[$x+2];
             $DBawqmonitoring1->value2 = $awqmonitoring1[$x+3];
             $DBawqmonitoring1->value3 = $awqmonitoring1[$x+4];

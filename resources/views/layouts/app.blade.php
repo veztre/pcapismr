@@ -579,10 +579,21 @@
     $("#wdladd").click(function () { //button name
         ++i;
         $("#wdl").append(
+            '<tr><td ><input class="form-control" type="number" name="dischargeLocation[]" ></td><td><input class="form-control" type="text"  id="lo" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', 'N/A') }}"></td><td><input class="form-control" type="text"  id="nrwb" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', 'N/A') }}"></td><td></td></tr>'
+        ); //table name
+    });
+</script>
+{{--
+<script type="text/javascript">
+    var i = 0;
+    $("#wdladd").click(function () { //button name
+        ++i;
+        $("#wdl").append(
             '<tr><td class="counterCell " style="text-align: left"></td><td><input class="form-control" type="text"  id="lo" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', 'N/A') }}"></td><td><input class="form-control" type="text"  id="nrwb" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', 'N/A') }}"></td></tr>'
         ); //table name
     });
 </script>
+--}}
 
 
 <!-- DETAILED REPORT OF WASTEWATER CHARACTERISTICS for CC script -->
@@ -614,6 +625,19 @@
         flatpickr("input[type=date]", config);
     });
 </script>
+{{--<script type="text/javascript">
+    var i = 0;
+    $("#dwrcopadd").click(function () { //button name
+        ++i;
+        $("#dwrcop").append(
+            ' <tr><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="date"   name="drowcfop1[]" value="{{ old('drowcfop1[]', '2001-01-01') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td></tr>'
+        ); //table name
+        config = {
+            dateFormat: "Y-m-d"
+        }
+        flatpickr("input[type=date]", config);
+    });
+</script>--}}
 {{--Module 3 Script end--}}
 
 
@@ -653,15 +677,22 @@
 </script>
 
 <!-- SCRIPT FOR RECORD COST OF TREATMENT-->
-
 <script type="text/javascript">
+    var i = 0;
+    $("#rcotb").click(function () { //button name
+        ++i;
+        $("#rcot").append
+        ('<div class="container" id="rcot"><div class="card border-3 border-secondary mb-3" ><table class="w3-table w3-striped w3-border" ><thead>                                                        <tr>                                                            <th></th>                                                            <th style="text-align:center">Month 1</th>                                                            <th style="text-align:center">Month 2</th>                                                            <th style="text-align:center">Month 3</th>                                                        </tr>                                                        </thead>                                                        <tbody>                                                        <tr>                                                            <td>Cost of Person employed, (# of employess)</td>                                                            <td><input type="text" class="form-control" name="cost_of_person_employed[]"></td>                                                            <td><input type="text" class="form-control" name="cost_of_person_employed[]"></td>                                                            <td><input type="text" class="form-control" name="cost_of_person_employed[]"></td>                                                        </tr>                                                        <tr>                                                            <td>Total Consumption of Water (cubic meters)</td>                                                            <td><input type="text" class="form-control" name="total_consumption_of_water[]"></td>                                                            <td><input type="text" class="form-control" name="total_consumption_of_water[]"></td>                                                            <td><input type="text" class="form-control" name="total_consumption_of_water[]"></td>                                                        </tr>                                                        <tr>                                                            <td>Total Cost of Chemicals used (e.g., activated carbon, KMnO4)</td>                                                            <td><input type="text" class="form-control" name="total_cost_of_chemicals_used[]"></td>                                                            <td><input type="text" class="form-control" name="total_cost_of_chemicals_used[]"></td>                                                            <td><input type="text" class="form-control" name="total_cost_of_chemicals_used[]"></td>                                                        </tr>                                                        <tr>                                                            <td>Total Consumption of Electricity (kWh)</td>                                                            <td><input type="text" class="form-control" name="total_consumption_of_electricity[]"></td>                                                            <td><input type="text" class="form-control" name="total_consumption_of_electricity[]"></td>                                                            <td><input type="text" class="form-control" name="total_consumption_of_electricity[]"></td>                                                        </tr>                                                        <tr>                                                            <td>Administrative and Overhead Costs</td>                                                            <td><input type="text" class="form-control" name="administrative_and_overhead_costs[]"></td>                                                            <td><input type="text" class="form-control" name="administrative_and_overhead_costs[]"></td>                                                            <td><input type="text" class="form-control" name="administrative_and_overhead_costs[]"></td>                                                        </tr>                                                        <tr>                                                            <td>Cost of operating in-house laboratory</td>                                                            <td><input type="text" class="form-control" name="cost_of_operating_in_house_laboratory[]"></td>                                                            <td><input type="text" class="form-control" name="cost_of_operating_in_house_laboratory[]"></td>                                                            <td><input type="text" class="form-control" name="cost_of_operating_in_house_laboratory[]"></td>                                                        </tr>                                                        <tr>                                                            <td>improvement or modification, if any. (description)</td>                                                            <td><input type="text" class="form-control" name="improvement_or_modification[]"></td>                                                            <td><input type="text" class="form-control" name="improvement_or_modification[]"></td>                                                            <td><input type="text" class="form-control" name="improvement_or_modification[]"></td>                                                        </tr>                                                        <tr>                                                            <td>Cost of improvement of modification</td>                                                            <td><input type="text" class="form-control" name="cost_of_improvement_of_modification[]"></td>                                                            <td><input type="text" class="form-control" name="cost_of_improvement_of_modification[]"></td>                                                            <td><input type="text" class="form-control" name="cost_of_improvement_of_modification[]"></td>                                                        </tr>                                                        </tbody>                                                    </table>                                                </div>                                            </div>'); //table name
+    });
+</script>
+{{--<script type="text/javascript">
     var i = 0;
     $("#rcotb").click(function () { //button name
         ++i;
         $("#rcot").append
         ('<div class="container" id="rcot"><div class="card border-3 border-secondary mb-3" ><table class="w3-table w3-striped w3-border"><thead><tr><th></th><th style="text-align:center">Month 1</th><th style="text-align:center">Month 2</th><th style="text-align:center">Month 3</th></tr></thead><tbody><tr><td>Cost of Person employed, (# of employess)</td><td><input type="text" class="form-control" name="COPEMonth1"></td><td><input type="text" class="form-control" name="COPEMonth2"></td><td><input type="text" class="form-control" name="COPEMonth3"></td></tr><tr><td>Total Consumption of Water (cubic meters)</td><td><input type="text" class="form-control" name="TCOWMonth1"></td><td><input type="text" class="form-control" name="TCOWMonth2"></td><td><input type="text" class="form-control" name="TCOWMonth3"></td></tr><tr><td>Total Cost of Chemicals used (e.g., activated carbon, KMnO4)</td><td><input type="text" class="form-control" name="TCOCMonth1"></td><td><input type="text" class="form-control" name="TCOCMonth2"></td><td><input type="text" class="form-control" name="TCOCMonth3"></td></tr><tr><td>Total Consumption of Electricity (kWh)</td><td><input type="text" class="form-control" name="TCOEMonth1"></td><td><input type="text" class="form-control" name="TCOEMonth2"></td><td><input type="text" class="form-control" name="TCOEMonth3"></td></tr><tr><td>Administrative and Overhead Costs</td><td><input type="text" class="form-control" name="AAOCMonth1"></td><td><input type="text" class="form-control" name="AAOCMonth2"></td><td><input type="text" class="form-control" name="AAOCMonth3"></td></tr><tr><td>Cost of operating in-house laboratory</td><td><input type="text" class="form-control" name="COPIHLMonth1"></td><td><input type="text" class="form-control" name="COPIHLMonth2"></td><td><input type="text" class="form-control" name="COPIHLMonth3"></td></tr><tr><td>improvement or modification, if any. (description)</td><td><input type="text" class="form-control" name="IOMMonth1"></td><td><input type="text" class="form-control" name="IOMMonth2"></td><td><input type="text" class="form-control" name="IOMMonth3"></td></tr><tr><td>Cost of improvement of modification</td><td><input type="text" class="form-control" name="COIOMonth1"></td><td><input type="text" class="form-control" name="COIOMonth2"></td><td><input type="text" class="form-control" name="COIOMonth3"></td></tr></tbody></table></div></div>'); //table name
     });
-</script>
+</script>--}}
 
 <!-- SCRIPT FOR DETAILED REPORT OF AIR EMISSION CHARACTERISTICS-->
 
@@ -684,7 +715,7 @@
     $("#AAQMonitoring").click(function () { //button name
         ++i;
         $("#AAQM").append(
-            ' <tr><td><input class="form-control" type="text" name="aaqmonitoring[]"></td><td><input class="form-control" type="date" name="aaqmonitoring[]"></td><td><input class="form-control" type="text" name="aaqmonitoring[]"></td><td><input class="form-control" type="text" name="aaqmonitoring[]"></td><td><input class="form-control" type="text" name="aaqmonitoring[]"></td><td><input class="form-control" type="text" name="aaqmonitoring[]"></td><td><input class="form-control" type="text" name=" "></td><td><input class="form-control" type="text" name=" "></td><td><input class="form-control" type="text" name=" "></td></tr>'
+            '<tr><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td><td><input class="form-control" type="date" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', '2001-01-01') }}"></td><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td><td><input class="form-control" type="text" name=" "></td><td><input class="form-control" type="text" name=" "></td><td><input class="form-control" type="text" name=" "></td></tr>'
         ); //table name
     });
 </script>
@@ -695,7 +726,7 @@
     $("#AWQMonitoring").click(function () { //button name
         ++i;
         $("#AWQM").append(
-            '<tr><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="date" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td></tr>'
+            '<tr><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td><td><input class="form-control" type="date" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', '2001-01-01') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td></tr>'
         ); //table name
     });
 </script>
@@ -706,7 +737,7 @@
     $("#OECondition").click(function () { //button name
         ++i;
         $("#OEC").append(
-            '<tr><td class="counterCell " style="text-align: right" ></td><td><input class="form-control" type="text" name="oecondition[]"></td><td style="text-align: center"><form action=""><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="oecondition[]"id="oecRadio1" value="Yes"><label class="form-check-label" for="oecRadio1"><p class="mt-3 mx-1">Yes</p></label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="oecondition[]"id="oecRadio2" value="No"><label class="form-check-label" for="oecRadio2"><p class="mt-3 mx-1">No</p></label></div></form></td><td><textarea class="form-control" type="text" name="oecondition[]"style="overflow:scroll; overflow: hidden visible;"></textarea></td></tr>'
+            '<tr><td class="counterCell " style="text-align: right" ></td><td><input class="form-control" type="text" name="oecondition[]" value="{{ old('oecondition[]') }}"></td><td style="text-align: center"><form action=""><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="oecondition[]"id="oecRadio1" value="Yes"  @if(old('oecondition[]') == 'Yes') checked @endif><label class="form-check-label" for="oecRadio1"><p class="mt-3 mx-1">Yes</p></label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="oecondition[]"id="oecRadio2" value="No" @if(old('oecondition[]') == 'No') checked @endif><label class="form-check-label" for="oecRadio2"><p class="mt-3 mx-1">No</p></label></div></form></td><td><textarea class="form-control" type="text" name="oecondition[]"style="overflow:scroll; overflow: hidden visible;" value="{{ old('oecondition[]') }}"></textarea></td></tr>'
         ); //table name
     });
 </script>
@@ -717,7 +748,7 @@
     $("#EMPlanProgram").click(function () { //button name
         ++i;
         $("#EMPP").append(
-            '<tr><td class="counterCell " style="text-align: right" ></td><td><input class="form-control" type="text" name=" "></td> <td style="text-align: center"> <form action=""> <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="inlineRadioOptions" id="emppRadio1" value="option1"> <label class="form-check-label" for="emppRadio1"><p class="mt-3 mx-1">Yes</p></label> </div> <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="inlineRadioOptions" id="emppRadio2" value="option2"> <label class="form-check-label" for="emppRadio2"><p class="mt-3 mx-1">No</p></label> </div> </form> </td> <td><textarea class="form-control" type="text" name=" "  style="overflow:scroll; overflow: hidden visible;"></textarea></td> </tr>'
+            '<tr><td class="counterCell " style="text-align: right" ></td><td><input class="form-control" type="text" name="evmpprogram[]" value="{{ old('evmpprogram[]') }}"></td> <td style="text-align: center"> <form action=""><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="evmpprogram[]" id="emppRadio1" value="option1" @if(old('evmpprogram[]') == 'option1') checked @endif><label class="form-check-label" for="emppRadio1"><p class="mt-3 mx-1">Yes</p></label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="evmpprogram[]" id="emppRadio2" value="option2" @if(old('evmpprogram[]') == 'option2') checked @endif><label class="form-check-label" for="emppRadio2"><p class="mt-3 mx-1">No</p></label></div></form></td><td><textarea class="form-control" type="text" name="evmpprogram[]"  style="overflow:scroll; overflow: hidden visible;" value="{{ old('evmpprogram[]') }}"></textarea></td> </tr>'
         ); //table name
     });
 </script>
