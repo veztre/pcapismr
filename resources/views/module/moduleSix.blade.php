@@ -207,31 +207,32 @@
 
                                 <div class="row">
                                     <div class="col">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="nameEmployee">
                                     </div>
                                     <div class="col">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control"name="id_no_employee">
                                     </div>
                                     <div class="col">
-                                        <input type="date" class="form-control">
+                                        <input type="date" class="form-control" name="IssueAtEmployee">
                                     </div>
                                     <div class="col">
-                                        <input type="date" class="form-control">
+                                        <input type="date" class="form-control" name="IssueOnEmployee">
                                     </div>
                                 </div>
 
+
                                 <div class="row mt-3">
                                     <div class="col">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="nameEmployee1">
                                     </div>
                                     <div class="col">
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="id_no_employee1">
                                     </div>
                                     <div class="col">
-                                        <input type="date" class="form-control">
+                                        <input type="date" class="form-control" name="IssueAtEmployee1">
                                     </div>
                                     <div class="col">
-                                        <input type="date" class="form-control">
+                                        <input type="date" class="form-control" name="IssueOnEmployee1">
                                     </div>
                                 </div>
 

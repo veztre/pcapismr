@@ -70,7 +70,7 @@ class ModuleFiveController extends Controller
             $DBaaqmonitoring->save();
         }
 
-        $oecondition = $request->input('oecondition');
+        $oecondition = $request->input('oecondition.*');
         for ($x=0; $x<count($oecondition); $x+=3){
             $DBoecondition = new OECondition();
             $DBoecondition->userid = Auth::user()->id;
@@ -81,22 +81,17 @@ class ModuleFiveController extends Controller
             $DBoecondition->save();
         }
 
-
-
-        $input = $request->all();
-
-        $evmpprogram = $input['evmpprogram'];
-        $evmpprogram_radio = $input['evmpprogram_radio'];
-        $evmpprogram_textarea = $input['evmpprogram_textarea'];
-
-        for ($x = 0; $x < count($evmpprogram); $x++) {
+        $evmpprogram = $request->input('evmpprogram.*');
+        for ($x=0; $x<count($evmpprogram); $x+=3){
             $DBevmpprogram = new EVMPprogram();
             $DBevmpprogram->userid = Auth::user()->id;
             $DBevmpprogram->Enhancement_Mitigation_Measures = $evmpprogram[$x];
-            $DBevmpprogram->Status_of_Compliance = $evmpprogram_radio[$x];
-            $DBevmpprogram->Actions_Taken = $evmpprogram_textarea[$x];
+            $DBevmpprogram->Status_of_Compliance = $evmpprogram[$x+1];
+            $DBevmpprogram->Actions_Taken = $evmpprogram[$x+2];
+
             $DBevmpprogram->save();
         }
+
 
         $aqg  = new AQG();
         $aqg->userid = Auth::user()->id;

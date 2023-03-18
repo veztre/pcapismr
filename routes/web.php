@@ -120,12 +120,14 @@ Route::get('/moduleFive', [ModuleFiveController::class, 'index'])->name('module.
 Route::get('/saveData5', [ModuleFiveController::class, 'save']);
 
 Route::get('/pdf5', [ModuleFiveController::class, 'pdf']);
+Route::get('/reference5', [ModuleFiveController::class, 'generate']);
 
 /* Module Six Controller */
 Route::get('/moduleSix', [ModuleSixController::class, 'index'])->name('module.moduleSix');
 
 Route::get('/saveData6', [ModuleSixController::class, 'save']);
-
+Route::get('/view/moduleSixUpdate/{id}', [ModuleSixController::class, 'edit']);
+Route::put('/view/updatemoduleSix/{id}', [ModuleSixController::class, 'update'])->name('update6');
 Route::get('/pdf6', [ModuleSixController::class, 'pdf']);
 
-
+Route::get('/reference6', [ModuleSixController::class, 'generate']);

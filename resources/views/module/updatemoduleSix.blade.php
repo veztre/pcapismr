@@ -41,8 +41,9 @@
 
                 <div class="container col ml-4 mt-4" style="align-content: center">
 
-                    <form action="/saveData6" post="post" enctype="multipart/form-data">
+                    <form action="{{ route('update6', $users->id) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <!-- {{ csrf_field() }} -->
                         <br>
 
@@ -104,15 +105,18 @@
                                         <td style="text-align: center">Action Taken</td>
                                         <td style="text-align: center">Remarks</td>
                                     </tr>
+                                    @foreach ($accident_records as $accident_record)
+                                        @if ($accident_record->userid == Auth::id())
+                                            <tr>
+                                                <td><input type="date" class="form-control" name="accident_records[]" value="{{ $accident_record->date }}"></td>
+                                                <td><input type="text" class="form-control" name="accident_records[]" value="{{ $accident_record->Area_Location }}"></td>
+                                                <td><input type="text" class="form-control" name="accident_records[]" value="{{ $accident_record->Findings_and_Obeservations }}"></td>
+                                                <td><input type="text" class="form-control" name="accident_records[]" value="{{ $accident_record->Action_Taken }}"></td>
+                                                <td><input type="text" class="form-control" name="accident_records[]" value="{{ $accident_record->Remarks }}"></td>
 
-                                    <tr>
-                                        <td><input type="date" class="form-control" name="accident_records[]"></td>
-                                        <td><input type="text" class="form-control" name="accident_records[]"></td>
-                                        <td><input type="text" class="form-control" name="accident_records[]"></td>
-                                        <td><input type="text" class="form-control" name="accident_records[]"></td>
-                                        <td><input type="text" class="form-control" name="accident_records[]"></td>
-
-                                    </tr>
+                                            </tr>
+                                        @endif
+                                    @endforeach
 
                                     </tbody>
 
@@ -133,13 +137,16 @@
                                         <td style="text-align: center">Course/ Training Description</td>
                                         <td style="text-align: center"># of Personnel Trained</td>
                                     </tr>
+                                    @foreach ($personel_staff as $personel)
+                                        @if ($personel->userid == Auth::id())
+                                            <tr>
+                                                <td><input type="date" class="form-control" name="personel_staff[]" value="{{$personel->date}}"></td>
+                                                <td><input type="text" class="form-control" name="personel_staff[]" value="{{$personel->Course_Training_Description}}"></td>
+                                                <td><input type="text" class="form-control" name="personel_staff[]" value="{{$personel->no_of_Personnel_Trained}}"></td>
 
-                                    <tr>
-                                        <td><input type="date" class="form-control" name="personel_staff[]"></td>
-                                        <td><input type="text" class="form-control" name="personel_staff[]"></td>
-                                        <td><input type="text" class="form-control" name="personel_staff[]"></td>
-
-                                    </tr>
+                                            </tr>
+                                        @endif
+                                    @endforeach
 
                                     </tbody>
 
@@ -164,32 +171,36 @@
                                         I hereby certify that the above information are true and correct.
                                     </label>
                                 </div>
+                                @foreach ($oattachment as $attachment)
+                                    @if ($attachment->userid == Auth::id())
+                                        <div class="row mt-3">
+                                            <div class="col " style="text-align: left; margin-left: 10%" >
+                                                <label for="" class="mx-auto">Done this&nbsp;</label>
+                                                <input type="date" name="date" value="{{$attachment->doneThis}}">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <label for="" class="mx-auto">in&nbsp;</label>
+                                                <input type="text" style="width: 200px" name="In" value="{{$attachment->In}}">
+                                            </div>
+                                        </div>
 
-                                <div class="row mt-3">
-                                    <div class="col " style="text-align: left; margin-left: 10%" >
-                                        <label for="" class="mx-auto">Done this&nbsp;</label>
-                                        <input type="date" >
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <label for="" class="mx-auto">in&nbsp;</label>
-                                        <input type="text" style="width: 200px">
-                                    </div>
-                                </div>
+                                        <div class="row" style="text-align: center; ">
+                                            <input type="text" style="width: 350px; margin-left: 65%;" name="nameSignature" value="{{$attachment->name_signature_of_PCO}}">
+                                            <p style="margin-left:29%;" >Name & Signature of PCO</p>
+                                        </div>
 
-                                <div class="row" style="text-align: center; ">
-                                    <input type="text" style="width: 350px; margin-left: 65%;" >
-                                    <p style="margin-left:29%;" >Name & Signature of PCO</p>
-                                </div>
+                                        <div class="row" style="text-align: center; ">
+                                            <input type="text" style="width: 350px; margin-left: 11%;" name="CEOManagingHead" value="{{$attachment->Name_Signature_of_CEO_Managing_Head}}">
+                                            <p style="margin-left:-22.5%;" >Name/ Signature of CEO/ Managing Head</p>
+                                        </div>
 
-                                <div class="row" style="text-align: center; ">
-                                    <input type="text" style="width: 350px; margin-left: 11%;" >
-                                    <p style="margin-left:-22.5%;" >Name/ Signature of CEO/ Managing Head</p>
-                                </div>
+                                        <div class="row mt-5">
+                                            <div class="col">
+                                                <p class="text-center text-sm font-medium">SUBSCRIBED AND SWORN before me, a Notary Public, this <input type="text" name ="subsAndSworn" value="{{$attachment->SUBSCRIBED_AND_SWORN}}"> day of <input type="date" name="dayOf" value="{{$attachment->dayOf}}">  , affiants exhibiting to me their IDs:</p>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
 
-                                <div class="row mt-5">
-                                    <div class="col">
-                                        <p class="text-center text-sm font-medium">SUBSCRIBED AND SWORN before me, a Notary Public, this <input type="text"> day of <input type="date">  , affiants exhibiting to me their IDs:</p>
-                                    </div>
-                                </div>
 
                                 <div class="row mt-5" style="text-align: center">
                                     <div class="col">
@@ -206,35 +217,43 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="text" class="form-control">
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" class="form-control">
-                                    </div>
-                                    <div class="col">
-                                        <input type="date" class="form-control">
-                                    </div>
-                                    <div class="col">
-                                        <input type="date" class="form-control">
-                                    </div>
-                                </div>
+                                @foreach ($oaemployee as $emloyee)
+                                    @if ($emloyee->userid == Auth::id())
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="text" class="form-control" name ="nameEmployee" value="{{$emloyee->name}}">
+                                            </div>
+                                            <div class="col">
+                                                <input type="text" class="form-control" name ="id_no_employee" value="{{$emloyee->id_no}}">
+                                            </div>
+                                            <div class="col">
+                                                <input type="date" class="form-control" name="IssueAtEmployee" value="{{$emloyee->IssuedAt}}">
+                                            </div>
+                                            <div class="col">
+                                                <input type="date" class="form-control" name ="IssueOnEmployee" value="{{$emloyee->IssuedOn}}">
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
 
-                                <div class="row mt-3">
-                                    <div class="col">
-                                        <input type="text" class="form-control">
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" class="form-control">
-                                    </div>
-                                    <div class="col">
-                                        <input type="date" class="form-control">
-                                    </div>
-                                    <div class="col">
-                                        <input type="date" class="form-control">
-                                    </div>
-                                </div>
+                                @foreach ($oaemployee1 as $emloyee1)
+                                    @if ($emloyee1->userid == Auth::id())
+                                        <div class="row mt-3">
+                                            <div class="col">
+                                                <input type="text" class="form-control"  name ="nameEmployee1" value="{{$emloyee1->name1}}">
+                                            </div>
+                                            <div class="col">
+                                                <input type="text" class="form-control" name ="id_no_employee1" value="{{$emloyee1->id_no1}}">
+                                            </div>
+                                            <div class="col">
+                                                <input type="date" class="form-control" name="IssueAtEmployee1" value="{{$emloyee1->IssuedAt1}}" >
+                                            </div>
+                                            <div class="col">
+                                                <input type="date" class="form-control" name ="IssueOnEmployee1" value="{{$emloyee1->IssuedOn1}}">
+                                            </div>
+                                        </div>
+                                    @endif
+                                @endforeach
 
                             </table>
 

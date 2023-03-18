@@ -15,6 +15,7 @@ use App\Models\User;
 use PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use League\CommonMark\Reference\Reference;
 
 class ModuleTwoController extends Controller
 {
@@ -151,7 +152,7 @@ class ModuleTwoController extends Controller
 
     public function edit($id){
 
-        $referencens = referencen::get();
+        $referencens = Referencen::get();
         $hwGeneration = HwGeneration::get();
         $hwDetails = HWDetails::get();
         $storage = Storage::get();
@@ -212,6 +213,7 @@ class ModuleTwoController extends Controller
             $newRecord->QuarterUnit = $hwGeneration[$x+7];
             $newRecord->save();
         }
+
 
 
         $hwDetails = $request->input('hwDetails');
