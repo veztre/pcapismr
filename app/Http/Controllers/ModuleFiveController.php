@@ -15,6 +15,7 @@ use App\Models\OECondition;
 use App\Models\referencen;
 use App\Models\TQC;
 use App\Models\TQG;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDF;
@@ -36,20 +37,20 @@ class ModuleFiveController extends Controller
         $reference= Auth::user()->reference_no()->first();
 
         return view('module.moduleFive')
-        ->with([
-            'aaqmonitoring'=>$aaqmonitoring,
-            'oecondition'=>$oecondition,
-            'evmpprogram'=>$evmpprogram,
-            'aqg'=>$aqg,
-            'tqg'=>$tqg,
-            'aqc'=>$aqc,
-            'tqc'=>$tqc,
-            'eicc'=>$eicc,
-            'description'=>$description,
-            'awqmonitoring'=>$awqmonitoring,
-            'awqmonitoring1'=>$awqmonitoring1,
-            'referencen'=>$reference->ref_no
-    ]);
+            ->with([
+                'aaqmonitoring'=>$aaqmonitoring,
+                'oecondition'=>$oecondition,
+                'evmpprogram'=>$evmpprogram,
+                'aqg'=>$aqg,
+                'tqg'=>$tqg,
+                'aqc'=>$aqc,
+                'tqc'=>$tqc,
+                'eicc'=>$eicc,
+                'description'=>$description,
+                'awqmonitoring'=>$awqmonitoring,
+                'awqmonitoring1'=>$awqmonitoring1,
+                'referencen'=>$reference->ref_no
+            ]);
 
     }
 
@@ -82,18 +83,20 @@ class ModuleFiveController extends Controller
 
 
 
-        $evmpprogram = $request->input('evmpprogram');
-        for ($x=0; $x<count($evmpprogram); $x++){
+        $input = $request->all();
+
+        $evmpprogram = $input['evmpprogram'];
+        $evmpprogram_radio = $input['evmpprogram_radio'];
+        $evmpprogram_textarea = $input['evmpprogram_textarea'];
+
+        for ($x = 0; $x < count($evmpprogram); $x++) {
             $DBevmpprogram = new EVMPprogram();
             $DBevmpprogram->userid = Auth::user()->id;
             $DBevmpprogram->Enhancement_Mitigation_Measures = $evmpprogram[$x];
-            $DBevmpprogram->Status_of_Compliance = $evmpprogram[$x];
-            $DBevmpprogram->Actions_Taken = $evmpprogram[$x];
-
+            $DBevmpprogram->Status_of_Compliance = $evmpprogram_radio[$x];
+            $DBevmpprogram->Actions_Taken = $evmpprogram_textarea[$x];
             $DBevmpprogram->save();
         }
-
-
 
         $aqg  = new AQG();
         $aqg->userid = Auth::user()->id;
@@ -189,6 +192,26 @@ class ModuleFiveController extends Controller
     }
 
     public function pdf(){
+
+        $aaqmonitoring = AAQmonitoring::get();
+        $oecondition = OECondition::get();
+        $aqg = AQG::get();
+        $tqg = TQG::get();
+        $tqc = TQC::get();
+        $aqc = AQC::get();
+        $eicc = EICC::get();
+        $description = Description::get();
+        $awqmonitoring = Awqmonitoring::get();
+
+
+        $pdf = PDF::loadview('module.pdf5' ,
+            ['aaqmonitoring'=>$aaqmonitoring,'oecondition'  =>$oecondition,'aqg'=>$aqg,'tqg'=>$tqg,'aqc'=>$aqc,'eicc'=>$eicc,
+                'tqc'=>$tqc, 'description'=>$description, 'awqmonitoring'=>$awqmonitoring
+
+
+
+            ]);
+        return $pdf->download('moduleFive.pdf');
 
 
     }
