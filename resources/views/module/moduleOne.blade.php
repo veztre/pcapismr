@@ -123,12 +123,15 @@
                                     <div class="col-11 mx-auto">
                                         <p>Name of the Plant</p>
                                         <label for="plant" hidden></label>
-                                        <select class="form-select" id="plant" required>
+                                        <select class="form-select" id="plant" name="plantname" required>
                                             <option selected disabled value="">-- Select --</option>
-                                            <option class="">ATLANTIC COATINGS, INC.</option>
-                                            <option class="">2nd Plant</option>
-                                            <option class="">3rd Plant</option>
-                                            <option class="">4th Plant</option>
+                                            @foreach ($addfacility as $data)
+                                                @if ($data->userid == Auth::id())
+                                                <option value="{{$data->embregion}}- {{$data->embid}}  {{$data->establishment}} " @if(old('plantname') == $data->embregion && $data->embid && $data->establishment) selected @endif >
+                                                    {{$data->embregion}}- {{$data->embid}}  {{$data->establishment}}
+                                                </option>
+                                                @endif
+                                            @endforeach
                                         </select>
                                         <div class="invalid-feedback">
                                             Please select a valid region.

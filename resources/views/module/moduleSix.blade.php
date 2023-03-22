@@ -42,7 +42,7 @@
 
                 <div class="container col ml-4 mt-4" style="align-content: center">
 
-                    <form action="/saveData6" post="post" enctype="multipart/form-data">
+                    <form action="/saveData6" method="post" enctype="multipart/form-data">
                         @csrf
                         <!-- {{ csrf_field() }} -->
                         <br>
@@ -154,7 +154,7 @@
                                 <p class="my-0"><i>UPLOAD SIGNED AND NOTARIZED MODULE 6 HERE WITH FILE NAME "NOTARIZED_DOC" BEFORE CLICKING SUBMIT</i></p>
                                 <p class="my-0"><i>Note: File name should not contain the following characters \ / : * ? " <> | $ &</i></p>
 
-                                <input class="form-control my-3" type="file" style="width:300px" multiple>
+                                <input class="form-control my-3" name ="file" type="file" style="width:300px" required multiple>
 
 
                                 <div class="form-check" >
@@ -167,26 +167,26 @@
                                 <div class="row mt-3">
                                     <div class="col " style="text-align: left; margin-left: 10%" >
                                         <label for="" class="mx-auto">Done this&nbsp;</label>
-                                        <input type="date" >
+                                        <input type="date" name ="date">
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <label for="" class="mx-auto">in&nbsp;</label>
-                                        <input type="text" style="width: 200px">
+                                        <input type="text" name= "In" style="width: 200px">
                                     </div>
                                 </div>
 
                                 <div class="row" style="text-align: center; ">
-                                    <input type="text" style="width: 350px; margin-left: 65%;" >
+                                    <input type="text"  name ="nameSignature" style="width: 350px; margin-left: 65%;" >
                                     <p style="margin-left:29%;" >Name & Signature of PCO</p>
                                 </div>
 
                                 <div class="row" style="text-align: center; ">
-                                    <input type="text" style="width: 350px; margin-left: 11%;" >
+                                    <input type="text" name ="CEOManagingHead" style="width: 350px; margin-left: 11%;" >
                                     <p style="margin-left:-22.5%;" >Name/ Signature of CEO/ Managing Head</p>
                                 </div>
 
                                 <div class="row mt-5">
                                     <div class="col">
-                                        <p class="text-center text-sm font-medium">SUBSCRIBED AND SWORN before me, a Notary Public, this <input type="text"> day of <input type="date">  , affiants exhibiting to me their IDs:</p>
+                                        <p class="text-center text-sm font-medium">SUBSCRIBED AND SWORN before me, a Notary Public, this <input type="text" name="subsAndSworn"> day of <input type="date" name ="dayOf" >  , affiants exhibiting to me their IDs:</p>
                                     </div>
                                 </div>
 

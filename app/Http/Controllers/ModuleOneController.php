@@ -32,6 +32,8 @@ use Illuminate\Support\Facades\Auth;
 use PDF;
 use Illuminate\Support\Carbon;
 use League\CommonMark\Reference\Reference;
+use App\Models\Addfacility;
+use App\Models\Plant;
 
 class ModuleOneController extends Controller
 {
@@ -39,7 +41,9 @@ class ModuleOneController extends Controller
         //updated value
         $year = Auth::user()->year();
         $quarter = Auth::user()->quarter();
+        $plant = Auth::user()->plant();
         // end of updated value
+
         $aircon = Auth::user()->aircon();
         $gic = Auth::user()->gic();
         $acno = Auth::user()->acno();
@@ -60,11 +64,12 @@ class ModuleOneController extends Controller
         $production = Auth::user()->production();
         $reference= Auth::user()->reference_no()->first();
         $upload = Upload::all();
+        $addfacility = Addfacility::get();
 
 
         $users = User::all();
 
-        return view('module.moduleOne', compact('users'))
+        return view('module.moduleOne', compact('users', 'addfacility'))
             ->with([
                 'yeardds'=>$year,
                 'quarterdds'=>$quarter,
@@ -88,6 +93,7 @@ class ModuleOneController extends Controller
                 'production' => $production,
                 'referencen'=>$reference->ref_no,
                 'uploads'=>$upload,
+                'plant'=>$plant,
             ]);
 
 
@@ -292,7 +298,7 @@ class ModuleOneController extends Controller
 
             };
         }
-        return redirect('moduleTwo');
+        return redirect('moduleTwoTransition');
 
 
     }

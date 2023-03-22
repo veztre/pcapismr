@@ -19,6 +19,7 @@
 </head>
 <body>--}}
 
+
 <x-app-layout>
 
     <title>Environmental Management Bureau Online Services - SMR - RA 8749 (AIR POLLUTION)</title>
@@ -321,18 +322,23 @@
 
                                             <table class="w3-table w3-striped w3-border">
                                                 <tbody id="droaec">
-                                                <tr>
-                                                    <td style="text-align:center">FBE No.</td>
-                                                    <td style="text-align:center">Date</td>
-                                                    <td style="text-align:center">Flow Rate (Ncm/ day)</td>
-                                                    <td style="text-align:center">CO (mg/ Ncm)</td>
-                                                    <td style="text-align:center">NOx (mg/Ncm)</td>
-                                                    <td style="text-align:center">Particulates (mg/Ncm)</td>
-                                                    <td style="text-align:center">SOx (mg/Ncm)</td>
-                                                    <td><input type="text" class="form-control" name=""></td>
-                                                    <td><input type="text" class="form-control" name=""></td>
-                                                    <td><input type="text" class="form-control" name=""></td>
-                                                </tr>
+                                                @foreach($detail_parameter as $parameter)
+                                                    @if ($parameter->userid == Auth::id())
+
+                                                        <tr>
+                                                            <td style="text-align:center">FBE No.</td>
+                                                            <td style="text-align:center">Date</td>
+                                                            <td style="text-align:center">Flow Rate (Ncm/ day)</td>
+                                                            <td style="text-align:center">CO (mg/ Ncm)</td>
+                                                            <td style="text-align:center">NOx (mg/Ncm)</td>
+                                                            <td style="text-align:center">Particulates (mg/Ncm)</td>
+                                                            <td style="text-align:center">SOx (mg/Ncm)</td>
+                                                            <td><input type="text" class="form-control" name="parameter1" value="{{$parameter->parameter1}}"></td>
+                                                            <td><input type="text" class="form-control" name="parameter2" value="{{$parameter->parameter2}}"></td>
+                                                            <td><input type="text" class="form-control" name="parameter3" value="{{$parameter->parameter3}}"></td>
+                                                        </tr>
+                                                    @endif
+                                                @endforeach
 
                                                 <td>
                                                 <td></td>
@@ -345,7 +351,6 @@
                                                 <td style="text-align:center">mg/Ncm</td>
                                                 <td style="text-align:center">mg/Ncm</td>
                                                 </td>
-
                                                 @foreach ($detailreport as $detail)
                                                     @if ($detail->userid == Auth::id())
                                                         <tr>
@@ -356,9 +361,13 @@
                                                             <td><input type="text" class="form-control" name="detailreport[]" value="{{$detail->NOx_mg_Ncm}}"></td>
                                                             <td><input type="text" class="form-control" name="detailreport[]" value="{{$detail->Particulates_mg_Ncm}}"></td>
                                                             <td><input type="text" class="form-control" name="detailreport[]" value="{{$detail->SOx_mg_Ncm}}"></td>
-                                                            <td><input type="text" class="form-control" name=""></td>
-                                                            <td><input type="text" class="form-control" name=""></td>
-                                                            <td><input type="text" class="form-control" name=""></td>
+                                                            @foreach ($detail_parameter_value as $index => $dvalue)
+                                                                @if ($loop->parent->index == $index)
+                                                                    <td><input type="text" class="form-control" name="detail_parameter_value[]" value="{{$dvalue->value_parameter1}}"></td>
+                                                                    <td><input type="text" class="form-control" name="detail_parameter_value[]" value="{{$dvalue->value_parameter2}}"></td>
+                                                                    <td><input type="text" class="form-control" name="detail_parameter_value[]" value="{{$dvalue->value_parameter3}}"></td>
+                                                                @endif
+                                                            @endforeach
                                                         </tr>
                                                     @endif
                                                 @endforeach
@@ -374,7 +383,7 @@
                                     <div class="container">
                                         <div class="col mb-3" >
                                             <div style="float: right" class="mb-3">
-                                                <a href="{{ route('module.moduleThree') }}" class="btn btn-lg border bg-light">Previous</a>
+                                                <a href="" class="btn btn-lg border bg-light">Previous</a>
                                                 <a href="{{ route('module.moduleFour') }}" class="btn btn-lg btn-info">Next</a>
                                                 <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
                                             </div>

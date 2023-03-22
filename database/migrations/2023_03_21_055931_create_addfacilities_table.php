@@ -13,16 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('oaemployee1', function (Blueprint $table) {
+        Schema::create('addfacilities', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->string('name1');
-            $table->string('id_no1');
-            $table->string('IssuedAt1');
-            $table->string('IssuedOn1');
+            $table->string('embregion');
+            $table->string('embid')->nullable();
+            $table->string('establishment');
+            $table->string('street');
+            $table->string('baranggay');
+            $table->string('city');
+            $table->string('province');
             $table->timestamps();
         });
-
     }
 
     /**
@@ -32,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('oaemployee1');
+        Schema::dropIfExists('addfacilities');
     }
 };

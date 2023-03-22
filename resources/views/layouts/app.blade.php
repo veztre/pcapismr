@@ -701,7 +701,7 @@
     $("#droaecb").click(function () { //button name
         ++i;
         $("#droaec").append
-        ('<tr><td><input type="text" class="form-control" name="detailreport[]"></td><td><input type="date" class="form-control" name="detailreport[]"></td><td><input type="text" class="form-control" name="detailreport[]"></td><td><input type="text" class="form-control" name="detailreport[]"></td><td><input type="text" class="form-control" name="detailreport[]"></td><td><input type="text" class="form-control" name="detailreport[]"></td><td><input type="text" class="form-control" name="detailreport[]"></td><td><input type="text" class="form-control" name=""></td><td><input type="text" class="form-control" name=""></td><td><input type="text" class="form-control" name=""></td></tr>'); //table name
+        ('<tr> <td><input type="text" class="form-control" name="detailreport[]"></td><td><input type="date" class="form-control" name="detailreport[]"></td><td><input type="text" class="form-control" name="detailreport[]"></td><td><input type="text" class="form-control" name="detailreport[]"></td><td><input type="text" class="form-control" name="detailreport[]"></td><td><input type="text" class="form-control" name="detailreport[]"></td><td><input type="text" class="form-control" name="detailreport[]"></td><td><input type="text" class="form-control" name="detail_parameter_value[]"></td><td><input type="text" class="form-control" name="detail_parameter_value[]"></td><td><input type="text" class="form-control" name="detail_parameter_value[]"></td</tr>'); //table name
     });
 </script>
 {{--Module 4 script end--}}

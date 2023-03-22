@@ -160,7 +160,6 @@
                                             <td><input class="form-control" type="text" name="oecondition[]" value="{{ old('oecondition[]') }}"></td>
 
                                             <td style="text-align: center">
-                                                <form action="">
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="oecondition[]" id="oecRadio1" value="Yes"
                                                                @if(old('oecondition[]') == 'Yes') checked @endif>
@@ -175,7 +174,6 @@
                                                             <p class="mt-3 mx-1">No</p>
                                                         </label>
                                                     </div>
-                                                </form>
 
                                             </td>
 
@@ -296,22 +294,20 @@
 
 
                                             <td style="text-align: center">
-                                                <form action="">
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="evmpprogram[]" id="emppRadio1" value="option1"
-                                                               @if(old('evmpprogram[]') == 'option1') checked @endif>
+                                                               @if(old('evmpprogram[]') == 'Yes') checked @endif>
                                                         <label class="form-check-label" for="emppRadio1">
                                                             <p class="mt-3 mx-1">Yes</p>
                                                         </label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="evmpprogram[]" id="emppRadio2" value="option2"
-                                                               @if(old('evmpprogram[]') == 'option2') checked @endif>
+                                                               @if(old('evmpprogram[]') == 'No') checked @endif>
                                                         <label class="form-check-label" for="emppRadio2">
                                                             <p class="mt-3 mx-1">No</p>
                                                         </label>
                                                     </div>
-                                                </form>
 
                                             </td>
 

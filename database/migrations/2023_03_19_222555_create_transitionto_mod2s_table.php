@@ -13,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('oaemployee1', function (Blueprint $table) {
+        Schema::create('transitionto_mod2s', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->string('name1');
-            $table->string('id_no1');
-            $table->string('IssuedAt1');
-            $table->string('IssuedOn1');
+            $table->string('eidm');
+            $table->string('ehwt');
             $table->timestamps();
         });
-
     }
 
     /**
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('oaemployee1');
+        Schema::dropIfExists('transitionto_mod2s');
     }
 };

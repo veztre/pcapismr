@@ -22,10 +22,10 @@ tr:nth-child(even) {
 
 <div class="col">
                     <p class="p-1 mt-3   text-light" style="background-color:gray; font-size:20px ">
-                      MODULE 1: GENERAL INFORMATION 
+                      MODULE 1: GENERAL INFORMATION
                     </p>
                   </div>
-         <div class="container pt-4">    
+         <div class="container pt-4">
                 <P class="text-secondary ml-3 mt-3">Please provide the necessary revised, corrected or updated information not
                         contained in your <br> General Information Sheet.</P>
                   </div>
@@ -33,11 +33,13 @@ tr:nth-child(even) {
 <table>
 <tbody>
                     @foreach ($gic as $item)
+                        @if ($item->userid == Auth::id())
                   <tr>
 
                     <td>{{$item->description}}</td>
 
                   </tr>
+                        @endif
                   @endforeach
 </tbody>
                   </table>
@@ -54,9 +56,10 @@ tr:nth-child(even) {
                         <th>Expiry Data</th>
                       </tr>
                     </thead>
-                  
+
                     <tbody>
                       @foreach ($aircon as $air)
+                          @if ($air->userid == Auth::id())
                       <tr>
                         <td>RA 9275</td>
                         <td>A/C</td>
@@ -65,21 +68,24 @@ tr:nth-child(even) {
                         <td>{{$air->dateExpired}}</td>
 
                       </tr>
+                          @endif
                       @endforeach
                     </tbody>
 
                     <tbody>
 
                     @foreach ($dpno as $dp)
+                        @if ($dp->userid == Auth::id())
                         <tr>
                           <td></td>
                           <td>DP no.</td>
                           <td>{{$dp->permit}}</td>
                           <td>{{$dp->dateIssued}}</td>
                           <td>{{$dp->dateExpired}}</td>
-                            
-              
+
+
                         </tr>
+                        @endif
                         @endforeach
 
 
@@ -87,18 +93,22 @@ tr:nth-child(even) {
 
                     <tbody>
                       @foreach ($cncno as $cn)
+                          @if ($cn->userid == Auth::id())
+
                         <tr>
                             <td>PD 1586</td>
                             <td>ECC/CNC no.</td>
                             <td>{{$cn->permit}}</td>
                             <td>{{$cn->dateIssued}}</td>
                             <td>{{$cn->dateExpired}}</td>
-                            
-                          
+
+
                         </tr>
+                          @endif
                         @endforeach
                     </tbody>
                             @foreach ($denrid as $denr)
+                          @if ($denr->userid == Auth::id())
                     <tbody>
                         <tr>
                             <td>RA 6969</td>
@@ -106,9 +116,10 @@ tr:nth-child(even) {
                             <td>{{$denr->permit}}</td>
                             <td>{{$denr->dateIssued}}</td>
                             <td>{{$denr->dateExpired}}</td>
-                            
+
 
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
 
@@ -125,6 +136,7 @@ tr:nth-child(even) {
                         @endforeach
                     </tbody>
                     @foreach ($tsdreg as $tsd)
+                                      @if ($tsd->userid == Auth::id())
                     <tbody>
                         <tr>
                             <td></td>
@@ -133,9 +145,11 @@ tr:nth-child(even) {
                             <td>{{$tsd->dateIssued}}</td>
                             <td>{{$tsd->dateExpired}}</td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                     @foreach ($ccoreg as $cco)
+                                              @if ($cco->userid == Auth::id())
 
                     <tbody>
                         <tr>
@@ -145,10 +159,12 @@ tr:nth-child(even) {
                             <td>{{$cco->dateIssued}}</td>
                             <td>{{$cco->dateExpired}}</td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
 
                     @foreach ($import as $imp)
+                                                      @if ($imp->userid == Auth::id())
 
                     <tbody>
                         <tr>
@@ -158,9 +174,11 @@ tr:nth-child(even) {
                             <td>{{$imp->dateIssued}}</td>
                             <td>{{$imp->dateExpired}}</td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                     @foreach ($permit as $permt)
+                                                              @if ($permt->userid == Auth::id())
 
                     <tbody>
                         <tr>
@@ -170,9 +188,11 @@ tr:nth-child(even) {
                             <td>{{$permt->dateIssued}}</td>
                             <td>{{$permt->dateExpired}}</td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                     @foreach ($smallquan as $small)
+                                                                      @if ($small->userid == Auth::id())
                     <tbody>
                         <tr>
                             <td></td>
@@ -181,10 +201,12 @@ tr:nth-child(even) {
                             <td>{{$small->dateIssued}}</td>
                             <td>{{$small->dateExpired}}</td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
 
                     @foreach ($priority as $prio)
+                                                                              @if ($prio->userid == Auth::id())
                     <tbody>
                         <tr>
                             <td></td>
@@ -193,10 +215,12 @@ tr:nth-child(even) {
                             <td>{{$prio->dateIssued}}</td>
                             <td>{{$prio->dateExpired}}</td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
 
                     @foreach ($piccs as $pic)
+                                                                                      @if ($pic->userid == Auth::id())
                     <tbody id="piccs">
                         <tr>
                             <td></td>
@@ -205,9 +229,11 @@ tr:nth-child(even) {
                             <td>{{$pic->dateIssued}}</td>
                             <td>{{$pic->dateExpired}}</td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                     @foreach ($pmpin as $pin)
+                                                                                              @if ($pin->userid == Auth::id())
                     <tbody>
                         <tr>
                             <td></td>
@@ -216,9 +242,11 @@ tr:nth-child(even) {
                             <td>{{$pin->dateIssued}}</td>
                             <td>{{$pin->dateExpired}}</td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                     @foreach ($acno as $ac)
+                                                                                                      @if ($ac->userid == Auth::id())
                     <tbody>
                         <tr>
                             <td>RA 8749</td>
@@ -228,10 +256,12 @@ tr:nth-child(even) {
                             <td>{{$ac->dateExpired}}</td>
 
                         </tr>
+                        @endif
                         @endforeach
 
                     </tbody>
                     @foreach ($pono as $pn)
+                                                                                                              @if ($pn->userid == Auth::id())
 
                     <tbody>
                         <tr>
@@ -241,6 +271,7 @@ tr:nth-child(even) {
                             <td>{{$pn->dateIssued}}</td>
                             <td>{{$pn->dateExpired}}</td>
                         </tr>
+                        @endif
                         @endforeach
                     </tbody>
                   </table>
@@ -252,13 +283,14 @@ tr:nth-child(even) {
 
                             <th></th>
                             <th></th>
-                         
+
                                 <th>Operating hours/day</th>
                                 <th>Operating days/week</th>
                                 <th># shift/day</th>
-                           
+
                         </thead>
                           @foreach ($operation as $operate)
+                          @if ($operate->userid == Auth::id())
                         <tbody>
                             <tr>
                                 <td>Average</td>
@@ -276,8 +308,9 @@ tr:nth-child(even) {
                                 <td>{{$operate->maxOPhours}}</td>
                                 <td>{{$operate->maxOPdays}}</td>
                                 <td>{{$operate->maxOPshift}}</td>
-                               
+
                             </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>
@@ -287,6 +320,7 @@ tr:nth-child(even) {
 
                             <tbody>
                               @foreach ($production as $product)
+                                  @if ($product->userid == Auth::id())
                                 <tr>
                                     <td>Average Daily Production Output</td>
                                     <td>{{$product->aveProduction}}</td>
@@ -303,14 +337,14 @@ tr:nth-child(even) {
 
                                     <td>Total Electric Consumption this Quarter (kwh)</td>
                                     <td>{{$product->totalElectric}}</td>
-                                   
+
                                 </tr>
+                                @endif
                                 @endforeach
                             </tbody>
 
                     </table>
 
 
-                
 
-                  
+

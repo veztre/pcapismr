@@ -12,6 +12,7 @@ use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
+
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -76,6 +77,10 @@ class User extends Authenticatable
 
 
   /* Module1 start*/
+
+    public function plant(){
+        return $this->hasOne(Plant::class,foreignKey: 'userid');
+    }
      public function gic(){
         return $this->hasOne(Gic::class,foreignKey: 'userid');
     }
@@ -227,34 +232,39 @@ class User extends Authenticatable
     }
 
     public function cost_of_person_employed (){
-        return $this->hasOne(Cost_of_person_employed::class,foreignKey: 'userid');
+        return $this->hasMany(Cost_of_person_employed::class,foreignKey: 'userid');
     }
     public function total_consumption_of_water (){
-        return $this->hasOne(Total_Consumption_of_Water::class,foreignKey: 'userid');
+        return $this->hasMany(Total_Consumption_of_Water::class,foreignKey: 'userid');
     }
     public function total_cost_of_chemicals_used (){
-        return $this->hasOne(Total_Cost_of_Chemicals_used::class,foreignKey: 'userid');
+        return $this->hasMany(Total_Cost_of_Chemicals_used::class,foreignKey: 'userid');
     }
     public function total_consumption_of_electricity (){
-        return $this->hasOne(Total_Consumption_of_Electricity::class,foreignKey: 'userid');
+        return $this->hasMany(Total_Consumption_of_Electricity::class,foreignKey: 'userid');
     }
     public function administrative_and_overhead_costs (){
-        return $this->hasOne(Administrative_and_Overhead_Costs::class,foreignKey: 'userid');
+        return $this->hasMany(Administrative_and_Overhead_Costs::class,foreignKey: 'userid');
     }
     public function cost_of_operating_in_house_laboratory (){
-        return $this->hasOne(Cost_of_operating_in_house_laboratory::class,foreignKey: 'userid');
+        return $this->hasMany(Cost_of_operating_in_house_laboratory::class,foreignKey: 'userid');
     }
     public function improvement_or_modification (){
-        return $this->hasOne(Improvement_or_modification::class,foreignKey: 'userid');
+        return $this->hasMany(Improvement_or_modification::class,foreignKey: 'userid');
     }
     public function cost_of_improvement_of_modification (){
-        return $this->hasOne(Cost_of_improvement_of_modification::class,foreignKey: 'userid');
+        return $this->hasMany(Cost_of_improvement_of_modification::class,foreignKey: 'userid');
     }
     public function detailreport (){
-        return $this->hasOne(DetailReport::class,foreignKey: 'userid');
+        return $this->hasMany(DetailReport::class,foreignKey: 'userid');
+    }
+    public function detail_parameter (){
+        return $this->hasOne(DetailParameter::class,foreignKey: 'userid');
     }
 
-
+    public function detail_parameter_value (){
+        return $this->hasOne(DetailParameterValue::class,foreignKey: 'userid');
+    }
     /*Module 4 end*/
 
 
@@ -317,5 +327,42 @@ class User extends Authenticatable
     public function quarter (){
         return $this->hasOne(Quarterdd::class,foreignKey: 'userid');
     }
+
+
+   /* Transition*/
+    public function eidm (){
+        return $this->hasOne(TransitiontoMod2::class,foreignKey: 'userid');
+    }
+
+    public function ehwt (){
+        return $this->hasOne(TransitiontoMod2::class,foreignKey: 'userid');
+    }
+
+/*Transition end*/
+
+
+    /*Facility*/
+    public function embregion (){
+        return $this->hasOne(Addfacility::class,foreignKey: 'userid');
+    }
+    public function embid (){
+        return $this->hasOne(Addfacility::class,foreignKey: 'userid');
+    }
+    public function establishment (){
+        return $this->hasOne(Addfacility::class,foreignKey: 'userid');
+    }
+    public function street (){
+        return $this->hasOne(Addfacility::class,foreignKey: 'userid');
+    }
+    public function baranggay (){
+        return $this->hasOne(Addfacility::class,foreignKey: 'userid');
+    }
+    public function city (){
+        return $this->hasOne(Addfacility::class,foreignKey: 'userid');
+    }
+    public function province (){
+        return $this->hasOne(Addfacility::class,foreignKey: 'userid');
+    }
+    /*Facility end*/
 
 }

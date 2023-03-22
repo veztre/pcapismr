@@ -189,58 +189,58 @@
                                                         <tbody>
                                                         <tr>
                                                             <td>Cost of Person employed, (# of employess)</td>
-                                                            <td><input type="text" class="form-control" name="COPEMonth1"></td>
-                                                            <td><input type="text" class="form-control" name="COPEMonth2"></td>
-                                                            <td><input type="text" class="form-control" name="COPEMonth3"></td>
+                                                            <td><input type="text" class="form-control" name="cost_of_person_employed[]"></td>
+                                                            <td><input type="text" class="form-control" name="cost_of_person_employed[]"></td>
+                                                            <td><input type="text" class="form-control" name="cost_of_person_employed[]"></td>
                                                         </tr>
 
                                                         <tr>
                                                             <td>Total Consumption of Water (cubic meters)</td>
-                                                            <td><input type="text" class="form-control" name="TCOWMonth1"></td>
-                                                            <td><input type="text" class="form-control" name="TCOWMonth2"></td>
-                                                            <td><input type="text" class="form-control" name="TCOWMonth3"></td>
+                                                            <td><input type="text" class="form-control" name="total_consumption_of_water[]"></td>
+                                                            <td><input type="text" class="form-control" name="total_consumption_of_water[]"></td>
+                                                            <td><input type="text" class="form-control" name="total_consumption_of_water[]"></td>
                                                         </tr>
 
                                                         <tr>
                                                             <td>Total Cost of Chemicals used (e.g., activated carbon, KMnO4)</td>
-                                                            <td><input type="text" class="form-control" name="TCOCMonth1"></td>
-                                                            <td><input type="text" class="form-control" name="TCOCMonth2"></td>
-                                                            <td><input type="text" class="form-control" name="TCOCMonth3"></td>
+                                                            <td><input type="text" class="form-control" name="total_cost_of_chemicals_used[]"></td>
+                                                            <td><input type="text" class="form-control" name="total_cost_of_chemicals_used[]"></td>
+                                                            <td><input type="text" class="form-control" name="total_cost_of_chemicals_used[]"></td>
                                                         </tr>
 
                                                         <tr>
                                                             <td>Total Consumption of Electricity (kWh)</td>
-                                                            <td><input type="text" class="form-control" name="TCOEMonth1"></td>
-                                                            <td><input type="text" class="form-control" name="TCOEMonth2"></td>
-                                                            <td><input type="text" class="form-control" name="TCOEMonth3"></td>
+                                                            <td><input type="text" class="form-control" name="total_consumption_of_electricity[]"></td>
+                                                            <td><input type="text" class="form-control" name="total_consumption_of_electricity[]"></td>
+                                                            <td><input type="text" class="form-control" name="total_consumption_of_electricity[]"></td>
                                                         </tr>
 
                                                         <tr>
                                                             <td>Administrative and Overhead Costs</td>
-                                                            <td><input type="text" class="form-control" name="AAOCMonth1"></td>
-                                                            <td><input type="text" class="form-control" name="AAOCMonth2"></td>
-                                                            <td><input type="text" class="form-control" name="AAOCMonth3"></td>
+                                                            <td><input type="text" class="form-control" name="administrative_and_overhead_costs[]"></td>
+                                                            <td><input type="text" class="form-control" name="administrative_and_overhead_costs[]"></td>
+                                                            <td><input type="text" class="form-control" name="administrative_and_overhead_costs[]"></td>
                                                         </tr>
 
                                                         <tr>
                                                             <td>Cost of operating in-house laboratory</td>
-                                                            <td><input type="text" class="form-control" name="COPIHLMonth1"></td>
-                                                            <td><input type="text" class="form-control" name="COPIHLMonth2"></td>
-                                                            <td><input type="text" class="form-control" name="COPIHLMonth3"></td>
+                                                            <td><input type="text" class="form-control" name="cost_of_operating_in_house_laboratory[]"></td>
+                                                            <td><input type="text" class="form-control" name="cost_of_operating_in_house_laboratory[]"></td>
+                                                            <td><input type="text" class="form-control" name="cost_of_operating_in_house_laboratory[]"></td>
                                                         </tr>
 
                                                         <tr>
                                                             <td>improvement or modification, if any. (description)</td>
-                                                            <td><input type="text" class="form-control" name="IOMMonth1"></td>
-                                                            <td><input type="text" class="form-control" name="IOMMonth2"></td>
-                                                            <td><input type="text" class="form-control" name="IOMMonth3"></td>
+                                                            <td><input type="text" class="form-control" name="improvement_or_modification[]"></td>
+                                                            <td><input type="text" class="form-control" name="improvement_or_modification[]"></td>
+                                                            <td><input type="text" class="form-control" name="improvement_or_modification[]"></td>
                                                         </tr>
 
                                                         <tr>
                                                             <td>Cost of improvement of modification</td>
-                                                            <td><input type="text" class="form-control" name="COIOMonth1"></td>
-                                                            <td><input type="text" class="form-control" name="COIOMonth2"></td>
-                                                            <td><input type="text" class="form-control" name="COIOMonth3"></td>
+                                                            <td><input type="text" class="form-control" name="cost_of_improvement_of_modification[]"></td>
+                                                            <td><input type="text" class="form-control" name="cost_of_improvement_of_modification[]"></td>
+                                                            <td><input type="text" class="form-control" name="cost_of_improvement_of_modification[]"></td>
                                                         </tr>
                                                         </tbody>
 
@@ -269,9 +269,9 @@
                                                     <td style="text-align:center">NOx (mg/Ncm)</td>
                                                     <td style="text-align:center">Particulates (mg/Ncm)</td>
                                                     <td style="text-align:center">SOx (mg/Ncm)</td>
-                                                    <td><input type="text" class="form-control" name=""></td>
-                                                    <td><input type="text" class="form-control" name=""></td>
-                                                    <td><input type="text" class="form-control" name=""></td>
+                                                    <td><input type="text" class="form-control" name="parameter1"></td>
+                                                    <td><input type="text" class="form-control" name="parameter2"></td>
+                                                    <td><input type="text" class="form-control" name="parameter3"></td>
                                                 </tr>
 
                                                 <td>
@@ -294,9 +294,9 @@
                                                     <td><input type="text" class="form-control" name="detailreport[]"></td>
                                                     <td><input type="text" class="form-control" name="detailreport[]"></td>
                                                     <td><input type="text" class="form-control" name="detailreport[]"></td>
-                                                    <td><input type="text" class="form-control" name=""></td>
-                                                    <td><input type="text" class="form-control" name=""></td>
-                                                    <td><input type="text" class="form-control" name=""></td>
+                                                    <td><input type="text" class="form-control" name="detail_parameter_value[]"></td>
+                                                    <td><input type="text" class="form-control" name="detail_parameter_value[]"></td>
+                                                    <td><input type="text" class="form-control" name="detail_parameter_value[]"></td>
                                                 </tr>
 
                                                 </tbody>

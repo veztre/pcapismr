@@ -13,16 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('oaemployee1', function (Blueprint $table) {
+        Schema::create('detail_parameter_value', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->string('name1');
-            $table->string('id_no1');
-            $table->string('IssuedAt1');
-            $table->string('IssuedOn1');
+            $table->string('value_parameter1')->nullable();
+            $table->string('value_parameter2')->nullable();
+            $table->string('value_parameter3')->nullable();
             $table->timestamps();
         });
-
     }
 
     /**
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('oaemployee1');
+        Schema::dropIfExists('detail_parameter_value');
     }
 };

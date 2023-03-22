@@ -16,7 +16,9 @@ use App\Http\Controllers\ModuleFiveController;
 use App\Http\Controllers\ModuleSixController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TraineeController;
+use App\Http\Controllers\TransitiontoMod2Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AddFacilityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +64,12 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
 });
 
 Route::redirect('/', destination: 'login');
+//transition
+Route::get('/moduleTwoTransition', [TransitiontoMod2Controller::class, 'index']);
+Route::post('/check', [TransitiontoMod2Controller::class, 'check'])->name('check');
+//end of transition
+
+
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/create/user', [AdminController::class, 'create'])->name('create');
 Route::post('/save', [AdminController::class, 'store']);
@@ -125,9 +133,15 @@ Route::get('/reference5', [ModuleFiveController::class, 'generate']);
 /* Module Six Controller */
 Route::get('/moduleSix', [ModuleSixController::class, 'index'])->name('module.moduleSix');
 
-Route::get('/saveData6', [ModuleSixController::class, 'save']);
+Route::post('/saveData6', [ModuleSixController::class, 'save']);
 Route::get('/view/moduleSixUpdate/{id}', [ModuleSixController::class, 'edit']);
 Route::put('/view/updatemoduleSix/{id}', [ModuleSixController::class, 'update'])->name('update6');
 Route::get('/pdf6', [ModuleSixController::class, 'pdf']);
 
 Route::get('/reference6', [ModuleSixController::class, 'generate']);
+
+
+/*Add facility*/
+Route::get('/addfacility', [AddFacilityController::class, 'index'])->name('addfacility');
+Route::post('/addf', [AddFacilityController::class, 'store'])->name('addf');
+

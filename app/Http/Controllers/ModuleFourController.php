@@ -8,6 +8,8 @@ use App\Models\AdministrativeCost;
 use App\Models\Cost_of_improvement_of_modification;
 use App\Models\Cost_of_operating_in_house_laboratory;
 use App\Models\Cost_of_person_employed;
+use App\Models\DetailParameter;
+use App\Models\DetailParameterValue;
 use App\Models\DetailReport;
 use App\Models\Improvement_or_modification;
 use App\Models\referencen;
@@ -38,6 +40,8 @@ class ModuleFourController extends Controller
         $improvement_or_modification = Auth::user()->improvement_or_modification();
         $cost_of_improvement_of_modification = Auth::user()->cost_of_improvement_of_modification();
         $detailreport = Auth::user()->detailreport();
+        $detail_parameter = DetailParameter::all();
+        $detail_parameter_value = DetailParameterValue::all();
         $reference= Auth::user()->reference_no()->first();
 
 
@@ -56,6 +60,7 @@ class ModuleFourController extends Controller
                 'improvement_or_modification'=>$improvement_or_modification,
                 'cost_of_improvement_of_modification'=>$cost_of_improvement_of_modification,
                 'detailreport'=>$detailreport,
+                'detail_parameter'=>$detail_parameter,
                 'referencen'=>$reference->ref_no
 
             ]);
@@ -209,8 +214,24 @@ class ModuleFourController extends Controller
 
 
             $DBdetailreport->save();
+        }
 
+        $detail_parameter  = new DetailParameter();
+        $detail_parameter->userid = Auth::user()->id;
+        $detail_parameter->parameter1 = $request->input('parameter1');
+        $detail_parameter->parameter2 = $request->input('parameter2');
+        $detail_parameter->parameter3 = $request->input('parameter3');
+        $detail_parameter->save();
 
+        $detail_parameter_value = $request->input('detail_parameter_value');
+        for ($x=0; $x<count($detail_parameter_value); $x+=3){
+            $DBdetail_parameter_value = new DetailParameterValue();
+
+            $DBdetail_parameter_value->userid = Auth::user()->id;
+            $DBdetail_parameter_value->value_parameter1 = $detail_parameter_value[$x];
+            $DBdetail_parameter_value->value_parameter2 = $detail_parameter_value[$x+1];
+            $DBdetail_parameter_value->value_parameter3 = $detail_parameter_value[$x+2];
+            $DBdetail_parameter_value->save();
         }
 
         return redirect('moduleFive');
@@ -232,6 +253,8 @@ class ModuleFourController extends Controller
         $improvement_or_modification = Improvement_or_modification::get();
         $cost_of_improvement_of_modification = Cost_of_improvement_of_modification::get();
         $detailreport = DetailReport::get();
+        $detail_parameter = DetailParameter::get();
+        $detail_parameter_value = DetailParameterValue::get();
 
         $reference = referencen::get();
         $users = User::find($id);
@@ -251,6 +274,8 @@ class ModuleFourController extends Controller
                 'improvement_or_modification',
                 'cost_of_improvement_of_modification',
                 'detailreport',
+                'detail_parameter',
+                'detail_parameter_value',
 
             ));
 
@@ -531,6 +556,34 @@ class ModuleFourController extends Controller
             $newRecord->NOx_mg_Ncm = $detailreport[$x+4];
             $newRecord->Particulates_mg_Ncm = $detailreport[$x+5];
             $newRecord->SOx_mg_Ncm = $detailreport[$x+6];
+            $newRecord->save();
+        }
+
+        $detail_parameter = DetailParameter::where('userid', $id)->first();
+        $detail_parameter->parameter1 = $request->input('parameter1');
+        $detail_parameter->parameter2 = $request->input('parameter2');
+        $detail_parameter->parameter3 = $request->input('parameter3');
+        $detail_parameter->update();
+
+        $detail_parameter_value = $request->input('detail_parameter_value');
+        $userId = Auth::user()->id;
+        // Get all records for the current user
+        $DBdetail_parameter_value = DetailParameterValue::where('userid', $userId)->get();
+        // Loop through all records and update each one
+        foreach ($DBdetail_parameter_value as $index => $record) {
+            $record->value_parameter1 = $detail_parameter_value[$index*3];
+            $record->value_parameter2 = $detail_parameter_value[$index*3+1];
+            $record->value_parameter3 = $detail_parameter_value[$index*3+2];
+
+            $record->update();
+        }
+        for ($x = count($DBdetail_parameter_value)*3; $x < count($detail_parameter_value); $x += 3) {
+            $newRecord = new DetailParameterValue();
+            $newRecord->userid = $userId;
+            $newRecord->value_parameter1 = $detail_parameter_value[$x];
+            $newRecord->value_parameter2 = $detail_parameter_value[$x+1];
+            $newRecord->value_parameter3 = $detail_parameter_value[$x+2];
+
             $newRecord->save();
         }
 
