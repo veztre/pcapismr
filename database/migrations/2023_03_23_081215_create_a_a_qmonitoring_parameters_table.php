@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('evmpprogram', function (Blueprint $table) {
+        Schema::create('a_a_qmonitoring_parameters', function (Blueprint $table) {
             $table->id();
             $table->integer('userid');
-            $table->string('Enhancement_Mitigation_Measures')->nullable();
-            $table->string('Status_of_Compliance')->nullable();
-            $table->string('Actions_Taken')->nullable();
+            $table->string('aaqname_parameter1')->nullable();
+            $table->string('aaqname_parameter2')->nullable();
+            $table->string('aaqname_parameter3')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('evmpprogram');
+        Schema::dropIfExists('a_a_qmonitoring_parameters');
     }
 };

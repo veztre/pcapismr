@@ -15,6 +15,7 @@ use App\Models\OECondition;
 use App\Models\referencen;
 use App\Models\TQC;
 use App\Models\TQG;
+use App\Models\AAQmonitoring_parameter;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,7 @@ use PDF;
 class ModuleFiveController extends Controller
 {
     public function index(){
+        $aaqmonitoring_parameter = Auth::user()->aaqmonitoring_parameter();
         $aaqmonitoring = Auth::user()->aaqmonitoring();
         $oecondition = Auth::user()->oecondition();
         $evmpprogram = Auth::user()->evmpprogram();
@@ -39,6 +41,7 @@ class ModuleFiveController extends Controller
         return view('module.moduleFive')
             ->with([
                 'aaqmonitoring'=>$aaqmonitoring,
+                'aaqmonitoring_parameter'=>$aaqmonitoring_parameter,
                 'oecondition'=>$oecondition,
                 'evmpprogram'=>$evmpprogram,
                 'aqg'=>$aqg,
@@ -56,8 +59,15 @@ class ModuleFiveController extends Controller
 
     public function save(Request $request){
 
+        $aaqmonitoring_parameter = new AAQmonitoring_parameter();
+        $aaqmonitoring_parameter->userid = Auth::user()->id;
+        $aaqmonitoring_parameter->aaqname_parameter1 = $request->input('aaqname_parameter1');
+        $aaqmonitoring_parameter->aaqname_parameter2 = $request->input('aaqname_parameter2');
+        $aaqmonitoring_parameter->aaqname_parameter3 = $request->input('aaqname_parameter3');
+        $aaqmonitoring_parameter->save();
+
         $aaqmonitoring = $request->input('aaqmonitoring');
-        for ($x=0; $x<count($aaqmonitoring); $x+=6 ){
+        for ($x=0; $x<count($aaqmonitoring); $x+=9 ){
             $DBaaqmonitoring = new AAQmonitoring();
             $DBaaqmonitoring->userid = Auth::user()->id;
             $DBaaqmonitoring->station_description = $aaqmonitoring[$x];
@@ -66,7 +76,9 @@ class ModuleFiveController extends Controller
             $DBaaqmonitoring->CO_mg_ncm = $aaqmonitoring[$x+3];
             $DBaaqmonitoring->NOx_mg_ncm = $aaqmonitoring[$x+4];
             $DBaaqmonitoring->particulates_mg_ncm = $aaqmonitoring[$x+5];
-
+            $DBaaqmonitoring->Value_parameter1 = $aaqmonitoring[$x+6];
+            $DBaaqmonitoring->Value_parameter2 = $aaqmonitoring[$x+7];
+            $DBaaqmonitoring->Value_parameter3 = $aaqmonitoring[$x+8];
             $DBaaqmonitoring->save();
         }
 
@@ -187,7 +199,7 @@ class ModuleFiveController extends Controller
     }
 
     public function pdf(){
-
+        $aaqmonitoring_parameter = AAQmonitoring_parameter::get();
         $aaqmonitoring = AAQmonitoring::get();
         $oecondition = OECondition::get();
         $aqg = AQG::get();
@@ -200,8 +212,17 @@ class ModuleFiveController extends Controller
 
 
         $pdf = PDF::loadview('module.pdf5' ,
-            ['aaqmonitoring'=>$aaqmonitoring,'oecondition'  =>$oecondition,'aqg'=>$aqg,'tqg'=>$tqg,'aqc'=>$aqc,'eicc'=>$eicc,
-                'tqc'=>$tqc, 'description'=>$description, 'awqmonitoring'=>$awqmonitoring
+            [
+                'aaqmonitoring_parameter'=>$aaqmonitoring_parameter,
+                'aaqmonitoring'=>$aaqmonitoring,
+                'oecondition'  =>$oecondition,
+                'aqg'=>$aqg,
+                'tqg'=>$tqg,
+                'aqc'=>$aqc,
+                'eicc'=>$eicc,
+                'tqc'=>$tqc,
+                'description'=>$description,
+                'awqmonitoring'=>$awqmonitoring
 
 
 

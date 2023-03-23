@@ -116,7 +116,7 @@
 
                                     <div class="col-2">
                                         <label for="quarter" hidden></label>
-                                        <select class="form-select" id="quarter" required>
+                                        <select class="form-select" id="quarter" name="quarter" required>
                                             @foreach ($quarter as $quarters)
                                                 @if ($quarters->userid == Auth::id())
                                                 <option value="{{ $quarters->quarter }}">{{ $quarters->quarter }}</option>
@@ -167,11 +167,11 @@
                                     <div class="col-11 mx-auto">
                                         <p>Name of the Plant</p>
                                         <label for="plant" hidden></label>
-                                        <select class="form-select" id="plant" required>
-                                            @foreach ($addfacility as $data)
-                                                @if ($data->userid == Auth::id())
-                                                    <option value="{{$data->embregion}}- {{$data->embid}}  {{$data->establishment}} " >
-                                                        {{$data->embregion}}- {{$data->embid}}  {{$data->establishment}}
+                                        <select class="form-select" id="plant" name="plantname" required>
+                                            @foreach ($plant as $plants)
+                                                @if ($plants->userid == Auth::id())
+                                                    <option value="{{$plants->plantname}}" >
+                                                        {{$plants->plantname}}
                                                     </option>
                                                 @endif
                                             @endforeach
@@ -852,6 +852,8 @@
                                 <div class="col mb-3">
                                     <div style="float: right" class="mb-3">
                                         <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
+
+
                                     </div>
                                 </div>
                             </div>

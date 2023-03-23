@@ -22,6 +22,9 @@ return new class extends Migration
             $table->string('CO_mg_ncm');
             $table->string('NOx_mg_ncm');
             $table->string('particulates_mg_ncm');
+            $table->string('Value_parameter1');
+            $table->string('Value_parameter2');
+            $table->string('Value_parameter3');
             $table->timestamps();
         });
     }

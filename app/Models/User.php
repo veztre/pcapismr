@@ -300,7 +300,9 @@ class User extends Authenticatable
     public function awqmonitoring (){
         return $this->hasOne(Awqmonitoring::class,foreignKey: 'userid');
     }
-
+    public function aaqmonitoring_parameter (){
+        return $this->hasOne(AAQmonitoring_parameter::class,foreignKey: 'userid');
+    }
     public function aaqmonitoring (){
         return $this->hasmany(AAQmonitoring::class,foreignKey: 'userid');
     }

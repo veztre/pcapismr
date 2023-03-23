@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('oecondition', function (Blueprint $table) {
             $table->id();
             $table->integer('userid');
-            $table->string('ECC_Condition');
-            $table->string('Status_of_Compliance');
-            $table->string('Actions_Taken');
+            $table->string('ECC_Condition')->nullable();
+            $table->string('Status_of_Compliance')->nullable();
+            $table->string('Actions_Taken')->nullable();
             $table->timestamps();
         });
     }

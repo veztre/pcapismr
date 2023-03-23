@@ -102,9 +102,9 @@
                                             <td style="text-align: center">CO (mg/ Ncm)</td>
                                             <td style="text-align: center">NOx (mg/Ncm)</td>
                                             <td style="text-align: center">Particulates (mg/Ncm)</td>
-                                            <td><input class="form-control" type="text" name=" "></td>
-                                            <td><input class="form-control" type="text" name=" "></td>
-                                            <td><input class="form-control" type="text" name=" "></td>
+                                            <td><input class="form-control" type="text" name="aaqname_parameter1" value="{{ old('aaqname_parameter1') }}"></td>
+                                            <td><input class="form-control" type="text" name="aaqname_parameter2" value="{{ old('aaqname_parameter2') }}"></td>
+                                            <td><input class="form-control" type="text" name="aaqname_parameter3" value="{{ old('aaqname_parameter3') }}"></td>
                                         </tr>
 
                                         <tr>
@@ -126,9 +126,9 @@
                                             <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td>
                                             <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td>
                                             <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name=" "></td>
-                                            <td><input class="form-control" type="text" name=" "></td>
-                                            <td><input class="form-control" type="text" name=" "></td>
+                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td>
 
                                         </tr>
 
@@ -313,7 +313,6 @@
 
                                             <td><textarea class="form-control" type="text" name="evmpprogram[]"
                                                           style="overflow:scroll; overflow: hidden visible;" value="{{ old('evmpprogram[]') }}"></textarea></td>
-
 
                                         </tr>
                                         </tbody>
