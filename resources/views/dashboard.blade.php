@@ -39,7 +39,7 @@
                                         <td tabindex="0" class="sorting_1">{{$user->lastname}}, {{$user->firstname}}</td>
                                         <td>{{$user->company}}</td>
                                         <td>{{$user->email}}</td>
-                                        <td>2008/11/28</td>
+                                        <td>ACTIVE</td>
                                         <td>
                                             <div class="btn-group">
                                                 <a  href="{{ route('editaccount', $user->id) }}"><button class="btn btn-info"><i class="bi bi-pencil-square"></i><svg
