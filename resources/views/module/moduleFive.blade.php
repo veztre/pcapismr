@@ -295,14 +295,14 @@
 
                                             <td style="text-align: center">
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="evmpprogram[]" id="emppRadio1" value="option1"
+                                                        <input class="form-check-input" type="radio" name="evmpprogram[]" id="emppRadio1" value="Yes"
                                                                @if(old('evmpprogram[]') == 'Yes') checked @endif>
                                                         <label class="form-check-label" for="emppRadio1">
                                                             <p class="mt-3 mx-1">Yes</p>
                                                         </label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="evmpprogram[]" id="emppRadio2" value="option2"
+                                                        <input class="form-check-input" type="radio" name="evmpprogram[]" id="emppRadio2" value="No"
                                                                @if(old('evmpprogram[]') == 'No') checked @endif>
                                                         <label class="form-check-label" for="emppRadio2">
                                                             <p class="mt-3 mx-1">No</p>

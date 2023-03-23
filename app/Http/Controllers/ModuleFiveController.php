@@ -83,7 +83,14 @@ class ModuleFiveController extends Controller
         }
 
         $oecondition = $request->input('oecondition.*');
-        for ($x=0; $x<count($oecondition); $x+=3){
+        $count = count($oecondition);
+
+        for ($x = 0; $x < $count; $x += 3) {
+            if ($x + 2 >= $count) {
+                // We have reached the end of the array, so break out of the loop
+                break;
+            }
+
             $DBoecondition = new OECondition();
             $DBoecondition->userid = Auth::user()->id;
             $DBoecondition->ECC_Condition = $oecondition[$x];
@@ -94,7 +101,14 @@ class ModuleFiveController extends Controller
         }
 
         $evmpprogram = $request->input('evmpprogram.*');
-        for ($x=0; $x<count($evmpprogram); $x+=3){
+        $count = count($evmpprogram);
+
+        for ($x = 0; $x < $count; $x += 3) {
+            if ($x + 2 >= $count) {
+                // We have reached the end of the array, so break out of the loop
+                break;
+            }
+
             $DBevmpprogram = new EVMPprogram();
             $DBevmpprogram->userid = Auth::user()->id;
             $DBevmpprogram->Enhancement_Mitigation_Measures = $evmpprogram[$x];
@@ -103,6 +117,9 @@ class ModuleFiveController extends Controller
 
             $DBevmpprogram->save();
         }
+
+
+
 
 
         $aqg  = new AQG();
