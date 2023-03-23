@@ -236,7 +236,7 @@
                                         <th style="text-align: center">pH</th>
                                         <th style="text-align: center">Oil & Grease (mg/L)</th>
                                         <th style="text-align: center">Temp Rise ©</th>
-                                        <td><input class="form-control" type="text" ></td>
+                                        <td><input class="form-control" type="text" name="name_parameter" id="npara" value="{{ old('name_parameter') }}"></td>
                                     </tr>
                                     <td></td>
                                     <td></td>
@@ -258,7 +258,7 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input class="form-control" type="text" ></td>
+                                        <td><input class="form-control" type="text" name="unit_parameter" id="upara" value="{{ old('unit_parameter') }}" ></td>
                                     </tr>
 
                                     <td></td>
@@ -283,7 +283,7 @@
                                         <td><input class="form-control" type="text"  id="phl" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td>
                                         <td><input class="form-control" type="text"  id="oag" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td>
                                         <td><input class="form-control" type="text"  id="tempr" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text" ></td>
+                                        <td><input class="form-control" type="text" id="add_p" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td>
                                         <td></td>
                                     </tr>
                                     </tbody>

@@ -218,6 +218,10 @@ class User extends Authenticatable
         return $this->hasMany(Drowcfop1::class,foreignKey: 'userid');
     }
 
+    /*New parameter*/
+    public function dreportofwaste_parameter (){
+        return $this->hasOne(DreportofWaste_parameter::class,foreignKey: 'userid');
+    }
     /*Module 3 End */
 
     /*Module4 start*/

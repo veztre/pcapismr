@@ -9,6 +9,7 @@ use App\Models\CostOfNew;
 use App\Models\CostOfOperating;
 use App\Models\DischargeLocation;
 use App\Models\DreportofWaste;
+use App\Models\DreportofWaste_parameter;
 use App\Models\Drowcfop;
 use App\Models\Drowcfop1;
 use App\Models\NewInvestment;
@@ -40,6 +41,7 @@ class ModuleThreeController extends Controller
         $drowcfop = Auth::user()->drowcfop();
         $drowcfop1 = Auth::user()->drowcfop1();
         $reference= Auth::user()->reference_no()->first();
+        $dreportofwaste_parameter = Auth::user()->dreportofwaste_parameter();
 
 
         return view('module.moduleThree')
@@ -57,13 +59,15 @@ class ModuleThreeController extends Controller
                 'dreportofwaste'=>$dreportofwaste,
                 'drowcfop'=>$drowcfop,
                 'drowcfop1'=>$drowcfop1,
-                'referencen'=>$reference->ref_no
+                'referencen'=>$reference->ref_no,
+                'dreportof_waste_parameters'=>$dreportofwaste_parameter,
             ]);
 
 
     }
 
     public function save(Request $request){
+
 
         $waterpolutiondata  = new WaterPolutionData();
         $waterpolutiondata->userid = Auth::user()->id;
@@ -151,13 +155,21 @@ class ModuleThreeController extends Controller
             $DBdischargeLocation->Name_of_Receiving_water_body = $dischargeLocation[$x+2];
             $DBdischargeLocation->save();
         }
+        /*dreportwaste_parameter*/
+        $dreportofwaste_parameter = $request->input('dreportof_waste_parameters');
+        $dreportofwaste_parameter = new DreportofWaste_parameter();
+        $dreportofwaste_parameter->userid = Auth::user()->id;
+        $dreportofwaste_parameter->name_parameter = $request->input('name_parameter');
+        $dreportofwaste_parameter->unit_parameter = $request->input('unit_parameter');
+        $dreportofwaste_parameter->save();
+        /*end dreportwaste_parameter*/
 
         $dreportofwaste = $request->input('dreportofwaste');
-        for ($x=0; $x<count($dreportofwaste); $x+=9 ){
+        for ($x=0; $x<count($dreportofwaste); $x+=10 ){
             $DBdreportofwaste = new DreportofWaste();
             $DBdreportofwaste->userid = Auth::user()->id;
             $DBdreportofwaste->Outlet_No = $dreportofwaste[$x];
-            $DBdreportofwaste->date = date('Y-m-d', intval($dreportofwaste[$x+1]));
+            $DBdreportofwaste->date = date('Y-m-d', strtotime($dreportofwaste[$x+1]));
             $DBdreportofwaste->NEffluent_Flow_Rate = $dreportofwaste[$x+2];
             $DBdreportofwaste->BOD_mg_L = $dreportofwaste[$x+3];
             $DBdreportofwaste->TSS_mg_L = $dreportofwaste[$x+4];
@@ -165,7 +177,8 @@ class ModuleThreeController extends Controller
             $DBdreportofwaste->pH = $dreportofwaste[$x+6];
             $DBdreportofwaste->Oil_Grease_mg_L = $dreportofwaste[$x+7];
             $DBdreportofwaste->Temp_Rise = $dreportofwaste[$x+8];
-
+            /*new parameter*/
+            $DBdreportofwaste->Add_parameter = $dreportofwaste[$x+9];
 
             $DBdreportofwaste->save();
         }
@@ -214,8 +227,6 @@ class ModuleThreeController extends Controller
 
 
 
-
-
         return redirect('moduleFour');
 
     }
@@ -236,6 +247,7 @@ class ModuleThreeController extends Controller
         $dreportofwaste = DreportofWaste::get();
         $drowcfop = Drowcfop::get();
         $drowcfop1 = Drowcfop1::get();
+        $dreportofwaste_parameter = DreportofWaste_parameter::get();
 
         $reference = referencen::get();
         $users = User::find($id);
@@ -255,6 +267,7 @@ class ModuleThreeController extends Controller
                 'dreportofwaste',
                 'drowcfop',
                 'drowcfop1',
+                'dreportofwaste_parameter',
             ));
 
     }
@@ -380,20 +393,22 @@ class ModuleThreeController extends Controller
 
         // Loop through all records and update each one
         foreach ($DBdreportofwaste as $index => $record) {
-            $record->Outlet_No = $dreportofwaste[$index*9];
-            $record->date = $dreportofwaste[$index*9+1];
+            $record->Outlet_No = $dreportofwaste[$index*10];
+            $record->date = $dreportofwaste[$index*10+1];
             $record->NEffluent_Flow_Rate = $dreportofwaste[$index*9+2];
-            $record->BOD_mg_L = $dreportofwaste[$index*9+3];
-            $record->TSS_mg_L = $dreportofwaste[$index*9+4];
-            $record->Color = $dreportofwaste[$index*9+5];
-            $record->pH = $dreportofwaste[$index*9+6];
-            $record->Oil_Grease_mg_L = $dreportofwaste[$index*9+7];
-            $record->Temp_Rise = $dreportofwaste[$index*9+8];
+            $record->BOD_mg_L = $dreportofwaste[$index*10+3];
+            $record->TSS_mg_L = $dreportofwaste[$index*10+4];
+            $record->Color = $dreportofwaste[$index*10+5];
+            $record->pH = $dreportofwaste[$index*10+6];
+            $record->Oil_Grease_mg_L = $dreportofwaste[$index*10+7];
+            $record->Temp_Rise = $dreportofwaste[$index*10+8];
+            /*new parameter*/
+            $record->Add_parameter = $dreportofwaste[$index*10+9];
             $record->update();
         }
 
 
-        for ($x = count($DBdreportofwaste)*9; $x < count($dreportofwaste); $x += 9) {
+        for ($x = count($DBdreportofwaste)*9; $x < count($dreportofwaste); $x += 10) {
             $newRecord = new DreportofWaste();
             $newRecord->userid = $userId;
             $newRecord->Outlet_No = $dreportofwaste[$x];
@@ -405,6 +420,8 @@ class ModuleThreeController extends Controller
             $newRecord->pH = $dreportofwaste[$x+6];
             $newRecord->Oil_Grease_mg_L = $dreportofwaste[$x+7];
             $newRecord->Temp_Rise = $dreportofwaste[$x+8];
+            /*new parameter*/
+            $newRecord->Add_parameter = $dreportofwaste[$x+9];
             $newRecord->save();
         }
 

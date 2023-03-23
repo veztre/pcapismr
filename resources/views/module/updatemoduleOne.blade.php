@@ -91,6 +91,7 @@
                                         <label for="year" hidden></label>
                                         <select class="form-select" id="year" name="year"  required>
                                             @foreach ($year as $years)
+                                                @if ($years->userid == Auth::id())
                                                 <option value="{{ $years->year }}">{{ $years->year }}</option>
                                                 <option value="2025" {{  $years->year  === '2025' ? 'selected' : '' }}>2025</option>
                                                 <option value="2024" {{  $years->year  === '2024' ? 'selected' : '' }}>2024</option>
@@ -103,6 +104,7 @@
                                                 <option value="2017" {{  $years->year  === '2017' ? 'selected' : '' }}>2017</option>
                                                 <option value="2016" {{  $years->year  === '2016' ? 'selected' : '' }}>2016</option>
                                                 <option value="2015" {{  $years->year  === '2015' ? 'selected' : '' }}>2015</option>
+                                                @endif
                                             @endforeach
                                         </select>
 
@@ -116,11 +118,13 @@
                                         <label for="quarter" hidden></label>
                                         <select class="form-select" id="quarter" required>
                                             @foreach ($quarter as $quarters)
+                                                @if ($quarters->userid == Auth::id())
                                                 <option value="{{ $quarters->quarter }}">{{ $quarters->quarter }}</option>
                                                 <option value="1st Quarter" {{ $quarters->quarter  === '1st Quarter' ? 'selected' : '' }}>1st Quarter</option>
                                                 <option value="2nd Quarter" {{  $quarters->quarter === '2nd Quarter' ? 'selected' : '' }}>2nd Quarter</option>
                                                 <option value="3rd Quarter" {{  $quarters->quarter  === '3rd Quarter' ? 'selected' : '' }}>3rd Quarter</option>
                                                 <option value="4th Quarter" {{  $quarters->quarter  === '4th Quarter' ? 'selected' : '' }}>4th Quarter</option>
+                                                @endif
                                             @endforeach
                                         </select>
 
@@ -164,11 +168,13 @@
                                         <p>Name of the Plant</p>
                                         <label for="plant" hidden></label>
                                         <select class="form-select" id="plant" required>
-                                            <option selected disabled value="">-- Select --</option>
-                                            <option class="">ATLANTIC COATINGS, INC.</option>
-                                            <option class="">2nd Plant</option>
-                                            <option class="">3rd Plant</option>
-                                            <option class="">4th Plant</option>
+                                            @foreach ($addfacility as $data)
+                                                @if ($data->userid == Auth::id())
+                                                    <option value="{{$data->embregion}}- {{$data->embid}}  {{$data->establishment}} " >
+                                                        {{$data->embregion}}- {{$data->embid}}  {{$data->establishment}}
+                                                    </option>
+                                                @endif
+                                            @endforeach
                                         </select>
                                         <div class="invalid-feedback">
                                             Please select a valid region.

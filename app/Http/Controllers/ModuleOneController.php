@@ -93,7 +93,7 @@ class ModuleOneController extends Controller
                 'production' => $production,
                 'referencen'=>$reference->ref_no,
                 'uploads'=>$upload,
-                'plant'=>$plant,
+                'plants'=>$plant,
             ]);
 
 
@@ -119,6 +119,11 @@ class ModuleOneController extends Controller
         $quarter->userid = $userId;
         $quarter->quarter = $request->input('quarter');
         $quarter->save();
+
+        $plant = new Plant();
+        $plant->userid = $userId;
+        $plant ->plantname = $request->input('plantname');
+        $plant->save();
 // end updated value
         $gic = new Gic();
         $gic->userid = $userId;
@@ -305,7 +310,9 @@ class ModuleOneController extends Controller
 
 
     public function pdf(){
-
+        $year = Yeardd::get();
+        $quarter = Quarterdd::get();
+        $plant = Plant::get();
         $aircon = Aircon::get();
         $gic = Gic::get();
         $dpno = Dpno::get();
@@ -324,10 +331,28 @@ class ModuleOneController extends Controller
         $pono =Pono::get();
         $operation = Operation::get();
         $production =Production::get();
-        $pdf = PDF::loadView('module.pdf1' , ['gic'=>$gic,
-            'aircon'=>$aircon,'dpno'=>$dpno,'cncno'=>$cncno,'denrid'=>$denrid,
-            'transporterReg'=>$transporterReg,'tsdreg'=>$tsdreg,'ccoreg'=>$ccoreg,'import'=>$import,'permit'=>$permit,'smallquan'=>$smallquan,
-            'priority'=>$priority,'piccs'=>$piccs,'pmpin'=>$pmpin,'acno'=>$acno,'pono'=>$pono,'operation'=>$operation,'production'=>$production
+        $pdf = PDF::loadView('module.pdf1' , [
+            'yeardds'=>$year,
+            'quarterdds'=>$quarter,
+            'plants'=>$plant,
+            'gic'=>$gic,
+            'aircon'=>$aircon,
+            'dpno'=>$dpno,
+            'cncno'=>$cncno,
+            'denrid'=>$denrid,
+            'transporterReg'=>$transporterReg,
+            'tsdreg'=>$tsdreg,
+            'ccoreg'=>$ccoreg,
+            'import'=>$import,
+            'permit'=>$permit,
+            'smallquan'=>$smallquan,
+            'priority'=>$priority,
+            'piccs'=>$piccs,
+            'pmpin'=>$pmpin,
+            'acno'=>$acno,
+            'pono'=>$pono,
+            'operation'=>$operation,
+            'production'=>$production
 
         ]);
 
@@ -345,6 +370,7 @@ class ModuleOneController extends Controller
 
         $year = Yeardd::get();
         $quarter = Quarterdd::get();
+        $plant = Plant::get();
         $referencens = Referencen::get();
         $aircon = Aircon::get();
         $gic = Gic::get();
@@ -366,10 +392,12 @@ class ModuleOneController extends Controller
         $production = Production::get();
         $uploads = Upload::get();
         $users = User::find($id);
+        $addfacility = Addfacility::get();
         return view('module.updatemoduleOne',
             compact('users',
                 'year',
                 'quarter',
+                'plant',
                 'referencens',
                 'dpno',
                 'gic',
@@ -390,6 +418,7 @@ class ModuleOneController extends Controller
                 'operation',
                 'production',
                 'uploads',
+                'addfacility',
 
 
 
@@ -397,7 +426,20 @@ class ModuleOneController extends Controller
     }
     public function update(Request $request, $id)
     {
+// updated value
+        $year = Yeardd::where('userid', $id)->first();
+        $year->year = $request->input('year');
+        $year->update();
 
+
+        $quarter = Quarterdd::where('userid', $id)->first();
+        $quarter->quarter = $request->input('quarter');
+        $quarter->update();
+
+        $plant = Plant::where('userid', $id)->first();
+        $plant ->plantname = $request->input('plantname');
+        $plant->update();
+// end updated value
         $gic = Gic::where('userid', $id)->first();
         $gic->description = $request->input('description');
         $gic->update();

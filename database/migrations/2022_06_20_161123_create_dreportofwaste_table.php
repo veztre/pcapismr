@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('pH');
             $table->string('Oil_Grease_mg_L');
             $table->string('Temp_Rise');
+            $table->string('Add_parameter');
             $table->timestamps();
         });
     }
