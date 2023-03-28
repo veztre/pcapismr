@@ -283,7 +283,7 @@
                                     @foreach ($dischargeLocation as $dischargeloc)
                                         @if ($dischargeloc->userid == Auth::id())
                                             <tr>
-                                                <td ><input class="form-control" type="number" name="dischargeLocation[]" value ="{{$dischargeloc->Outlet_Number }}"></td>
+                                                <td ><input class="form-control" type="text" name="dischargeLocation[]" value ="{{$dischargeloc->Outlet_Number }}"></td>
                                                 <td><input class="form-control" type="text"  id="lo" name="dischargeLocation[]" value="{{$dischargeloc->Location_of_Outlet }}"></td>
                                                 <td><input class="form-control" type="text"  id="nrwb" name="dischargeLocation[]" value="{{$dischargeloc->Name_of_Receiving_water_body }}"></td>
                                                 <td></td>
@@ -310,7 +310,7 @@
                                     <tr>
                                         <th style="text-align: center">Outlet No.</th>
                                         <th style="text-align: center">Date</th>
-                                        <th style="text-align: center">NEffluent Flow Rate (m3/day)</th>
+                                        <th style="text-align: center">Effluent Flow Rate (m3/day)</th>
                                         <th style="text-align: center">BOD (mg/L)</th>
                                         <th style="text-align: center">TSS (mg/L)</th>
                                         <th style="text-align: center">Color</th>

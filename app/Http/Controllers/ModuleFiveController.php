@@ -82,21 +82,17 @@ class ModuleFiveController extends Controller
             $DBaaqmonitoring->save();
         }
 
-        $oecondition = $request->input('oecondition.*');
-        $count = count($oecondition);
+        $enhance = $request->input('enhance.*');
+        $status = $request->input('status.*');
+        $action = $request->input('action.*');
+        $count = count($enhance);
 
-        for ($x = 0; $x < $count; $x += 3) {
-            if ($x + 2 >= $count) {
-                // We have reached the end of the array, so break out of the loop
-                break;
-            }
-
+        for ($x = 0; $x < $count; $x ++) {
             $DBoecondition = new OECondition();
             $DBoecondition->userid = Auth::user()->id;
-            $DBoecondition->ECC_Condition = $oecondition[$x];
-            $DBoecondition->Status_of_Compliance = $oecondition[$x+1];
-            $DBoecondition->Actions_Taken = $oecondition[$x+2];
-
+            $DBoecondition->ECC_Condition = $enhance[$x];
+            $DBoecondition->Status_of_Compliance = $status[$x];
+            $DBoecondition->Actions_Taken = $action[$x];
             $DBoecondition->save();
         }
 

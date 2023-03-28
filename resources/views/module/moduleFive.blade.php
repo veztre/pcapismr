@@ -157,19 +157,19 @@
 
                                         <tr>
                                             <td class="counterCell " style="text-align: right" ></td>
-                                            <td><input class="form-control" type="text" name="oecondition[]" value="{{ old('oecondition[]') }}"></td>
+                                            <td><input class="form-control" type="text" name="enhance[]" value="{{ old('enhance[]') }}"></td>
 
                                             <td style="text-align: center">
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="oecondition[]" id="oecRadio1" value="Yes"
-                                                               @if(old('oecondition[]') == 'Yes') checked @endif>
+                                                        <input class="form-check-input" type="radio" name="status[]" id="oecRadio1" value="Yes"
+                                                               @if(old('status[]') == 'Yes') checked @endif>
                                                         <label class="form-check-label" for="oecRadio1">
                                                             <p class="mt-3 mx-1">Yes</p>
                                                         </label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="oecondition[]" id="oecRadio2" value="No"
-                                                               @if(old('oecondition[]') == 'No') checked @endif>
+                                                        <input class="form-check-input" type="radio" name="status[]" id="oecRadio2" value="No"
+                                                               @if(old('status[]') == 'No') checked @endif>
                                                         <label class="form-check-label" for="oecRadio2">
                                                             <p class="mt-3 mx-1">No</p>
                                                         </label>
@@ -177,7 +177,7 @@
 
                                             </td>
 
-                                            <td><textarea class="form-control" type="text" name="oecondition[]" style="overflow:scroll; overflow: hidden visible;">{{ old('oecondition.') }}</textarea>
+                                            <td><textarea class="form-control" type="text" name="action[]" style="overflow:scroll; overflow: hidden visible;">{{ old('action[]') }}</textarea>
                                             </td>
 
                                         </tr>

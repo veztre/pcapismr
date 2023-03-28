@@ -154,16 +154,15 @@ class ModuleTwoController extends Controller
 
         $referencens = Referencen::get();
         $hwGeneration = HwGeneration::get();
-        $hwDetails = HWDetails::get();
-        $storage = Storage::get();
-        $treater = Treater::get();
-        $transporter = Transporter::get();
-        $disposal = Disposal::get();
-        $osisa = Osisa::get();
+        $hwDetails = Auth::user()->hwDetails()->get();
+        $storage = Auth::user()->storage()->get();
 
-        $users = User::find($id);
+        $treater = Auth::user()->treater()->get();
+        $transporter = Auth::user()->transporter()->get();
+        $disposal = Auth::user()->disposal()->get();
+        $osisa = Osisa::get();
         return view('module.updatemoduleTwo',
-            compact('users',
+            compact(
                 'referencens',
                 'hwGeneration',
                 'hwDetails',
@@ -173,8 +172,9 @@ class ModuleTwoController extends Controller
                 'transporter',
                 'osisa',
 
-
             ));
+
+
     }
 
     public function update(Request $request, $id)
@@ -182,7 +182,7 @@ class ModuleTwoController extends Controller
 
         $hwGeneration = $request->input('hwGeneration');
         $userId = Auth::user()->id;
-
+        dd($userId);
         // Get all records for the current user
         $DBhwGeneration = HwGeneration::where('userid', $userId)->get();
 
@@ -220,6 +220,7 @@ class ModuleTwoController extends Controller
         $userId = Auth::user()->id;
         // Get all records for the current user
         $DBhwDetails = HWDetails::where('userid', $userId)->get();
+        dd($hwDetails);
         // Loop through all records and update each one
         foreach ($DBhwDetails as $index => $record) {
             $record->Hwno = $hwDetails[$index*5];
@@ -237,7 +238,6 @@ class ModuleTwoController extends Controller
             $newRecord->QtyOfHWTreated = $hwDetails[$x+2];
             $newRecord->Unit = $hwDetails[$x+3];
             $newRecord->TSDLocation = $hwDetails[$x+4];
-
             $newRecord->save();
 
 

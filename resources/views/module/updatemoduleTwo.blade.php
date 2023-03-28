@@ -33,7 +33,7 @@
                         <div class="card m-auto mb-4">
                             <div class="col">
 
-                                <form action="{{ route('update2', $users->id) }}" method="POST">
+                                <form action="{{ route('update2', Auth::user()->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <!-- {{csrf_field()}}-->
@@ -277,8 +277,11 @@
 
                                             <table class="table table-borderless p-3">
 
-                                                    @foreach ($hwDetails as $hwDetail)
-                                                        @if ($hwDetail->userid == Auth::id())
+                                                @foreach ($hwDetails as $hwDetail)
+
+
+
+
                                                             <thead>
                                                             <tr>
                                                                 <th>HW Details</th>
@@ -386,12 +389,14 @@
                                                                         <td><input type="text" class="form-control" name="hwDetails[]" value="{{$hwDetail->TSDLocation}}"></td>
                                                                     </tr>
                                                             </tbody>
-                                                    @endif {{--hwdetails--}}
 
 
-                                                            @foreach ($storage as $store)
 
-                                                            @if ($store->userid == Auth::id())
+
+                                                  @foreach ($storage as $store)
+                                                      @if($hwDetail->id == $store->id)
+
+
                                                             <thead>
                                                             <tr>
                                                                 <th>Storage</th>
@@ -417,11 +422,14 @@
                                                                     </tr>
 
                                                             </tbody>
-                                                            @endif {{--storage--}}
+                                                        @endif
+                                                    @endforeach  {{--storage--}}
+
+                                                    @foreach ($transporter as $trans)
+                                                        @if($hwDetail->id == $trans->id)
 
 
-                                                                @foreach ($transporter as $trans)
-                                                                    @if ($trans->userid == Auth::id())
+
                                                             <thead>
                                                             <tr>
                                                                 <th>Transporter</th>
@@ -452,11 +460,13 @@
                                                                     </tr>
 
                                                             </tbody>
-                                                                    @endif {{--Transporter--}}
+
+                                                        @endif
+                                                        @endforeach  {{--Transporter--}}
 
 
-                                                                        @foreach ($treater as $treat)
-                                                                            @if ($treat->userid == Auth::id())
+                                                    @foreach ($treater as $treat)
+                                                        @if($hwDetail->id == $treat->id)
                                                             <thead>
                                                             <tr>
                                                                 <th>Treater</th>
@@ -488,10 +498,12 @@
                                                                     </tr>
 
                                                             </tbody>
-                                                                            @endif{{--Treater--}}
+                                                        @endif
+                                                    @endforeach {{--Treater--}}
 
-                                                                                @foreach ($disposal as $disp)
-                                                                                @if ($disp->userid == Auth::id())
+
+                                                    @foreach ($disposal as $disp)
+                                                        @if($hwDetail->id == $disp->id)
                                                                                         <thead>
                                                                                         <tr>
                                                                                             <th>Disposal</th>
@@ -522,14 +534,13 @@
 
 
                                                                                         </tbody>
-                                                                                    @endif
 
-                                                                                @endforeach    {{--hwdetails--}}
-                                                                        @endforeach  {{--storage--}}
-                                                                @endforeach  {{--Transporter--}}
-                                                            @endforeach {{--Treater--}}
 
-                                                @endforeach {{--Disposal--}}
+                                                        @endif
+                                                    @endforeach {{--Disposal--}}
+
+                                                @endforeach    {{--hwdetails--}}
+
 
 
 
