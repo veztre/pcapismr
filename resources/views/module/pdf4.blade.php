@@ -16,27 +16,29 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
-</style>               
-                        
-                        
+</style>
+
+
                         <div class="col">
                         <p class="p-1 mt-3  text-light" style="background-color:gray; font-size:20px ">
-                             MODULE 4: RA 8789 (AIR POLLUTION)  
-                             
-            
+                             MODULE 4: RA 8789 (AIR POLLUTION)
+
+
                         </p>
                     </div>
 
-                
+
                     <div class="container " >
                         <table >
                             <h3 class="mt-3 mx-2 text-success">SUMMARY OF APSE / APCF</h3>
+
                         </div>
+
                             </table>
 
                             <!-- SUMMARY OF APSE / APCF -->
 
-                   
+
 
                             <table >
                                 <tbody>
@@ -50,7 +52,7 @@ tr:nth-child(even) {
                                     <td style="text-align: center">{{ $summary->Process_Equipment }}</td>
                                     <td style="text-align: center">{{ $summary->Location }}</td>
                                     <td style="text-align: center">{{ $summary->no_of_hours_of_operation_for_the_quarter }}</td>
-                                 
+
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -58,7 +60,7 @@ tr:nth-child(even) {
 
                             <table >
                                 <tbody>
-                                    
+
                                     <tr>
                                         <td style="text-align:center">Fuel Burning Equipment</td>
                                         <td style="text-align:center">Rated Capacity</td>
@@ -112,7 +114,7 @@ tr:nth-child(even) {
                                     <td style="text-align: center">{{ $summaryyy->Pollution_Control_Facility }}</td>
                                     <td style="text-align: center">{{ $summaryyy->Location }}</td>
                                     <td style="text-align: center">{{ $summaryyy->no_of_hours_of_operation_for_the_quarter }}</td>
-                                 
+
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -140,7 +142,7 @@ tr:nth-child(even) {
                     <tbody>
                      @foreach ($cost_of_person_employed as $item)
                     <tr>
-    
+
                     <td>Cost of Person employed, (# of employess)</td>
                     <td style="text-align:center">{{ $item->month1 }}</td>
                      <td style="text-align:center">{{ $item->month2 }}</td>
@@ -148,7 +150,7 @@ tr:nth-child(even) {
 
                     </tr>
                     @endforeach
-                    
+
                     @foreach ($total_consumption_of_water as $tow)
                     <tr>
 
@@ -166,7 +168,7 @@ tr:nth-child(even) {
                     <td style="text-align:center">{{ $tcocu->month1 }}</td>
                      <td style="text-align:center">{{ $tcocu->month2 }}</td>
                      <td style="text-align:center">{{ $tcocu->month3 }}</td>
-                    
+
                     </tr>
                     @endforeach
 
@@ -176,7 +178,7 @@ tr:nth-child(even) {
                     <td style="text-align:center">{{ $tcoe->month1 }}</td>
                      <td style="text-align:center">{{ $tcoe->month2 }}</td>
                      <td style="text-align:center">{{ $tcoe->month3 }}</td>
-                    
+
                     </tr>
                     @endforeach
 
@@ -186,7 +188,7 @@ tr:nth-child(even) {
                     <td style="text-align:center">{{ $aaoc->month1 }}</td>
                      <td style="text-align:center">{{ $aaoc->month2 }}</td>
                      <td style="text-align:center">{{ $aaoc->month3 }}</td>
-                    
+
                     </tr>
                     @endforeach
 
@@ -196,17 +198,17 @@ tr:nth-child(even) {
                     <td style="text-align:center">{{ $cooihl->month1 }}</td>
                      <td style="text-align:center">{{ $cooihl->month2 }}</td>
                      <td style="text-align:center">{{ $cooihl->month3 }}</td>
-                    
+
                     </tr>
                     @endforeach
-                    
+
                     @foreach ($improvement_or_modification as $iom)
                     <tr>
                     <td>improvement or modification, if any. (description)</td>
                     <td style="text-align:center">{{ $iom->month1 }}</td>
                      <td style="text-align:center">{{ $iom->month2 }}</td>
                      <td style="text-align:center">{{ $iom->month3 }}</td>
-                    
+
                     </tr>
                     @endforeach
 
@@ -216,7 +218,7 @@ tr:nth-child(even) {
                     <td style="text-align:center">{{ $coiom->month1 }}</td>
                      <td style="text-align:center">{{ $coiom->month2 }}</td>
                      <td style="text-align:center">{{ $coiom->month3 }}</td>
-                    
+
                     </tr>
                     @endforeach
                     </tbody>
@@ -247,7 +249,7 @@ tr:nth-child(even) {
 
                                     @foreach ($detailreport as $dr)
                                    <tr>
-                                        
+
                                         <td style="text-align:center">{{$dr->FBE_No}}</td>
                                         <td style="text-align:center">{{$dr->Date}}</td>
                                         <td style="text-align:center">{{$dr->Flow_Rate_Ncm_day}}</td>

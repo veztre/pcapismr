@@ -176,6 +176,7 @@
                             <tbody>
 
                             @foreach($addfacility as $facility)
+                                @if ($facility->userid == Auth::id())
                             <tr role="row" class="odd">
                                 <td tabindex="0" class="sorting_1">{{$facility->embregion}}- {{$facility->embid}}</td>
                                 <td>{{$facility->establishment}}</td>
@@ -186,6 +187,7 @@
                                 <td></td>
                                 <td></td>
                             </tr>
+                                @endif
                             @endforeach
 
                             </tbody>

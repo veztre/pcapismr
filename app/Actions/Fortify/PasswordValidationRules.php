@@ -14,7 +14,7 @@ trait PasswordValidationRules
     protected function passwordRules(): array
     {
         return ['required', 'string', 'confirmed',(new Password)->length(7),
-            (new Password)->length(7)->requireUppercase(),(new Password)->length(7)->requireNumeric()
+           /* (new Password)->length(7)->requireUppercase(),(new Password)->length(7)->requireNumeric()*/
         ];
     }
 }
