@@ -182,7 +182,7 @@ class ModuleTwoController extends Controller
 
         $hwGeneration = $request->input('hwGeneration');
         $userId = Auth::user()->id;
-        dd($userId);
+
         // Get all records for the current user
         $DBhwGeneration = HwGeneration::where('userid', $userId)->get();
 
@@ -220,7 +220,7 @@ class ModuleTwoController extends Controller
         $userId = Auth::user()->id;
         // Get all records for the current user
         $DBhwDetails = HWDetails::where('userid', $userId)->get();
-        dd($hwDetails);
+
         // Loop through all records and update each one
         foreach ($DBhwDetails as $index => $record) {
             $record->Hwno = $hwDetails[$index*5];

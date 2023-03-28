@@ -133,17 +133,15 @@
                                                         <td><select class="form-select" name="hwGeneration[]" style="width: fit-content" >
 
                                                                 <option value="A101" {{ $hwGen->HWno === 'A101' ? 'selected' : '' }}>A101</option>
-                                                                <option value="A201" {{ $hwGen->HWno === 'A201' ? 'selected' : '' }}>A201</option>
-                                                                <option value="B202" {{ $hwGen->HWno === 'B202' ? 'selected' : '' }}>B202</option>
                                                                 <option value="B201" {{ $hwGen->HWno === 'B201' ? 'selected' : '' }}>B201</option>
                                                                 <option value="B202" {{ $hwGen->HWno === 'B202' ? 'selected' : '' }}>B202</option>
                                                                 <option value="B203" {{ $hwGen->HWno === 'B203' ? 'selected' : '' }}>B203</option>
                                                                 <option value="B204" {{ $hwGen->HWno === 'B204' ? 'selected' : '' }}>B204</option>
                                                                 <option value="B205" {{ $hwGen->HWno === 'B205' ? 'selected' : '' }}>B205</option>
                                                                 <option value="B206" {{ $hwGen->HWno === 'B206' ? 'selected' : '' }}>B206</option>
-                                                                <option value="B207" {{ $hwGen->HWno === 'B207' ? 'selected' : '' }}>B207></option>
-                                                                <option value="B208" {{ $hwGen->HWno === 'B208' ? 'selected' : '' }}>B208></option>
-                                                                <option value="B209" {{ $hwGen->HWno === 'B209' ? 'selected' : '' }}>B209></option>
+                                                                <option value="B207" {{ $hwGen->HWno === 'B207' ? 'selected' : '' }}>B207</option>
+                                                                <option value="B208" {{ $hwGen->HWno === 'B208' ? 'selected' : '' }}>B208</option>
+                                                                <option value="B299" {{ $hwGen->HWno === 'B299' ? 'selected' : '' }}>B299></option>
                                                                 <option value="C301" {{ $hwGen->HWno === 'C301' ? 'selected' : '' }}>C301</option>
                                                                 <option value="C302" {{ $hwGen->HWno === 'C302' ? 'selected' : '' }}>C302</option>
                                                                 <option value="C303" {{ $hwGen->HWno === 'C303' ? 'selected' : '' }}>C303</option>
@@ -277,10 +275,10 @@
 
                                             <table class="table table-borderless p-3">
 
+
+
+
                                                 @foreach ($hwDetails as $hwDetail)
-
-
-
 
                                                             <thead>
                                                             <tr>
@@ -300,17 +298,15 @@
                                                                         <td><select class="form-select" name="hwDetails[]" style="width: fit-content">
                                                                                 <option value="{{$hwDetail->HWno}}">{{$hwDetail->HWno}}</option>
                                                                                 <option value="A101" {{ $hwDetail->HWno === 'A101' ? 'selected' : '' }}>A101</option>
-                                                                                <option value="A201" {{ $hwDetail->HWno === 'A201' ? 'selected' : '' }}>A201</option>
-                                                                                <option value="B202" {{ $hwDetail->HWno === 'B202' ? 'selected' : '' }}>B202</option>
                                                                                 <option value="B201" {{ $hwDetail->HWno === 'B201' ? 'selected' : '' }}>B201</option>
                                                                                 <option value="B202" {{ $hwDetail->HWno === 'B202' ? 'selected' : '' }}>B202</option>
                                                                                 <option value="B203" {{ $hwDetail->HWno === 'B203' ? 'selected' : '' }}>B203</option>
                                                                                 <option value="B204" {{ $hwDetail->HWno === 'B204' ? 'selected' : '' }}>B204</option>
                                                                                 <option value="B205" {{ $hwDetail->HWno === 'B205' ? 'selected' : '' }}>B205</option>
                                                                                 <option value="B206" {{ $hwDetail->HWno === 'B206' ? 'selected' : '' }}>B206</option>
-                                                                                <option value="B207" {{ $hwDetail->HWno === 'B207' ? 'selected' : '' }}>B207></option>
-                                                                                <option value="B208" {{ $hwDetail->HWno === 'B208' ? 'selected' : '' }}>B208></option>
-                                                                                <option value="B209" {{ $hwDetail->HWno === 'B209' ? 'selected' : '' }}>B209></option>
+                                                                                <option value="B207" {{ $hwDetail->HWno === 'B207' ? 'selected' : '' }}>B207</option>
+                                                                                <option value="B208" {{ $hwDetail->HWno === 'B208' ? 'selected' : '' }}>B208</option>
+                                                                                <option value="B299" {{ $hwDetail->HWno === 'B299' ? 'selected' : '' }}>B299></option>
                                                                                 <option value="C301" {{ $hwDetail->HWno === 'C301' ? 'selected' : '' }}>C301</option>
                                                                                 <option value="C302" {{ $hwDetail->HWno === 'C302' ? 'selected' : '' }}>C302</option>
                                                                                 <option value="C303" {{ $hwDetail->HWno === 'C303' ? 'selected' : '' }}>C303</option>
@@ -539,7 +535,7 @@
                                                         @endif
                                                     @endforeach {{--Disposal--}}
 
-                                                @endforeach    {{--hwdetails--}}
+
 
 
 
@@ -548,9 +544,11 @@
 
 
                                             </table>
+                                            @endforeach    {{--hwdetails--}}
                                         </div>
 
                                     </div>
+
                                     <td>
                                         <button type="button" name="add" id="wstd" class="btn btn-outline-primary" style="margin-left: 2.5%" >+</button>
                                     </td>
