@@ -16,6 +16,7 @@ table {
 td {
     border: 1px solid #dddddd;
     padding: 8px;
+    background-color: white;
 }
 
 tr:nth-child(even) {
@@ -69,7 +70,7 @@ tr:nth-child(even) {
 
                   <tr>
 
-                    <td>{{$item->description}}</td>
+                    <td style="text-align: justify ">{{$item->description}}</td>
 
                   </tr>
 
@@ -91,92 +92,107 @@ tr:nth-child(even) {
                       </tr>
                     </thead>
 
+
                     <tbody>
-                      @foreach ($aircon as $air)
 
                       <tr>
                         <td colspan="4"><b>RA 9275</b></td>
                       </tr>
-
+                      @foreach ($aircon as $air)
                       <tr>
+
                           <td style="text-align: center; background-color: white;">A/C</td>
                           <td style="text-align: center; background-color: white;">{{$air->permit}}</td>
-                          <td style="text-align: center; background-color: white">{{$air->dateIssued}}</td>
-                          <td style="text-align: center; background-color: white">{{$air->dateExpired}}</td>
+                          <td style="text-align: center; background-color: white;">{{$air->dateIssued}}</td>
+                          <td style="text-align: center; background-color: white;">{{$air->dateExpired}}</td>
                       </tr>
-
-
-
                       @endforeach
+
                     </tbody>
 
                     <tbody>
+
 
                     @foreach ($dpno as $dp)
-
                         <tr>
-                          <td style="text-align: center; ">DP no.</td>
-                          <td style="text-align: center;">{{$dp->permit}}</td>
-                          <td style="text-align: center;">{{$dp->dateIssued}}</td>
-                          <td style="text-align: center;">{{$dp->dateExpired}}</td>
-
+                            @if ($loop->first)
+                                <td style="text-align: center; background-color: white; border-bottom-style: none;">DP no.</td>
+                                <td style="text-align: center; background-color: white;">{{$dp->permit}}</td>
+                                <td style="text-align: center; background-color: white;">{{$dp->dateIssued}}</td>
+                                <td style="text-align: center; background-color: white;">{{$dp->dateExpired}}</td>
+                            @else
+                                <td style="text-align: center; background-color: white; border-style: none">&nbsp;</td>
+                                <td style="text-align: center; background-color: white;">{{$dp->permit}}</td>
+                                <td style="text-align: center; background-color: white;">{{$dp->dateIssued}}</td>
+                                <td style="text-align: center; background-color: white;">{{$dp->dateExpired}}</td>
+                            @endif
                         </tr>
 
-                        @endforeach
-
-
+                    @endforeach
                     </tbody>
 
                     <tbody>
 
-                      @foreach ($cncno as $cn)
+
 
 
                         <tr>
                             <td colspan="4"><b>PD 1586</b></td>
 
                         </tr>
-
+                        @foreach ($cncno as $cn)
                           <tr>
-                              <td style="text-align: center; background-color: white">ECC/CNC no.</td>
-                              <td style="text-align: center; background-color: white">{{$cn->permit}}</td>
-                              <td style="text-align: center; background-color: white">{{$cn->dateIssued}}</td>
-                              <td style="text-align: center; background-color: white">{{$cn->dateExpired}}</td>
+                              @if ($loop->first)
+                                  <td style="text-align: center; background-color: white; border-bottom-style: none;">ECC/CNC no.</td>
+                                  <td style="text-align: center; background-color: white">{{$cn->permit}}</td>
+                                  <td style="text-align: center; background-color: white">{{$cn->dateIssued}}</td>
+                                  <td style="text-align: center; background-color: white">{{$cn->dateExpired}}</td>
+                              @else
+                                  <td style="text-align: center; background-color: white; border-style: none">&nbsp;</td>
+                                  <td style="text-align: center; background-color: white;">{{$cn->permit}}</td>
+                                  <td style="text-align: center; background-color: white;">{{$cn->dateIssued}}</td>
+                                  <td style="text-align: center; background-color: white;">{{$cn->dateExpired}}</td>
+                              @endif
                           </tr>
-                        @endforeach
+                              @endforeach
                     </tbody>
-                            @foreach ($denrid as $denr)
+
 
                     <tbody>
                         <tr>
                             <td colspan="4"><b>RA 6969</b></td>
 
                         </tr>
-
+                        @foreach ($denrid as $denr)
                         <tr>
                             <td style="text-align: center; background-color: white">DENR Registry ID</td>
+
+
                             <td style="text-align: center; background-color: white">{{$denr->permit}}</td>
                             <td style="text-align: center; background-color: white">{{$denr->dateIssued}}</td>
                             <td style="text-align: center; background-color: white">{{$denr->dateExpired}}</td>
                         </tr>
 
-                        @endforeach
+                            @endforeach
                     </tbody>
 
-                   @foreach ($transporterReg as $trans)
+
 
                    <tbody>
+                   @foreach ($transporterReg as $trans)
                         <tr>
-                            <td style="text-align: center;">Transporter Registration</td>
-                            <td style="text-align: center;">{{$trans->permit}}</td>
-                            <td style="text-align: center;">{{$trans->dateIssued}}</td>
+                            <td style="text-align: center; ">Transporter Registration</td>
+                            <td style="text-align: center; ">{{$trans->permit}}</td>
+                            <td style="text-align: center; ">{{$trans->dateIssued}}</td>
                             <td style="text-align: center;">{{$trans->dateExpired}}</td>
                         </tr>
-                        @endforeach
+                            @endforeach
                     </tbody>
-                    @foreach ($tsdreg as $tsd)
+
+
 
                     <tbody>
+                    @foreach ($tsdreg as $tsd)
                         <tr>
                             <td style="text-align: center;">TSD Registration</td>
                             <td style="text-align: center;">{{$tsd->permit}}</td>
@@ -186,97 +202,154 @@ tr:nth-child(even) {
 
                         @endforeach
                     </tbody>
+
+
+
+                    <tbody>
                     @foreach ($ccoreg as $cco)
+                        <tr>
+                            @if ($loop->first)
+                                <td style="text-align: center; background-color: white; border-bottom-style: none;">CCO Registration</td>
+                                <td style="text-align: center;">{{$cco->permit}}</td>
+                                <td style="text-align: center;">{{$cco->dateIssued}}</td>
+                                <td style="text-align: center;">{{$cco->dateExpired}}</td>
+                            @else
+                                <td style="text-align: center; background-color: white; border-style: none">&nbsp;</td>
+                                <td style="text-align: center; background-color: white;">{{$cco->permit}}</td>
+                                <td style="text-align: center; background-color: white;">{{$cco->dateIssued}}</td>
+                                <td style="text-align: center; background-color: white;">{{$cco->dateExpired}}</td>
+                            @endif
+                        </tr>
+
+                           @endforeach
+                    </tbody>
+
+
 
 
                     <tbody>
-                        <tr>
-                            <td style="text-align: center;">CCO Registration</td>
-                            <td style="text-align: center;">{{$cco->permit}}</td>
-                            <td style="text-align: center;">{{$cco->dateIssued}}</td>
-                            <td style="text-align: center;">{{$cco->dateExpired}}</td>
-                        </tr>
-
-                        @endforeach
-                    </tbody>
-
                     @foreach ($import as $imp)
+                        <tr>
+                            @if ($loop->first)
+                                <td style="text-align: center; background-color: white; border-bottom-style: none;">Importation Clearance No.</td>
+                                <td style="text-align: center;">{{$imp->permit}}</td>
+                                <td style="text-align: center;">{{$imp->dateIssued}}</td>
+                                <td style="text-align: center;">{{$imp->dateExpired}}</td>
+                            @else
+                                <td style="text-align: center; background-color: white; border-style: none">&nbsp;</td>
+                                <td style="text-align: center; background-color: white;">{{$imp->permit}}</td>
+                                <td style="text-align: center; background-color: white;">{{$imp->dateIssued}}</td>
+                                <td style="text-align: center; background-color: white;">{{$imp->dateExpired}}</td>
+                            @endif
+                        </tr>
+
+                            @endforeach
+                    </tbody>
+
 
 
                     <tbody>
-                        <tr>
-                            <td style="text-align: center;">Importation Clearance No.</td>
-                            <td style="text-align: center;">{{$imp->permit}}</td>
-                            <td style="text-align: center;">{{$imp->dateIssued}}</td>
-                            <td style="text-align: center;">{{$imp->dateExpired}}</td>
-                        </tr>
-
-                        @endforeach
-                    </tbody>
                     @foreach ($permit as $permt)
+                        <tr>
+                            @if ($loop->first)
+                                <td style="text-align: center; background-color: white; border-bottom-style: none;">Permit to Transport</td>
+                                <td style="text-align: center;">{{$permt->permit}}</td>
+                                <td style="text-align: center;">{{$permt->dateIssued}}</td>
+                                <td style="text-align: center;">{{$permt->dateExpired}}</td>
+                            @else
+                                <td style="text-align: center; background-color: white; border-style: none">&nbsp;</td>
+                                <td style="text-align: center; background-color: white;">{{$permt->permit}}</td>
+                                <td style="text-align: center; background-color: white;">{{$permt->dateIssued}}</td>
+                                <td style="text-align: center; background-color: white;">{{$permt->dateExpired}}</td>
+                            @endif
+                        </tr>
+
+                             @endforeach
+                    </tbody>
 
 
                     <tbody>
-                        <tr>
-                            <td style="text-align: center;">Permit to Transport</td>
-                            <td style="text-align: center;">{{$permt->permit}}</td>
-                            <td style="text-align: center;">{{$permt->dateIssued}}</td>
-                            <td style="text-align: center;">{{$permt->dateExpired}}</td>
-                        </tr>
-
-                        @endforeach
-                    </tbody>
                     @foreach ($smallquan as $small)
-
-                    <tbody>
                         <tr>
-                            <td style="text-align: center;"> Small Quantity Importation</td>
-                            <td style="text-align: center;">{{$small->permit}}</td>
-                            <td style="text-align: center;">{{$small->dateIssued}}</td>
-                            <td style="text-align: center;">{{$small->dateExpired}}</td>
+                            @if ($loop->first)
+                                <td style="text-align: center; background-color: white; border-bottom-style: none;">Small Quantity Importation</td>
+                                <td style="text-align: center;">{{$small->permit}}</td>
+                                <td style="text-align: center;">{{$small->dateIssued}}</td>
+                                <td style="text-align: center;">{{$small->dateExpired}}</td>
+                            @else
+                                <td style="text-align: center; background-color: white; border-style: none">&nbsp;</td>
+                                <td style="text-align: center; background-color: white;">{{$small->permit}}</td>
+                                <td style="text-align: center; background-color: white;">{{$small->dateIssued}}</td>
+                                <td style="text-align: center; background-color: white;">{{$small->dateExpired}}</td>
+                            @endif
                         </tr>
 
-                        @endforeach
+                            @endforeach
                     </tbody>
 
+
+
+                    <tbody>
                     @foreach ($priority as $prio)
-
-                    <tbody>
                         <tr>
-                            <td style="text-align: center;">Priority Chemical List</td>
-                            <td style="text-align: center;">{{$prio->permit}}</td>
-                            <td style="text-align: center;">{{$prio->dateIssued}}</td>
-                            <td style="text-align: center;">{{$prio->dateExpired}}</td>
+                            @if ($loop->first)
+                                <td style="text-align: center; background-color: white; border-bottom-style: none;">Priority Chemical List</td>
+                                <td style="text-align: center;">{{$prio->permit}}</td>
+                                <td style="text-align: center;">{{$prio->dateIssued}}</td>
+                                <td style="text-align: center;">{{$prio->dateExpired}}</td>
+                            @else
+                                <td style="text-align: center; background-color: white; border-style: none">&nbsp;</td>
+                                <td style="text-align: center; background-color: white;">{{$prio->permit}}</td>
+                                <td style="text-align: center; background-color: white;">{{$prio->dateIssued}}</td>
+                                <td style="text-align: center; background-color: white;">{{$prio->dateExpired}}</td>
+                            @endif
                         </tr>
 
-                        @endforeach
+                            @endforeach
                     </tbody>
 
-                    @foreach ($piccs as $pic)
+
 
                     <tbody id="piccs">
+
+                    @foreach ($piccs as $pic)
                         <tr>
-                            <td style="text-align: center;">PICCS</td>
-                            <td style="text-align: center;">{{$pic->permit}}</td>
-                            <td style="text-align: center;">{{$pic->dateIssued}}</td>
-                            <td style="text-align: center;">{{$pic->dateExpired}}</td>
+                            @if ($loop->first)
+                                <td style="text-align: center; background-color: white; border-bottom-style: none;">PICCS</td>
+                                <td style="text-align: center;">{{$pic->permit}}</td>
+                                <td style="text-align: center;">{{$pic->dateIssued}}</td>
+                                <td style="text-align: center;">{{$pic->dateExpired}}</td>
+                            @else
+                                <td style="text-align: center; background-color: white; border-style: none">&nbsp;</td>
+                                <td style="text-align: center; background-color: white;">{{$pic->permit}}</td>
+                                <td style="text-align: center; background-color: white;">{{$pic->dateIssued}}</td>
+                                <td style="text-align: center; background-color: white;">{{$pic->dateExpired}}</td>
+                            @endif
                         </tr>
 
-                        @endforeach
+                            @endforeach
                     </tbody>
-                    @foreach ($pmpin as $pin)
+
 
                     <tbody>
+                    @foreach ($pmpin as $pin)
                         <tr>
-                            <td style="text-align: center;">PMPIN</td>
-                            <td style="text-align: center;">{{$pin->permit}}</td>
-                            <td style="text-align: center;">{{$pin->dateIssued}}</td>
-                            <td style="text-align: center;">{{$pin->dateExpired}}</td>
+                            @if ($loop->first)
+                                <td style="text-align: center; background-color: white; border-bottom-style: none;">PMPIN</td>
+                                <td style="text-align: center;">{{$pin->permit}}</td>
+                                <td style="text-align: center;">{{$pin->dateIssued}}</td>
+                                <td style="text-align: center;">{{$pin->dateExpired}}</td>
+                            @else
+                                <td style="text-align: center; background-color: white; border-style: none">&nbsp;</td>
+                                <td style="text-align: center; background-color: white;">{{$pin->permit}}</td>
+                                <td style="text-align: center; background-color: white;">{{$pin->dateIssued}}</td>
+                                <td style="text-align: center; background-color: white;">{{$pin->dateExpired}}</td>
+                            @endif
                         </tr>
 
-                        @endforeach
+                            @endforeach
                     </tbody>
-                    @foreach ($acno as $ac)
+
 
                     <tbody>
                         <tr>
@@ -284,6 +357,7 @@ tr:nth-child(even) {
 
                         </tr>
 
+                        @foreach ($acno as $ac)
 
                         <tr>
                             <td style="text-align: center; background-color: white">A/C no.</td>
@@ -295,17 +369,25 @@ tr:nth-child(even) {
                         @endforeach
 
                     </tbody>
-                    @foreach ($pono as $pn)
+
 
 
                     <tbody>
+                    @foreach ($pono as $pn)
                         <tr>
-                            <td style="text-align: center;">PO No.</td>
-                            <td style="text-align: center;">{{$pn->permit}}</td>
-                            <td style="text-align: center;">{{$pn->dateIssued}}</td>
-                            <td style="text-align: center;">{{$pn->dateExpired}}</td>
+                            @if ($loop->first)
+                                <td style="text-align: center; background-color: white; border-bottom-style: none;">PO No.</td>
+                                <td style="text-align: center;">{{$pn->permit}}</td>
+                                <td style="text-align: center;">{{$pn->dateIssued}}</td>
+                                <td style="text-align: center;">{{$pn->dateExpired}}</td>
+                            @else
+                                <td style="text-align: center; background-color: white; border-style: none">&nbsp;</td>
+                                <td style="text-align: center; background-color: white;">{{$pn->permit}}</td>
+                                <td style="text-align: center; background-color: white;">{{$pn->dateIssued}}</td>
+                                <td style="text-align: center; background-color: white;">{{$pn->dateExpired}}</td>
+                            @endif
                         </tr>
-                        @endforeach
+                            @endforeach
                     </tbody>
   </table>
   <h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder">OPERATION</h2>
@@ -321,15 +403,19 @@ tr:nth-child(even) {
                                 <th style="text-align: center;"># shift/day</th>
 
                         </thead>
-                          @foreach ($operation as $operate)
 
+                      @foreach ($operation as $operate)
                         <tbody>
                             <tr>
                                 <td><b>Average</b></td>
+
+
                                 <td style="text-align: center;">{{$operate->aveOPhours}}</td>
                                 <td style="text-align: center;">{{$operate->aveOPdays}}</td>
                                 <td style="text-align: center;">{{$operate->aveOPshift}}</td>
                             </tr>
+
+
                         </tbody>
 
                             <tbody>
@@ -341,7 +427,7 @@ tr:nth-child(even) {
 
                             </tr>
 
-                            @endforeach
+                               @endforeach
                         </tbody>
                     </table>
 

@@ -358,7 +358,7 @@
 <script type="text/javascript">
     $("#ECC").click(function () { //button name
         $("#pd").append(
-            '<tr> <td></td> <td></td> <td></td> <td> <label for="cncno" hidden></label> <input class="form-control" type="text" name="cncno[]" id="cncno" value="{{ old('cncno', 'N/A') }}" required>   </td> <td> <label for="cncno" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="cncno[]" id="cncno" required> </td> <td> <label for="cncno" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="cncno[]" id="cncno" required> </td> </tr>'
+            '<tr><td></td><td></td><td></td><td><label for="cncno" hidden></label> <input class="form-control" type="text" name="cncno[]" id="cncno" value="{{ old('cncno', 'N/A') }}" required>   </td> <td> <label for="cncno" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="cncno[]" id="cncno" required> </td> <td> <label for="cncno" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="cncno[]" id="cncno" required> </td> </tr>'
         ); //table name
 
         config = {
