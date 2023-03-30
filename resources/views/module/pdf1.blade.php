@@ -8,10 +8,14 @@ table {
   width: 100%;
 }
 
-td, th {
+ th {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
+}
+td {
+    border: 1px solid #dddddd;
+    padding: 8px;
 }
 
 tr:nth-child(even) {
@@ -20,106 +24,142 @@ tr:nth-child(even) {
 </style>
 
 
-<div class="col">
-                    <p class="p-1 mt-3   text-light" style="background-color:gray; font-size:20px ">
+  <div class="col">
+  <p class="p-1 mt-3   text-light" style="background-color:gray; font-size:25px ">
                       MODULE 1: GENERAL INFORMATION
                     </p>
                   </div>
+
+  <div class="container pt-0">
+
+      @foreach ($ref_no as $ref_nos)
+
+          <p class="text-secondary ml-2 mt-2" style="font-size: 15px; "><b>Reference No.:</b> {{ $ref_nos->ref_no }} </p>
+      @endforeach
+
+
+      @foreach ($year as $years)
+
+          <p class="text-secondary ml-2 mt-2" style="font-size: 15px; "><b>Year:</b> {{$years->year}}
+
+      @endforeach
+
+          @foreach ($quarter as $quarters)
+
+         <b>Quarter:</b> {{$quarters->quarter}} </p>
+
+      @endforeach
+
+  @foreach ($plants as $plant)
+
+    <p class="text-secondary ml-2 mt-2" style="font-size: 15px; "><b>Name of Plant:</b> {{$plant->plantname}} </p>
+
+      @endforeach
+
+  </div>
+
          <div class="container pt-4">
-                <P class="text-secondary ml-3 mt-3">Please provide the necessary revised, corrected or updated information not
-                        contained in your <br> General Information Sheet.</P>
+                <p class="text-secondary ml-2 mt-2" style="font-size: 15px; ">Please provide the necessary revised, corrected or updated information not
+                        contained in your <br> General Information Sheet.</p>
                   </div>
 
-<table>
+<table style="border-style: solid">
 <tbody>
                     @foreach ($gic as $item)
-                        @if ($item->userid == Auth::id())
+
                   <tr>
 
                     <td>{{$item->description}}</td>
 
                   </tr>
-                        @endif
+
                   @endforeach
 </tbody>
                   </table>
 
-                  <table>
-                    <h3 class="mt-3 mx-2 text-success">DENR PERMITS/LICENSE/CLEARANCES</h3>
+
+  <h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder">DENR PERMITS/LICENSE/CLEARANCES</h2>
+
+  <table style="table-layout:fixed; border-style: solid;">
 
                     <thead>
                       <tr>
-                        <th>Environmental Laws</th>
-                        <th></th>
-                        <th>Permits</th>
-                        <th>Data issued</th>
-                        <th>Expiry Data</th>
+                        <th style="text-align: center;">Environmental Laws</th>
+                        <th style="text-align: center;">Permits</th>
+                        <th style="text-align: center;">Data issued</th>
+                        <th style="text-align: center;">Expiry Data</th>
                       </tr>
                     </thead>
 
                     <tbody>
                       @foreach ($aircon as $air)
-                          @if ($air->userid == Auth::id())
-                      <tr>
-                        <td>RA 9275</td>
-                        <td>A/C</td>
-                        <td>{{$air->permit}}</td>
-                        <td>{{$air->dateIssued}}</td>
-                        <td>{{$air->dateExpired}}</td>
 
+                      <tr>
+                        <td colspan="4"><b>RA 9275</b></td>
                       </tr>
-                          @endif
+
+                      <tr>
+                          <td style="text-align: center; background-color: white;">A/C</td>
+                          <td style="text-align: center; background-color: white;">{{$air->permit}}</td>
+                          <td style="text-align: center; background-color: white">{{$air->dateIssued}}</td>
+                          <td style="text-align: center; background-color: white">{{$air->dateExpired}}</td>
+                      </tr>
+
+
+
                       @endforeach
                     </tbody>
 
                     <tbody>
 
                     @foreach ($dpno as $dp)
-                        @if ($dp->userid == Auth::id())
-                        <tr>
-                          <td></td>
-                          <td>DP no.</td>
-                          <td>{{$dp->permit}}</td>
-                          <td>{{$dp->dateIssued}}</td>
-                          <td>{{$dp->dateExpired}}</td>
 
+                        <tr>
+                          <td style="text-align: center; ">DP no.</td>
+                          <td style="text-align: center;">{{$dp->permit}}</td>
+                          <td style="text-align: center;">{{$dp->dateIssued}}</td>
+                          <td style="text-align: center;">{{$dp->dateExpired}}</td>
 
                         </tr>
-                        @endif
+
                         @endforeach
 
 
                     </tbody>
 
                     <tbody>
+
                       @foreach ($cncno as $cn)
-                          @if ($cn->userid == Auth::id())
+
 
                         <tr>
-                            <td>PD 1586</td>
-                            <td>ECC/CNC no.</td>
-                            <td>{{$cn->permit}}</td>
-                            <td>{{$cn->dateIssued}}</td>
-                            <td>{{$cn->dateExpired}}</td>
-
+                            <td colspan="4"><b>PD 1586</b></td>
 
                         </tr>
-                          @endif
+
+                          <tr>
+                              <td style="text-align: center; background-color: white">ECC/CNC no.</td>
+                              <td style="text-align: center; background-color: white">{{$cn->permit}}</td>
+                              <td style="text-align: center; background-color: white">{{$cn->dateIssued}}</td>
+                              <td style="text-align: center; background-color: white">{{$cn->dateExpired}}</td>
+                          </tr>
                         @endforeach
                     </tbody>
                             @foreach ($denrid as $denr)
-                          @if ($denr->userid == Auth::id())
+
                     <tbody>
                         <tr>
-                            <td>RA 6969</td>
-                            <td>DENR Registry ID</td>
-                            <td>{{$denr->permit}}</td>
-                            <td>{{$denr->dateIssued}}</td>
-                            <td>{{$denr->dateExpired}}</td>
-
+                            <td colspan="4"><b>RA 6969</b></td>
 
                         </tr>
-                        @endif
+
+                        <tr>
+                            <td style="text-align: center; background-color: white">DENR Registry ID</td>
+                            <td style="text-align: center; background-color: white">{{$denr->permit}}</td>
+                            <td style="text-align: center; background-color: white">{{$denr->dateIssued}}</td>
+                            <td style="text-align: center; background-color: white">{{$denr->dateExpired}}</td>
+                        </tr>
+
                         @endforeach
                     </tbody>
 
@@ -127,219 +167,212 @@ tr:nth-child(even) {
 
                    <tbody>
                         <tr>
-                            <td></td>
-                            <td>Transporter Registration</td>
-                            <td>{{$trans->permit}}</td>
-                            <td>{{$trans->dateIssued}}</td>
-                            <td>{{$trans->dateExpired}}</td>
+                            <td style="text-align: center;">Transporter Registration</td>
+                            <td style="text-align: center;">{{$trans->permit}}</td>
+                            <td style="text-align: center;">{{$trans->dateIssued}}</td>
+                            <td style="text-align: center;">{{$trans->dateExpired}}</td>
                         </tr>
                         @endforeach
                     </tbody>
                     @foreach ($tsdreg as $tsd)
-                                      @if ($tsd->userid == Auth::id())
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td>TSD Registration</td>
-                            <td>{{$tsd->permit}}</td>
-                            <td>{{$tsd->dateIssued}}</td>
-                            <td>{{$tsd->dateExpired}}</td>
-                        </tr>
-                        @endif
-                        @endforeach
-                    </tbody>
-                    @foreach ($ccoreg as $cco)
-                                              @if ($cco->userid == Auth::id())
 
                     <tbody>
                         <tr>
-                            <td></td>
-                            <td>CCO Registration</td>
-                            <td>{{$cco->permit}}</td>
-                            <td>{{$cco->dateIssued}}</td>
-                            <td>{{$cco->dateExpired}}</td>
+                            <td style="text-align: center;">TSD Registration</td>
+                            <td style="text-align: center;">{{$tsd->permit}}</td>
+                            <td style="text-align: center;">{{$tsd->dateIssued}}</td>
+                            <td style="text-align: center;">{{$tsd->dateExpired}}</td>
                         </tr>
-                        @endif
+
+                        @endforeach
+                    </tbody>
+                    @foreach ($ccoreg as $cco)
+
+
+                    <tbody>
+                        <tr>
+                            <td style="text-align: center;">CCO Registration</td>
+                            <td style="text-align: center;">{{$cco->permit}}</td>
+                            <td style="text-align: center;">{{$cco->dateIssued}}</td>
+                            <td style="text-align: center;">{{$cco->dateExpired}}</td>
+                        </tr>
+
                         @endforeach
                     </tbody>
 
                     @foreach ($import as $imp)
-                                                      @if ($imp->userid == Auth::id())
+
 
                     <tbody>
                         <tr>
-                            <td></td>
-                            <td>Importation Clearance No.</td>
-                            <td>{{$imp->permit}}</td>
-                            <td>{{$imp->dateIssued}}</td>
-                            <td>{{$imp->dateExpired}}</td>
+                            <td style="text-align: center;">Importation Clearance No.</td>
+                            <td style="text-align: center;">{{$imp->permit}}</td>
+                            <td style="text-align: center;">{{$imp->dateIssued}}</td>
+                            <td style="text-align: center;">{{$imp->dateExpired}}</td>
                         </tr>
-                        @endif
+
                         @endforeach
                     </tbody>
                     @foreach ($permit as $permt)
-                                                              @if ($permt->userid == Auth::id())
+
 
                     <tbody>
                         <tr>
-                            <td></td>
-                            <td>Permit to Transport</td>
-                            <td>{{$permt->permit}}</td>
-                            <td>{{$permt->dateIssued}}</td>
-                            <td>{{$permt->dateExpired}}</td>
+                            <td style="text-align: center;">Permit to Transport</td>
+                            <td style="text-align: center;">{{$permt->permit}}</td>
+                            <td style="text-align: center;">{{$permt->dateIssued}}</td>
+                            <td style="text-align: center;">{{$permt->dateExpired}}</td>
                         </tr>
-                        @endif
+
                         @endforeach
                     </tbody>
                     @foreach ($smallquan as $small)
-                                                                      @if ($small->userid == Auth::id())
+
                     <tbody>
                         <tr>
-                            <td></td>
-                            <td> Small Quantity Importation</td>
-                            <td>{{$small->permit}}</td>
-                            <td>{{$small->dateIssued}}</td>
-                            <td>{{$small->dateExpired}}</td>
+                            <td style="text-align: center;"> Small Quantity Importation</td>
+                            <td style="text-align: center;">{{$small->permit}}</td>
+                            <td style="text-align: center;">{{$small->dateIssued}}</td>
+                            <td style="text-align: center;">{{$small->dateExpired}}</td>
                         </tr>
-                        @endif
+
                         @endforeach
                     </tbody>
 
                     @foreach ($priority as $prio)
-                                                                              @if ($prio->userid == Auth::id())
+
                     <tbody>
                         <tr>
-                            <td></td>
-                            <td>Priority Chemical List</td>
-                            <td>{{$prio->permit}}</td>
-                            <td>{{$prio->dateIssued}}</td>
-                            <td>{{$prio->dateExpired}}</td>
+                            <td style="text-align: center;">Priority Chemical List</td>
+                            <td style="text-align: center;">{{$prio->permit}}</td>
+                            <td style="text-align: center;">{{$prio->dateIssued}}</td>
+                            <td style="text-align: center;">{{$prio->dateExpired}}</td>
                         </tr>
-                        @endif
+
                         @endforeach
                     </tbody>
 
                     @foreach ($piccs as $pic)
-                                                                                      @if ($pic->userid == Auth::id())
+
                     <tbody id="piccs">
                         <tr>
-                            <td></td>
-                            <td>PICCS</td>
-                            <td>{{$pic->permit}}</td>
-                            <td>{{$pic->dateIssued}}</td>
-                            <td>{{$pic->dateExpired}}</td>
+                            <td style="text-align: center;">PICCS</td>
+                            <td style="text-align: center;">{{$pic->permit}}</td>
+                            <td style="text-align: center;">{{$pic->dateIssued}}</td>
+                            <td style="text-align: center;">{{$pic->dateExpired}}</td>
                         </tr>
-                        @endif
+
                         @endforeach
                     </tbody>
                     @foreach ($pmpin as $pin)
-                                                                                              @if ($pin->userid == Auth::id())
+
                     <tbody>
                         <tr>
-                            <td></td>
-                            <td>PMPIN</td>
-                            <td>{{$pin->permit}}</td>
-                            <td>{{$pin->dateIssued}}</td>
-                            <td>{{$pin->dateExpired}}</td>
+                            <td style="text-align: center;">PMPIN</td>
+                            <td style="text-align: center;">{{$pin->permit}}</td>
+                            <td style="text-align: center;">{{$pin->dateIssued}}</td>
+                            <td style="text-align: center;">{{$pin->dateExpired}}</td>
                         </tr>
-                        @endif
+
                         @endforeach
                     </tbody>
                     @foreach ($acno as $ac)
-                                                                                                      @if ($ac->userid == Auth::id())
+
                     <tbody>
                         <tr>
-                            <td>RA 8749</td>
-                            <td>A/C no.</td>
-                            <td>{{$ac->permit}}</td>
-                            <td>{{$ac->dateIssued}}</td>
-                            <td>{{$ac->dateExpired}}</td>
+                            <td colspan="4"><b>RA 8749</b></td>
 
                         </tr>
-                        @endif
+
+
+                        <tr>
+                            <td style="text-align: center; background-color: white">A/C no.</td>
+                            <td style="text-align: center; background-color: white">{{$ac->permit}}</td>
+                            <td style="text-align: center; background-color: white">{{$ac->dateIssued}}</td>
+                            <td style="text-align: center; background-color: white">{{$ac->dateExpired}}</td>
+
+                        </tr>
                         @endforeach
 
                     </tbody>
                     @foreach ($pono as $pn)
-                                                                                                              @if ($pn->userid == Auth::id())
+
 
                     <tbody>
                         <tr>
-                            <td></td>
-                            <td>PO No.</td>
-                            <td>{{$pn->permit}}</td>
-                            <td>{{$pn->dateIssued}}</td>
-                            <td>{{$pn->dateExpired}}</td>
+                            <td style="text-align: center;">PO No.</td>
+                            <td style="text-align: center;">{{$pn->permit}}</td>
+                            <td style="text-align: center;">{{$pn->dateIssued}}</td>
+                            <td style="text-align: center;">{{$pn->dateExpired}}</td>
                         </tr>
-                        @endif
                         @endforeach
                     </tbody>
-                  </table>
+  </table>
+  <h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder">OPERATION</h2>
 
-                  <table>
-                        <h3 class="mt-3 mx-2 text-success">OPERATION</h3>
+                  <table style="border-style: solid">
+
 
                         <thead>
 
                             <th></th>
-                            <th></th>
-
-                                <th>Operating hours/day</th>
-                                <th>Operating days/week</th>
-                                <th># shift/day</th>
+                                <th style="text-align: center;">Operating hours/day</th>
+                                <th style="text-align: center;">Operating days/week</th>
+                                <th style="text-align: center;"># shift/day</th>
 
                         </thead>
                           @foreach ($operation as $operate)
-                          @if ($operate->userid == Auth::id())
+
                         <tbody>
                             <tr>
-                                <td>Average</td>
-                                <td></td>
-                                <td>{{$operate->aveOPhours}}</td>
-                                <td>{{$operate->aveOPdays}}</td>
-                                <td>{{$operate->aveOPshift}}</td>
+                                <td><b>Average</b></td>
+                                <td style="text-align: center;">{{$operate->aveOPhours}}</td>
+                                <td style="text-align: center;">{{$operate->aveOPdays}}</td>
+                                <td style="text-align: center;">{{$operate->aveOPshift}}</td>
                             </tr>
                         </tbody>
 
                             <tbody>
                             <tr>
-                                <td>Maximum</td>
-                                <td></td>
-                                <td>{{$operate->maxOPhours}}</td>
-                                <td>{{$operate->maxOPdays}}</td>
-                                <td>{{$operate->maxOPshift}}</td>
+                                <td><b>Maximum</b></td>
+                                <td style="text-align: center;">{{$operate->maxOPhours}}</td>
+                                <td style="text-align: center;">{{$operate->maxOPdays}}</td>
+                                <td style="text-align: center;">{{$operate->maxOPshift}}</td>
 
                             </tr>
-                            @endif
+
                             @endforeach
                         </tbody>
                     </table>
 
-                    <table>
-                        <h3 class="mt-3 mx-2 text-success">OPERATION / PRODUCTION / QUALITY</h3>
+
+  <h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder">OPERATION / PRODUCTION / QUALITY</h2>
+                    <table style="border-style: solid">
+
 
                             <tbody>
                               @foreach ($production as $product)
-                                  @if ($product->userid == Auth::id())
+
                                 <tr>
-                                    <td>Average Daily Production Output</td>
-                                    <td>{{$product->aveProduction}}</td>
-
-                                    <td>Total Output This Quarter</td>
-                                    <td>{{$product->totalOutput}}</td>
+                                    <td style="width:50%"><b>Average Daily Production Output</b></td>
+                                    <td style="text-align: center;">{{$product->aveProduction}}</td>
                                 </tr>
-                            </tbody>
-
-                            <tbody>
                                 <tr>
-                                    <td>Total Consuption This Quarter</td>
-                                    <td>{{$product->totalConsumption}}</td>
+                                    <td style="background-color: white;"><b>Total Output This Quarter</b></td>
+                                    <td style="text-align: center; background-color: white;">{{$product->totalOutput}}</td>
+                                </tr>
 
-                                    <td>Total Electric Consumption this Quarter (kwh)</td>
-                                    <td>{{$product->totalElectric}}</td>
+                                <tr>
+                                    <td><b>Total Consuption This Quarter</b></td>
+                                    <td style="text-align: center;">{{$product->totalConsumption}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td style="background-color: white;"><b>Total Electric Consumption this Quarter (kwh)</b></td>
+                                    <td style="text-align: center; background-color: white;">{{$product->totalElectric}}</td>
 
                                 </tr>
-                                @endif
+
                                 @endforeach
                             </tbody>
 

@@ -123,7 +123,7 @@
                                     <div class="col-11 mx-auto">
                                         <p>Name of the Plant</p>
                                         <label for="plant" hidden></label>
-                                        <select class="form-select" id="plant" name="plantname" required>
+                                        <select class="form-select text-center" id="plant" name="plantname" required>
                                             <option selected disabled value="">-- Select --</option>
                                             @foreach ($addfacility as $data)
                                                 @if ($data->userid == Auth::id())

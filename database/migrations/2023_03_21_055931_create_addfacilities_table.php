@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('addfacilities', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->string('embregion');
+            $table->string('embregion')->nullable();
             $table->string('embid')->nullable();
-            $table->string('establishment');
-            $table->string('street');
-            $table->string('baranggay');
-            $table->string('city');
-            $table->string('province');
+            $table->string('establishment')->nullable();
+            $table->string('street')->nullable();
+            $table->string('baranggay')->nullable();
+            $table->string('city')->nullable();
+            $table->string('province')->nullable();
             $table->timestamps();
         });
     }

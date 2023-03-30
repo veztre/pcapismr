@@ -270,14 +270,13 @@
                                             <tr><h3 class="mt-3 mx-2 text-success">WASTE STORAGE, TREATMENT AND DISPOSAL (PLEASE FILL-UP ONE TABLE PER HW) </h3></tr>
                                             </thead>
                                         </table>
+
+
                                         @foreach ($hwDetails as $hwDetail)
                                         <div class="container" id="wstad">
+
                                             <div class="card border-3 border-secondary mb-3" >
                                             <table class="table table-borderless p-3">
-
-
-
-
 
 
                                                     <thead>
@@ -534,11 +533,6 @@
 
                                                         @endif
                                                     @endforeach {{--Disposal--}}
-
-
-
-
-
 
 
 

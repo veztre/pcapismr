@@ -36,7 +36,7 @@ class ModuleTwoController extends Controller
                 'hwGeneration'=>$hwGeneration,
                 'hwDetails'=>$hwDetails,
                 'storage'=>$storage,
-                'trasporter'=>$transporter,
+                'transporter'=>$transporter,
                 'treater'=>$treater,
                 'disposal'=>$disposal,
                 'osisa'=>$osisa,
@@ -156,11 +156,11 @@ class ModuleTwoController extends Controller
         $hwGeneration = HwGeneration::get();
         $hwDetails = Auth::user()->hwDetails()->get();
         $storage = Auth::user()->storage()->get();
-
         $treater = Auth::user()->treater()->get();
         $transporter = Auth::user()->transporter()->get();
         $disposal = Auth::user()->disposal()->get();
         $osisa = Osisa::get();
+
         return view('module.updatemoduleTwo',
             compact(
                 'referencens',
