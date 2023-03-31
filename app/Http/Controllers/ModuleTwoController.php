@@ -133,15 +133,21 @@ class ModuleTwoController extends Controller
 
 
 
-        $hwGeneration = HwGeneration::get();
-        $hwDetails = HWDetails::get();
-        $storage = Storage::get();
-        $transporter = Transporter::get();
-        $treater = Treater::get();
-        $disposal = Disposal::get();
-        $osisa = Osisa::get();
-        $pdf = PDF::loadview('module.pdf2',['hwGeneration'=>$hwGeneration,'hwDetails'=>$hwDetails,'storage'=>$storage,
-            'transporter'=>$transporter,'treater'=>$treater,'disposal'=>$disposal,'osisa'=>$osisa
+        $hwGeneration = Auth::user()->hwGeneration()->get();
+        $hwDetails = Auth::user()->hwDetails()->get();
+        $storage = Auth::user()->storage()->get();
+        $transporter = Auth::user()->transporter()->get();
+        $treater = Auth::user()->treater()->get();
+        $disposal = Auth::user()->disposal()->get();
+        $osisa = Auth::user()->osisa()->get();
+        $pdf = PDF::loadview('module.pdf2',[
+            'hwGeneration'=>$hwGeneration,
+            'hwDetails'=>$hwDetails,
+            'storage'=>$storage,
+            'transporter'=>$transporter,
+            'treater'=>$treater,
+            'disposal'=>$disposal,
+            'osisa'=>$osisa
 
 
         ]);

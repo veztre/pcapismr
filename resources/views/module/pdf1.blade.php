@@ -64,7 +64,7 @@ tr:nth-child(even) {
                         contained in your <br> General Information Sheet.</p>
                   </div>
 
-<table style="border-style: solid">
+  <table  style="border-style: solid;  margin-top: 3%; margin-bottom: 3%;">
 <tbody>
                     @foreach ($gic as $item)
 
@@ -81,7 +81,7 @@ tr:nth-child(even) {
 
   <h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder">DENR PERMITS/LICENSE/CLEARANCES</h2>
 
-  <table style="table-layout:fixed; border-style: solid;">
+  <table style="table-layout:fixed; border-style: solid; margin-top: 3%; margin-bottom: 3%;">
 
                     <thead>
                       <tr>
@@ -392,7 +392,7 @@ tr:nth-child(even) {
   </table>
   <h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder">OPERATION</h2>
 
-                  <table style="border-style: solid">
+                  <table style="border-style: solid; margin-top: 3%; margin-bottom: 3%;">
 
 
                         <thead>
@@ -433,7 +433,7 @@ tr:nth-child(even) {
 
 
   <h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder">OPERATION / PRODUCTION / QUALITY</h2>
-                    <table style="border-style: solid">
+                    <table style="border-style: solid; margin-top: 3%; margin-bottom: 3%;">
 
 
                             <tbody>

@@ -1,22 +1,255 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 <style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    td {
+        border: 1px solid #dddddd;
+        padding: 8px;
+        background-color: white;
+    }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    .page-break {
+        page-break-after: always;
+    }
 </style>
+<div class="col">
+    <p class="p-1 mt-3   text-light" style="background-color:gray; font-size:25px ">
+        MODULE 2: RA 6969
+    </p>
+</div>
+<div class="page-break">
+<h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder">A. CCO Report</h2>
+
+<table  style="border-style: solid;  margin-top: 3%; margin-bottom: 3%;">
+    <thead>
+    <tr>
+        <th style="text-align: center;">CCO Item No.</th>
+        <th style="text-align: center;">CCO Substance</th>
+        <th style="text-align: center;">Common Name/IUPAC/CAS Index Name</th>
+        <th style="text-align: center;">CAS No.</th>
+        <th style="text-align: center;">Trade Name</th>
+        <th style="text-align: center;">Intended Use</th>
+        <th style="text-align: center;">Quantity Issued (in CCO)</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td colspan="7" style="text-align: center;"><b>- No records found -</b></td>
+    </tr>
+
+    </tbody>
+
+</table>
+
+<h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder">For importers only</h2>
+
+<table  style="border-style: solid;  margin-top: 3%; margin-bottom: 3%;">
+    <thead>
+
+    <tr>
+        <th style="text-align: center;">CCO Item No.</th>
+        <th style="text-align: center;">Importation Clearance No.</th>
+        <th style="text-align: center;">Quantity Issued (in IC)</th>
+        <th style="text-align: center;">Date of Arrival</th>
+        <th style="text-align: center;">Port of Entry</th>
+        <th style="text-align: center;">Country of Origin</th>
+        <th style="text-align: center;">Country of Manufacture</th>
+        <th style="text-align: center;">Total Quantity Requested (annual)</th>
+        <th style="text-align: center;">Total Quantity Received (annual)</th>
+    </tr>
+
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td colspan="9" style="text-align: center;"><b>- No records found -</b></td>
+    </tr>
+
+    </tbody>
+</table>
+
+
+<h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder">For Distributors (importers/non-importers)</h2>
+
+<table  style="border-style: solid;  margin-top: 3%; margin-bottom: 3%;">
+    <thead>
+
+    <tr>
+        <th style="text-align: center;">CCO Item No.</th>
+        <th style="text-align: center;">Name of Client</th>
+        <th style="text-align: center;">License No.</th>
+        <th style="text-align: center;">Quantity</th>
+        <th style="text-align: center;">Date of Distribution</th>
+        <th style="text-align: center;">Country of Origin</th>
+        <th style="text-align: center;">Country of Manufacture</th>
+        <th style="text-align: center;">Total Quantity Distributed </th>
+    </tr>
+
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td colspan="8" style="text-align: center;"><b>- No records found -</b></td>
+    </tr>
+
+    </tbody>
+</table>
+
+
+<h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder">For non-importer users</h2>
+
+<table  style="border-style: solid;  margin-top: 3%; margin-bottom: 5%;">
+    <thead>
+
+    <tr>
+        <th style="text-align: center;">CCO Item No.</th>
+        <th style="text-align: center;">Name of Distributor</th>
+        <th style="text-align: center;">Quantity</th>
+        <th style="text-align: center;">Date of Purchase</th>
+        <th style="text-align: center;">Total Quantity Purchased from Distributor </th>
+    </tr>
+
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td colspan="5" style="text-align: center;"><b>- No records found -</b></td>
+    </tr>
+
+    </tbody>
+</table>
+</div>
+
+
+<h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder;">For Producers</h2>
+
+<table  style="border-style: solid;  margin-top: 3%; margin-bottom: 3%;">
+    <thead>
+
+    <tr>
+        <th style="text-align: center;">CCO Item No.</th>
+        <th style="text-align: center;">Average Daily Production Output</th>
+        <th style="text-align: center;">Total Output this Quarter</th>
+        <th style="text-align: center;">Quantity of Stock Inventory (Start of Quarter)</th>
+        <th style="text-align: center;">Quantity of Stock Inventory (End of Quarter)</th>
+    </tr>
+
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td colspan="5" style="text-align: center;"><b>- No records found -</b></td>
+    </tr>
+
+    </tbody>
+</table>
+
+
+<table  style="border-style: solid; margin-top: 3%; margin-bottom: 3%;">
+    <thead>
+
+    <tr>
+        <th style="text-align: center;">CCO Item No.</th>
+        <th style="text-align: center;">Name of Buyer</th>
+        <th style="text-align: center;">Quantity</th>
+        <th style="text-align: center;">Date of Purchase</th>
+        <th style="text-align: center;">Total Quantity Sold</th>
+    </tr>
+
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td colspan="5" style="text-align: center;"><b>- No records found -</b></td>
+    </tr>
+
+    </tbody>
+</table>
+
+
+<h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder">Used in Production (please fill up only if chemical/substance is not main product</h2>
+
+<table  style="border-style: solid;  margin-top: 3%; margin-bottom: 3%;">
+    <thead>
+
+    <tr>
+        <th style="text-align: center;">CCO Item No.</th>
+        <th style="text-align: center;">Average Daily Production Output</th>
+        <th style="text-align: center;">Total Output this Quarter</th>
+        <th style="text-align: center;">Average Quantity Used per month</th>
+        <th style="text-align: center;">Total Quantity Used this Quarter</th>
+    </tr>
+
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td colspan="5" style="text-align: center;"><b>- No records found -</b></td>
+    </tr>
+
+    </tbody>
+</table>
+
+
+<h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder">Describe any changes in Production/Process/Operations</h2>
+
+<table  style="border-style: solid;  margin-top: 3%; margin-bottom: 3%;">
+    <tbody>
+
+        <tr>
+
+            <td style="text-align: center "><b>- No records found -</b></td>
+
+        </tr>
+
+    </tbody>
+</table>
+
+<h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder">Stock Inventory/Waste Chemical Generated</h2>
+
+<table  style="border-style: solid;  margin-top: 3%; margin-bottom: 3%;">
+    <thead>
+
+    <tr>
+        <th style="text-align: center;">CCO Item No.</th>
+        <th style="text-align: center;">Average Daily Production Output</th>
+        <th style="text-align: center;">Total Output this Quarter</th>
+        <th style="text-align: center;">Average Quantity Used per month</th>
+        <th style="text-align: center;">Total Quantity Used this Quarter</th>
+    </tr>
+
+    </thead>
+
+    <tbody>
+
+    <tr>
+        <td colspan="5" style="text-align: center;"><b>- No records found -</b></td>
+    </tr>
+
+    </tbody>
+</table>
+
 
 <table>
         <thead>
@@ -45,7 +278,7 @@ tr:nth-child(even) {
           </tr>
         </tbody>
 
-           
+
         <tbody>
         @foreach ($hwGeneration as $hwGen)
             <tr>
@@ -76,34 +309,34 @@ tr:nth-child(even) {
           <thead>
             <tr>
               <th>HW Details</th>
-             
+
 
             </tr>
           </thead>
-          
+
 </table>
 <table>
-<thead>  
+<thead>
 <tr>
     <th>HW No.</th>
     <th>HW Class</th>
     <th>Qty of HW Treated</th>
     <th>Unit</th>
     <th>TSD Locations</th>
-    
-    
+
+
 </tr>
           </thead>
           <tbody>
           @foreach ($hwDetails as $detail)
-            <tr>    
+            <tr>
                 <td>{{$detail->HWno}}</td>
                 <td>{{$detail->HWclass}}</td>
                 <td>{{$detail->QtyOfHWTreated}}</td>
                 <td>{{$detail->Unit}}</td>
                 <td>{{$detail->TSDLocation}}</td>
-                
-                
+
+
             </tr>
             @endforeach
           </tbody>
@@ -141,20 +374,20 @@ tr:nth-child(even) {
           <thead>
             <tr>
               <th>Transporter</th>
-             
+
 
             </tr>
           </thead>
-          
+
 </table>
 <table>
-<tbody>  
+<tbody>
 <tr>
     <td>ID</td>
     <td>Name</td>
     <td>Method</td>
     <td>Date</td>
-     
+
 </tr>
 </tbody>
 <tbody>
@@ -174,20 +407,20 @@ tr:nth-child(even) {
           <thead>
             <tr>
               <th>Treater</th>
-             
+
 
             </tr>
           </thead>
-          
+
 </table>
 <table>
-<tbody>  
+<tbody>
 <tr>
     <td>ID</td>
     <td>Name</td>
     <td>Method</td>
     <td>Date</td>
-     
+
 </tr>
 </tbody>
 <tbody>
@@ -207,20 +440,20 @@ tr:nth-child(even) {
           <thead>
             <tr>
               <th>Disposal</th>
-             
+
 
             </tr>
           </thead>
-          
+
 </table>
 <table>
-<tbody>  
+<tbody>
 <tr>
     <td>ID</td>
     <td>Name</td>
     <td>Method</td>
     <td>Date</td>
-     
+
 </tr>
 </tbody>
 <tbody>
@@ -268,7 +501,7 @@ tr:nth-child(even) {
 </table>
 
 
-            
+
 
 
 
