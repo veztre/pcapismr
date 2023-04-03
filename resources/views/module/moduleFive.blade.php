@@ -152,35 +152,18 @@
                                             <td></td>
                                             <td style="text-align: center">ECC Condition/s</td>
                                             <td style="text-align:center">Status of Compliance</td>
+                                            <td></td>
                                             <td style="text-align: center">Actions Taken</td>
                                         </tr>
 
                                         <tr>
-                                            <td class="counterCell " style="text-align: right" ></td>
-                                            <td><input class="form-control" type="text" name="enhance[]" value="{{ old('enhance[]') }}"></td>
-
-                                            <td style="text-align: center">
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="status[]" id="oecRadio1" value="Yes"
-                                                               @if(old('status[]') == 'Yes') checked @endif>
-                                                        <label class="form-check-label" for="oecRadio1">
-                                                            <p class="mt-3 mx-1">Yes</p>
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="status[]" id="oecRadio2" value="No"
-                                                               @if(old('status[]') == 'No') checked @endif>
-                                                        <label class="form-check-label" for="oecRadio2">
-                                                            <p class="mt-3 mx-1">No</p>
-                                                        </label>
-                                                    </div>
-
-                                            </td>
-
-                                            <td><textarea class="form-control" type="text" name="action[]" style="overflow:scroll; overflow: hidden visible;">{{ old('action[]') }}</textarea>
-                                            </td>
-
+                                            <td class="counterCell" style="text-align: right"></td>
+                                            <td><input class="form-control" type="text" name="oecondition[0][ecc_condition]"></td>
+                                            <td><input type="radio" name="oecondition[0][status_of_compliance]" value="yes">Yes</td>
+                                            <td><input type="radio" name="oecondition[0][status_of_compliance]" value="no">No</td>
+                                            <td><textarea class="form-control" type="text" name="oecondition[0][actions_taken]" style="overflow:scroll; overflow: hidden visible;"></textarea></td>
                                         </tr>
+
 
                                         </tbody>
 
@@ -285,38 +268,18 @@
                                             <td></td>
                                             <td style="text-align: center">Enhancement/ Mitigation Measures</td>
                                             <td style="text-align: center">Status of Compliance</td>
+                                            <td></td>
                                             <td style="text-align: center">Actions Taken</td>
                                         </tr>
 
+
                                         <tr>
-                                            <td class="counterCell " style="text-align: right" ></td>
-                                            <td><input class="form-control" type="text" name="evmpprogram[]" value="{{ old('evmpprogram[]') }}"></td>
-
-
-                                            <td style="text-align: center">
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="evmpprogram[]" id="emppRadio1" value="Yes"
-                                                               @if(old('evmpprogram[]') == 'Yes') checked @endif>
-                                                        <label class="form-check-label" for="emppRadio1">
-                                                            <p class="mt-3 mx-1">Yes</p>
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="evmpprogram[]" id="emppRadio2" value="No"
-                                                               @if(old('evmpprogram[]') == 'No') checked @endif>
-                                                        <label class="form-check-label" for="emppRadio2">
-                                                            <p class="mt-3 mx-1">No</p>
-                                                        </label>
-                                                    </div>
-
-                                            </td>
-
-                                            <td><textarea class="form-control" type="text" name="evmpprogram[]"
-                                                          style="overflow:scroll; overflow: hidden visible;" value="{{ old('evmpprogram[]') }}"></textarea></td>
-
+                                            <td class="counterCell" style="text-align: right"></td>
+                                            <td><input class="form-control" type="text" name="evmpprogram[0][evm_condition]"></td>
+                                            <td><input type="radio" name="evmpprogram[0][evm_status_of_compliance]" value="yes">Yes</td>
+                                            <td><input type="radio" name="evmpprogram[0][evm_status_of_compliance]" value="no">No</td>
+                                            <td><textarea class="form-control" type="text" name="evmpprogram[0][evm_actions_taken]" style="overflow:scroll; overflow: hidden visible;"></textarea></td>
                                         </tr>
-                                        </tbody>
-
                                     </table>
                                     <td></td>
                                     <td><button type="button" name="add" id="EMPlanProgram" class="btn btn-outline-primary mt-3" style="margin-left: 3.7%">+</button></td>
@@ -408,7 +371,7 @@
                                 <div class="col mb-3">
                                     <div style="float: right" class="mb-3">
                                         <a href="{{ route('module.moduleFour') }}" class="btn btn-lg border bg-light">Previous</a>
-                                          <a href="{{ route('module.moduleSix') }}" class="btn btn-lg btn-info">Next</a>
+                                        <a href="{{ route('module.moduleSix') }}" class="btn btn-lg btn-info">Next</a>
                                         <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
                                     </div>
                                 </div>

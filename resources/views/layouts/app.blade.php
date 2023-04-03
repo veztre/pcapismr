@@ -61,9 +61,9 @@
 
     <!-- Page Content -->
 
-            <main>
-                {{ $slot }}
-            </main>
+    <main>
+        {{ $slot }}
+    </main>
 
 
 
@@ -734,22 +734,37 @@
 <!-- SCRIPT FOR OTHER ECC CONDITIONS -->
 <script type="text/javascript">
     var i = 0;
-    $("#OECondition").click(function () { //button name
+    $("#OECondition").click(function () {
         ++i;
         $("#OEC").append(
-            '<tr><td class="counterCell" style="text-align: right"></td><td><input class="form-control" type="text" name="enhance[0]" value="{{ old('enhance[]') }}"></td><td style="text-align: center"><form action=""><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="status[0]" id="oecRadio1" value="Yes" @if(old('status[]') == 'Yes') checked @endif><label class="form-check-label" for="oecRadio1"><p class="mt-3 mx-1">Yes</p></label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="status[0]" id="oecRadio2" value="No" @if(old('status[]') == 'No') checked @endif><label class="form-check-label" for="oecRadio2"><p class="mt-3 mx-1">No</p></label></div></form></td><td><textarea class="form-control" type="text" name="action[0]" style="overflow:scroll; overflow: hidden visible;" value="{{ old('action[]') }}"></textarea></td></tr>'
-        ); //table name
+            '<tr>' +
+            '<td class="counterCell" style="text-align: right"></td>' +
+            '<td><input class="form-control" type="text" name="oecondition[' + i + '][ecc_condition]" value=""></td>' +
+            '<td><input type="radio" name="oecondition[' + i + '][status_of_compliance]" value="yes">Yes</td>' +
+            '<td><input type="radio" name="oecondition[' + i + '][status_of_compliance]" value="no">No</td>' +
+            '<td><textarea class="form-control" type="text" name="oecondition[' + i + '][actions_taken]" style="overflow:scroll; overflow: hidden visible;"></textarea></td>' +
+            '</tr>'
+        );
     });
 </script>
 
+
+
+
 <!-- SCRIPT FOR ENVIRONMENTAL MANAGEMENT PLAN/ PROGRAM -->
 <script type="text/javascript">
-    var i = 0;
-    $("#EMPlanProgram").click(function () { //button name
-        ++i;
+    var counter = 0;
+    $("#EMPlanProgram").click(function () {
+        ++counter;
         $("#EMPP").append(
-            '<tr><td class="counterCell " style="text-align: right" ></td><td><input class="form-control" type="text" name="evmpprogram[]" value="{{ old('evmpprogram[]') }}"></td> <td style="text-align: center"> <form action=""><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="evmpprogram[]" id="emppRadio1" value="Yes" @if(old('evmpprogram[]') == 'Yes') checked @endif><label class="form-check-label" for="emppRadio1"><p class="mt-3 mx-1">Yes</p></label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="evmpprogram[]" id="emppRadio2" value="No" @if(old('evmpprogram[]') == 'No') checked @endif><label class="form-check-label" for="emppRadio2"><p class="mt-3 mx-1">No</p></label></div></form></td><td><textarea class="form-control" type="text" name="evmpprogram[]"  style="overflow:scroll; overflow: hidden visible;" value="{{ old('evmpprogram[]') }}"></textarea></td> </tr>'
-        ); //table name
+            '<tr>' +
+            '<td class="counterCell" style="text-align: right"></td>' +
+            '<td><input class="form-control" type="text" name="evmpprogram[' + counter + '][evm_condition]" value=""></td>' +
+            '<td><input type="radio" name="evmpprogram[' + counter + '][evm_status_of_compliance]" value="yes">yes</td>' +
+            '<td><input type="radio" name="evmpprogram[' + counter + '][evm_status_of_compliance]" value="no">no</td>' +
+            '<td><textarea class="form-control" type="text" name="evmpprogram[' + counter + '][evm_actions_taken]" style="overflow:scroll; overflow: hidden visible;"></textarea></td>' +
+            '</tr>'
+        );
     });
 </script>
 {{--Module 5 Script end--}}

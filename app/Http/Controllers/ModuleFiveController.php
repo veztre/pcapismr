@@ -16,7 +16,7 @@ use App\Models\referencen;
 use App\Models\TQC;
 use App\Models\TQG;
 use App\Models\AAQmonitoring_parameter;
-
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDF;
@@ -82,38 +82,26 @@ class ModuleFiveController extends Controller
             $DBaaqmonitoring->save();
         }
 
-        $enhance = $request->input('enhance.*');
-        $status = $request->input('status.*');
-        $action = $request->input('action.*');
-        $count = count($enhance);
-
-        for ($x = 0; $x < $count; $x ++) {
+        $oeconditions = $request->input('oecondition');
+        for ($i = 0; $i < count($oeconditions); $i++) {
             $DBoecondition = new OECondition();
             $DBoecondition->userid = Auth::user()->id;
-            $DBoecondition->ECC_Condition = $enhance[$x];
-            $DBoecondition->Status_of_Compliance = $status[$x];
-            $DBoecondition->Actions_Taken = $action[$x];
+            $DBoecondition->ECC_Condition = $oeconditions[$i]['ecc_condition'];
+            $DBoecondition->Status_of_Compliance = $oeconditions[$i]['status_of_compliance'];
+            $DBoecondition->Actions_Taken = $oeconditions[$i]['actions_taken'];
+
             $DBoecondition->save();
         }
 
-        $evmpprogram = $request->input('evmpprogram.*');
-        $count = count($evmpprogram);
-
-        for ($x = 0; $x < $count; $x += 3) {
-            if ($x + 2 >= $count) {
-                // We have reached the end of the array, so break out of the loop
-                break;
-            }
-
+        $evmpprogram = $request->input('evmpprogram');
+        for ($i = 0; $i < count($evmpprogram); $i++) {
             $DBevmpprogram = new EVMPprogram();
             $DBevmpprogram->userid = Auth::user()->id;
-            $DBevmpprogram->Enhancement_Mitigation_Measures = $evmpprogram[$x];
-            $DBevmpprogram->Status_of_Compliance = $evmpprogram[$x+1];
-            $DBevmpprogram->Actions_Taken = $evmpprogram[$x+2];
-
+            $DBevmpprogram->Enhancement_Mitigation_Measures = $evmpprogram[$i]['evm_condition'];
+            $DBevmpprogram->Status_of_Compliance = $evmpprogram[$i]['evm_status_of_compliance'];
+            $DBevmpprogram->Actions_Taken = $evmpprogram[$i]['evm_actions_taken'];
             $DBevmpprogram->save();
         }
-
 
 
 
@@ -210,6 +198,231 @@ class ModuleFiveController extends Controller
 
         return redirect('moduleSix');
     }
+    public function edit($id){
+
+        $users = User::find($id);
+        $reference = referencen::get();
+        $aaqmonitoring_parameter = AAQmonitoring_parameter::get();
+        $aaqmonitoring = AAQmonitoring::get();
+        $oecondition = OECondition::get();
+        $evmpprogram = EVMPprogram::get();
+        $aqg = AQG::get();
+        $tqg = TQG::get();
+        $aqc = AQC::get();
+        $tqc = TQC::get();
+        $eicc = EICC::get();
+        $description = Description::get();
+        $awqmonitoring = Awqmonitoring::get();
+        $awqmonitoring1 = Awqmonitoring1::get();
+
+
+        return view('module.updatemoduleFive',
+            compact('users',
+                'reference',
+                'aaqmonitoring_parameter',
+                'aaqmonitoring',
+                'oecondition',
+                'evmpprogram',
+                'aqg',
+                'tqg',
+                'aqc',
+                'tqc',
+                'eicc',
+                'description',
+                'awqmonitoring',
+                'awqmonitoring1',
+
+
+
+
+            ));
+
+
+    }
+
+    public function update(Request $request, $id){
+
+        $aqg = AQG::where('userid', $id)->first();
+        $aqg->Recyclable = $request->input('AQG1');
+        $aqg->Biodegradable = $request->input('AQG2');
+        $aqg->Residual = $request->input('AQG3');
+        $aqg->update();
+
+        $tqg = TQG::where('userid', $id)->first();
+        $tqg->Recyclable = $request->input('TQG1');
+        $tqg->Biodegradable = $request->input('TQG2');
+        $tqg->Residual = $request->input('TQG3');
+        $tqg->update();
+
+        $aqc = AQC::where('userid', $id)->first();
+        $aqc->Recyclable = $request->input('AQC1');
+        $aqc->Biodegradable = $request->input('AQC2');
+        $aqc->Residual = $request->input('AQC3');
+        $aqc->update();
+
+        $tqc = TQC::where('userid', $id)->first();
+        $tqc->Recyclable = $request->input('TQC1');
+        $tqc->Biodegradable = $request->input('TQC2');
+        $tqc->Residual = $request->input('TQC3');
+        $tqc->update();
+
+        $eicc = EICC::where('userid', $id)->first();
+        $eicc->Recyclable = $request->input('EICC1');
+        $eicc->Biodegradable = $request->input('EICC2');
+        $eicc->Residual = $request->input('EICC3');
+        $eicc->update();
+
+        $description = Description::where('userid', $id)->first();
+        $description->description = $request->input('description');
+        $description->update();
+
+        $awqmonitoring = Awqmonitoring::where('userid', $id)->first();
+        $awqmonitoring->name1 = $request->input('name1');
+        $awqmonitoring->name2 = $request->input('name2');
+        $awqmonitoring->name3 = $request->input('name3');
+        $awqmonitoring->name4 = $request->input('name4');
+        $awqmonitoring->name5 = $request->input('name5');
+        $awqmonitoring->name6 = $request->input('name6');
+        $awqmonitoring->name7 = $request->input('name7');
+        $awqmonitoring->name8 = $request->input('name8');
+        $awqmonitoring->unit1 = $request->input('unit1');
+        $awqmonitoring->unit2 = $request->input('unit2');
+        $awqmonitoring->unit3 = $request->input('unit3');
+        $awqmonitoring->unit4 = $request->input('unit4');
+        $awqmonitoring->unit5 = $request->input('unit5');
+        $awqmonitoring->unit6 = $request->input('unit6');
+        $awqmonitoring->unit7 = $request->input('unit7');
+        $awqmonitoring->unit8 = $request->input('unit8');
+        $awqmonitoring->update();
+
+
+        $aaqmonitoring_parameter = AAQmonitoring_parameter::where('userid', $id)->first();
+        $aaqmonitoring_parameter->aaqname_parameter1 = $request->input('aaqname_parameter1');
+        $aaqmonitoring_parameter->aaqname_parameter2 = $request->input('aaqname_parameter2');
+        $aaqmonitoring_parameter->aaqname_parameter3 = $request->input('aaqname_parameter3');
+        $aaqmonitoring_parameter->update();
+
+        $aaqmonitoring = $request->input('aaqmonitoring');
+        $userId = Auth::user()->id;
+        // Get all records for the current user
+        $DBaaqmonitoring = AAQmonitoring::where('userid', $userId)->get();
+        // Loop through all records and update each one
+        foreach ($DBaaqmonitoring as $index => $record) {
+            $record->station_description = $aaqmonitoring[$index*9];
+            $record->date = $aaqmonitoring[$index*9+1];
+            $record->noise_level_db = $aaqmonitoring[$index*9+2];
+            $record->CO_mg_ncm = $aaqmonitoring[$index*9+3];
+            $record->NOx_mg_ncm = $aaqmonitoring[$index*9+4];
+            $record->particulates_mg_ncm = $aaqmonitoring[$index*9+5];
+            $record->Value_parameter1 = $aaqmonitoring[$index*9+6];
+            $record->Value_parameter2 = $aaqmonitoring[$index*9+7];
+            $record->Value_parameter3 = $aaqmonitoring[$index*9+8];
+            $record->update();
+        }
+        for ($x = count($DBaaqmonitoring)*9; $x < count($aaqmonitoring); $x += 9) {
+            $newRecord = new AAQmonitoring();
+            $newRecord->userid = $userId;
+            $newRecord->station_description = $aaqmonitoring[$x];
+            $newRecord->date = $aaqmonitoring[$x+1];
+            $newRecord->noise_level_db = $aaqmonitoring[$x+2];
+            $newRecord->CO_mg_ncm = $aaqmonitoring[$x+3];
+            $newRecord->NOx_mg_ncm = $aaqmonitoring[$x+4];
+            $newRecord->particulates_mg_ncm = $aaqmonitoring[$x+5];
+            $newRecord->Value_parameter1 = $aaqmonitoring[$x+6];
+            $newRecord->Value_parameter2 = $aaqmonitoring[$x+7];
+            $newRecord->Value_parameter3 = $aaqmonitoring[$x+8];
+            $newRecord->save();
+        }
+
+        $awqmonitoring1 = $request->input('awqmonitoring1');
+        $userId = Auth::user()->id;
+        // Get all records for the current user
+        $DBawqmonitoring1 = Awqmonitoring1::where('userid', $userId)->get();
+        // Loop through all records and update each one
+        foreach ($DBawqmonitoring1 as $index => $record) {
+            $record->Station_Description = $awqmonitoring1[$index*10];
+            $record->Date = $awqmonitoring1[$index*10+1];
+            $record->value1 = $awqmonitoring1[$index*10+2];
+            $record->value2 = $awqmonitoring1[$index*10+3];
+            $record->value3 = $awqmonitoring1[$index*10+4];
+            $record->value4 = $awqmonitoring1[$index*10+5];
+            $record->value5 = $awqmonitoring1[$index*10+6];
+            $record->value6 = $awqmonitoring1[$index*10+7];
+            $record->value7 = $awqmonitoring1[$index*10+8];
+            $record->value8 = $awqmonitoring1[$index*10+9];
+            $record->update();
+        }
+        for ($x = count($DBawqmonitoring1)*10; $x < count($aaqmonitoring); $x += 10) {
+            $newRecord = new Awqmonitoring1();
+            $newRecord->userid = $userId;
+            $newRecord->Station_Description = $awqmonitoring1[$x];
+            $newRecord->Date = $awqmonitoring1[$x+1];
+            $newRecord->value1 = $awqmonitoring1[$x+2];
+            $newRecord->value2 = $awqmonitoring1[$x+3];
+            $newRecord->value3 = $awqmonitoring1[$x+4];
+            $newRecord->value4 = $awqmonitoring1[$x+5];
+            $newRecord->value5 = $awqmonitoring1[$x+6];
+            $newRecord->value6= $awqmonitoring1[$x+7];
+            $newRecord->value7 = $awqmonitoring1[$x+8];
+            $newRecord->value8 = $awqmonitoring1[$x+9];
+            $newRecord->save();
+        }
+
+        $oecondition = $request->input('oecondition');
+        $userId = Auth::user()->id;
+        // Get all records for the current user
+        $DBoecondition = OECondition::where('userid', $userId)->get();
+        // Loop through all records and update each one
+        foreach ($DBoecondition as $index => $record) {
+            $record->ECC_Condition = $oecondition[$index]['ecc_condition'];
+            $record->Status_of_Compliance = $oecondition[$index]['status_of_compliance'];
+            $record->Actions_Taken = $oecondition[$index]['actions_taken'];
+            $record->save();
+        }
+
+        // Create a new record for any remaining data
+        for ($index = count($DBoecondition); $index < count($oecondition); $index++) {
+            $newRecord = new OECondition();
+            $newRecord->userid = $userId;
+            $newRecord->ECC_Condition = $oecondition[$index]['ecc_condition'];
+            $newRecord->Status_of_Compliance = $oecondition[$index]['status_of_compliance'];
+            $newRecord->Actions_Taken = $oecondition[$index]['actions_taken'];
+            $newRecord->save();
+        }
+
+        $evmpprogram = $request->input('evmpprogram');
+        $userId = Auth::user()->id;
+        // Get all records for the current user
+        $DBevmpprogram = EVMPprogram::where('userid', $userId)->get();
+        // Loop through all records and update each one
+        foreach ($DBevmpprogram as $index => $record) {
+            $record->Enhancement_Mitigation_Measures = $evmpprogram[$index]['evm_condition'];
+            $record->Status_of_Compliance = $evmpprogram[$index]['evm_status_of_compliance'];
+            $record->Actions_Taken = $evmpprogram[$index]['evm_actions_taken'];
+            $record->save();
+        }
+
+        // Create a new record for any remaining data
+        for ($index = count($DBevmpprogram); $index < count($evmpprogram); $index++) {
+            $newRecord = new EVMPprogram();
+            $newRecord->userid = $userId;
+            $newRecord->Enhancement_Mitigation_Measures = $evmpprogram[$index]['evm_condition'];
+            $newRecord->Status_of_Compliance = $evmpprogram[$index]['evm_status_of_compliance'];
+            $newRecord->Actions_Taken = $evmpprogram[$index]['evm_actions_taken'];
+            $newRecord->save();
+        }
+
+
+
+
+
+
+
+        return redirect()->back();
+
+    }
+
+
 
     public function pdf(){
         $aaqmonitoring_parameter = AAQmonitoring_parameter::get();

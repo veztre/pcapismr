@@ -19,6 +19,7 @@ use App\Http\Controllers\TraineeController;
 use App\Http\Controllers\TransitiontoMod2Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AddFacilityController;
+use App\Http\Controllers\TabsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +40,7 @@ Route::get('/dashboard', function () {
     if (Auth::user()->usertype== 'admin'){
         return redirect('/admin/dashboard');
     }else{
-    return redirect('/trainee/dashboard');
+        return redirect('/trainee/dashboard');
     }
 })->middleware(['auth'])->name('dashboard');
 
@@ -81,7 +82,10 @@ Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.
 //Trainee controller
 Route::get('/trainee/dashboard', [TraineeController::class, 'index']);
 
+// updated
 
+
+//end
 
 
 Route::get('/moduleOne', [ModuleOneController::class, 'index'])->name('module.moduleOne');
@@ -126,7 +130,8 @@ Route::get('/reference4', [ModuleFourController::class, 'generate']);
 Route::get('/moduleFive', [ModuleFiveController::class, 'index'])->name('module.moduleFive');
 
 Route::get('/saveData5', [ModuleFiveController::class, 'save']);
-
+Route::get('/view/moduleFiveUpdate/{id}', [ModuleFiveController::class, 'edit']);
+Route::put('/view/updatemoduleFive/{id}', [ModuleFiveController::class, 'update'])->name('update5');
 Route::get('/pdf5', [ModuleFiveController::class, 'pdf']);
 Route::get('/reference5', [ModuleFiveController::class, 'generate']);
 

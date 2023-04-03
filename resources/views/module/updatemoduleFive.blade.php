@@ -38,8 +38,9 @@
 
                     <div class="container col ml-4 mt-4" style="align-content: center">
 
-                        <form action="/saveData5" post="post">
+                        <form action="{{ route('update5', $users->id) }}" method="POST">
                             @csrf
+                            @method('PUT')
                             <!-- {{ csrf_field() }} -->
                             <br>
 
@@ -94,18 +95,21 @@
                                     <table class="w3-table w3-striped w3-border" id="AAQM">
 
                                         <tbody>
-
-                                        <tr>
-                                            <td style="text-align: center">Station Description</td>
-                                            <td style="text-align: center">Date</td>
-                                            <td style="text-align: center">Noise Level (dB)</td>
-                                            <td style="text-align: center">CO (mg/ Ncm)</td>
-                                            <td style="text-align: center">NOx (mg/Ncm)</td>
-                                            <td style="text-align: center">Particulates (mg/Ncm)</td>
-                                            <td><input class="form-control" type="text" name=" "></td>
-                                            <td><input class="form-control" type="text" name=" "></td>
-                                            <td><input class="form-control" type="text" name=" "></td>
-                                        </tr>
+                                        @foreach ($aaqmonitoring_parameter as $parameter)
+                                            @if ($parameter->userid == Auth::id())
+                                                <tr>
+                                                    <td style="text-align: center">Station Description</td>
+                                                    <td style="text-align: center">Date</td>
+                                                    <td style="text-align: center">Noise Level (dB)</td>
+                                                    <td style="text-align: center">CO (mg/ Ncm)</td>
+                                                    <td style="text-align: center">NOx (mg/Ncm)</td>
+                                                    <td style="text-align: center">Particulates (mg/Ncm)</td>
+                                                    <td><input class="form-control" type="text" name="aaqname_parameter1" value="{{$parameter->aaqname_parameter1}}"></td>
+                                                    <td><input class="form-control" type="text" name="aaqname_parameter2" value="{{$parameter->aaqname_parameter2}}"></td>
+                                                    <td><input class="form-control" type="text" name="aaqname_parameter3" value="{{$parameter->aaqname_parameter3}}"></td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
 
                                         <tr>
                                             <td></td>
@@ -118,19 +122,22 @@
                                             <td style="text-align: center">mg/ Ncm</td>
                                             <td style="text-align: center">mg/ Ncm</td>
                                         </tr>
+                                        @foreach ($aaqmonitoring as $aaqmonitor)
+                                            @if ($aaqmonitor->userid == Auth::id())
+                                                <tr>
+                                                    <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{$aaqmonitor->station_description}}"></td>
+                                                    <td><input class="form-control" type="date" name="aaqmonitoring[]" value="{{$aaqmonitor->date}}"></td>
+                                                    <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{$aaqmonitor->noise_level_db}}"></td>
+                                                    <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{$aaqmonitor->CO_mg_ncm}}"></td>
+                                                    <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{$aaqmonitor->NOx_mg_ncm}}"></td>
+                                                    <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{$aaqmonitor->particulates_mg_ncm}}"></td>
+                                                    <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{$aaqmonitor->Value_parameter1}}"></td>
+                                                    <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{$aaqmonitor->Value_parameter2}}"></td>
+                                                    <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{$aaqmonitor->Value_parameter3}}"></td>
 
-                                        <tr>
-                                            <td><input class="form-control" type="text" name="aaqmonitoring[]"></td>
-                                            <td><input class="form-control" type="date" name="aaqmonitoring[]"></td>
-                                            <td><input class="form-control" type="text" name="aaqmonitoring[]"></td>
-                                            <td><input class="form-control" type="text" name="aaqmonitoring[]"></td>
-                                            <td><input class="form-control" type="text" name="aaqmonitoring[]"></td>
-                                            <td><input class="form-control" type="text" name="aaqmonitoring[]"></td>
-                                            <td><input class="form-control" type="text" name=" "></td>
-                                            <td><input class="form-control" type="text" name=" "></td>
-                                            <td><input class="form-control" type="text" name=" "></td>
-
-                                        </tr>
+                                                </tr>
+                                            @endif
+                                        @endforeach
 
                                         </tbody>
 
@@ -152,36 +159,23 @@
                                             <td></td>
                                             <td style="text-align: center">ECC Condition/s</td>
                                             <td style="text-align:center">Status of Compliance</td>
+                                            <td></td>
                                             <td style="text-align: center">Actions Taken</td>
                                         </tr>
 
-                                        <tr>
-                                            <td class="counterCell " style="text-align: right" ></td>
-                                            <td><input class="form-control" type="text" name="oecondition[]"></td>
+                                        @foreach ($oecondition as $oec)
+                                            @if ($oec->userid == Auth::id())
+                                                <tr>
+                                                    <td class="counterCell" style="text-align: right"></td>
+                                                    <td><input class="form-control" type="text" name="oecondition[{{$loop->index}}][ecc_condition]" value="{{$oec->ECC_Condition}}"></td>
+                                                    <td><input type="radio" name="oecondition[{{$loop->index}}][status_of_compliance]" value="yes" {{ $oec->Status_of_Compliance == 'yes' ? 'checked' : '' }}>Yes</td>
+                                                    <td><input type="radio" name="oecondition[{{$loop->index}}][status_of_compliance]" value="no" {{ $oec->Status_of_Compliance == 'no' ? 'checked' : '' }}>No</td>
+                                                    <td><textarea class="form-control" type="text" name="oecondition[{{$loop->index}}][actions_taken]" style="overflow:scroll; overflow: hidden visible;">{{$oec->Actions_Taken}}</textarea></td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
 
-                                            <td style="text-align: center">
-                                                <form action="">
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="oecondition[]"
-                                                               id="oecRadio1" value="Yes">
-                                                        <label class="form-check-label" for="oecRadio1">
-                                                            <p class="mt-3 mx-1">Yes</p>
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="oecondition[]"
-                                                               id="oecRadio2" value="No">
-                                                        <label class="form-check-label" for="oecRadio2">
-                                                            <p class="mt-3 mx-1">No</p>
-                                                        </label>
-                                                    </div>
-                                                </form>
-                                            </td>
 
-                                            <td><textarea class="form-control" type="text" name="oecondition[]"
-                                                          style="overflow:scroll; overflow: hidden visible;"></textarea></td>
-
-                                        </tr>
 
                                         </tbody>
 
@@ -201,45 +195,49 @@
                                     <table class="w3-table w3-striped w3-border" id="AWQM">
 
                                         <tbody>
+                                        @foreach ($awqmonitoring as $awq)
+                                            @if ($awq->userid == Auth::id())
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><input class="form-control" type="text" name="name1" value="{{$awq->name1}}"></td>
+                                                    <td><input class="form-control" type="text" name="name2" value="{{$awq->name2}}"></td>
+                                                    <td><input class="form-control" type="text" name="name3" value="{{$awq->name3}}"></td>
+                                                    <td><input class="form-control" type="text" name="name4" value="{{$awq->name4}}"></td>
+                                                    <td><input class="form-control" type="text" name="name5" value="{{$awq->name5}}"></td>
+                                                    <td><input class="form-control" type="text" name="name6" value="{{$awq->name6}}"></td>
+                                                    <td><input class="form-control" type="text" name="name7" value="{{$awq->name7}}"></td>
+                                                    <td><input class="form-control" type="text" name="name8" value="{{$awq->name8}}"></td>
+                                                </tr>
 
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td><input class="form-control" type="text" name="name1"></td>
-                                            <td><input class="form-control" type="text" name="name2"></td>
-                                            <td><input class="form-control" type="text" name="name3"></td>
-                                            <td><input class="form-control" type="text" name="name4"></td>
-                                            <td><input class="form-control" type="text" name="name5"></td>
-                                            <td><input class="form-control" type="text" name="name6"></td>
-                                            <td><input class="form-control" type="text" name="name7"></td>
-                                            <td><input class="form-control" type="text" name="name8"></td>
-                                        </tr>
 
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td style="text-align: center">name</td>
-                                            <td style="text-align: center">name</td>
-                                            <td style="text-align: center">name</td>
-                                            <td style="text-align: center">name</td>
-                                            <td style="text-align: center">name</td>
-                                            <td style="text-align: center">name</td>
-                                            <td style="text-align: center">name</td>
-                                            <td style="text-align: center">name</td>
-                                        </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td style="text-align: center">name</td>
+                                                    <td style="text-align: center">name</td>
+                                                    <td style="text-align: center">name</td>
+                                                    <td style="text-align: center">name</td>
+                                                    <td style="text-align: center">name</td>
+                                                    <td style="text-align: center">name</td>
+                                                    <td style="text-align: center">name</td>
+                                                    <td style="text-align: center">name</td>
+                                                </tr>
 
-                                        <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td><input class="form-control" type="text" name="unit1"></td>
-                                            <td><input class="form-control" type="text" name="unit2"></td>
-                                            <td><input class="form-control" type="text" name="unit3"></td>
-                                            <td><input class="form-control" type="text" name="unit4"></td>
-                                            <td><input class="form-control" type="text" name="unit5"></td>
-                                            <td><input class="form-control" type="text" name="unit6"></td>
-                                            <td><input class="form-control" type="text" name="unit7"></td>
-                                            <td><input class="form-control" type="text" name="unit8"></td>
-                                        </tr>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><input class="form-control" type="text" name="unit1" value="{{$awq->unit1}}"></td>
+                                                    <td><input class="form-control" type="text" name="unit2" value="{{$awq->unit2}}"></td>
+                                                    <td><input class="form-control" type="text" name="unit3" value="{{$awq->unit3}}"></td>
+                                                    <td><input class="form-control" type="text" name="unit4" value="{{$awq->unit4}}"></td>
+                                                    <td><input class="form-control" type="text" name="unit5" value="{{$awq->unit5}}"></td>
+                                                    <td><input class="form-control" type="text" name="unit6" value="{{$awq->unit6}}"></td>
+                                                    <td><input class="form-control" type="text" name="unit7" value="{{$awq->unit7}}"></td>
+                                                    <td><input class="form-control" type="text" name="unit8" value="{{$awq->unit8}}"></td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
 
                                         <tr>
                                             <td style="text-align: center">Station Description</td>
@@ -254,19 +252,23 @@
                                             <td style="text-align: center">unit</td>
                                         </tr>
 
-                                        <tr>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]"></td>
-                                            <td><input class="form-control" type="date" name="awqmonitoring1[]"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]"></td>
+                                        @foreach ($awqmonitoring1 as $awq1)
+                                            @if ($awq1->userid == Auth::id())
+                                                <tr>
+                                                    <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{$awq1->Station_Description}}"></td>
+                                                    <td><input class="form-control" type="date" name="awqmonitoring1[]" value="{{$awq1->Date}}"></td>
+                                                    <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{$awq1->value1}}"></td>
+                                                    <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{$awq1->value2}}"></td>
+                                                    <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{$awq1->value3}}"></td>
+                                                    <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{$awq1->value4}}"></td>
+                                                    <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{$awq1->value5}}"></td>
+                                                    <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{$awq1->value6}}"></td>
+                                                    <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{$awq1->value7}}"></td>
+                                                    <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{$awq1->value8}}"></td>
 
-                                        </tr>
+                                                </tr>
+                                            @endif
+                                        @endforeach
 
                                         </tbody>
 
@@ -286,37 +288,25 @@
                                             <td></td>
                                             <td style="text-align: center">Enhancement/ Mitigation Measures</td>
                                             <td style="text-align: center">Status of Compliance</td>
+                                            <td></td>
                                             <td style="text-align: center">Actions Taken</td>
                                         </tr>
 
-                                        <tr>
-                                            <td class="counterCell " style="text-align: right" ></td>
-                                            <td><input class="form-control" type="text" name="evmpprogram[]"></td>
+                                        @foreach ($evmpprogram as $evm)
+                                            @if ($evm->userid == Auth::id())
+                                                <tr>
+                                                    <td class="counterCell" style="text-align: right"></td>
 
-                                            <td style="text-align: center">
-                                                <form action="">
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="evmpprogram[]"
-                                                               id="emppRadio1" value="option1">
-                                                        <label class="form-check-label" for="emppRadio1">
-                                                            <p class="mt-3 mx-1">Yes</p>
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name=""
-                                                               id="emppRadio2" value="option2">
-                                                        <label class="form-check-label" for="emppRadio2">
-                                                            <p class="mt-3 mx-1">No</p>
-                                                        </label>
-                                                    </div>
-                                                </form>
-                                            </td>
+                                                    <td><input class="form-control" type="text" name="evmpprogram[{{$loop->index}}][evm_condition]" value ="{{$evm->Enhancement_Mitigation_Measures}}"></td>
+                                                    <td><input type="radio" name="evmpprogram[{{$loop->index}}][evm_status_of_compliance]" value="yes" {{ $evm->Status_of_Compliance == 'yes' ? 'checked' : '' }}>Yes</td>
+                                                    <td><input type="radio" name="evmpprogram[{{$loop->index}}][evm_status_of_compliance]" value="no" {{ $evm->Status_of_Compliance == 'no' ? 'checked' : '' }}>No</td>
 
-                                            <td><textarea class="form-control" type="text" name="evmpprogram[]"
-                                                          style="overflow:scroll; overflow: hidden visible;"></textarea></td>
+                                                    <td><textarea class="form-control" type="text" name="evmpprogram[{{$loop->index}}][evm_actions_taken]" style="overflow:scroll; overflow: hidden visible;">{{$evm->Actions_Taken}}</textarea></td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
 
 
-                                        </tr>
 
                                         </tbody>
 
@@ -340,41 +330,63 @@
                                             <td style="text-align: center">Biodegradable</td>
                                             <td style="text-align: center">Residual</td>
                                         </tr>
+                                        @foreach ($aqg as $aqg)
+                                            @if ($aqg->userid == Auth::id())
+                                                <tr>
+                                                    <td>Average Quantity Generated (tons/ month)</td>
+                                                    <td><input class="form-control" type="text" name="AQG1" value="{{$aqg->Recyclable}}"></td>
+                                                    <td><input class="form-control" type="text" name="AQG2" value="{{$aqg->Biodegradable}}"></td>
+                                                    <td><input class="form-control" type="text" name="AQG3" value="{{$aqg->Residual}}"></td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
 
-                                        <tr>
-                                            <td>Average Quantity Generated (tons/ month)</td>
-                                            <td><input class="form-control" type="text" name="AQG1"></td>
-                                            <td><input class="form-control" type="text" name="AQG2"></td>
-                                            <td><input class="form-control" type="text" name="AQG3"></td>
-                                        </tr>
+                                        @foreach ($tqg as $tqg)
+                                            @if ($tqg->userid == Auth::id())
+                                                <tr>
+                                                    <td>Total Quantity Generated (tons/ quarter)</td>
+                                                    <td><input class="form-control" type="text" name="TQG1" value="{{$tqg->Recyclable}}"></td>
+                                                    <td><input class="form-control" type="text" name="TQG2" value="{{$tqg->Biodegradable}}"></td>
+                                                    <td><input class="form-control" type="text" name="TQG3" value="{{$tqg->Residual}}"></td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
 
-                                        <tr>
-                                            <td>Total Quantity Generated (tons/ quarter)</td>
-                                            <td><input class="form-control" type="text" name="TQG1"></td>
-                                            <td><input class="form-control" type="text" name="TQG2"></td>
-                                            <td><input class="form-control" type="text" name="TQG3"></td>
-                                        </tr>
+                                        @foreach ($aqc as $aqc)
+                                            @if ($aqc->userid == Auth::id())
 
-                                        <tr>
-                                            <td>Average Quantity Collected (tons/ month)</td>
-                                            <td><input class="form-control" type="text" name="AQC1"></td>
-                                            <td><input class="form-control" type="text" name="AQC2"></td>
-                                            <td><input class="form-control" type="text" name="AQC3"></td>
-                                        </tr>
+                                                <tr>
+                                                    <td>Average Quantity Collected (tons/ month)</td>
+                                                    <td><input class="form-control" type="text" name="AQC1" value="{{$aqc->Recyclable}}"></td>
+                                                    <td><input class="form-control" type="text" name="AQC2" value="{{$aqc->Biodegradable}}"></td>
+                                                    <td><input class="form-control" type="text" name="AQC3" value="{{$aqc->Residual}}"></td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
 
-                                        <tr>
-                                            <td>Total Quantity Collected (tons/quarter)</td>
-                                            <td><input class="form-control" type="text" name="TQC1"></td>
-                                            <td><input class="form-control" type="text" name="TQC2"></td>
-                                            <td><input class="form-control" type="text" name="TQC3"></td>
-                                        </tr>
 
-                                        <tr>
-                                            <td>Entity in charge of collection</td>
-                                            <td><input class="form-control" type="text" name="EICC1"></td>
-                                            <td><input class="form-control" type="text" name="EICC2"></td>
-                                            <td><input class="form-control" type="text" name="EICC3"></td>
-                                        </tr>
+                                        @foreach ($tqc as $tqc)
+                                            @if ($tqc->userid == Auth::id())
+                                                <tr>
+                                                    <td>Total Quantity Collected (tons/quarter)</td>
+                                                    <td><input class="form-control" type="text" name="TQC1" value="{{$tqc->Recyclable}}"></td>
+                                                    <td><input class="form-control" type="text" name="TQC2" value="{{$tqc->Biodegradable}}"></td>
+                                                    <td><input class="form-control" type="text" name="TQC3" value="{{$tqc->Residual}}"></td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+
+                                        @foreach ($eicc as $eicc)
+                                            @if ($eicc->userid == Auth::id())
+
+                                                <tr>
+                                                    <td>Entity in charge of collection</td>
+                                                    <td><input class="form-control" type="text" name="EICC1" value="{{$eicc->Recyclable}}"></td>
+                                                    <td><input class="form-control" type="text" name="EICC2" value="{{$eicc->Biodegradable}}"></td>
+                                                    <td><input class="form-control" type="text" name="EICC3" value="{{$eicc->Residual}}"></td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
 
                                         </tbody>
 
@@ -394,28 +406,33 @@
                                 </table>
                             </div>
                             </tr>
+                            @foreach ($description as $des)
+                                @if ($des->userid == Auth::id())
 
-                            <tr>
-                                <td><textarea class="form-control" type="text" name="description"
-                                              style="overflow:scroll; overflow: hidden visible; width: 100%;"></textarea></td>
-                            </tr>
-                            </tbody>
+                                    <tr>
+                                        <td><textarea class="form-control" type="text" name="description"
+                                                      style="overflow:scroll; overflow: hidden visible; width: 100%;">{{$des->description}}</textarea></td>
+                                    </tr>
+                                    @endif
+                                    @endforeach
 
-                            </table>
+                                    </tbody>
 
-                            </table>
+                                    </table>
+
+                                    </table>
 
 
-                            <!-- 13th row -->
-                            <div class="container">
-                                <div class="col mb-3">
-                                    <div style="float: right" class="mb-3">
-                                        <a href="{{ route('module.moduleFour') }}" class="btn btn-lg border bg-light">Previous</a>
-                                          <a href="{{ route('module.moduleSix') }}" class="btn btn-lg btn-info">Next</a>
-                                        <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
+                                    <!-- 13th row -->
+                                    <div class="container">
+                                        <div class="col mb-3">
+                                            <div style="float: right" class="mb-3">
+                                                <a href="{{ route('module.moduleFour') }}" class="btn btn-lg border bg-light">Previous</a>
+                                                <a href="{{ route('module.moduleSix') }}" class="btn btn-lg btn-info">Next</a>
+                                                <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
 
 
                         </form>
