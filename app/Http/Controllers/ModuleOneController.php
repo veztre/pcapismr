@@ -332,6 +332,7 @@ class ModuleOneController extends Controller
         $pono = Auth::user()->pono()->get();
         $operation = Auth::user()->operation()->get();
         $production = Auth::user()->production()->get();
+        $customPaper = array(0,0,800.00,800.90);
         $pdf = PDF::loadView('module.pdf1' , [
             'ref_no'=>$ref_no,
             'year'=>$years,
@@ -356,7 +357,7 @@ class ModuleOneController extends Controller
             'operation'=>$operation,
             'production'=>$production
 
-        ]);
+        ])->setPaper($customPaper,'A4');
 
         return $pdf->download('moduleOne.pdf');
     }

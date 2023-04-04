@@ -170,7 +170,7 @@ class ModuleThreeController extends Controller
             $DBdreportofwaste->userid = Auth::user()->id;
             $DBdreportofwaste->Outlet_No = $dreportofwaste[$x];
             $DBdreportofwaste->date = date('Y-m-d', strtotime($dreportofwaste[$x+1]));
-            $DBdreportofwaste->NEffluent_Flow_Rate = $dreportofwaste[$x+2];
+            $DBdreportofwaste->Effluent_Flow_Rate = $dreportofwaste[$x+2];
             $DBdreportofwaste->BOD_mg_L = $dreportofwaste[$x+3];
             $DBdreportofwaste->TSS_mg_L = $dreportofwaste[$x+4];
             $DBdreportofwaste->Color = $dreportofwaste[$x+5];
@@ -234,20 +234,20 @@ class ModuleThreeController extends Controller
 
     public function edit($id){
 
-        $waterpolutiondata = WaterPolutionData::get();
-        $personEmployed = PersonEmployed::get();
-        $personEmployedCost = PersonEmployedCost::get();
-        $costofchemical = CostOfChemical::get();
-        $utilitycost = UtilityCost::get();
-        $administrativecosts = AdministrativeCost::get();
-        $costofoperating = CostOfOperating::get();
-        $newinvestment = NewInvestment::get();
-        $costofnew = CostOfNew::get();
-        $dischargeLocation = DischargeLocation::get();
-        $dreportofwaste = DreportofWaste::get();
-        $drowcfop = Drowcfop::get();
-        $drowcfop1 = Drowcfop1::get();
-        $dreportofwaste_parameter = DreportofWaste_parameter::get();
+        $waterpolutiondata = Auth::user()->waterpolutiondata()->get();
+        $personEmployed = Auth::user()->personEmployed()->get();
+        $personEmployedCost = Auth::user()->personEmployedCost()->get();
+        $costofchemical = Auth::user()->costofchemical()->get();
+        $utilitycost = Auth::user()->utilitycost()->get();
+        $administrativecosts = Auth::user()->administrativecosts()->get();
+        $costofoperating = Auth::user()->costofoperating()->get();
+        $newinvestment = Auth::user()->newinvestment()->get();
+        $costofnew = Auth::user()->costofnew()->get();
+        $dischargeLocation = Auth::user()->dischargeLocation()->get();
+        $dreportofwaste = Auth::user()->dreportofwaste()->get();
+        $drowcfop = Auth::user()->drowcfop()->get();
+        $drowcfop1 = Auth::user()->drowcfop1()->get();
+        $dreportofwaste_parameter = Auth::user()->dreportofwaste_parameter()->get();
 
         $reference = referencen::get();
         $users = User::find($id);
@@ -395,7 +395,7 @@ class ModuleThreeController extends Controller
         foreach ($DBdreportofwaste as $index => $record) {
             $record->Outlet_No = $dreportofwaste[$index*10];
             $record->date = $dreportofwaste[$index*10+1];
-            $record->NEffluent_Flow_Rate = $dreportofwaste[$index*9+2];
+            $record->Effluent_Flow_Rate = $dreportofwaste[$index*9+2];
             $record->BOD_mg_L = $dreportofwaste[$index*10+3];
             $record->TSS_mg_L = $dreportofwaste[$index*10+4];
             $record->Color = $dreportofwaste[$index*10+5];
@@ -413,7 +413,7 @@ class ModuleThreeController extends Controller
             $newRecord->userid = $userId;
             $newRecord->Outlet_No = $dreportofwaste[$x];
             $newRecord->date = $dreportofwaste[$x+1];
-            $newRecord->NEffluent_Flow_Rate = $dreportofwaste[$x+2];
+            $newRecord->Effluent_Flow_Rate = $dreportofwaste[$x+2];
             $newRecord->BOD_mg_L = $dreportofwaste[$x+3];
             $newRecord->TSS_mg_L = $dreportofwaste[$x+4];
             $newRecord->Color = $dreportofwaste[$x+5];
@@ -475,25 +475,37 @@ class ModuleThreeController extends Controller
 
     public function pdf(){
 
-        $waterpolutiondata = WaterPolutionData::get();
-        $personEmployed = PersonEmployed::get();
-        $personEmployedCost = PersonEmployedCost::get();
-        $costofchemical = CostOfChemical::get();
-        $utilitycost = UtilityCost::get();
-        $administrativecosts = AdministrativeCost::get();
-        $costofoperating = CostOfOperating::get();
-        $newinvestment = NewInvestment::get();
-        $costofnew = CostOfNew::get();
-        $dischargeLocation = DischargeLocation::get();
-        $dreportofwaste = DreportofWaste::get();
-        $drowcfop = Drowcfop::get();
-        $drowcfop1 = Drowcfop1::get();
+        $waterpolutiondata = Auth::user()->waterpolutiondata()->get();
+        $personEmployed = Auth::user()->personEmployed()->get();
+        $personEmployedCost = Auth::user()->personEmployedCost()->get();
+        $costofchemical = Auth::user()->costofchemical()->get();
+        $utilitycost = Auth::user()->utilitycost()->get();
+        $administrativecosts = Auth::user()->administrativecosts()->get();
+        $costofoperating = Auth::user()->costofoperating()->get();
+        $newinvestment = Auth::user()->newinvestment()->get();
+        $costofnew = Auth::user()->costofnew()->get();
+        $dischargeLocation = Auth::user()->dischargeLocation()->get();
+        $dreportofwaste = Auth::user()->dreportofwaste()->get();
+        $dreportof_waste_parameters = Auth::user()->dreportofwaste_parameter()->get();
+        $drowcfop = Auth::user()->drowcfop()->get();
+        $drowcfop1 = Auth::user()->drowcfop1()->get();
 
         $customPaper = array(0,0,800.00,800.90);
-        $pdf = PDF::loadview('module.pdf3',['waterpolutiondata'=>$waterpolutiondata,'personEmployed'=>$personEmployed,
-            'personEmployedCost'=>$personEmployedCost,'costofchemical'=>$costofchemical,'utilitycost'=>$utilitycost,'administrativecosts'=>$administrativecosts,
-            'costofoperating'=>$costofoperating,'newinvestment'=>$newinvestment,'costofnew'=>$costofnew,'dischargeLocation'=>$dischargeLocation,
-            'dreportofwaste'=>$dreportofwaste,'drowcfop'=>$drowcfop,'drowcfop1'=>$drowcfop1
+        $pdf = PDF::loadview('module.pdf3',[
+            'waterpolutiondata'=>$waterpolutiondata,
+            'personEmployed'=>$personEmployed,
+            'personEmployedCost'=>$personEmployedCost,
+            'costofchemical'=>$costofchemical,
+            'utilitycost'=>$utilitycost,
+            'administrativecosts'=>$administrativecosts,
+            'costofoperating'=>$costofoperating,
+            'newinvestment'=>$newinvestment,
+            'costofnew'=>$costofnew,
+            'dischargeLocation'=>$dischargeLocation,
+            'dreportofwaste'=>$dreportofwaste,
+            'dreportof_waste_parameters'=>$dreportof_waste_parameters,
+            'drowcfop'=>$drowcfop,
+            'drowcfop1'=>$drowcfop1
 
 
         ])->setPaper($customPaper,'A4');

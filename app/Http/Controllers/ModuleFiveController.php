@@ -425,18 +425,18 @@ class ModuleFiveController extends Controller
 
 
     public function pdf(){
-        $aaqmonitoring_parameter = AAQmonitoring_parameter::get();
-        $aaqmonitoring = AAQmonitoring::get();
-        $oecondition = OECondition::get();
-        $aqg = AQG::get();
-        $tqg = TQG::get();
-        $tqc = TQC::get();
-        $aqc = AQC::get();
-        $eicc = EICC::get();
-        $description = Description::get();
-        $awqmonitoring = Awqmonitoring::get();
+        $aaqmonitoring_parameter = Auth::user()->aaqmonitoring_parameter()->get();
+        $aaqmonitoring = Auth::user()->aaqmonitoring()->get();
+        $oecondition = Auth::user()->oecondition()->get();
+        $aqg = Auth::user()->aqg()->get();
+        $tqg = Auth::user()->tqg()->get();
+        $tqc = Auth::user()->tqc()->get();
+        $aqc = Auth::user()->aqc()->get();
+        $eicc = Auth::user()->eicc()->get();
+        $description = Auth::user()->description()->get();
+        $awqmonitoring = Auth::user()->awqmonitoring()->get();
 
-
+        $customPaper = array(0,0,800.00,800.90);
         $pdf = PDF::loadview('module.pdf5' ,
             [
                 'aaqmonitoring_parameter'=>$aaqmonitoring_parameter,
@@ -452,7 +452,7 @@ class ModuleFiveController extends Controller
 
 
 
-            ]);
+            ])->setPaper($customPaper,'A4');
         return $pdf->download('moduleFive.pdf');
 
 

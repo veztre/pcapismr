@@ -24,15 +24,17 @@ class TransitiontoMod2Controller extends Controller
         $eidm = $request->input('eidm');
         $ehwt = $request->input('ehwt');
 
-        if ($eidm == 'Yes' || $ehwt == 'Yes') {
+        if ($eidm == 'Yes' && $ehwt == 'Yes' ) {
             return redirect()->back()->with('message', 'Module 2A and 2C is Under Construction.');
-        }elseif ($eidm == 'Yes'){
+        } elseif ($eidm == 'Yes') {
             return redirect()->back()->with('message', 'Module 2A is Under Construction.');
-        }elseif ($ehwt == 'Yes'){
+        }elseif ($ehwt == 'Yes') {
             return redirect()->back()->with('message', 'Module 2C is Under Construction.');
         } else {
-            return redirect('moduleTwo');
-        }
+
+                return redirect('moduleTwo');
+            }
+
 
     }
 

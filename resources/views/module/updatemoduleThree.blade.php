@@ -83,10 +83,10 @@
                                 <table class="table table-borderless table-hover" >
                                     <h3 class="mt-3 mx-2 text-success">WATER POLLUTION DATA</h3>
 
-
-                                    <tbody>
                                     @foreach ($waterpolutiondata as $water)
-                                        @if ($water->userid == Auth::id())
+                                    <tbody>
+
+
                                             <tr>
                                                 <td>Domestic wastewater (cubicmeters/day)</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
@@ -127,7 +127,7 @@
                                         <td><input class="form-control" type="text" style="text-align:center" name="wwfloor" id="wwfl" value="{{$water->Waste_water_floor }}"></td>
 
                                     </tr>
-                                    @endif
+
                                     @endforeach
                                     </tbody>
                                 </table>
@@ -136,7 +136,7 @@
                                 <table class="table table-borderless table-hover" >
                                     <h3 class="mt-3 mx-2 text-success">RECORD COST OF TREATMENT</h3>
 
-
+                                    @foreach ($personEmployed as $person)
                                     <tbody>
                                     <tr>
                                         <th></th>
@@ -148,8 +148,8 @@
 
 
                                     <tbody id="penum">
-                                    @foreach ($personEmployed as $person)
-                                        @if ($person->userid == Auth::id())
+
+
                                             <tr>
                                                 <td>Person employed, (# of employees)</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
@@ -157,15 +157,15 @@
                                                 <td><input class="form-control"type="text" name="pemonth2" id="pem2" value="{{$person->Month_2 }}"></td>
                                                 <td><input class="form-control" type="text" name="pemonth3" id="pem3" value="{{$person->Month_3 }}"></td>
                                             </tr>
-                                        @endif
-                                    @endforeach
+
+
                                     </tbody>
 
 
                                     <tbody id="pecost">
 
                                     @foreach ($personEmployedCost as $personcost)
-                                        @if ($personcost->userid == Auth::id())
+                                        @if($person->id == $personcost->id)
                                             <tr>
                                                 <td>Person employed, (cost)</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
@@ -174,13 +174,13 @@
                                                 <td><input class="form-control" type="text" name="pecmonth3" id="pecm3" value="{{$personcost->Month_3 }}"></td>
                                             </tr>
                                         @endif
-                                    @endforeach
+                                    @endforeach {{--personEmployedCost--}}
                                     </tbody>
 
                                     <tbody id="cocwtp">
 
                                     @foreach ($costofchemical as $chemical)
-                                        @if ($chemical->userid == Auth::id())
+                                        @if($person->id == $chemical->id)
                                             <tr>
                                                 <td>Cost of Chemicals used by WTP</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
@@ -189,12 +189,12 @@
                                                 <td><input class="form-control" type="text" name="cocw3" id="cocwm3" value="{{$chemical->Month_1 }}"></td>
                                             </tr>
                                         @endif
-                                    @endforeach
+                                    @endforeach {{--costofchemical--}}
                                     </tbody>
 
                                     <tbody id="ucwtp">
                                     @foreach ($utilitycost as $utility)
-                                        @if ($utility->userid == Auth::id())
+                                        @if($person->id == $utility->id)
                                             <tr>
                                                 <td>Utility Costs of WTP(electricity & water)</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
@@ -203,13 +203,13 @@
                                                 <td><input class="form-control" type="text" name="ucw3" id="ucwm3" value="{{$chemical->Month_3 }}"></td>
                                             </tr>
                                         @endif
-                                    @endforeach
+                                    @endforeach  {{--utilitycost--}}
                                     </tbody>
 
                                     <tbody id="aoc">
 
                                     @foreach ($administrativecosts as $administrative)
-                                        @if ($administrative->userid == Auth::id())
+                                        @if($person->id == $administrative->id)
                                             <tr>
                                                 <td>Administrative and Overhead Costs</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
@@ -218,14 +218,14 @@
                                                 <td><input class="form-control" type="text" name="aoc3" id="aocm3" value="{{$administrative->Month_1 }}"></td>
                                             </tr>
                                         @endif
-                                    @endforeach
+                                    @endforeach  {{--administrativecosts--}}
                                     </tbody>
 
                                     <tbody id="colab">
                                     <tr>
 
                                     @foreach ($costofoperating as $costofOp)
-                                        @if ($costofOp->userid == Auth::id())
+                                        @if($person->id == $costofOp->id)
                                             <tr>
                                                 <td>Cost of operating in-house laboratory</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
@@ -234,13 +234,13 @@
                                                 <td><input class="form-control" type="text" name="colab3" id="colabm3" value="{{$costofOp->Month_3 }}"></td>
                                             </tr>
                                         @endif
-                                    @endforeach
+                                    @endforeach  {{--costofoperating--}}
                                     </tbody>
 
                                     <tbody id="nai">
 
                                     @foreach ($newinvestment as $newinv)
-                                        @if ($newinv->userid == Auth::id())
+                                        @if($person->id == $newinv->id)
                                             <tr>
                                                 <td>New/Additional Investments in WTP <br> (description)</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
@@ -249,13 +249,13 @@
                                                 <td><input class="form-control" type="text" name="nai3" id="naim3" value="{{$newinv->Month_3 }}"></td>
                                             </tr>
                                         @endif
-                                    @endforeach
+                                    @endforeach  {{--newinvestment--}}
                                     </tbody>
 
 
                                     <tbody id="cnai">
                                     @foreach ($costofnew as $con)
-                                        @if ($con->userid == Auth::id())
+                                        @if($person->id == $con->id)
                                             <tr>
                                                 <td>Costs of New/Add Investments <br> (description)</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
@@ -264,9 +264,9 @@
                                                 <td><input class="form-control" type="text" name="cnai3" id="cnaim3" value="{{$con->Month_3 }}"></td>
                                             </tr>
                                         @endif
-                                    @endforeach
+                                    @endforeach  {{--costofnew--}}
                                     </tbody>
-
+                                    @endforeach {{--personemployed--}}
                                 </table>
 
 
@@ -281,14 +281,14 @@
                                     </tr>
 
                                     @foreach ($dischargeLocation as $dischargeloc)
-                                        @if ($dischargeloc->userid == Auth::id())
+
                                             <tr>
                                                 <td ><input class="form-control" type="text" name="dischargeLocation[]" value ="{{$dischargeloc->Outlet_Number }}"></td>
                                                 <td><input class="form-control" type="text"  id="lo" name="dischargeLocation[]" value="{{$dischargeloc->Location_of_Outlet }}"></td>
                                                 <td><input class="form-control" type="text"  id="nrwb" name="dischargeLocation[]" value="{{$dischargeloc->Name_of_Receiving_water_body }}"></td>
                                                 <td></td>
                                             </tr>
-                                        @endif
+
                                     @endforeach
                                     </tbody>
 
@@ -305,7 +305,7 @@
                                 <table class="table table-borderless table-hover" >
                                     <h3 class="mt-3 mx-2 text-success">DETAILED REPORT OF WASTEWATER CHARACTERISTICS FOR CONVENTIONAL POLLUTANTS</h3>
 
-
+                                    @foreach ($dreportofwaste_parameter as $dreport_parameter)
                                     <tbody id=drwccc>
                                     <tr>
                                         <th style="text-align: center">Outlet No.</th>
@@ -317,7 +317,7 @@
                                         <th style="text-align: center">pH</th>
                                         <th style="text-align: center">Oil & Grease (mg/L)</th>
                                         <th style="text-align: center">Temp Rise ©</th>
-                                        <td><input class="form-control" type="text"></td>
+                                        <td><input class="form-control" type="text" name="name_parameter" id="npara" value="{{ $dreport_parameter->name_parameter }}"></td>
                                     </tr>
                                     <td></td>
                                     <td></td>
@@ -339,7 +339,7 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input class="form-control" type="text" ></td>
+                                        <td><input class="form-control" type="text" name="unit_parameter" id="upara" value="{{ $dreport_parameter->unit_parameter }}" ></td>
                                     </tr>
                                     <td></td>
                                     <td></td>
@@ -351,9 +351,9 @@
                                     <td></td>
                                     <td></td>
                                     <th style="text-align: left">unit</th>
-
+                                    @endforeach
                                     @foreach ($dreportofwaste as $dreport)
-                                        @if ($dreport->userid == Auth::id())
+
                                             <tr>
                                                 <td><input class="form-control" type="text" name="dreportofwaste[]" value="{{$dreport->Outlet_No }}"></td>
                                                 <td ><input class="form-control" type="date"  id="wcdate" name="dreportofwaste[]" value="{{$dreport->date }}"></td>
@@ -364,10 +364,10 @@
                                                 <td><input class="form-control" type="text"  id="phl" name="dreportofwaste[]" value="{{$dreport->pH }}"></td>
                                                 <td><input class="form-control" type="text"  id="oag" name="dreportofwaste[]" value="{{$dreport->Oil_Grease_mg_L }}"></td>
                                                 <td><input class="form-control" type="text"  id="tempr" name="dreportofwaste[]" value="{{$dreport->Temp_Rise }}"></td>
-                                                <td><input class="form-control" type="text"></td>
+                                                <td><input class="form-control" type="text" id="add_p" name="dreportofwaste[]" value="{{ $dreport->Add_Pm }}"></td>
                                                 <td></td>
                                             </tr>
-                                        @endif
+
                                     @endforeach
                                     </tbody>
 
@@ -391,7 +391,7 @@
 
                                     <tbody id=dwrcop>
                                     @foreach ($drowcfop as $drow1)
-                                        @if ($drow1->userid == Auth::id())
+
                                             <tr>
                                                 <th style="text-align: center">Outlet No.</th>
                                                 <th style="text-align: center">Date</th>
@@ -430,7 +430,7 @@
                                                 <td><input class="form-control" type="text"  id="opu6" name="unit6" value="{{$drow1->unit6}}"></td>
                                                 <td><input class="form-control" type="text"  id="opu7" name="unit7" value="{{$drow1->unit7}}"></td>
                                             </tr>
-                                        @endif
+
                                     @endforeach
 
                                     <tr>
@@ -446,7 +446,7 @@
                                         <th style="text-align: center">Unit</th>
                                     </tr>
                                     @foreach ($drowcfop1 as $drow2)
-                                        @if ($drow1->userid == Auth::id())
+
                                             <tr>
 
                                                 <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{$drow2->Outlet_No}}"></td>
@@ -461,7 +461,7 @@
                                                 <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{$drow2->value7}}"></td>
                                                 <td></td>
                                             </tr>
-                                        @endif
+
                                     @endforeach
 
 

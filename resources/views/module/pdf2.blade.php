@@ -140,9 +140,9 @@
 </div>
 
 <div class="page-break">
-<h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder;">For Producers</h2>
+<h2 class="mt-3 mx-2 text-success text-left " style="font-size: 18px; font-weight: bolder;">For Producers</h2>
 
-<table  style="border-style: solid;  margin-top: 3%; margin-bottom: 3%;">
+<table  style="border-style: solid;  margin-top: 3%; margin-bottom: 2%;">
     <thead>
 
     <tr>
@@ -165,7 +165,7 @@
 </table>
 
 
-<table  style="border-style: solid; margin-top: 3%; margin-bottom: 3%;">
+<table  style="border-style: solid; margin-top: 2%; margin-bottom: 3%;">
     <thead>
 
     <tr>
@@ -213,9 +213,9 @@
 </table>
 
 
-<h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder">Describe any changes in Production/Process/Operations</h2>
+<h2 class="mt-3 mx-2 text-success text-left " style="font-size: 18px; font-weight: bolder">Describe any changes in Production/Process/Operations</h2>
 
-<table  style="border-style: solid;  margin-top: 3%; margin-bottom: 3%;">
+<table  style="border-style: solid;  margin-top: 3%; margin-bottom: 2%;">
     <tbody>
 
         <tr>
@@ -227,9 +227,9 @@
     </tbody>
 </table>
 
-<h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder">Stock Inventory/Waste Chemical Generated</h2>
+<h2 class="mt-3 mx-2 text-success text-left " style="font-size: 18px; font-weight: bolder">Stock Inventory/Waste Chemical Generated</h2>
 
-<table  style="border-style: solid;  margin-top: 3%; margin-bottom: 3%;">
+<table  style="border-style: solid;  margin-top: 3%; margin-bottom: 2%;">
     <thead>
 
     <tr>
@@ -252,9 +252,9 @@
 </table>
 
 
-<h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder">Other Information</h2>
+<h2 class="mt-3 mx-2 text-success text-left " style="font-size: 18px; font-weight: bolder">Other Information</h2>
 
-<table  style="border-style: solid;  margin-top: 3%; margin-bottom: 3%;">
+<table  style="border-style: solid;  margin-top: 3%; margin-bottom: 2%;">
     <thead>
 
     <tr>
@@ -275,6 +275,7 @@
 </table>
 </div>
 
+<div class="page-break">
 <h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder; margin-bottom: 3%;">B. HAZARDOUS WASTE GENERATOR</h2>
 
 <h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder; margin-top: 3%;">HAZARDOUS WASTE GENERATION</h2>
@@ -296,9 +297,9 @@
         <th colspan="1" style="border-top-style: none;"></th>
         <th colspan="1" style="border-top-style: none;"></th>
         <th colspan="1" style="border-top-style: none;"></th>
-        <th style="text-align: center;">Qunatity</th>
+        <th style="text-align: center;">Quantity</th>
         <th style="text-align: center;">Unit</th>
-        <th style="text-align: center;">Qunatity</th>
+        <th style="text-align: center;">Quantity</th>
         <th style="text-align: center;">Unit</th>
     </tr>
 
@@ -326,8 +327,9 @@
 <h2 class="mt-3 mx-2 text-success text-left " style="font-size: 18px; font-weight: bolder; margin-top: 3%;">WASTE STORAGE, TREATMENT AND DISPOSAL (PLEASE FILL-UP ONE TABLE PER HW)</h2>
 
 
-@foreach ($hwDetails as $detail)
+
 <div>
+    @foreach ($hwDetails as $detail)
         <table style="border-style: solid;  margin-top: 3%; margin-bottom: 3%;">
           <thead>
             <tr>
@@ -454,8 +456,9 @@
                 @endif
             @endforeach {{--Disposal--}}
         </table>
+    @endforeach    {{--hwdetails--}}
 </div>
-@endforeach    {{--hwdetails--}}
+
 
 <h2 class="mt-3 mx-2 text-success text-left " style="font-size: 18px; font-weight: bolder; margin-top: 3%;">On-site self Inspection of Storage Area</h2>
 
@@ -482,7 +485,7 @@
             @endforeach
         </tbody>
 </table>
-
+</div>
 
 <h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder; margin-bottom: 3%;">C. HAZARDOUS WASTE Treater/Recycler</h2>
 

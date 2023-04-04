@@ -596,26 +596,34 @@ class ModuleFourController extends Controller
 
     public function pdf(){
 
-        $summary1 = Summary1::get();
-        $summary2 = Summary2::get();
-        $summary3 = Summary3::get();
-        $cost_of_person_employed = Cost_of_person_employed::get();
-        $total_consumption_of_water = Total_Consumption_of_Water::get();
-        $total_cost_of_chemicals_used = Total_Cost_of_Chemicals_used::get();
-        $total_consumption_of_electricity =Total_Consumption_of_Electricity::get();
-        $administrative_and_overhead_costs = Administrative_and_Overhead_Costs::get();
-        $cost_of_operating_in_house_laboratory = Cost_of_operating_in_house_laboratory::get();
-        $improvement_or_modification = Improvement_or_modification::get();
-        $cost_of_improvement_of_modification =Cost_of_improvement_of_modification::get();
-        $detailreport = DetailReport::get();
+        $summary1 = Auth::user()->summary1()->get();
+        $summary2 = Auth::user()->summary2()->get();
+        $summary3 = Auth::user()->summary3()->get();
+        $cost_of_person_employed = Auth::user()->cost_of_person_employed()->get();
+        $total_consumption_of_water = Auth::user()->total_consumption_of_water()->get();
+        $total_cost_of_chemicals_used = Auth::user()->total_cost_of_chemicals_used()->get();
+        $total_consumption_of_electricity = Auth::user()->total_consumption_of_electricity()->get();
+        $administrative_and_overhead_costs = Auth::user()->administrative_and_overhead_costs()->get();
+        $cost_of_operating_in_house_laboratory = Auth::user()->cost_of_operating_in_house_laboratory()->get();
+        $improvement_or_modification = Auth::user()->improvement_or_modification()->get();
+        $cost_of_improvement_of_modification = Auth::user()->cost_of_improvement_of_modification()->get();
+        $detailreport = Auth::user()->detailreport()->get();
+        $customPaper = array(0,0,800.00,800.90);
         $pdf = PDF::loadView('module.pdf4',[
-            'summary1'=>$summary1,'summary2'=>$summary2,'summary3'=>$summary3,'cost_of_person_employed'=>$cost_of_person_employed,
-            'total_consumption_of_water'=>$total_consumption_of_water,'total_cost_of_chemicals_used'=>$total_cost_of_chemicals_used,
-            'total_consumption_of_electricity'=>$total_consumption_of_electricity,'administrative_and_overhead_costs'=>$administrative_and_overhead_costs,
-            'cost_of_operating_in_house_laboratory'=>$cost_of_operating_in_house_laboratory,'improvement_or_modification'=>$improvement_or_modification,
-            'cost_of_improvement_of_modification'=>$cost_of_improvement_of_modification,'detailreport'=>$detailreport
+            'summary1'=>$summary1,
+            'summary2'=>$summary2,
+            'summary3'=>$summary3,
+            'cost_of_person_employed'=>$cost_of_person_employed,
+            'total_consumption_of_water'=>$total_consumption_of_water,
+            'total_cost_of_chemicals_used'=>$total_cost_of_chemicals_used,
+            'total_consumption_of_electricity'=>$total_consumption_of_electricity,
+            'administrative_and_overhead_costs'=>$administrative_and_overhead_costs,
+            'cost_of_operating_in_house_laboratory'=>$cost_of_operating_in_house_laboratory,
+            'improvement_or_modification'=>$improvement_or_modification,
+            'cost_of_improvement_of_modification'=>$cost_of_improvement_of_modification,
+            'detailreport'=>$detailreport
 
-        ]);
+        ])->setPaper($customPaper,'A4');
         return $pdf->download('moduleFour.pdf');
 
     }

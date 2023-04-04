@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('userid');
             $table->string('Outlet_No');
             $table->date('date');
-            $table->string('NEffluent_Flow_Rate');
+            $table->string('Effluent_Flow_Rate');
             $table->string('BOD_mg_L');
             $table->string('TSS_mg_L');
             $table->string('Color');

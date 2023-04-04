@@ -140,6 +140,8 @@ class ModuleTwoController extends Controller
         $treater = Auth::user()->treater()->get();
         $disposal = Auth::user()->disposal()->get();
         $osisa = Auth::user()->osisa()->get();
+
+        $customPaper = array(0,0,800.00,800.90);
         $pdf = PDF::loadview('module.pdf2',[
             'hwGeneration'=>$hwGeneration,
             'hwDetails'=>$hwDetails,
@@ -150,7 +152,8 @@ class ModuleTwoController extends Controller
             'osisa'=>$osisa
 
 
-        ]);
+        ])->setPaper($customPaper,'A4');
+
         return $pdf->download('moduleTwo.pdf');
 
 

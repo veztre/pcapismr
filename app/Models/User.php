@@ -314,11 +314,20 @@ class User extends Authenticatable
 
 /*    Module 6 start*/
     public function accident_records (){
-        return $this->hasOne(AccidentRecord::class,foreignKey: 'userid');
+        return $this->hasmany(AccidentRecord::class,foreignKey: 'userid');
     }
 
     public function personel_staff (){
-        return $this->hasOne(PersonelStaff::class,foreignKey: 'userid');
+        return $this->hasmany(PersonelStaff::class,foreignKey: 'userid');
+    }
+    public function oattachment (){
+        return $this->hasone(PersonelStaff::class,foreignKey: 'userid');
+    }
+    public function oaemployee (){
+        return $this->hasone(PersonelStaff::class,foreignKey: 'userid');
+    }
+    public function oaemployee1 (){
+        return $this->hasone(PersonelStaff::class,foreignKey: 'userid');
     }
 /*    Module 6 end*/
 

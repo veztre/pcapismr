@@ -227,12 +227,13 @@ class ModuleSixController extends Controller
 
 
 
-        $accident_records = AccidentRecord::get(); //get database
-        $personel_staff = PersonelStaff::get();
-        $oattachment = Oattachment::get();
-        $oaemployee = Oaemployee::get();
-        $oaemployee1 =Oaemployee1::get();
+        $accident_records = Auth::user()->accident_records()->get(); //get database
+        $personel_staff = Auth::user()->personel_staff()->get();
+        $oattachment = Auth::user()->oattachment()->get();
+        $oaemployee = Auth::user()->oaemployee()->get();
+        $oaemployee1 =Auth::user()->oaemployee1()->get();
 
+        $customPaper = array(0,0,800.00,800.90);
         $pdf = PDF::loadView('module.pdf6',[
             'accident_records'=>$accident_records,
             'personel_staff'=>$personel_staff,
@@ -241,7 +242,7 @@ class ModuleSixController extends Controller
             'oaemployee1'=>$oaemployee1
 
 
-        ]);  //hello.blade.php (design of pdf)
+        ])->setPaper($customPaper,'A4');  //hello.blade.php (design of pdf)
         return $pdf->download('moduleSix.pdf'); //pdf name download
 
     }

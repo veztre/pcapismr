@@ -579,7 +579,7 @@
     $("#wdladd").click(function () { //button name
         ++i;
         $("#wdl").append(
-            '<tr><td ><input class="form-control" type="number" name="dischargeLocation[]" ></td><td><input class="form-control" type="text"  id="lo" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', 'N/A') }}"></td><td><input class="form-control" type="text"  id="nrwb" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', 'N/A') }}"></td><td></td></tr>'
+            '<tr><td ><input class="form-control" type="text" name="dischargeLocation[]" ></td><td><input class="form-control" type="text"  id="lo" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', 'N/A') }}"></td><td><input class="form-control" type="text"  id="nrwb" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', 'N/A') }}"></td><td></td></tr>'
         ); //table name
     });
 </script>
