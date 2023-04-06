@@ -279,6 +279,11 @@
         border-width: 0 2px 2px 0;
         transform: rotate(45deg);
     }
+
+    .form-select {
+        position: relative;
+        padding-right: 30px; /* Add space for the check mark */
+    }
     /*green checkmarked end style*/
 </style>
 {{-- Timezone--}}

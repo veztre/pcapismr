@@ -51,9 +51,9 @@
 
                                 <div class="row mt-4">
 
-                                    <div class="col-2">
+                                    <div class="col-2 position-relative">
                                         <label for="year" hidden></label>
-                                        <select class="form-select" id="year" name="year" required>
+                                        <select class="form-select validate-input" id="year" name="year" required>
                                             <option selected disabled value="">SELECT</option>
                                             <option class="">2025</option>
                                             <option class="">2024</option>
@@ -67,25 +67,25 @@
                                             <option class="">2016</option>
                                             <option class="">2015</option>
                                         </select>
-
+                                        <span class="checkmark"></span>
                                         <div class="invalid-feedback">
-                                            Please select a valid region.
+                                            Please select a valid year.
                                         </div>
 
                                     </div>
 
-                                    <div class="col-2">
+                                    <div class="col-2 position-relative">
                                         <label for="quarter" hidden></label>
-                                        <select class="form-select" id="quarter" name="quarter" required>
+                                        <select class="form-select validate-input" id="quarter" name="quarter" required>
                                             <option selected disabled value="">SELECT</option>
                                             <option class="">1st Quarter</option>
                                             <option class="">2nd Quarter</option>
                                             <option class="">3rd Quarter</option>
                                             <option class="">4th Quarter</option>
                                         </select>
-
+                                        <span class="checkmark"></span>
                                         <div class="invalid-feedback">
-                                            Please select a valid region.
+                                            Please select a valid quarter.
                                         </div>
 
                                     </div>
@@ -120,10 +120,10 @@
 
 
                                 <div class="mb-2">
-                                    <div class="col-11 mx-auto">
+                                    <div class="col-11 mx-auto position-relative">
                                         <p>Name of the Plant</p>
                                         <label for="plant" hidden></label>
-                                        <select class="form-select text-center" id="plant" name="plantname" required>
+                                        <select class="form-select text-center validate-input" id="plant" name="plantname" required>
                                             <option selected disabled value="">-- Select --</option>
                                             @foreach ($addfacility as $data)
                                                 @if ($data->userid == Auth::id())
@@ -133,8 +133,9 @@
                                                 @endif
                                             @endforeach
                                         </select>
+                                        <span class="checkmark"></span>
                                         <div class="invalid-feedback">
-                                            Please select a valid region.
+                                            Please select a valid plant.
                                         </div>
                                     </div>
                                 </div>
