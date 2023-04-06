@@ -130,6 +130,7 @@ class ModuleOneController extends Controller
         $gic->description = $request->input('description');
         $gic->save();
 
+
         $aircon = new Aircon();
         $aircon->userid = $userId;
         $aircon->permit = $request->input('ACPermit');

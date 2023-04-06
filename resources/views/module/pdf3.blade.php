@@ -25,6 +25,11 @@
     .page-break {
         page-break-after: always;
     }
+
+     span.currency-sign{
+         font-family: DejaVu Sans !important;
+     }
+
 </style>
 <div class="col">
                             <p class="p-1 mt-3  text-light" style="background-color:gray; font-size:20px " >
@@ -87,9 +92,28 @@
             <tbody>
             <tr>
                 <td style="text-align: left"><b>Person employed, (cost)</b></td>
-                <td style="text-align: center">&#8369; {{ $employeec->Month_1}}</td>
-                <td style="text-align: center">&#8369; {{ $employeec->Month_2}}</td>
-                <td style="text-align: center">&#8369; {{ $employeec->Month_3}}</td>
+                <td style="text-align: center">
+                    @if (!is_null($employeec->Month_1) && $employeec->Month_1 !== 'NA')
+                        <span class="currency-sign">&#8369;</span> {{ $employeec->Month_1}}
+                    @else
+                        {{ $employeec->Month_1 }}
+                    @endif
+                </td>
+                <td style="text-align: center">
+                    @if (!is_null($employeec->Month_2) && $employeec->Month_2 !== 'NA')
+                        <span class="currency-sign">&#8369;</span> {{ $employeec->Month_2}}
+                    @else
+                        {{ $employeec->Month_2 }}
+                    @endif
+                </td>
+                <td style="text-align: center">
+                    @if (!is_null($employeec->Month_3) && $employeec->Month_3 !== 'NA')
+                        <span class="currency-sign">&#8369;</span> {{ $employeec->Month_3}}
+                    @else
+                        {{ $employeec->Month_3 }}
+                    @endif
+                </td>
+
             </tr>
             </tbody>
             @endif
@@ -101,9 +125,15 @@
                 <tbody>
                 <tr>
                     <td style="text-align: left"><b>Cost of Chemicals used by WTP</b></td>
-                    <td style="text-align: center">&#8369; {{ $coc->Month_1}}</td>
-                    <td style="text-align: center">&#8369; {{ $coc->Month_2}}</td>
-                    <td style="text-align: center">&#8369; {{ $coc->Month_3}}</td>
+                    <td style="text-align: center">
+                            <span class="currency-sign">&#8369;</span> {{ $coc->Month_1}}
+                    </td>
+                    <td style="text-align: center">
+                            <span class="currency-sign">&#8369;</span> {{ $coc->Month_2}}
+                    </td>
+                    <td style="text-align: center">
+                            <span class="currency-sign">&#8369;</span> {{ $coc->Month_3}}
+                    </td>
                 </tr>
                 </tbody>
             @endif
@@ -115,10 +145,18 @@
             @if($pemploye->id == $utility->id)
                 <tbody>
                 <tr>
+
                     <td style="text-align: left"><b>Utility Costs of WTP(electricity & water)</b></td>
-                    <td style="text-align: center">&#8369; {{ $utility->Month_1}}</td>
-                    <td style="text-align: center">&#8369; {{ $utility->Month_2}}</td>
-                    <td style="text-align: center">&#8369; {{ $utility->Month_3}}</td>
+                    <td style="text-align: center">
+                            <span class="currency-sign">&#8369;</span> {{ $utility->Month_1}}
+                    </td>
+                    <td style="text-align: center">
+                            <span class="currency-sign">&#8369;</span> {{ $utility->Month_2}}
+                    </td>
+                    <td style="text-align: center">
+                            <span class="currency-sign">&#8369;</span> {{ $utility->Month_3}}
+                    </td>
+
                 </tr>
                 </tbody>
             @endif
@@ -130,9 +168,15 @@
                 <tbody>
                 <tr>
                     <td style="text-align: left"><b>Administrative and Overhead Costs</b></td>
-                    <td style="text-align: center">{{ $admins->Month_1}}</td>
-                    <td style="text-align: center">{{ $admins->Month_2}}</td>
-                    <td style="text-align: center">{{ $admins->Month_3}}</td>
+                    <td style="text-align: center">
+                            <span class="currency-sign">&#8369;</span> {{ $admins->Month_1}}
+                    </td>
+                    <td style="text-align: center">
+                            <span class="currency-sign">&#8369;</span> {{ $admins->Month_2}}
+                    </td>
+                    <td style="text-align: center">
+                            <span class="currency-sign">&#8369;</span> {{ $admins->Month_3}}
+                    </td>
                 </tr>
                 </tbody>
             @endif
@@ -144,9 +188,15 @@
                 <tbody>
                 <tr>
                     <td style="text-align: left"><b>Cost of operating in-house laboratory</b></td>
-                    <td style="text-align: center">{{ $costoper->Month_1}}</td>
-                    <td style="text-align: center">{{ $costoper->Month_2}}</td>
-                    <td style="text-align: center">{{ $costoper->Month_3}}</td>
+                    <td style="text-align: center">
+                           <span class="currency-sign">&#8369;</span> {{ $costoper->Month_1}}
+                    </td>
+                    <td style="text-align: center">
+                            <span class="currency-sign">&#8369;</span> {{ $costoper->Month_2}}
+                    </td>
+                    <td style="text-align: center">
+                            <span class="currency-sign">&#8369;</span> {{ $costoper->Month_3}}
+                    </td>
                 </tr>
                 </tbody>
             @endif

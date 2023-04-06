@@ -96,14 +96,14 @@
                                                     <td style="text-align: center"># of hours of operation for the quarter</td>
                                                 </tr>
                                                 @foreach ($summary1 as $sum1)
-                                                    @if ($sum1->userid == Auth::id())
+
                                                         <tr>
                                                             <td class="counterCell " style="text-align: right" ></td>
                                                             <td ><input type="text" class="form-control " name="summary1[]" value="{{$sum1->Process_Equipment}}"></td>
                                                             <td><input type="text" class="form-control" name="summary1[]" value="{{$sum1->Location}}"></td>
                                                             <td><input type="text" class="form-control" name="summary1[]" value="{{$sum1->no_of_hours_of_operation_for_the_quarter}}"></td>
                                                         </tr>
-                                                    @endif
+
                                                 @endforeach
                                                 </tbody>
                                                 <td></td>
@@ -139,7 +139,7 @@
                                                     <td></td>
                                                 </tr>
                                                 @foreach ($summary2 as $sum2)
-                                                    @if ($sum2->userid == Auth::id())
+
                                                         <tr>
                                                             <td class="counterCell " style="text-align: right" ></td>
                                                             <td><input type="text" class="form-control" name="summary2[]" value="{{$sum2->Fuel_Burning_Equipment}}"></td>
@@ -162,7 +162,7 @@
                                                             <td></td>
                                                             <td><input type="text" class="form-control" name="summary2[]" value="{{$sum2->no_of_hours_of_operation_for_the_quarter}}"></td>
                                                         </tr>
-                                                    @endif
+
                                                 @endforeach
                                                 </tbody>
                                                 <td></td>
@@ -180,14 +180,14 @@
                                                     <td># of hours of operation for the quarter</td>
                                                 </tr>
                                                 @foreach ($summary3 as $sum3)
-                                                    @if ($sum3->userid == Auth::id())
+
                                                         <tr>
                                                             <td class="counterCell " style="text-align: right" ></td>
                                                             <td><input type="text" class="form-control" name="summary3[]" value="{{$sum3->Pollution_Control_Facility}}"></td>
                                                             <td><input type="text" class="form-control" name="summary3[]" value="{{$sum3->Location}}"></td>
                                                             <td><input type="text" class="form-control" name="summary3[]" value="{{$sum3->no_of_hours_of_operation_for_the_quarter}}"></td>
                                                         </tr>
-                                                    @endif
+
                                                 @endforeach
 
                                                 </tbody>
@@ -214,21 +214,21 @@
                                                             <th style="text-align:center">Month 3</th>
                                                         </tr>
                                                         </thead>
-
-                                                        <tbody>
                                                         @foreach ($cost_of_person_employed as $cope)
-                                                            @if ($cope->userid == Auth::id())
+                                                        <tbody>
+
+
                                                                 <tr>
                                                                     <td>Cost of Person employed, (# of employess)</td>
                                                                     <td><input type="text" class="form-control" name="cost_of_person_employed[]" value="{{$cope->month1}}"></td>
                                                                     <td><input type="text" class="form-control" name="cost_of_person_employed[]" value="{{$cope->month2}}"></td>
                                                                     <td><input type="text" class="form-control" name="cost_of_person_employed[]" value="{{$cope->month3}}"></td>
                                                                 </tr>
-                                                            @endif
-                                                        @endforeach
+
+
 
                                                         @foreach ($total_consumption_of_water as $tcow)
-                                                            @if ($tcow->userid == Auth::id())
+                                                            @if($cope->id == $tcow->id)
                                                                 <tr>
                                                                     <td>Total Consumption of Water (cubic meters)</td>
                                                                     <td><input type="text" class="form-control" name="total_consumption_of_water[]" value="{{$tcow->month1}}"></td>
@@ -236,10 +236,10 @@
                                                                     <td><input type="text" class="form-control" name="total_consumption_of_water[]" value="{{$tcow->month3}}"></td>
                                                                 </tr>
                                                             @endif
-                                                        @endforeach
+                                                        @endforeach {{--total_consumption_of_water--}}
 
                                                         @foreach ($total_cost_of_chemicals_used as $tcoc)
-                                                            @if ($tcoc->userid == Auth::id())
+                                                            @if($cope->id == $tcoc->id)
                                                                 <tr>
                                                                     <td>Total Cost of Chemicals used (e.g., activated carbon, KMnO4)</td>
                                                                     <td><input type="text" class="form-control" name="total_cost_of_chemicals_used[]" value="{{$tcoc->month1}}"></td>
@@ -247,10 +247,10 @@
                                                                     <td><input type="text" class="form-control" name="total_cost_of_chemicals_used[]" value="{{$tcoc->month3}}"></td>
                                                                 </tr>
                                                             @endif
-                                                        @endforeach
+                                                        @endforeach {{--total_cost_of_chemicals_used--}}
 
                                                         @foreach ($total_consumption_of_electricity as $tcoe)
-                                                            @if ($tcoe->userid == Auth::id())
+                                                            @if($cope->id == $tcoe->id)
                                                                 <tr>
                                                                     <td>Total Consumption of Electricity (kWh)</td>
                                                                     <td><input type="text" class="form-control" name="total_consumption_of_electricity[]1" value="{{$tcoe->month1}}"></td>
@@ -258,10 +258,10 @@
                                                                     <td><input type="text" class="form-control" name="total_consumption_of_electricity[]" value="{{$tcoe->month3}}"></td>
                                                                 </tr>
                                                             @endif
-                                                        @endforeach
+                                                        @endforeach {{--total_consumption_of_electricity--}}
 
                                                         @foreach ($administrative_and_overhead_costs as $aaoc)
-                                                            @if ($aaoc->userid == Auth::id())
+                                                            @if($cope->id == $aaoc->id)
                                                                 <tr>
                                                                     <td>Administrative and Overhead Costs</td>
                                                                     <td><input type="text" class="form-control" name="administrative_and_overhead_costs[]" value="{{$aaoc->month1}}"></td>
@@ -269,10 +269,10 @@
                                                                     <td><input type="text" class="form-control" name="administrative_and_overhead_costs[]" value="{{$aaoc->month3}}"></td>
                                                                 </tr>
                                                             @endif
-                                                        @endforeach
+                                                        @endforeach {{--administrative_and_overhead_costs--}}
 
                                                         @foreach ($cost_of_operating_in_house_laboratory as $cooihl)
-                                                            @if ($cooihl->userid == Auth::id())
+                                                            @if($cope->id == $cooihl->id)
                                                                 <tr>
                                                                     <td>Cost of operating in-house laboratory</td>
                                                                     <td><input type="text" class="form-control" name="cost_of_operating_in_house_laboratory[]" value="{{$cooihl->month1}}"></td>
@@ -280,10 +280,10 @@
                                                                     <td><input type="text" class="form-control" name="cost_of_operating_in_house_laboratory[]" value="{{$cooihl->month3}}"></td>
                                                                 </tr>
                                                             @endif
-                                                        @endforeach
+                                                        @endforeach {{--cost_of_operating_in_house_laboratory--}}
 
                                                         @foreach ($improvement_or_modification as $iom)
-                                                            @if ($iom->userid == Auth::id())
+                                                            @if($cope->id == $iom->id)
                                                                 <tr>
                                                                     <td>improvement or modification, if any. (description)</td>
                                                                     <td><input type="text" class="form-control" name="improvement_or_modification[]" value="{{$iom->month1}}"></td>
@@ -291,10 +291,10 @@
                                                                     <td><input type="text" class="form-control" name="improvement_or_modification[]" value="{{$iom->month3}}"></td>
                                                                 </tr>
                                                             @endif
-                                                        @endforeach
+                                                        @endforeach {{--improvement_or_modification--}}
 
                                                         @foreach ($cost_of_improvement_of_modification as $coiom)
-                                                            @if ($coiom->userid == Auth::id())
+                                                            @if($cope->id == $coiom->id)
                                                                 <tr>
                                                                     <td>Cost of improvement of modification</td>
                                                                     <td><input type="text" class="form-control" name="cost_of_improvement_of_modification[]" value="{{$coiom->month1}}"></td>
@@ -302,9 +302,9 @@
                                                                     <td><input type="text" class="form-control" name="cost_of_improvement_of_modification[]" value="{{$coiom->month3}}"></td>
                                                                 </tr>
                                                             @endif
-                                                        @endforeach
+                                                        @endforeach {{--cost_of_improvement_of_modification--}}
                                                         </tbody>
-
+                                                        @endforeach {{--cost_of_person_employed--}}
                                                     </table>
 
                                                 </div>
@@ -323,7 +323,7 @@
                                             <table class="w3-table w3-striped w3-border">
                                                 <tbody id="droaec">
                                                 @foreach($detail_parameter as $parameter)
-                                                    @if ($parameter->userid == Auth::id())
+
 
                                                         <tr>
                                                             <td style="text-align:center">FBE No.</td>
@@ -337,7 +337,7 @@
                                                             <td><input type="text" class="form-control" name="parameter2" value="{{$parameter->parameter2}}"></td>
                                                             <td><input type="text" class="form-control" name="parameter3" value="{{$parameter->parameter3}}"></td>
                                                         </tr>
-                                                    @endif
+
                                                 @endforeach
 
                                                 <td>
@@ -352,7 +352,7 @@
                                                 <td style="text-align:center">mg/Ncm</td>
                                                 </td>
                                                 @foreach ($detailreport as $detail)
-                                                    @if ($detail->userid == Auth::id())
+
                                                         <tr>
                                                             <td><input type="text" class="form-control" name="detailreport[]" value="{{$detail->FBE_No}}"></td>
                                                             <td><input type="date" class="form-control" name="detailreport[]" value="{{$detail->Date}}"></td>
@@ -369,7 +369,7 @@
                                                                 @endif
                                                             @endforeach
                                                         </tr>
-                                                    @endif
+
                                                 @endforeach
 
                                                 </tbody>

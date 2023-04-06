@@ -172,19 +172,23 @@
                                         <td></td>
                                         <td>RA 9275</td>
                                         <td>A/C</td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="ACPermit" hidden></label>
-                                            <input class="form-control" type="text" name="ACPermit" id="ACPermit" value="{{ old('ACPermit', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="ACPermit" id="ACPermit" value="{{ old('ACPermit', 'N/A') }}" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="ACIssued" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="ACIssued"
-                                                   id="ACIssued" required>
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="ACIssued"
+                                                   id="ACIssued" required><span class="checkmark"></span>
+                                        </td>
+                                        <td class="position-relative">
+                                            <label for="ACExpire" hidden></label>
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01" type="date" name="ACExpire"
+                                                   id="ACExpire" required><span class="checkmark"></span>
                                         </td>
                                         <td>
-                                            <label for="ACExpire" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01" type="date" name="ACExpire"
-                                                   id="ACExpire" required>
+
                                         </td>
                                     </tr>
                                     </tbody>
@@ -261,19 +265,22 @@
                                         <td></td>
                                         <td>RA 6969</td>
                                         <td>DENR Registry ID</td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="DENRpermit" hidden></label>
-                                            <input class="form-control" type="text" name="DENRpermit" id="DENRpermit" value="{{ old('DENRpermit', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="DENRpermit" id="DENRpermit" value="{{ old('DENRpermit', 'N/A') }}" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="DENRdateIssued" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01" type="date" name="DENRdateIssued"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01" type="date" name="DENRdateIssued"
                                                    id="DENRdateIssued" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="DENRdateExpired" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01" type="date" name="DENRdateExpired"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01" type="date" name="DENRdateExpired"
                                                    id="DENRdateExpired" required>
+                                            <span class="checkmark"></span>
                                         </td>
 
                                     </tr>

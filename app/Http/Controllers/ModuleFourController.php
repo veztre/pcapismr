@@ -40,8 +40,8 @@ class ModuleFourController extends Controller
         $improvement_or_modification = Auth::user()->improvement_or_modification();
         $cost_of_improvement_of_modification = Auth::user()->cost_of_improvement_of_modification();
         $detailreport = Auth::user()->detailreport();
-        $detail_parameter = DetailParameter::all();
-        $detail_parameter_value = DetailParameterValue::all();
+        $detail_parameter = Auth::user()->detail_parameter();
+        $detail_parameter_value = Auth::user()->detail_parameter_value();
         $reference= Auth::user()->reference_no()->first();
 
 
@@ -61,6 +61,7 @@ class ModuleFourController extends Controller
                 'cost_of_improvement_of_modification'=>$cost_of_improvement_of_modification,
                 'detailreport'=>$detailreport,
                 'detail_parameter'=>$detail_parameter,
+                'detail_parameter_value'=>$detail_parameter_value,
                 'referencen'=>$reference->ref_no
 
             ]);
@@ -241,22 +242,22 @@ class ModuleFourController extends Controller
 
     public function edit($id){
 
-        $summary1 = Summary1::get();
-        $summary2 = Summary2::get();
-        $summary3 = Summary3::get();
-        $cost_of_person_employed = Cost_of_person_employed::get();
-        $total_consumption_of_water = Total_Consumption_of_Water::get();
-        $total_consumption_of_electricity = Total_Consumption_of_Electricity::get();
-        $total_cost_of_chemicals_used = Total_Cost_of_Chemicals_used::get();
-        $administrative_and_overhead_costs = Administrative_and_Overhead_Costs::get();
-        $cost_of_operating_in_house_laboratory = Cost_of_operating_in_house_laboratory::get();
-        $improvement_or_modification = Improvement_or_modification::get();
-        $cost_of_improvement_of_modification = Cost_of_improvement_of_modification::get();
-        $detailreport = DetailReport::get();
-        $detail_parameter = DetailParameter::get();
-        $detail_parameter_value = DetailParameterValue::get();
+        $summary1 = Auth::user()->summary1()->get();
+        $summary2 = Auth::user()->summary2()->get();
+        $summary3 = Auth::user()->summary3()->get();
+        $cost_of_person_employed = Auth::user()->cost_of_person_employed()->get();
+        $total_consumption_of_water = Auth::user()->total_consumption_of_water()->get();
+        $total_consumption_of_electricity = Auth::user()->total_consumption_of_electricity()->get();
+        $total_cost_of_chemicals_used = Auth::user()->total_cost_of_chemicals_used()->get();
+        $administrative_and_overhead_costs = Auth::user()->administrative_and_overhead_costs()->get();
+        $cost_of_operating_in_house_laboratory = Auth::user()->cost_of_operating_in_house_laboratory()->get();
+        $improvement_or_modification = Auth::user()->improvement_or_modification()->get();
+        $cost_of_improvement_of_modification = Auth::user()->cost_of_improvement_of_modification()->get();
+        $detailreport = Auth::user()->detailreport()->get();
+        $detail_parameter = Auth::user()->detail_parameter()->get();
+        $detail_parameter_value = Auth::user()->detail_parameter_value()->get();
 
-        $reference = referencen::get();
+        $reference= Auth::user()->reference_no()->first();
         $users = User::find($id);
 
         return view('module.updatemoduleFour',
@@ -608,6 +609,8 @@ class ModuleFourController extends Controller
         $improvement_or_modification = Auth::user()->improvement_or_modification()->get();
         $cost_of_improvement_of_modification = Auth::user()->cost_of_improvement_of_modification()->get();
         $detailreport = Auth::user()->detailreport()->get();
+        $detail_parameter = Auth::user()->detail_parameter()->get();
+        $detail_parameter_value = Auth::user()->detail_parameter_value()->get();
         $customPaper = array(0,0,800.00,800.90);
         $pdf = PDF::loadView('module.pdf4',[
             'summary1'=>$summary1,
@@ -621,7 +624,9 @@ class ModuleFourController extends Controller
             'cost_of_operating_in_house_laboratory'=>$cost_of_operating_in_house_laboratory,
             'improvement_or_modification'=>$improvement_or_modification,
             'cost_of_improvement_of_modification'=>$cost_of_improvement_of_modification,
-            'detailreport'=>$detailreport
+            'detailreport'=>$detailreport,
+            'detail_parameter'=>$detail_parameter,
+            'detail_parameter_value'=>$detail_parameter_value,
 
         ])->setPaper($customPaper,'A4');
         return $pdf->download('moduleFour.pdf');

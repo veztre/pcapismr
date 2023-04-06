@@ -246,6 +246,40 @@
         counter-increment: tableCount;
 
     }
+
+
+    /*green checkmarked start style*/
+    .checkmark {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        display: none;
+    }
+
+    .form-control.is-valid + .checkmark,
+    .form-select.is-valid + .checkmark {
+        display: block;
+    }
+
+    .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+    }
+
+    .checkmark:after {
+        left: 2px;
+        top: 5px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+    /*green checkmarked end style*/
 </style>
 {{-- Timezone--}}
 <script type="text/javascript" id="gwt-pst">
@@ -338,6 +372,18 @@
     });
 </script>
 
+{{--green checkmarked script--}}
+<script>
+    $(document).ready(function() {
+        $('.validate-input').on('blur', function() {
+            if ($(this).val() !== '') {
+                $(this).addClass('is-valid');
+            } else {
+                $(this).removeClass('is-valid');
+            }
+        });
+    });
+</script>
 
 {{--Module1 Script start--}}
 <!-- Script RA6969 -->
