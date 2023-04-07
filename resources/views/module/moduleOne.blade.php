@@ -181,12 +181,14 @@
                                         <td class="position-relative">
                                             <label for="ACIssued" hidden></label>
                                             <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="ACIssued"
-                                                   id="ACIssued" required><span class="checkmark"></span>
+                                                   id="ACIssued" required>
+                                            <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
                                             <label for="ACExpire" hidden></label>
                                             <input class="form-select validate-input" placeholder="Date: " value="2001-01-01" type="date" name="ACExpire"
-                                                   id="ACExpire" required><span class="checkmark"></span>
+                                                   id="ACExpire" required>
+                                            <span class="checkmark"></span>
                                         </td>
                                         <td>
 
@@ -201,19 +203,22 @@
                                         <td></td>
                                         <td></td>
                                         <td>DP no.</td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="dpno" hidden></label>
-                                            <input class="form-control" type="text" name="dpno[]" id="dpno" value="{{ old('dpno', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="dpno[]" id="dpno" value="{{ old('dpno', 'N/A') }}" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="dpno" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01" type="date" name="dpno[]" id="dpno"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01" type="date" name="dpno[]" id="dpno"
                                                    required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="dpno" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01" type="date" name="dpno[]" id="dpnoe"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01" type="date" name="dpno[]" id="dpnoe"
                                                    required>
+                                            <span class="checkmark"></span>
                                         </td>
 
                                     </tr>
@@ -234,19 +239,22 @@
                                         <td></td>
                                         <td>PD 1586</td>
                                         <td>ECC/CNC no.</td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="cncno" hidden></label>
-                                            <input class="form-control" type="text" name="cncno[]" id="cncno" value="{{ old('cncno', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="cncno[]" id="cncno" value="{{ old('cncno', 'N/A') }}" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="cncno" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="cncno[]"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="cncno[]"
                                                    id="cncno" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="cncno" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="cncno[]"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="cncno[]"
                                                    id="cncno" required>
+                                            <span class="checkmark"></span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -293,20 +301,23 @@
                                         <td></td>
                                         <td></td>
                                         <td>Transporter Registration</td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="Transportpermit" hidden></label>
-                                            <input class="form-control" type="text" name="Transportpermit" id="Transportpermit"
+                                            <input class="form-control validate-input" type="text" name="Transportpermit" id="Transportpermit"
                                                    value="{{ old('Transportpermit', 'N/A') }}" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="TransportdateIssued" hidden></label>
-                                            <input class="form-select" placeholder="Date: "value="2001-01-01"  type="date"
+                                            <input class="form-select validate-input" placeholder="Date: "value="2001-01-01"  type="date"
                                                    name="TransportdateIssued" id="TransportdateIssued" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="TransportdateExpired" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01" type="date"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01" type="date"
                                                    name="TransportdateExpired" id="TransportdateExpired" required>
+                                            <span class="checkmark"></span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -317,19 +328,22 @@
                                         <td></td>
                                         <td></td>
                                         <td>TSD Registration</td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="TSDpermit" hidden></label>
-                                            <input class="form-control" type="text" name="TSDpermit" id="TSDpermit" value="{{ old('TSDpermit', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="TSDpermit" id="TSDpermit" value="{{ old('TSDpermit', 'N/A') }}" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="TSDdateIssued" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01" type="date" name="TSDdateIssued"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01" type="date" name="TSDdateIssued"
                                                    id="TSDdateIssued" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="TSDdateExpired" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01" type="date" name="TSDdateExpired"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01" type="date" name="TSDdateExpired"
                                                    id="TSDdateExpired" required>
+                                            <span class="checkmark"></span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -341,19 +355,22 @@
                                         <td></td>
                                         <td></td>
                                         <td>CCO Registration</td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="ccoreg" hidden></label>
-                                            <input class="form-control" type="text" name="ccoreg[]" id="ccoreg" value="{{ old('ccoreg', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="ccoreg[]" id="ccoreg" value="{{ old('ccoreg', 'N/A') }}" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="ccoreg" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"
                                                    type="date" name="ccoreg[]" id="ccoreg" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="ccoreg" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"
                                                    type="date" name="ccoreg[]" id="ccoreg" required>
+                                            <span class="checkmark"></span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -372,19 +389,22 @@
                                         <td></td>
                                         <td></td>
                                         <td>Importation Clearance No.</td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="import" hidden></label>
-                                            <input class="form-control" type="text" name="import[]" id="import" value="{{ old('import', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="import[]" id="import" value="{{ old('import', 'N/A') }}" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="import" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01" type="date" name="import[]"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01" type="date" name="import[]"
                                                    id="import" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="import" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01" type="date" name="import[]"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01" type="date" name="import[]"
                                                    id="import" required>
+                                            <span class="checkmark"></span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -404,19 +424,22 @@
                                         <td></td>
                                         <td></td>
                                         <td>Permit to Transport</td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="permit" hidden></label>
-                                            <input class="form-control" type="text" name="permit[]" id="permit" value="{{ old('permit', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="permit[]" id="permit" value="{{ old('permit', 'N/A') }}" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="permit" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01" type="date" name="permit[]" id=""
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01" type="date" name="permit[]" id=""
                                                    required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="permit" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01" type="date" name="permit[]" id=""
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01" type="date" name="permit[]" id=""
                                                    required>
+                                            <span class="checkmark"></span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -436,19 +459,22 @@
                                         <td></td>
                                         <td></td>
                                         <td> Small Quantity Importation</td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="smallquan" hidden></label>
-                                            <input class="form-control" type="text" name="smallquan[]" id="smallquan" value="{{ old('smallquan', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="smallquan[]" id="smallquan" value="{{ old('smallquan', 'N/A') }}" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="smallquan" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="smallquan[]"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="smallquan[]"
                                                    id="smallquan" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="smallquan" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="smallquan[]"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="smallquan[]"
                                                    id="smallquan" required>
+                                            <span class="checkmark"></span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -467,19 +493,22 @@
                                         <td></td>
                                         <td></td>
                                         <td>Priority Chemical List</td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="priority" hidden></label>
-                                            <input class="form-control" type="text" name="priority[]" id="priority" value="{{ old('priority', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="priority[]" id="priority" value="{{ old('priority', 'N/A') }}" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="priority" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="priority[]"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="priority[]"
                                                    id="priority" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="priority" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="priority[]"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="priority[]"
                                                    id="priority" required>
+                                            <span class="checkmark"></span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -499,19 +528,22 @@
                                         <td></td>
                                         <td></td>
                                         <td>PICCS</td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="piccs" hidden></label>
-                                            <input class="form-control" type="text" name="piccs[]" id="piccs" value="{{ old('piccs', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="piccs[]" id="piccs" value="{{ old('piccs', 'N/A') }}" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="piccs" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="piccs[]"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="piccs[]"
                                                    id="piccs" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="piccs" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="piccs[]"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="piccs[]"
                                                    id="piccs" required>
+                                            <span class="checkmark"></span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -530,19 +562,22 @@
                                         <td></td>
                                         <td></td>
                                         <td>PMPIN</td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="pmpin" hidden></label>
-                                            <input class="form-control" type="text" name="pmpin[]" id="pmpin" value="{{ old('pmpin', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="pmpin[]" id="pmpin" value="{{ old('pmpin', 'N/A') }}" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="pmpin" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="pmpin[]"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pmpin[]"
                                                    id="pmpin" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="pmpin" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="pmpin[]"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pmpin[]"
                                                    id="pmpin" required>
+                                            <span class="checkmark"></span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -562,19 +597,22 @@
                                         <td></td>
                                         <td>RA 8749</td>
                                         <td>A/C no.</td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="ACNOPermit" hidden></label>
-                                            <input class="form-control" type="text" name="ACNOPermit" id="ACNOPermit" value="{{ old('ACNOPermit', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="ACNOPermit" id="ACNOPermit" value="{{ old('ACNOPermit', 'N/A') }}" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="ACNOIssued" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="ACNOIssued"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="ACNOIssued"
                                                    id="ACNOIssued" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="ACNOExpired" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="ACNOExpired"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="ACNOExpired"
                                                    id="ACNOExpired" required>
+                                            <span class="checkmark"></span>
                                         </td>
 
                                     </tr>
@@ -586,19 +624,22 @@
                                         <td></td>
                                         <td></td>
                                         <td>PO No.</td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="pono" hidden></label>
-                                            <input class="form-control" type="text" name="pono[]" id="pono" value="{{ old('pono', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="pono[]" id="pono" value="{{ old('pono', 'N/A') }}" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="pono" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="pono[]" id="pono"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pono[]" id="pono"
                                                    required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="pono" hidden></label>
-                                            <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="pono[]" id="pono"
+                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pono[]" id="pono"
                                                    required>
+                                            <span class="checkmark"></span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -633,20 +674,23 @@
                                     <tr>
                                         <td>Average</td>
                                         <td></td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="aveOPhours" hidden></label>
-                                            <input class="form-control" type="text" name="aveOPhours" value=" " id="aveOPhours"
+                                            <input class="form-control validate-input" type="text" name="aveOPhours" value=" " id="aveOPhours"
                                                    value="{{old('aveOPhours')}}" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="aveOPdays" hidden></label>
-                                            <input class="form-control" type="text" name="aveOPdays" value=" " id="aveOPdays"
+                                            <input class="form-control validate-input" type="text" name="aveOPdays" value=" " id="aveOPdays"
                                                    value="{{old('aveOPdays')}}" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="aveOPshift" hidden></label>
-                                            <input class="form-control" type="text" name="aveOPshift" value=" " id="aveOPshift"
+                                            <input class="form-control validate-input" type="text" name="aveOPshift" value=" " id="aveOPshift"
                                                    value="{{old('aveOPshift')}}" required>
+                                            <span class="checkmark"></span>
                                         </td>
 
                                     </tr>
@@ -656,17 +700,20 @@
                                     <tr>
                                         <td>Maximum</td>
                                         <td></td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="maxOPhours" hidden></label>
-                                            <input class="form-control" type="text" name="maxOPhours" id="maxOPhours" value="{{old('maxOPhours')}}" required>
+                                            <input class="form-control validate-input" type="text" name="maxOPhours" id="maxOPhours" value="{{old('maxOPhours')}}" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="maxOPdays" hidden></label>
-                                            <input class="form-control" type="text" name="maxOPdays" id="maxOPdays" value="{{old('maxOPdays')}}" required>
+                                            <input class="form-control validate-input" type="text" name="maxOPdays" id="maxOPdays" value="{{old('maxOPdays')}}" required>
+                                            <span class="checkmark"></span>
                                         </td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="maxOPshift" hidden></label>
-                                            <input class="form-control" type="text" name="maxOPshift" id="maxOPshift" value="{{old('maxOPshift')}}" required>
+                                            <input class="form-control validate-input" type="text" name="maxOPshift" id="maxOPshift" value="{{old('maxOPshift')}}" required>
+                                            <span class="checkmark"></span>
                                         </td>
 
                                     </tr>
@@ -681,16 +728,18 @@
                                     <tbody>
                                     <tr>
                                         <td>Average Daily Production Output</td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="aveProduction" hidden></label>
-                                            <input class="form-control" type="text" name="aveProduction" id="aveProduction"
+                                            <input class="form-control validate-input" type="text" name="aveProduction" id="aveProduction"
                                                    value="{{old('aveProduction')}}" required>
+                                            <span class="checkmark"></span>
                                         </td>
                                         <td>Total Output This Quarter</td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="totalOutput" hidden></label>
-                                            <input class="form-control" type="text" name="totalOutput" id="totalOutput"
+                                            <input class="form-control validate-input" type="text" name="totalOutput" id="totalOutput"
                                                    value="{{old('totalOutput')}}" required>
+                                            <span class="checkmark"></span>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -698,16 +747,18 @@
                                     <tbody>
                                     <tr>
                                         <td>Total Consuption This Quarter</td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="totalConsumption" hidden></label>
-                                            <input class="form-control" type="text" name="totalConsumption"
+                                            <input class="form-control validate-input" type="text" name="totalConsumption"
                                                    id="totalConsumption" value="{{old('totalConsumption')}}" required>
+                                            <span class="checkmark"></span>
                                         </td>
                                         <td>Total Electric Consumption this Quarter (kwh)</td>
-                                        <td>
+                                        <td class="position-relative">
                                             <label for="totalElectric" hidden></label>
-                                            <input class="form-control" type="text" name="totalElectric" id="totalElectric"
+                                            <input class="form-control validate-input" type="text" name="totalElectric" id="totalElectric"
                                                    value="{{old('totalElectric')}}" required>
+                                            <span class="checkmark"></span>
                                         </td>
 
                                     </tr>
