@@ -285,6 +285,17 @@
         padding-right: 30px; /* Add space for the check mark */
     }
     /*green checkmarked end style*/
+
+    .logout-form {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    /* adjust the tabs position */
+    .nav-tabs {
+        margin-bottom: 10px;
+    }
 </style>
 {{-- Timezone--}}
 <script type="text/javascript" id="gwt-pst">
@@ -395,7 +406,7 @@
 <script type="text/javascript">
     $("#dynamic-ar").click(function () { //button name
         $("#dynamicAddRemove").append(
-            '<tr> <td></td> <td></td> <td></td> <td> <label for="dpno" hidden></label> <input class="form-control" type="text" name="dpno[]" id="dpno" value="{{ old('dpno', 'N/A') }}" required>  </td> <td> <label for="dpno" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="dpno[]" id="dpno" required> </td> <td> <label for="dpno"  hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="dpno[]" id="dpnoe" required> </td> </tr>'
+            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="dpno" hidden></label><input class="form-control validate-input" type="text" name="dpno[]" id="dpno" value="{{ old('dpno', 'N/A') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="dpno" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="dpno[]" id="dpno" required><span class="checkmark"></span></td><td class="position-relative"><label for="dpno"  hidden></label> <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="dpno[]" id="dpnoe" required><span class="checkmark"></span></td></tr>'
         ); //table name
 
         config = {
@@ -569,6 +580,8 @@
             })
     })()
 </script>
+
+
 
 {{--Module1 Script End--}}
 

@@ -116,12 +116,12 @@
                 @endif
 
                 <!-- Settings Dropdown -->
-                <div class="ml-3  ">
+                <div class="ml-3 sm:ml-0 position-relative ">
                     <div id="pst-container ">
                         <div id="pst-time" class="m-auto mb-2 text-right sm:text-sm"></div>
                         <div><a href="https://gwhs.i.gov.ph/pst/" id="pst-source"  target="_blank"></a></div>
                     </div>
-                    <x-jet-dropdown align="right" width="48" class="relative" >
+                    <x-jet-dropdown align="right" width="48" class="position-relative sm:inline-block" >
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                 <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
@@ -177,11 +177,13 @@
                             <form method="POST" action="{{ route('logout') }}" x-data>
                                 @csrf
 
+
                                 <x-jet-dropdown-link href="{{ route('logout') }}"
-                                         @click.prevent="$root.submit();" class="m-auto" >
+                                                     @click.prevent="$root.submit();">
                                     {{ __('Log Out') }}
                                 </x-jet-dropdown-link>
                             </form>
+
                         </x-slot>
                     </x-jet-dropdown>
                 </div>
