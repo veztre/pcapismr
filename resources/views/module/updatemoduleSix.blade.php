@@ -106,7 +106,7 @@
                                         <td style="text-align: center">Remarks</td>
                                     </tr>
                                     @foreach ($accident_records as $accident_record)
-                                        @if ($accident_record->userid == Auth::id())
+
                                             <tr>
                                                 <td><input type="date" class="form-control" name="accident_records[]" value="{{ $accident_record->date }}"></td>
                                                 <td><input type="text" class="form-control" name="accident_records[]" value="{{ $accident_record->Area_Location }}"></td>
@@ -115,7 +115,7 @@
                                                 <td><input type="text" class="form-control" name="accident_records[]" value="{{ $accident_record->Remarks }}"></td>
 
                                             </tr>
-                                        @endif
+
                                     @endforeach
 
                                     </tbody>
@@ -138,14 +138,14 @@
                                         <td style="text-align: center"># of Personnel Trained</td>
                                     </tr>
                                     @foreach ($personel_staff as $personel)
-                                        @if ($personel->userid == Auth::id())
+
                                             <tr>
                                                 <td><input type="date" class="form-control" name="personel_staff[]" value="{{$personel->date}}"></td>
                                                 <td><input type="text" class="form-control" name="personel_staff[]" value="{{$personel->Course_Training_Description}}"></td>
                                                 <td><input type="text" class="form-control" name="personel_staff[]" value="{{$personel->no_of_Personnel_Trained}}"></td>
 
                                             </tr>
-                                        @endif
+
                                     @endforeach
 
                                     </tbody>
@@ -172,7 +172,7 @@
                                     </label>
                                 </div>
                                 @foreach ($oattachment as $attachment)
-                                    @if ($attachment->userid == Auth::id())
+
                                         <div class="row mt-3">
                                             <div class="col " style="text-align: left; margin-left: 10%" >
                                                 <label for="" class="mx-auto">Done this&nbsp;</label>
@@ -198,7 +198,7 @@
                                                 <p class="text-center text-sm font-medium">SUBSCRIBED AND SWORN before me, a Notary Public, this <input type="text" name ="subsAndSworn" value="{{$attachment->SUBSCRIBED_AND_SWORN}}"> day of <input type="date" name="dayOf" value="{{$attachment->dayOf}}">  , affiants exhibiting to me their IDs:</p>
                                             </div>
                                         </div>
-                                    @endif
+
                                 @endforeach
 
 
@@ -218,7 +218,7 @@
                                 </div>
 
                                 @foreach ($oaemployee as $emloyee)
-                                    @if ($emloyee->userid == Auth::id())
+
                                         <div class="row">
                                             <div class="col">
                                                 <input type="text" class="form-control" name ="nameEmployee" value="{{$emloyee->name}}">
@@ -233,11 +233,11 @@
                                                 <input type="date" class="form-control" name ="IssueOnEmployee" value="{{$emloyee->IssuedOn}}">
                                             </div>
                                         </div>
-                                    @endif
+
                                 @endforeach
 
                                 @foreach ($oaemployee1 as $emloyee1)
-                                    @if ($emloyee1->userid == Auth::id())
+
                                         <div class="row mt-3">
                                             <div class="col">
                                                 <input type="text" class="form-control"  name ="nameEmployee1" value="{{$emloyee1->name1}}">
@@ -252,7 +252,7 @@
                                                 <input type="date" class="form-control" name ="IssueOnEmployee1" value="{{$emloyee1->IssuedOn1}}">
                                             </div>
                                         </div>
-                                    @endif
+
                                 @endforeach
 
                             </table>

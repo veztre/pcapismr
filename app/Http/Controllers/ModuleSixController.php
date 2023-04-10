@@ -23,9 +23,9 @@ class ModuleSixController extends Controller
         $personel_staff = Auth::user()->personel_staff();
         $reference= Auth::user()->reference_no()->first();
         $oaupload = Oaupload::all();
-        $oattachment = Oattachment::all();
-        $oaemployee = Oaemployee::all();
-        $oaemployee1 = Oaemployee1::all();
+        $oattachment = Auth::user()->oattachment();
+        $oaemployee = Auth::user()->oaemployee();
+        $oaemployee1 = Auth::user()->oaemployee1();
 
 
         return view('module.moduleSix')
@@ -121,12 +121,12 @@ class ModuleSixController extends Controller
     {
 
         $users = User::find($id);
-        $reference = referencen::all();
-        $accident_records = AccidentRecord::get(); //get database
-        $personel_staff = PersonelStaff::get();
-        $oattachment = Oattachment::get();
-        $oaemployee = Oaemployee::get();
-        $oaemployee1 =Oaemployee1::get();
+        $reference= Auth::user()->reference_no()->first();
+        $accident_records = Auth::user()->accident_records()->get();
+        $personel_staff = Auth::user()->personel_staff()->get();
+        $oattachment = Auth::user()->oattachment()->get();
+        $oaemployee = Auth::user()->oaemployee()->get();
+        $oaemployee1 =Auth::user()->oaemployee1()->get();
 
         return view('module.updatemoduleSix',compact(
             'accident_records',
