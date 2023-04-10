@@ -249,11 +249,11 @@ class ModuleThreeController extends Controller
         $drowcfop1 = Auth::user()->drowcfop1()->get();
         $dreportofwaste_parameter = Auth::user()->dreportofwaste_parameter()->get();
 
-        $reference = referencen::get();
+        $referencens = Referencen::get();
         $users = User::find($id);
         return view ('/module.updatemoduleThree',
             compact('users',
-                'reference',
+                'referencens',
                 'waterpolutiondata',
                 'personEmployed',
                 'personEmployedCost',

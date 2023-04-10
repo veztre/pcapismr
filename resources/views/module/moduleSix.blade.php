@@ -105,7 +105,7 @@
                                     </tr>
 
                                     <tr>
-                                        <td><input type="date" class="form-control" name="accident_records[]"></td>
+                                        <td><input type="date" class="form-control" name="accident_records[]" value="2001-01-01"></td>
                                         <td><input type="text" class="form-control" name="accident_records[]"></td>
                                         <td><input type="text" class="form-control" name="accident_records[]"></td>
                                         <td><input type="text" class="form-control" name="accident_records[]"></td>
@@ -134,7 +134,7 @@
                                     </tr>
 
                                     <tr>
-                                        <td><input type="date" class="form-control" name="personel_staff[]"></td>
+                                        <td><input type="date" class="form-control" name="personel_staff[]" value="2001-01-01"></td>
                                         <td><input type="text" class="form-control" name="personel_staff[]"></td>
                                         <td><input type="text" class="form-control" name="personel_staff[]"></td>
 
@@ -157,17 +157,24 @@
                                 <input class="form-control my-3" name ="file" type="file" style="width:300px" required multiple>
 
 
-                                <div class="form-check" >
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="certify_information" {{ $previousCertifyValue ? 'checked' : '' }} required>
                                     <label class="form-check-label" for="flexCheckDefault">
                                         I hereby certify that the above information are true and correct.
                                     </label>
+                                    <div class="invalid-feedback">You must check this box to proceed.</div>
                                 </div>
+
+                                @if($errors->has('certify_information'))
+                                    <div class="alert alert-danger">{{ $errors->first('certify_information') }}</div>
+                                @endif
+
+
 
                                 <div class="row mt-3">
                                     <div class="col " style="text-align: left; margin-left: 10%" >
                                         <label for="" class="mx-auto">Done this&nbsp;</label>
-                                        <input type="date" name ="date">
+                                        <input type="date" name ="date" value="2001-01-01">
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <label for="" class="mx-auto">in&nbsp;</label>
                                         <input type="text" name= "In" style="width: 200px">
@@ -186,9 +193,10 @@
 
                                 <div class="row mt-5">
                                     <div class="col">
-                                        <p class="text-center text-sm font-medium">SUBSCRIBED AND SWORN before me, a Notary Public, this <input type="text" name="subsAndSworn"> day of <input type="date" name ="dayOf" >  , affiants exhibiting to me their IDs:</p>
+                                        <p class="text-center text-sm font-medium">SUBSCRIBED AND SWORN before me, a Notary Public, this <input type="text" name="subsAndSworn"> day of <input type="date" name ="dayOf" value="2001-01-01">  , affiants exhibiting to me their IDs:</p>
                                     </div>
                                 </div>
+
 
                                 <div class="row mt-5" style="text-align: center">
                                     <div class="col">
@@ -213,10 +221,10 @@
                                         <input type="text" class="form-control"name="id_no_employee">
                                     </div>
                                     <div class="col">
-                                        <input type="date" class="form-control" name="IssueAtEmployee">
+                                        <input type="text" class="form-control" name="IssueAtEmployee">
                                     </div>
                                     <div class="col">
-                                        <input type="date" class="form-control" name="IssueOnEmployee">
+                                        <input type="date" class="form-control" name="IssueOnEmployee" value="2001-01-01">
                                     </div>
                                 </div>
 
@@ -229,10 +237,10 @@
                                         <input type="text" class="form-control" name="id_no_employee1">
                                     </div>
                                     <div class="col">
-                                        <input type="date" class="form-control" name="IssueAtEmployee1">
+                                        <input type="text" class="form-control" name="IssueAtEmployee1">
                                     </div>
                                     <div class="col">
-                                        <input type="date" class="form-control" name="IssueOnEmployee1">
+                                        <input type="date" class="form-control" name="IssueOnEmployee1" value="2001-01-01">
                                     </div>
                                 </div>
 

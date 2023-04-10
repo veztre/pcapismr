@@ -144,7 +144,7 @@
                                     <h3 class="mt-3 mx-2 text-success">OTHER ECC CONDITIONS</h3>
 
                                     <!-- OEC -->
-                                    <table class="table" id="OEC">
+                                    <table class="table"  id="OEC">
 
                                         <tbody>
 
@@ -152,17 +152,19 @@
                                             <td></td>
                                             <td style="text-align: center">ECC Condition/s</td>
                                             <td style="text-align:center">Status of Compliance</td>
-                                            <td></td>
                                             <td style="text-align: center">Actions Taken</td>
                                         </tr>
 
                                         <tr>
                                             <td class="counterCell" style="text-align: right"></td>
                                             <td><input class="form-control" type="text" name="oecondition[0][ecc_condition]"></td>
-                                            <td><input type="radio" name="oecondition[0][status_of_compliance]" value="yes">Yes</td>
-                                            <td><input type="radio" name="oecondition[0][status_of_compliance]" value="no">No</td>
+                                            <td style="text-align: center">
+                                                <label style="margin-right: 10px"><input type="radio" name="oecondition[0][status_of_compliance]" value="Yes" required>Yes</label>
+                                                <label style="margin-right: 10px"><input type="radio" name="oecondition[0][status_of_compliance]" value="No" required>No</label>
+                                            </td>
                                             <td><textarea class="form-control" type="text" name="oecondition[0][actions_taken]" style="overflow:scroll; overflow: hidden visible;"></textarea></td>
                                         </tr>
+
 
 
                                         </tbody>
@@ -260,7 +262,7 @@
                                     <h3 class="mt-3 mx-2 text-success">ENVIRONMENTAL MANAGEMENT PLAN / PROGRAMOTHER ECC CONDITIONS</h3>
 
                                     <!-- ENVIRONMENTAL MANAGEMENT PLAN/ PROGRAM -->
-                                    <table class="table" id="EMPP">
+                                    <table class="table"  id="EMPP">
 
                                         <tbody>
 
@@ -272,14 +274,18 @@
                                             <td style="text-align: center">Actions Taken</td>
                                         </tr>
 
-
                                         <tr>
                                             <td class="counterCell" style="text-align: right"></td>
                                             <td><input class="form-control" type="text" name="evmpprogram[0][evm_condition]"></td>
-                                            <td><input type="radio" name="evmpprogram[0][evm_status_of_compliance]" value="yes">Yes</td>
-                                            <td><input type="radio" name="evmpprogram[0][evm_status_of_compliance]" value="no">No</td>
+                                            <td style="text-align: center">
+                                                <label style="margin-right: 10px"><input type="radio" name="evmpprogram[0][evm_status_of_compliance]" value="Yes" required>Yes</label>
+                                                <label style="margin-right: 10px"><input type="radio" name="evmpprogram[0][evm_status_of_compliance]" value="No" required>No</label>
+                                            </td>
+                                            <td></td>
                                             <td><textarea class="form-control" type="text" name="evmpprogram[0][evm_actions_taken]" style="overflow:scroll; overflow: hidden visible;"></textarea></td>
                                         </tr>
+
+
                                     </table>
                                     <td></td>
                                     <td><button type="button" name="add" id="EMPlanProgram" class="btn btn-outline-primary mt-3" style="margin-left: 3.7%">+</button></td>

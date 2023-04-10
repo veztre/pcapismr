@@ -42,6 +42,7 @@ class User extends Authenticatable
         'company_id',
         'government_id',
         'usertype',
+        'certify_information',
     ];
     /**
      * The attributes that should be hidden for serialization.
@@ -321,13 +322,13 @@ class User extends Authenticatable
         return $this->hasmany(PersonelStaff::class,foreignKey: 'userid');
     }
     public function oattachment (){
-        return $this->hasone(PersonelStaff::class,foreignKey: 'userid');
+        return $this->hasone(Oattachment::class,foreignKey: 'userid');
     }
     public function oaemployee (){
-        return $this->hasone(PersonelStaff::class,foreignKey: 'userid');
+        return $this->hasone(Oaemployee::class,foreignKey: 'userid');
     }
     public function oaemployee1 (){
-        return $this->hasone(PersonelStaff::class,foreignKey: 'userid');
+        return $this->hasone(Oaemployee1::class,foreignKey: 'userid');
     }
 /*    Module 6 end*/
 

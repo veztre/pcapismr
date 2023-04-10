@@ -60,7 +60,11 @@
                                     </div>
 
                                     <div class="card-body">
-                                        <input type="text" class="form-control mt-0" placeholder="" readonly>
+                                        @foreach ($referencens as $ref)
+
+                                            <input type="text" class="form-control mt-0" placeholder=""  value="{{$ref->ref_no}}" readonly >
+
+                                        @endforeach
                                     </div>
 
                                 </div>
@@ -168,8 +172,11 @@
                                                 <tr>
                                                     <td class="counterCell" style="text-align: right"></td>
                                                     <td><input class="form-control" type="text" name="oecondition[{{$loop->index}}][ecc_condition]" value="{{$oec->ECC_Condition}}"></td>
-                                                    <td><input type="radio" name="oecondition[{{$loop->index}}][status_of_compliance]" value="yes" {{ $oec->Status_of_Compliance == 'yes' ? 'checked' : '' }}>Yes</td>
-                                                    <td><input type="radio" name="oecondition[{{$loop->index}}][status_of_compliance]" value="no" {{ $oec->Status_of_Compliance == 'no' ? 'checked' : '' }}>No</td>
+                                                    <td style="text-align: center">
+                                                        <label style="margin-right: 10px"><input type="radio" name="oecondition[{{$loop->index}}][status_of_compliance]" value="Yes" {{ $oec->Status_of_Compliance == 'yes' ? 'checked' : '' }} required>Yes</label>
+                                                        <label style="margin-right: 10px"><input type="radio" name="oecondition[{{$loop->index}}][status_of_compliance]" value="No" {{ $oec->Status_of_Compliance == 'no' ? 'checked' : '' }} required>No</label>
+                                                    </td>
+                                                    <td></td>
                                                     <td><textarea class="form-control" type="text" name="oecondition[{{$loop->index}}][actions_taken]" style="overflow:scroll; overflow: hidden visible;">{{$oec->Actions_Taken}}</textarea></td>
                                                 </tr>
                                             @endif
@@ -288,7 +295,6 @@
                                             <td></td>
                                             <td style="text-align: center">Enhancement/ Mitigation Measures</td>
                                             <td style="text-align: center">Status of Compliance</td>
-                                            <td></td>
                                             <td style="text-align: center">Actions Taken</td>
                                         </tr>
 
@@ -296,11 +302,11 @@
                                             @if ($evm->userid == Auth::id())
                                                 <tr>
                                                     <td class="counterCell" style="text-align: right"></td>
-
-                                                    <td><input class="form-control" type="text" name="evmpprogram[{{$loop->index}}][evm_condition]" value ="{{$evm->Enhancement_Mitigation_Measures}}"></td>
-                                                    <td><input type="radio" name="evmpprogram[{{$loop->index}}][evm_status_of_compliance]" value="yes" {{ $evm->Status_of_Compliance == 'yes' ? 'checked' : '' }}>Yes</td>
-                                                    <td><input type="radio" name="evmpprogram[{{$loop->index}}][evm_status_of_compliance]" value="no" {{ $evm->Status_of_Compliance == 'no' ? 'checked' : '' }}>No</td>
-
+                                                    <td><input class="form-control" type="text" name="evmpprogram[{{$loop->index}}][evm_condition]" value="{{$evm->Enhancement_Mitigation_Measures}}"></td>
+                                                    <td style="text-align: center">
+                                                        <label style="margin-right: 10px"><input type="radio" name="evmpprogram[{{$loop->index}}][evm_status_of_compliance]" value="Yes" {{$evm->Status_of_Compliance == 'yes' ? 'checked' : ''}} required>Yes</label>
+                                                        <label style="margin-right: 10px"><input type="radio" name="evmpprogram[{{$loop->index}}][evm_status_of_compliance]" value="No" {{$evm->Status_of_Compliance == 'no' ? 'checked' : ''}} required>No</label>
+                                                    </td>
                                                     <td><textarea class="form-control" type="text" name="evmpprogram[{{$loop->index}}][evm_actions_taken]" style="overflow:scroll; overflow: hidden visible;">{{$evm->Actions_Taken}}</textarea></td>
                                                 </tr>
                                             @endif

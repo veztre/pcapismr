@@ -201,7 +201,7 @@ class ModuleFiveController extends Controller
     public function edit($id){
 
         $users = User::find($id);
-        $reference = referencen::get();
+        $referencens= Referencen::get();
         $aaqmonitoring_parameter = AAQmonitoring_parameter::get();
         $aaqmonitoring = AAQmonitoring::get();
         $oecondition = OECondition::get();
@@ -218,7 +218,7 @@ class ModuleFiveController extends Controller
 
         return view('module.updatemoduleFive',
             compact('users',
-                'reference',
+                'referencens',
                 'aaqmonitoring_parameter',
                 'aaqmonitoring',
                 'oecondition',

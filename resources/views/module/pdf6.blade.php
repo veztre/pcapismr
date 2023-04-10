@@ -46,7 +46,7 @@
     </p>
 </div>
 
-
+<div class="page-break">
 <h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder">ACCIDENTS & EMERGENCY RECORDS</h2>
 
 <table  style="border-style: solid;  margin-top: 3%; margin-bottom: 3%; table-layout: fixed;">
@@ -101,7 +101,7 @@
 
 </table>
 
-
+</div>
 <table class="table table-borderless table-hover" >
 
     <div class="form-check">
@@ -120,29 +120,30 @@
             <div class="col" style="text-align: left; margin-left: 10%">
 
                 <label for="" class="mx-auto">Done this</label>&nbsp;&nbsp;
-              {{$attachment->doneThis}}
+                <b><u>{{$attachment->doneThis}}</u></b>
                 &nbsp;
                 <label for="" class="mx-auto">in&nbsp;</label>
-                {{$attachment->In}}
+                <b><u>{{$attachment->In}}</u></b>
             </div>
         </div>
 
 
-        <div class="row" style="text-align: center; ">
-            {{$attachment->name_signature_of_PCO}}
-            <p style="margin-left:29%;" >Name & Signature of PCO</p>
+        <div class="row" style="text-align: center;  margin-top: 7%;">
+            <b style=" margin-left:29%;">{{$attachment->name_signature_of_PCO}}</b>
+            <p style="border-top: 1px solid black; width: 30%; margin-top: 5px; margin-left:49%;" >Name & Signature of PCO</p>
         </div>
 
-        <div class="row" style="text-align: center; ">
-            {{$attachment->Name_Signature_of_CEO_Managing_Head}}
-            <p style="margin-left:-22.5%;" >Name/ Signature of CEO/ Managing Head</p>
+        <div class="row" style="text-align: center;  margin-top: 7%;">
+            <b style="text-align: left; margin-left: -51%;">{{$attachment->Name_Signature_of_CEO_Managing_Head}}</b>
+            <p style="border-top: 1px solid black; width: 30%; margin-top: 5px; margin-left: 10%;" >Name/ Signature of CEO/ Managing Head</p>
         </div>
 
         <div class="row mt-5">
             <div class="col">
-                <p class="text-center text-sm font-medium">SUBSCRIBED AND SWORN before me, a Notary Public, this {{$attachment->SUBSCRIBED_AND_SWORN}} day of {{$attachment->dayOf}} , affiants exhibiting to me their IDs:</p>
+                <p class="text-center text-sm font-medium">SUBSCRIBED AND SWORN before me, a Notary Public, this <b><u>{{$attachment->SUBSCRIBED_AND_SWORN}}</u></b> day of <b><u>{{\Carbon\Carbon::parse($attachment->dayOf)->format('F Y')}}</u></b>, affiants exhibiting to me their IDs:</p>
             </div>
         </div>
+
 
     @endforeach
 
@@ -162,24 +163,24 @@
     </thead>
 
 
-    @foreach ($oaemployee as $emloyee)
+    @foreach ($oaemployee as $oae)
         <tbody>
         <tr>
-            <td style="text-align: center; border-style: none;">{{$emloyee->name}}</td>
-            <td style="text-align: center; border-style: none;">{{$emloyee->id_no}}</td>
-            <td style="text-align: center; border-style: none;">{{$emloyee->IssuedAt}}</td>
-            <td style="text-align: center; border-style: none;">{{$emloyee->IssuedOn}}</td>
+            <td style="text-align: center; border-style: none;"><b><u>{{$oae->name}}</u></b></td>
+            <td style="text-align: center; border-style: none;"><b><u>{{$oae->id_no}}</u></b></td>
+            <td style="text-align: center; border-style: none;"><b><u>{{$oae->IssuedAt}}</u></b></td>
+            <td style="text-align: center; border-style: none;"><b><u>{{$oae->IssuedOn}}</u></b></td>
         </tr>
         </tbody>
     @endforeach
 
-    @foreach ($oaemployee1 as $emloyee1)
+    @foreach ($oaemployee1 as $oae1)
         <tbody>
         <tr>
-            <td style="text-align: center; border-style: none;">{{$emloyee1->name1}}</td>
-            <td style="text-align: center; border-style: none;">{{$emloyee1->id_no1}}</td>
-            <td style="text-align: center; border-style: none;">{{$emloyee1->IssuedAt1}}</td>
-            <td style="text-align: center; border-style: none;">{{$emloyee1->IssuedOn1}}</td>
+            <td style="text-align: center; border-style: none;"><b><u>{{$oae1->name1}}</u></b></td>
+            <td style="text-align: center; border-style: none;"><b><u>{{$oae1->id_no1}}</u></b></td>
+            <td style="text-align: center; border-style: none;"><b><u>{{$oae1->IssuedAt1}}</u></b></td>
+            <td style="text-align: center; border-style: none;"><b><u>{{$oae1->IssuedOn1}}</u></b></td>
 
         </tr>
         </tbody>

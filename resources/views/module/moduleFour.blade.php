@@ -288,7 +288,7 @@
 
                                                 <tr>
                                                     <td><input type="text" class="form-control" name="detailreport[]"></td>
-                                                    <td><input type="date" class="form-control" name="detailreport[]"></td>
+                                                    <td><input type="date" class="form-control" name="detailreport[]" value="2001-01-01"></td>
                                                     <td><input type="text" class="form-control" name="detailreport[]"></td>
                                                     <td><input type="text" class="form-control" name="detailreport[]"></td>
                                                     <td><input type="text" class="form-control" name="detailreport[]"></td>

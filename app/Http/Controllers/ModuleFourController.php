@@ -257,12 +257,12 @@ class ModuleFourController extends Controller
         $detail_parameter = Auth::user()->detail_parameter()->get();
         $detail_parameter_value = Auth::user()->detail_parameter_value()->get();
 
-        $reference= Auth::user()->reference_no()->first();
+        $referencens= Referencen::get();
         $users = User::find($id);
 
         return view('module.updatemoduleFour',
             compact('users',
-                'reference',
+                'referencens',
                 'summary1',
                 'summary2',
                 'summary3',

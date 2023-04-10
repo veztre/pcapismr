@@ -63,9 +63,11 @@
                                 </div>
 
                                 <div class="card-body">
-                                    @if(\App\Models\referencen::where('userid', Auth::user()->username)->first())
-                                        <input type="text" class="form-control mt-0" placeholder=""  value="{{ \App\Models\referencen::where('username', Auth::user()->username)->first()->ref_no }}" readonly >
-                                    @endif
+                                    @foreach ($referencens as $ref)
+
+                                        <input type="text" class="form-control mt-0" placeholder=""  value="{{$ref->ref_no}}" readonly >
+
+                                    @endforeach
                                 </div>
 
                             </div>
@@ -164,14 +166,19 @@
 
                                 <input class="form-control my-3" type="file" style="width:300px" multiple>
 
-
-                                <div class="form-check" >
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="certify_information" id="certify_information" value="1" {{ old('certify_information') ? 'checked' : '' }} required>
+                                    <label class="form-check-label" for="certify_information">
                                         I hereby certify that the above information are true and correct.
                                     </label>
+                                    <div class="invalid-feedback">You must check this box to proceed.</div>
                                 </div>
-                                @foreach ($oattachment as $attachment)
+                                @if ($errors->has('certify_information'))
+                                    <div class="alert alert-danger">{{ $errors->first('certify_information') }}</div>
+                                @endif
+
+
+                            @foreach ($oattachment as $attachment)
 
                                         <div class="row mt-3">
                                             <div class="col " style="text-align: left; margin-left: 10%" >
@@ -193,11 +200,16 @@
                                             <p style="margin-left:-22.5%;" >Name/ Signature of CEO/ Managing Head</p>
                                         </div>
 
-                                        <div class="row mt-5">
-                                            <div class="col">
-                                                <p class="text-center text-sm font-medium">SUBSCRIBED AND SWORN before me, a Notary Public, this <input type="text" name ="subsAndSworn" value="{{$attachment->SUBSCRIBED_AND_SWORN}}"> day of <input type="date" name="dayOf" value="{{$attachment->dayOf}}">  , affiants exhibiting to me their IDs:</p>
-                                            </div>
+                                    <div class="row mt-5">
+                                        <div class="col">
+                                            @php
+                                                // Convert $attachment->dayOf to a Carbon object
+                                                $dayOf = \Carbon\Carbon::parse($attachment->dayOf);
+                                            @endphp
+                                            <p class="text-center text-sm font-medium">SUBSCRIBED AND SWORN before me, a Notary Public, this <b><u>{{$attachment->SUBSCRIBED_AND_SWORN}}</u></b> day of <b><u>{{$dayOf->format('F Y')}}</u></b>, affiants exhibiting to me their IDs:</p>
                                         </div>
+                                    </div>
+
 
                                 @endforeach
 
@@ -227,7 +239,7 @@
                                                 <input type="text" class="form-control" name ="id_no_employee" value="{{$emloyee->id_no}}">
                                             </div>
                                             <div class="col">
-                                                <input type="date" class="form-control" name="IssueAtEmployee" value="{{$emloyee->IssuedAt}}">
+                                                <input type="text" class="form-control" name="IssueAtEmployee" value="{{$emloyee->IssuedAt}}">
                                             </div>
                                             <div class="col">
                                                 <input type="date" class="form-control" name ="IssueOnEmployee" value="{{$emloyee->IssuedOn}}">
@@ -246,7 +258,7 @@
                                                 <input type="text" class="form-control" name ="id_no_employee1" value="{{$emloyee1->id_no1}}">
                                             </div>
                                             <div class="col">
-                                                <input type="date" class="form-control" name="IssueAtEmployee1" value="{{$emloyee1->IssuedAt1}}" >
+                                                <input type="text" class="form-control" name="IssueAtEmployee1" value="{{$emloyee1->IssuedAt1}}" >
                                             </div>
                                             <div class="col">
                                                 <input type="date" class="form-control" name ="IssueOnEmployee1" value="{{$emloyee1->IssuedOn1}}">

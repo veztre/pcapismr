@@ -72,9 +72,9 @@
 
                                     <div class="card-body">
                                         @foreach ($referencens as $ref)
-                                            @if ($ref->userid == Auth::id())
+
                                                 <input type="text" class="form-control mt-0" placeholder=""  value="{{$ref->ref_no}}" readonly >
-                                            @endif
+
                                         @endforeach
 
                                     </div>
@@ -91,7 +91,7 @@
                                         <label for="year" hidden></label>
                                         <select class="form-select validate-input" id="year" name="year"  required>
                                             @foreach ($year as $years)
-                                                @if ($years->userid == Auth::id())
+
                                                 <option value="{{ $years->year }}">{{ $years->year }}</option>
                                                 <option value="2025" {{  $years->year  === '2025' ? 'selected' : '' }}>2025</option>
                                                 <option value="2024" {{  $years->year  === '2024' ? 'selected' : '' }}>2024</option>
@@ -104,7 +104,7 @@
                                                 <option value="2017" {{  $years->year  === '2017' ? 'selected' : '' }}>2017</option>
                                                 <option value="2016" {{  $years->year  === '2016' ? 'selected' : '' }}>2016</option>
                                                 <option value="2015" {{  $years->year  === '2015' ? 'selected' : '' }}>2015</option>
-                                                @endif
+
                                             @endforeach
                                         </select>
                                         <span class="checkmark"></span>
@@ -118,13 +118,13 @@
                                         <label for="quarter" hidden></label>
                                         <select class="form-select validate-input" id="quarter" name="quarter" required>
                                             @foreach ($quarter as $quarters)
-                                                @if ($quarters->userid == Auth::id())
+
                                                 <option value="{{ $quarters->quarter }}">{{ $quarters->quarter }}</option>
                                                 <option value="1st Quarter" {{ $quarters->quarter  === '1st Quarter' ? 'selected' : '' }}>1st Quarter</option>
                                                 <option value="2nd Quarter" {{  $quarters->quarter === '2nd Quarter' ? 'selected' : '' }}>2nd Quarter</option>
                                                 <option value="3rd Quarter" {{  $quarters->quarter  === '3rd Quarter' ? 'selected' : '' }}>3rd Quarter</option>
                                                 <option value="4th Quarter" {{  $quarters->quarter  === '4th Quarter' ? 'selected' : '' }}>4th Quarter</option>
-                                                @endif
+
                                             @endforeach
                                         </select>
                                         <span class="checkmark"></span>
@@ -169,11 +169,11 @@
                                         <label for="plant" hidden></label>
                                         <select class="form-select validate-input" id="plant" name="plantname" required>
                                             @foreach ($plant as $plants)
-                                                @if ($plants->userid == Auth::id())
+
                                                     <option value="{{$plants->plantname}}" >
                                                         {{$plants->plantname}}
                                                     </option>
-                                                @endif
+
                                             @endforeach
                                         </select>
                                         <span class="checkmark"></span>
@@ -190,13 +190,13 @@
                                 </div>
 
                                 @foreach ($gic as $gic)
-                                    @if ($gic->userid == Auth::id())
+
                                         <div class="container">
                             <textarea name="description" class="form-control" id="description" cols="40" rows="10" style="overflow:scroll; overflow-x:hidden" >
                                 {{$gic->description}}
                              </textarea>
                                         </div>
-                                    @endif
+
                                 @endforeach
 
 
@@ -217,7 +217,7 @@
 
                                     <tbody>
                                     @foreach ($aircon as $air)
-                                        @if ($air->userid == Auth::id())
+
                                             <tr>
                                                 <td></td>
                                                 <td>RA 6969</td>
@@ -241,7 +241,7 @@
                                                     <span class="checkmark"></span>
                                                 </td>
                                             </tr>
-                                        @endif
+
                                     @endforeach
                                     </tbody>
 
@@ -250,7 +250,7 @@
                                     <tbody id="dynamicAddRemove">
 
                                     @foreach ($dpno as $dp)
-                                        @if ($dp->userid == Auth::id())
+
                                             <tr>
                                                 <td></td>
                                                 <td></td>
@@ -274,7 +274,7 @@
                                                 </td>
 
                                             </tr>
-                                        @endif
+
                                     @endforeach
 
                                     </tbody>
@@ -290,7 +290,7 @@
 
                                     <tbody id=pd>
                                     @foreach ($cncno as $cnc)
-                                        @if ($cnc->userid == Auth::id())
+
 
                                             <tr>
                                                 <td></td>
@@ -314,7 +314,7 @@
                                                     <span class="checkmark"></span>
                                                 </td>
                                             </tr>
-                                        @endif
+
                                     @endforeach
                                     </tbody>
 
@@ -330,7 +330,7 @@
                                     <!-- DENR REG -->
                                     <tbody id="reg">
                                     @foreach ($denrid as $denr)
-                                        @if ($denr->userid == Auth::id())
+
                                             <tr>
                                                 <td></td>
                                                 <td>RA 6969</td>
@@ -354,11 +354,11 @@
                                                 </td>
 
                                             </tr>
-                                        @endif
+
                                     @endforeach
                                     </tbody>
                                     @foreach ($transporterReg as $transport)
-                                        @if ($transport->userid == Auth::id())
+
                                             <!-- Transporter-->
                                             <tbody id="trans">
                                             <tr>
@@ -384,14 +384,14 @@
                                                     <span class="checkmark"></span>
                                                 </td>
                                             </tr>
-                                            @endif
+
                                             @endforeach
                                             </tbody>
 
                                             <!-- TSD -->
                                             <tbody id="tsd">
                                             @foreach ($tsdreg as $tsd)
-                                                @if ($tsd->userid == Auth::id())
+
                                                     <tr>
                                                         <td></td>
                                                         <td></td>
@@ -413,7 +413,7 @@
                                                                    id="TSDdateExpired" required>
                                                             <span class="checkmark"></span>
                                                         </td>
-                                                        @endif
+
                                                         @endforeach
                                                     </tr>
                                             </tbody>
@@ -422,7 +422,7 @@
 
                                             <tbody id=cco>
                                             @foreach ($ccoreg as $cco)
-                                                @if ($cco->userid == Auth::id())
+
                                                     <tr>
                                                         <td></td>
                                                         <td></td>
@@ -446,7 +446,7 @@
                                                         </td>
 
                                                     </tr>
-                                                @endif
+
                                             @endforeach
                                             </tbody>
 
@@ -461,7 +461,7 @@
                                             <!-- Importation Clearance number -->
                                             <tbody id="importation">
                                             @foreach ($import as $imp)
-                                                @if ($imp->userid == Auth::id())
+
                                                     <tr>
                                                         <td></td>
                                                         <td></td>
@@ -484,7 +484,7 @@
                                                             <span class="checkmark"></span>
                                                         </td>
                                                     </tr>
-                                                @endif
+
                                             @endforeach
                                             </tbody>
 
@@ -500,7 +500,7 @@
                                             <!-- Permit to Transport -->
                                             <tbody id="permit">
                                             @foreach ($permit as $per)
-                                                @if ($per->userid == Auth::id())
+
                                                     <tr>
                                                         <td></td>
                                                         <td></td>
@@ -523,7 +523,7 @@
                                                             <span class="checkmark"></span>
                                                         </td>
                                                     </tr>
-                                                @endif
+
                                             @endforeach
                                             </tbody>
 
@@ -539,7 +539,7 @@
                                             <!-- Small Quantity Importation -->
                                             <tbody id="smallq">
                                             @foreach ($smallquan as $small)
-                                                @if ($small->userid == Auth::id())
+
                                                     <tr>
                                                         <td></td>
                                                         <td></td>
@@ -562,7 +562,7 @@
                                                             <span class="checkmark"></span>
                                                         </td>
                                                     </tr>
-                                                @endif
+
                                             @endforeach
                                             </tbody>
 
@@ -577,7 +577,7 @@
                                             <!-- Priority Chemical list -->
                                             <tbody id="prio">
                                             @foreach ($priority as $prio)
-                                                @if ($prio->userid == Auth::id())
+
                                                     <tr>
                                                         <td></td>
                                                         <td></td>
@@ -600,7 +600,7 @@
                                                             <span class="checkmark"></span>
                                                         </td>
                                                     </tr>
-                                                @endif
+
                                             @endforeach
                                             </tbody>
 
@@ -616,7 +616,7 @@
                                             <!-- PICCS -->
                                             <tbody id="piccs">
                                             @foreach ($piccs as $picc)
-                                                @if ($picc->userid == Auth::id())
+
                                                     <tr>
                                                         <td></td>
                                                         <td></td>
@@ -639,7 +639,7 @@
                                                             <span class="checkmark"></span>
                                                         </td>
                                                     </tr>
-                                                @endif
+
                                             @endforeach
                                             </tbody>
 
@@ -654,7 +654,7 @@
                                             <!-- PMPIN -->
                                             <tbody id="pmpin">
                                             @foreach ($pmpin as $pmp)
-                                                @if ($pmp->userid == Auth::id())
+
                                                     <tr>
                                                         <td></td>
                                                         <td></td>
@@ -677,7 +677,7 @@
                                                             <span class="checkmark"></span>
                                                         </td>
                                                     </tr>
-                                                @endif
+
                                             @endforeach
                                             </tbody>
 
@@ -693,7 +693,7 @@
                                             <!-- ACno2 -->
                                             <tbody>
                                             @foreach ($acno as $ac)
-                                                @if ($ac->userid == Auth::id())
+
                                                     <tr>
                                                         <td></td>
                                                         <td>RA 8749</td>
@@ -717,14 +717,14 @@
                                                         </td>
 
                                                     </tr>
-                                                @endif
+
                                             @endforeach
                                             </tbody>
 
                                             <!-- PO no -->
                                             <tbody id="pono">
                                             @foreach ($pono as $pn)
-                                                @if ($pn->userid == Auth::id())
+
                                                     <tr>
                                                         <td></td>
                                                         <td></td>
@@ -747,7 +747,7 @@
                                                             <span class="checkmark"></span>
                                                         </td>
                                                     </tr>
-                                                @endif
+
                                             @endforeach
                                             </tbody>
 
@@ -779,7 +779,7 @@
 
                                     <tbody>
                                     @foreach ($operation as $operate)
-                                        @if ($operate->userid == Auth::id())
+
                                             <tr>
                                                 <td>Average</td>
                                                 <td></td>
@@ -831,7 +831,7 @@
                                         </td>
 
                                     </tr>
-                                    @endif
+
                                     @endforeach
 
                                     </tbody>
@@ -844,7 +844,7 @@
 
                                     <tbody>
                                     @foreach ($production as $prod)
-                                        @if ($prod->userid == Auth::id())
+
                                             <tr>
                                                 <td>Average Daily Production Output</td>
                                                 <td class="position-relative">
@@ -881,7 +881,7 @@
                                         </td>
 
                                     </tr>
-                                    @endif
+
                                     @endforeach
                                     </tbody>
 

@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use PDF;
+use Illuminate\Support\Facades\Validator;
+
 
 class ModuleSixController extends Controller
 {
@@ -26,7 +28,7 @@ class ModuleSixController extends Controller
         $oattachment = Auth::user()->oattachment();
         $oaemployee = Auth::user()->oaemployee();
         $oaemployee1 = Auth::user()->oaemployee1();
-
+        $previousCertifyValue = Auth::user()->certify_information;
 
         return view('module.moduleSix')
             ->with ([
@@ -36,7 +38,8 @@ class ModuleSixController extends Controller
                 'oaupload'=>$oaupload,
                 'oattachment'=>$oattachment,
                 'oaemployee'=>$oaemployee,
-                'oaemployee1'=>$oaemployee1
+                'oaemployee1'=>$oaemployee1,
+                'previousCertifyValue' => $previousCertifyValue,
             ]);
     }
 
@@ -74,6 +77,7 @@ class ModuleSixController extends Controller
         $oattachment->Name_Signature_of_CEO_Managing_Head = $request->input('CEOManagingHead');
         $oattachment->SUBSCRIBED_AND_SWORN = $request->input('subsAndSworn');
         $oattachment->dayOf = $request->input('dayOf');
+
         $oattachment->save();
 
         $oaemployee  = new Oaemployee();
@@ -121,12 +125,14 @@ class ModuleSixController extends Controller
     {
 
         $users = User::find($id);
-        $reference= Auth::user()->reference_no()->first();
+        $referencens = Referencen::get();
         $accident_records = Auth::user()->accident_records()->get();
         $personel_staff = Auth::user()->personel_staff()->get();
         $oattachment = Auth::user()->oattachment()->get();
         $oaemployee = Auth::user()->oaemployee()->get();
         $oaemployee1 =Auth::user()->oaemployee1()->get();
+        $previousCertifyValue = $oattachment->certify_information;
+// assuming the field name is certify_information
 
         return view('module.updatemoduleSix',compact(
             'accident_records',
@@ -135,14 +141,34 @@ class ModuleSixController extends Controller
             'oaemployee',
             'oaemployee1',
             'users',
-            'reference'
-
+            'referencens',
+            'previousCertifyValue' // add this variable to the compact function
         ));
-
     }
+
 
     public function update(Request $request, $id)
     {
+        // Validation rules and messages
+        $rules = [        'certify_information' => 'required'    ];
+        $messages = [        'certify_information.required' => 'Please certify that the above information is true and correct.'    ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // Update the data in the database
+        $data = $request->all();
+        $user = User::findOrFail($id);
+        $user->update($data);
+
+        // Set the value of $previousCertifyValue to true if the checkbox is checked
+        $previousCertifyValue = $request->has('certify_information');
+
+        // Redirect back to the edit page with a success message
+        return redirect()->back()->with('success', 'Data has been updated.')->with(compact('previousCertifyValue'));
 
 
 
@@ -153,6 +179,11 @@ class ModuleSixController extends Controller
         $oattachment->Name_Signature_of_CEO_Managing_Head = $request->input('CEOManagingHead');
         $oattachment->SUBSCRIBED_AND_SWORN = $request->input('subsAndSworn');
         $oattachment->dayOf = $request->input('dayOf');
+        // Convert the date string into a valid date-time format
+        $dayOf = DateTime::createFromFormat('Y-m-d', $oattachment->dayOf);
+
+        $dayOfMonth = $dayOf->format('F Y');
+
         $oattachment->update();
 
         $oaemployee = Oaemployee::where('userid', $id)->first();
@@ -260,6 +291,19 @@ class ModuleSixController extends Controller
         }
         return redirect('moduleSix');
     }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'certify_information' => 'required',
+            // other validation rules
+        ]);
+
+        $certifyInformation = $request->input('certify_information');
+
+        // do something with the value of $certifyInformation
+    }
+
 }
 
 
