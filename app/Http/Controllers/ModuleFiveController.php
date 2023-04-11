@@ -222,18 +222,18 @@ class ModuleFiveController extends Controller
 
         $users = User::find($id);
         $referencens= Referencen::get();
-        $aaqmonitoring_parameter = AAQmonitoring_parameter::get();
-        $aaqmonitoring = AAQmonitoring::get();
-        $oecondition = OECondition::get();
-        $evmpprogram = EVMPprogram::get();
-        $aqg = AQG::get();
-        $tqg = TQG::get();
-        $aqc = AQC::get();
-        $tqc = TQC::get();
-        $eicc = EICC::get();
-        $description = Description::get();
-        $awqmonitoring = Awqmonitoring::get();
-        $awqmonitoring1 = Awqmonitoring1::get();
+        $aaqmonitoring_parameter = Auth::user()->aaqmonitoring_parameter()->get();
+        $aaqmonitoring = Auth::user()->aaqmonitoring()->get();
+        $oecondition = Auth::user()->oecondition()->get();
+        $evmpprogram = Auth::user()->evmpprogram()->get();
+        $aqg = Auth::user()->aqg()->get();
+        $tqg = Auth::user()->tqg()->get();
+        $aqc = Auth::user()->aqc()->get();
+        $tqc = Auth::user()->tqc()->get();
+        $eicc = Auth::user()->eicc()->get();
+        $description = Auth::user()->description()->get();
+        $awqmonitoring = Auth::user()->awqmonitoring()->get();
+        $awqmonitoring1 = Auth::user()->awqmonitoring1()->get();
 
 
         return view('module.updatemoduleFive',
@@ -448,6 +448,7 @@ class ModuleFiveController extends Controller
         $aaqmonitoring_parameter = Auth::user()->aaqmonitoring_parameter()->get();
         $aaqmonitoring = Auth::user()->aaqmonitoring()->get();
         $oecondition = Auth::user()->oecondition()->get();
+        $evmpprogram = Auth::user()->evmpprogram()->get();
         $aqg = Auth::user()->aqg()->get();
         $tqg = Auth::user()->tqg()->get();
         $tqc = Auth::user()->tqc()->get();
@@ -455,6 +456,7 @@ class ModuleFiveController extends Controller
         $eicc = Auth::user()->eicc()->get();
         $description = Auth::user()->description()->get();
         $awqmonitoring = Auth::user()->awqmonitoring()->get();
+        $awqmonitoring1 = Auth::user()->awqmonitoring1()->get();
 
         $customPaper = array(0,0,800.00,800.90);
         $pdf = PDF::loadview('module.pdf5' ,
@@ -462,14 +464,15 @@ class ModuleFiveController extends Controller
                 'aaqmonitoring_parameter'=>$aaqmonitoring_parameter,
                 'aaqmonitoring'=>$aaqmonitoring,
                 'oecondition'  =>$oecondition,
+                'evmpprogram'  =>$evmpprogram,
                 'aqg'=>$aqg,
                 'tqg'=>$tqg,
                 'aqc'=>$aqc,
                 'eicc'=>$eicc,
                 'tqc'=>$tqc,
                 'description'=>$description,
-                'awqmonitoring'=>$awqmonitoring
-
+                'awqmonitoring'=>$awqmonitoring,
+                'awqmonitoring1'=>$awqmonitoring1,
 
 
             ])->setPaper($customPaper,'A4');

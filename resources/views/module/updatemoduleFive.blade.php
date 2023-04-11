@@ -100,7 +100,7 @@
 
                                         <tbody>
                                         @foreach ($aaqmonitoring_parameter as $parameter)
-                                            @if ($parameter->userid == Auth::id())
+
                                                 <tr>
                                                     <td style="text-align: center">Station Description</td>
                                                     <td style="text-align: center">Date</td>
@@ -112,7 +112,7 @@
                                                     <td><input class="form-control" type="text" name="aaqname_parameter2" value="{{$parameter->aaqname_parameter2}}"></td>
                                                     <td><input class="form-control" type="text" name="aaqname_parameter3" value="{{$parameter->aaqname_parameter3}}"></td>
                                                 </tr>
-                                            @endif
+
                                         @endforeach
 
                                         <tr>
@@ -127,7 +127,7 @@
                                             <td style="text-align: center">mg/ Ncm</td>
                                         </tr>
                                         @foreach ($aaqmonitoring as $aaqmonitor)
-                                            @if ($aaqmonitor->userid == Auth::id())
+
                                                 <tr>
                                                     <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{$aaqmonitor->station_description}}"></td>
                                                     <td><input class="form-control" type="date" name="aaqmonitoring[]" value="{{$aaqmonitor->date}}"></td>
@@ -140,7 +140,7 @@
                                                     <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{$aaqmonitor->Value_parameter3}}"></td>
 
                                                 </tr>
-                                            @endif
+
                                         @endforeach
 
                                         </tbody>
@@ -163,24 +163,21 @@
                                             <td></td>
                                             <td style="text-align: center">ECC Condition/s</td>
                                             <td style="text-align:center">Status of Compliance</td>
-                                            <td></td>
                                             <td style="text-align: center">Actions Taken</td>
                                         </tr>
 
                                         @foreach ($oecondition as $oec)
-                                            @if ($oec->userid == Auth::id())
-                                                <tr>
-                                                    <td class="counterCell" style="text-align: right"></td>
-                                                    <td><input class="form-control" type="text" name="oecondition[{{$loop->index}}][ecc_condition]" value="{{$oec->ECC_Condition}}"></td>
-                                                    <td style="text-align: center">
-                                                        <label style="margin-right: 10px"><input type="radio" name="oecondition[{{$loop->index}}][status_of_compliance]" value="Yes" {{ $oec->Status_of_Compliance == 'yes' ? 'checked' : '' }} required>Yes</label>
-                                                        <label style="margin-right: 10px"><input type="radio" name="oecondition[{{$loop->index}}][status_of_compliance]" value="No" {{ $oec->Status_of_Compliance == 'no' ? 'checked' : '' }} required>No</label>
-                                                    </td>
-                                                    <td></td>
-                                                    <td><textarea class="form-control" type="text" name="oecondition[{{$loop->index}}][actions_taken]" style="overflow:scroll; overflow: hidden visible;">{{$oec->Actions_Taken}}</textarea></td>
-                                                </tr>
-                                            @endif
+                                            <tr>
+                                                <td class="counterCell" style="text-align: right"></td>
+                                                <td><input class="form-control" type="text" name="oecondition[{{$loop->index}}][ecc_condition]" value="{{$oec->ECC_Condition}}"></td>
+                                                <td style="text-align: center">
+                                                    <label style="margin-right: 10px"><input type="radio" name="oecondition[{{$loop->index}}][status_of_compliance]" value="yes" {{ $oec->Status_of_Compliance == 'yes' ? 'checked' : '' }} required>Yes</label>
+                                                    <label style="margin-right: 10px"><input type="radio" name="oecondition[{{$loop->index}}][status_of_compliance]" value="no" {{ $oec->Status_of_Compliance == 'no' ? 'checked' : '' }} required>No</label>
+                                                </td>
+                                                <td><textarea class="form-control" type="text" name="oecondition[{{$loop->index}}][actions_taken]" style="overflow:scroll; overflow: hidden visible;">{{$oec->Actions_Taken}}</textarea></td>
+                                            </tr>
                                         @endforeach
+
 
 
 
@@ -203,7 +200,7 @@
 
                                         <tbody>
                                         @foreach ($awqmonitoring as $awq)
-                                            @if ($awq->userid == Auth::id())
+
                                                 <tr>
                                                     <td></td>
                                                     <td></td>
@@ -243,7 +240,7 @@
                                                     <td><input class="form-control" type="text" name="unit7" value="{{$awq->unit7}}"></td>
                                                     <td><input class="form-control" type="text" name="unit8" value="{{$awq->unit8}}"></td>
                                                 </tr>
-                                            @endif
+
                                         @endforeach
 
                                         <tr>
@@ -260,7 +257,7 @@
                                         </tr>
 
                                         @foreach ($awqmonitoring1 as $awq1)
-                                            @if ($awq1->userid == Auth::id())
+
                                                 <tr>
                                                     <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{$awq1->Station_Description}}"></td>
                                                     <td><input class="form-control" type="date" name="awqmonitoring1[]" value="{{$awq1->Date}}"></td>
@@ -274,7 +271,7 @@
                                                     <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{$awq1->value8}}"></td>
 
                                                 </tr>
-                                            @endif
+
                                         @endforeach
 
                                         </tbody>
@@ -299,7 +296,7 @@
                                         </tr>
 
                                         @foreach ($evmpprogram as $evm)
-                                            @if ($evm->userid == Auth::id())
+
                                                 <tr>
                                                     <td class="counterCell" style="text-align: right"></td>
                                                     <td><input class="form-control" type="text" name="evmpprogram[{{$loop->index}}][evm_condition]" value="{{$evm->Enhancement_Mitigation_Measures}}"></td>
@@ -309,7 +306,7 @@
                                                     </td>
                                                     <td><textarea class="form-control" type="text" name="evmpprogram[{{$loop->index}}][evm_actions_taken]" style="overflow:scroll; overflow: hidden visible;">{{$evm->Actions_Taken}}</textarea></td>
                                                 </tr>
-                                            @endif
+
                                         @endforeach
 
 
@@ -337,29 +334,28 @@
                                             <td style="text-align: center">Residual</td>
                                         </tr>
                                         @foreach ($aqg as $aqg)
-                                            @if ($aqg->userid == Auth::id())
+
                                                 <tr>
                                                     <td>Average Quantity Generated (tons/ month)</td>
                                                     <td><input class="form-control" type="text" name="AQG1" value="{{$aqg->Recyclable}}"></td>
                                                     <td><input class="form-control" type="text" name="AQG2" value="{{$aqg->Biodegradable}}"></td>
                                                     <td><input class="form-control" type="text" name="AQG3" value="{{$aqg->Residual}}"></td>
                                                 </tr>
-                                            @endif
+
                                         @endforeach
 
                                         @foreach ($tqg as $tqg)
-                                            @if ($tqg->userid == Auth::id())
+
                                                 <tr>
                                                     <td>Total Quantity Generated (tons/ quarter)</td>
                                                     <td><input class="form-control" type="text" name="TQG1" value="{{$tqg->Recyclable}}"></td>
                                                     <td><input class="form-control" type="text" name="TQG2" value="{{$tqg->Biodegradable}}"></td>
                                                     <td><input class="form-control" type="text" name="TQG3" value="{{$tqg->Residual}}"></td>
                                                 </tr>
-                                            @endif
                                         @endforeach
 
                                         @foreach ($aqc as $aqc)
-                                            @if ($aqc->userid == Auth::id())
+
 
                                                 <tr>
                                                     <td>Average Quantity Collected (tons/ month)</td>
@@ -367,23 +363,23 @@
                                                     <td><input class="form-control" type="text" name="AQC2" value="{{$aqc->Biodegradable}}"></td>
                                                     <td><input class="form-control" type="text" name="AQC3" value="{{$aqc->Residual}}"></td>
                                                 </tr>
-                                            @endif
+
                                         @endforeach
 
 
                                         @foreach ($tqc as $tqc)
-                                            @if ($tqc->userid == Auth::id())
+
                                                 <tr>
                                                     <td>Total Quantity Collected (tons/quarter)</td>
                                                     <td><input class="form-control" type="text" name="TQC1" value="{{$tqc->Recyclable}}"></td>
                                                     <td><input class="form-control" type="text" name="TQC2" value="{{$tqc->Biodegradable}}"></td>
                                                     <td><input class="form-control" type="text" name="TQC3" value="{{$tqc->Residual}}"></td>
                                                 </tr>
-                                            @endif
+
                                         @endforeach
 
                                         @foreach ($eicc as $eicc)
-                                            @if ($eicc->userid == Auth::id())
+
 
                                                 <tr>
                                                     <td>Entity in charge of collection</td>
@@ -391,7 +387,7 @@
                                                     <td><input class="form-control" type="text" name="EICC2" value="{{$eicc->Biodegradable}}"></td>
                                                     <td><input class="form-control" type="text" name="EICC3" value="{{$eicc->Residual}}"></td>
                                                 </tr>
-                                            @endif
+
                                         @endforeach
 
                                         </tbody>
@@ -413,13 +409,13 @@
                             </div>
                             </tr>
                             @foreach ($description as $des)
-                                @if ($des->userid == Auth::id())
+
 
                                     <tr>
                                         <td><textarea class="form-control" type="text" name="description"
                                                       style="overflow:scroll; overflow: hidden visible; width: 100%;">{{$des->description}}</textarea></td>
                                     </tr>
-                                    @endif
+
                                     @endforeach
 
                                     </tbody>
