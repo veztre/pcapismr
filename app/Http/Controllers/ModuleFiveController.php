@@ -83,17 +83,29 @@ class ModuleFiveController extends Controller
         }
 
         $oeconditions = $request->input('oecondition');
+        foreach ($oeconditions as $i => $oec){
+            $DBoecondition = new OECondition();
+            $DBoecondition->userid = Auth::user()->id;
+            $DBoecondition->ECC_Condition = $oec['ecc_condition'];
+            $DBoecondition->Status_of_Compliance = $oec['status_of_compliance'];
+            $DBoecondition->Actions_Taken = $oec['actions_taken'];
+            $DBoecondition->save();
+        }
+
+
+/*        $oeconditions = $request->input('oecondition');
         for ($i = 0; $i < count($oeconditions); $i++) {
             $DBoecondition = new OECondition();
             $DBoecondition->userid = Auth::user()->id;
             $DBoecondition->ECC_Condition = $oeconditions[$i]['ecc_condition'];
             $DBoecondition->Status_of_Compliance = $oeconditions[$i]['status_of_compliance'];
             $DBoecondition->Actions_Taken = $oeconditions[$i]['actions_taken'];
-
             $DBoecondition->save();
-        }
+        }*/
 
-        $evmpprogram = $request->input('evmpprogram');
+
+
+     /*   $evmpprogram = $request->input('evmpprogram');
         for ($i = 0; $i < count($evmpprogram); $i++) {
             $DBevmpprogram = new EVMPprogram();
             $DBevmpprogram->userid = Auth::user()->id;
@@ -101,9 +113,17 @@ class ModuleFiveController extends Controller
             $DBevmpprogram->Status_of_Compliance = $evmpprogram[$i]['evm_status_of_compliance'];
             $DBevmpprogram->Actions_Taken = $evmpprogram[$i]['evm_actions_taken'];
             $DBevmpprogram->save();
+        }*/
+
+        $evmpprogram = $request->input('evmpprogram');
+        foreach ($evmpprogram as $i => $evmp) {
+            $DBevmpprogram = new EVMPprogram();
+            $DBevmpprogram->userid = Auth::user()->id;
+            $DBevmpprogram->Enhancement_Mitigation_Measures = $evmp['evm_condition'];
+            $DBevmpprogram->Status_of_Compliance = $evmp['evm_status_of_compliance'];
+            $DBevmpprogram->Actions_Taken = $evmp['evm_actions_taken'];
+            $DBevmpprogram->save();
         }
-
-
 
 
         $aqg  = new AQG();

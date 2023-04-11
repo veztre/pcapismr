@@ -7,17 +7,31 @@
         width: 100%;
     }
 
-    td, th {
+    th {
         border: 1px solid #dddddd;
         text-align: left;
         padding: 8px;
+        background-color: white;
+    }
+    td {
+        border: 1px solid #dddddd;
+        padding: 8px;
+        background-color: white;
     }
 
     tr:nth-child(even) {
         background-color: #dddddd;
     }
-</style>
+    .page-break {
+        page-break-after: always;
+    }
 
+    span.currency-sign{
+        font-family: DejaVu Sans !important;
+    }
+
+
+</style>
 
 <div class="col">
     <p class="p-1 mt-3  text-light" style="background-color:gray; font-size:20px ">
@@ -27,11 +41,23 @@
     </p>
 </div>
 
-
-<div class="container ">
-    <table class="table table-borderless table-hover">
-        <h3 class="mt-3 mx-2 text-success">AMBIENT AIR QUALITY MONITORING (IF REQUIRED AS PART OF ECC
-            CONDITIONS)</h3>
+<h2 class="mt-3 mx-2 text-success text-left " style="font-size: 20px; font-weight: bolder">AMBIENT AIR QUALITY MONITORING (IF REQUIRED AS PART OF ECC
+    CONDITIONS)</h2>
+<table  style="border-style: solid;  margin-top: 3%; margin-bottom: 3%; table-layout: fixed;">
+    <thead>
+    <tr>
+        <th style="text-align: center">Station Description</th>
+        <th style="text-align: center">Date</th>
+        <th style="text-align: center">Noise Level (dB)</th>
+        <th style="text-align: center">CO (mg/ Ncm)</th>
+        <th style="text-align: center">NOx (mg/Ncm)</th>
+        <th style="text-align: center">Particulates (mg/Ncm)</th>
+        <th style="text-align: center"></th>
+        <th style="text-align: center"></th>
+        <th style="text-align: center"></th>
+    </tr>
+    </thead>
+</table>
 
         <!-- AAQM -->
         <table class="w3-table w3-striped w3-border" id="AAQM">

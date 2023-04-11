@@ -270,7 +270,6 @@
                                             <td></td>
                                             <td style="text-align: center">Enhancement/ Mitigation Measures</td>
                                             <td style="text-align: center">Status of Compliance</td>
-                                            <td></td>
                                             <td style="text-align: center">Actions Taken</td>
                                         </tr>
 
@@ -281,10 +280,9 @@
                                                 <label style="margin-right: 10px"><input type="radio" name="evmpprogram[0][evm_status_of_compliance]" value="Yes" required>Yes</label>
                                                 <label style="margin-right: 10px"><input type="radio" name="evmpprogram[0][evm_status_of_compliance]" value="No" required>No</label>
                                             </td>
-                                            <td></td>
                                             <td><textarea class="form-control" type="text" name="evmpprogram[0][evm_actions_taken]" style="overflow:scroll; overflow: hidden visible;"></textarea></td>
                                         </tr>
-
+                                        </tbody>
 
                                     </table>
                                     <td></td>
