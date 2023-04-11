@@ -41,7 +41,7 @@
 
                 <div class="container col ml-4 mt-4" style="align-content: center">
 
-                    <form action="{{ route('update6', $users->id) }}" method="POST">
+                    <form action="{{ route('update6', $users->id) }}"  method="POST">
                         @csrf
                         @method('PUT')
                         <!-- {{ csrf_field() }} -->
@@ -167,15 +167,14 @@
                                 <input class="form-control my-3" type="file" style="width:300px" multiple>
 
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="certify_information" id="certify_information" value="1" {{ old('certify_information') ? 'checked' : '' }} required>
-                                    <label class="form-check-label" for="certify_information">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+                                    <label class="form-check-label" for="flexCheckDefault">
                                         I hereby certify that the above information are true and correct.
                                     </label>
-                                    <div class="invalid-feedback">You must check this box to proceed.</div>
+                                    <div class="invalid-feedback">
+                                        You must certify that the above information are true and correct to proceed.
+                                    </div>
                                 </div>
-                                @if ($errors->has('certify_information'))
-                                    <div class="alert alert-danger">{{ $errors->first('certify_information') }}</div>
-                                @endif
 
 
                             @foreach ($oattachment as $attachment)
@@ -200,15 +199,13 @@
                                             <p style="margin-left:-22.5%;" >Name/ Signature of CEO/ Managing Head</p>
                                         </div>
 
+
                                     <div class="row mt-5">
                                         <div class="col">
-                                            @php
-                                                // Convert $attachment->dayOf to a Carbon object
-                                                $dayOf = \Carbon\Carbon::parse($attachment->dayOf);
-                                            @endphp
-                                            <p class="text-center text-sm font-medium">SUBSCRIBED AND SWORN before me, a Notary Public, this <b><u>{{$attachment->SUBSCRIBED_AND_SWORN}}</u></b> day of <b><u>{{$dayOf->format('F Y')}}</u></b>, affiants exhibiting to me their IDs:</p>
+                                            <p class="text-center text-sm font-medium">SUBSCRIBED AND SWORN before me, a Notary Public, this <input type="text" name ="subsAndSworn" value="{{$attachment->SUBSCRIBED_AND_SWORN}}"> day of <input type="date" name="dayOf" value="{{$attachment->dayOf}}">  , affiants exhibiting to me their IDs:</p>
                                         </div>
                                     </div>
+
 
 
                                 @endforeach

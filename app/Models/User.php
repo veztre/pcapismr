@@ -42,7 +42,6 @@ class User extends Authenticatable
         'company_id',
         'government_id',
         'usertype',
-        'certify_information',
     ];
     /**
      * The attributes that should be hidden for serialization.

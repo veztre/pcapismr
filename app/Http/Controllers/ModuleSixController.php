@@ -28,7 +28,7 @@ class ModuleSixController extends Controller
         $oattachment = Auth::user()->oattachment();
         $oaemployee = Auth::user()->oaemployee();
         $oaemployee1 = Auth::user()->oaemployee1();
-        $previousCertifyValue = Auth::user()->certify_information;
+
 
         return view('module.moduleSix')
             ->with ([
@@ -39,7 +39,7 @@ class ModuleSixController extends Controller
                 'oattachment'=>$oattachment,
                 'oaemployee'=>$oaemployee,
                 'oaemployee1'=>$oaemployee1,
-                'previousCertifyValue' => $previousCertifyValue,
+
             ]);
     }
 
@@ -131,8 +131,7 @@ class ModuleSixController extends Controller
         $oattachment = Auth::user()->oattachment()->get();
         $oaemployee = Auth::user()->oaemployee()->get();
         $oaemployee1 =Auth::user()->oaemployee1()->get();
-        $previousCertifyValue = $oattachment->certify_information;
-// assuming the field name is certify_information
+
 
         return view('module.updatemoduleSix',compact(
             'accident_records',
@@ -142,33 +141,13 @@ class ModuleSixController extends Controller
             'oaemployee1',
             'users',
             'referencens',
-            'previousCertifyValue' // add this variable to the compact function
+
         ));
     }
 
 
     public function update(Request $request, $id)
     {
-        // Validation rules and messages
-        $rules = [        'certify_information' => 'required'    ];
-        $messages = [        'certify_information.required' => 'Please certify that the above information is true and correct.'    ];
-
-        $validator = Validator::make($request->all(), $rules, $messages);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        // Update the data in the database
-        $data = $request->all();
-        $user = User::findOrFail($id);
-        $user->update($data);
-
-        // Set the value of $previousCertifyValue to true if the checkbox is checked
-        $previousCertifyValue = $request->has('certify_information');
-
-        // Redirect back to the edit page with a success message
-        return redirect()->back()->with('success', 'Data has been updated.')->with(compact('previousCertifyValue'));
 
 
 
@@ -179,12 +158,14 @@ class ModuleSixController extends Controller
         $oattachment->Name_Signature_of_CEO_Managing_Head = $request->input('CEOManagingHead');
         $oattachment->SUBSCRIBED_AND_SWORN = $request->input('subsAndSworn');
         $oattachment->dayOf = $request->input('dayOf');
-        // Convert the date string into a valid date-time format
-        $dayOf = DateTime::createFromFormat('Y-m-d', $oattachment->dayOf);
 
-        $dayOfMonth = $dayOf->format('F Y');
+        // Convert the date string into a valid date-time format
+        $dayOf = \DateTime::createFromFormat('Y-m-d', $oattachment->dayOf);
+
+
 
         $oattachment->update();
+
 
         $oaemployee = Oaemployee::where('userid', $id)->first();
         $oaemployee->name = $request->input('nameEmployee');
@@ -292,17 +273,7 @@ class ModuleSixController extends Controller
         return redirect('moduleSix');
     }
 
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'certify_information' => 'required',
-            // other validation rules
-        ]);
 
-        $certifyInformation = $request->input('certify_information');
-
-        // do something with the value of $certifyInformation
-    }
 
 }
 

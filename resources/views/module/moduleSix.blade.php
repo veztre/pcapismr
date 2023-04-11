@@ -157,18 +157,13 @@
                                 <input class="form-control my-3" name ="file" type="file" style="width:300px" required multiple>
 
 
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="certify_information" {{ $previousCertifyValue ? 'checked' : '' }} required>
+                                <div class="form-check" >
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
                                     <label class="form-check-label" for="flexCheckDefault">
                                         I hereby certify that the above information are true and correct.
                                     </label>
                                     <div class="invalid-feedback">You must check this box to proceed.</div>
                                 </div>
-
-                                @if($errors->has('certify_information'))
-                                    <div class="alert alert-danger">{{ $errors->first('certify_information') }}</div>
-                                @endif
-
 
 
                                 <div class="row mt-3">
