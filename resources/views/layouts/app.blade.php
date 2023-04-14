@@ -687,6 +687,23 @@
 
 
 <!--  SCRIPT FOR WASTE STORAGE, TREATMENT AND DISPOSAL (PLEASE FILL-UP ONE TABLE PER HW -->
+<script>
+    // select the button element with jQuery
+    var wstd = $('#wstd');
+
+    // select the container element for the tables
+    var wstad = $('#wstad');
+
+    // add a click event listener to the button
+    wstd.click(function() {
+        // create a new table element with jQuery
+        var newTable = $('<div class="container" id="wstad"><div class="card border-3 border-secondary mb-3" ><table class="table table-borderless p-3"><tr><th>HW Details</th></tr><tr><td></td><td>HW No.</td><td>HW Class</td></tr><tr><td class="counterCell " style="text-align: right" ></td><td><select class="form-select" name="hwDetails[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>A101</option><option>B201</option><option>B202</option><option>B203</option><option>B204</option><option>B205</option><option>B206</option><option>B207</option><option>B208</option><option>B299</option><option>C301</option><option>C302</option><option>C303</option><option>C304</option><option>C305</option><option>C399</option><option>D401</option><option>D402</option><option>D403</option><option>D404</option><option>D405</option><option>D406</option><option>D407</option><option>D408</option><option>D499</option><option>E501</option><option>E502</option><option>E503</option><option>E599</option><option>F601</option><option>F602</option><option>F603</option><option>F604</option><option>F699</option><option>G703</option><option>G704</option><option>H802</option><option>I101</option><option>I102</option><option>I103</option><option>I104</option><option>J201</option><option>K301</option><option>K302</option><option>K303</option><option>L401</option><option>L402</option><option>L403</option><option>L404</option><option>M501</option><option>M502</option><option>M503</option><option>M504</option><option>M505</option><option>M506</option><option>M507</option></select></td><td><input type="text" class="form-control" name="hwDetails[]"></td></tr><tr><td></td><td>Qty of HW Treated</td><td>Unit</td></tr><tr><td></td><td><input type="text" class="form-control" name="hwDetails[]"></td><td><select class="form-select" name="hwDetails[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>kg</option><option>liter</option><option>m3</option><option>pc</option><option>ton</option><option>n/a</option></select></td></tr><tr><td></td><td>TSD Locations</td></tr><tr><td></td><td><input type="text" class="form-control" name="hwDetails[]"></td></tr><tr><th>Storage</th></tr><tr><td></td><td>Name</td> </tr><tr><td></td><td><input type="text" class="form-control" name="storage[]"></td></tr><tr><td></td><td>Method</td></tr><tr><td></td><td><input type="text" class="form-control" name="storage[]"></td></tr><tr><th>Transporter</th></tr><tr><td></td><td>ID</td><td>Name</td></tr><tr><td></td><td><input type="text" class="form-control" name="transporter[]"></td><td><input type="text" class="form-control" name="transporter[]"></td></tr><tr><td></td><td>Method</td><td>Date</td></tr><tr><td></td><td><input type="text" class="form-control" name="transporter[]" ></td><td><input type="date" class="form-control" name="transporter[]" value="January 01, 2001"></td></tr><tr><th>Treater</th></tr><tr><td></td><td>ID</td><td>Name</td></tr><tr><td></td><td><input type="text" class="form-control" name="treater[]"></td><td><input type="text" class="form-control" name="treater[]"></td></tr><tr><td></td><td>Method</td><td>Date</td></tr><tr><td></td><td><input type="text" class="form-control" name="treater[]"></td><td><input type="date" class="form-control" name="treater[]" value="January 01, 2001"></td></tr><tr><th>Disposal</th></tr><tr><td></td><td>ID</td><td>Name</td> </tr><tr><td></td><td><input type="text" class="form-control" name="disposal[]"></td><td><input type="text" class="form-control" name="disposal[]"></td></tr><tr><td></td><td>Method</td><td>Date</td></tr><tr><td></td><td><input type="text" class="form-control" name="disposal[]"></td><td><input type="date" class="form-control" name="disposal[]" value="January 01, 2001" ></td></tr></table></div></div>');
+
+        // append the new table to the container
+        newTable.appendTo(newtable);
+    });
+</script>
+{{--
 <script type="text/javascript">
 
     var i = 0;
@@ -701,6 +718,7 @@
         flatpickr("input[type=date]", config);
     });
 </script>
+--}} {{--old script--}}
 
 
 <!--  SCRIPT FOR ON-SITE SELF INSPECTION OF STORAGE AREA -->
@@ -902,22 +920,26 @@
 
 <!-- SCRIPT FOR OTHER ECC CONDITIONS -->
 <script type="text/javascript">
-    var counter = 0;
-    $("#OECondition").click(function () {
-        ++counter;
-        $("#OEC").append(
-            '<tr>' +
-            '<td class="counterCell" style="text-align: right"></td>' +
-            '<td><input class="form-control" type="text" name="oecondition[' + counter +'][ecc_condition]" value=""></td>' +
-            '<td style="text-align: center">' +
-            '<label style="margin-right: 10px"><input type="radio" name="oecondition[' + counter + '][status_of_compliance]" value="Yes" required>Yes</label>' +
-            '<label style="margin-right: 10px"><input type="radio" name="oecondition[' + counter +'][status_of_compliance]" value="No" required>No</label>' +
-            '</td>' +
-            '<td><textarea class="form-control" type="text" name="oecondition[' + counter + '][actions_taken]" style="overflow:scroll; overflow: hidden visible;"></textarea></td>' +
-            '</tr>'
-        );
+    $(document).ready(function() {
+        var counter = <?php echo count($oeconditions ?? []); ?>;
+        $("#OECondition").click(function () {
+            ++counter;
+            // Add the new row with the default value of the radio button set to empty
+            $("#OEC").append(
+                '<tr>' +
+                '<td class="counterCell" style="text-align: right"></td>' +
+                '<td><input class="form-control" type="text" name="oecondition[' + counter +'][ecc_condition]" value=""></td>' +
+                '<td style="text-align: center">' +
+                '<label style="margin-right: 10px"><input type="radio" name="oecondition[' + counter + '][status_of_compliance]" value="Yes" required>Yes</label>' +
+                '<label style="margin-right: 10px"><input type="radio" name="oecondition[' + counter + '][status_of_compliance]" value="No" required>No</label>' +
+                '</td>' +
+                '<td><textarea class="form-control" type="text" name="oecondition[' + counter + '][actions_taken]" style="overflow:scroll; overflow: hidden visible;"></textarea></td>' +
+                '</tr>'
+            );
+     });
     });
 </script>
+
 
 
 

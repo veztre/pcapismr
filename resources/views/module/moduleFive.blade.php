@@ -146,14 +146,17 @@
                                     <!-- OEC -->
                                     <table class="table"  id="OEC">
 
-                                        <tbody>
+                                        <thead>
 
                                         <tr>
-                                            <td></td>
-                                            <td style="text-align: center">ECC Condition/s</td>
-                                            <td style="text-align:center">Status of Compliance</td>
-                                            <td style="text-align: center">Actions Taken</td>
+                                            <th></th>
+                                            <th style="text-align: center">ECC Condition/s</th>
+                                            <th style="text-align:center">Status of Compliance</th>
+                                            <th style="text-align: center">Actions Taken</th>
                                         </tr>
+                                        </thead>
+
+                                        <tbody>
 
                                         <tr>
                                             <td class="counterCell" style="text-align: right"></td>
@@ -164,8 +167,6 @@
                                             </td>
                                             <td><textarea class="form-control" type="text" name="oecondition[0][actions_taken]" style="overflow:scroll; overflow: hidden visible;"></textarea></td>
                                         </tr>
-
-
 
                                         </tbody>
 
@@ -264,15 +265,19 @@
                                     <!-- ENVIRONMENTAL MANAGEMENT PLAN/ PROGRAM -->
                                     <table class="table"  id="EMPP">
 
-                                        <tbody>
+                                        <thead>
 
                                         <tr>
-                                            <td></td>
-                                            <td style="text-align: center">Enhancement/ Mitigation Measures</td>
-                                            <td style="text-align: center">Status of Compliance</td>
-                                            <td style="text-align: center">Actions Taken</td>
+                                            <th></th>
+                                            <th style="text-align: center">Enhancement/ Mitigation Measures</th>
+                                            <th style="text-align: center">Status of Compliance</th>
+                                            <th style="text-align: center">Actions Taken</th>
                                         </tr>
 
+                                        </thead>
+
+
+                                        <tbody>
                                         <tr>
                                             <td class="counterCell" style="text-align: right"></td>
                                             <td><input class="form-control" type="text" name="evmpprogram[0][evm_condition]"></td>

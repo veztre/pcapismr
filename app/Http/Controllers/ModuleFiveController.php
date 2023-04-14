@@ -225,6 +225,7 @@ class ModuleFiveController extends Controller
         $aaqmonitoring_parameter = Auth::user()->aaqmonitoring_parameter()->get();
         $aaqmonitoring = Auth::user()->aaqmonitoring()->get();
         $oecondition = Auth::user()->oecondition()->get();
+        $oeconditionCount = $oecondition->count();
         $evmpprogram = Auth::user()->evmpprogram()->get();
         $aqg = Auth::user()->aqg()->get();
         $tqg = Auth::user()->tqg()->get();
@@ -242,6 +243,7 @@ class ModuleFiveController extends Controller
                 'aaqmonitoring_parameter',
                 'aaqmonitoring',
                 'oecondition',
+                'oeconditionCount',
                 'evmpprogram',
                 'aqg',
                 'tqg',
@@ -397,7 +399,7 @@ class ModuleFiveController extends Controller
             $record->ECC_Condition = $oecondition[$index]['ecc_condition'];
             $record->Status_of_Compliance = $oecondition[$index]['status_of_compliance'];
             $record->Actions_Taken = $oecondition[$index]['actions_taken'];
-            $record->save();
+            $record->update();
         }
 
         // Create a new record for any remaining data
@@ -419,7 +421,7 @@ class ModuleFiveController extends Controller
             $record->Enhancement_Mitigation_Measures = $evmpprogram[$index]['evm_condition'];
             $record->Status_of_Compliance = $evmpprogram[$index]['evm_status_of_compliance'];
             $record->Actions_Taken = $evmpprogram[$index]['evm_actions_taken'];
-            $record->save();
+            $record->update();
         }
 
         // Create a new record for any remaining data
@@ -431,10 +433,6 @@ class ModuleFiveController extends Controller
             $newRecord->Actions_Taken = $evmpprogram[$index]['evm_actions_taken'];
             $newRecord->save();
         }
-
-
-
-
 
 
 

@@ -265,287 +265,442 @@
                                             <td><button type="button" name="add" id="haz" class="btn btn-outline-primary" >+</button></td>
                                         </table>
 
+
                                         <table class="table table-borderless table-hover">
                                             <thead>
-                                            <tr><h3 class="mt-3 mx-2 text-success">WASTE STORAGE, TREATMENT AND DISPOSAL (PLEASE FILL-UP ONE TABLE PER HW) </h3></tr>
+                                            <tr>
+                                                <h3 class="mt-3 mx-2 text-success">WASTE STORAGE, TREATMENT AND
+                                                    DISPOSAL (PLEASE FILL-UP ONE TABLE PER HW) </h3>
+                                            </tr>
                                             </thead>
                                         </table>
 
 
                                         @foreach ($hwDetails as $hwDetail)
-                                        <div class="container" id="wstad">
+                                            <div class="container" id="wstad">
 
-                                            <div class="card border-3 border-secondary mb-3" >
-                                            <table class="table table-borderless p-3">
-
-
-                                                    <thead>
-                                                            <tr>
-                                                                <th>HW Details</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <tr>
-                                                                <td></td>
-                                                                <td>HW No.</td>
-                                                                <td>HW Class</td>
-                                                            </tr>
+                                                <div class="card border-3 border-secondary mb-3">
+                                                    <table class="table table-borderless p-3">
 
 
-                                                                    <tr>
-                                                                        <td class="counterCell " style="text-align: right" ></td>
-                                                                        <td><select class="form-select" name="hwDetails[]" style="width: fit-content">
-                                                                                <option value="{{$hwDetail->HWno}}">{{$hwDetail->HWno}}</option>
-                                                                                <option value="A101" {{ $hwDetail->HWno === 'A101' ? 'selected' : '' }}>A101</option>
-                                                                                <option value="B201" {{ $hwDetail->HWno === 'B201' ? 'selected' : '' }}>B201</option>
-                                                                                <option value="B202" {{ $hwDetail->HWno === 'B202' ? 'selected' : '' }}>B202</option>
-                                                                                <option value="B203" {{ $hwDetail->HWno === 'B203' ? 'selected' : '' }}>B203</option>
-                                                                                <option value="B204" {{ $hwDetail->HWno === 'B204' ? 'selected' : '' }}>B204</option>
-                                                                                <option value="B205" {{ $hwDetail->HWno === 'B205' ? 'selected' : '' }}>B205</option>
-                                                                                <option value="B206" {{ $hwDetail->HWno === 'B206' ? 'selected' : '' }}>B206</option>
-                                                                                <option value="B207" {{ $hwDetail->HWno === 'B207' ? 'selected' : '' }}>B207</option>
-                                                                                <option value="B208" {{ $hwDetail->HWno === 'B208' ? 'selected' : '' }}>B208</option>
-                                                                                <option value="B299" {{ $hwDetail->HWno === 'B299' ? 'selected' : '' }}>B299></option>
-                                                                                <option value="C301" {{ $hwDetail->HWno === 'C301' ? 'selected' : '' }}>C301</option>
-                                                                                <option value="C302" {{ $hwDetail->HWno === 'C302' ? 'selected' : '' }}>C302</option>
-                                                                                <option value="C303" {{ $hwDetail->HWno === 'C303' ? 'selected' : '' }}>C303</option>
-                                                                                <option value="C304" {{ $hwDetail->HWno === 'C304' ? 'selected' : '' }}>C304</option>
-                                                                                <option value="C305" {{ $hwDetail->HWno === 'C305' ? 'selected' : '' }}>C305</option>
-                                                                                <option value="C399" {{ $hwDetail->HWno === 'C399' ? 'selected' : '' }}>C399</option>
-                                                                                <option value="D401" {{ $hwDetail->HWno === 'D401' ? 'selected' : '' }}>D401</option>
-                                                                                <option value="D402" {{ $hwDetail->HWno === 'D402' ? 'selected' : '' }}>D402</option>
-                                                                                <option value="D403" {{ $hwDetail->HWno === 'D403' ? 'selected' : '' }}>D403</option>
-                                                                                <option value="D404" {{ $hwDetail->HWno === 'D404' ? 'selected' : '' }}>D404</option>
-                                                                                <option value="D405" {{ $hwDetail->HWno === 'D405' ? 'selected' : '' }}>D405</option>
-                                                                                <option value="D406" {{ $hwDetail->HWno === 'D406' ? 'selected' : '' }}>D406</option>
-                                                                                <option value="D407" {{ $hwDetail->HWno === 'D407' ? 'selected' : '' }}>D407</option>
-                                                                                <option value="D408" {{ $hwDetail->HWno === 'D408' ? 'selected' : '' }}>D408</option>
-                                                                                <option value="D499" {{ $hwDetail->HWno === 'D499' ? 'selected' : '' }}>D499</option>
-                                                                                <option value="E501" {{ $hwDetail->HWno === 'E501' ? 'selected' : '' }}>E501</option>
-                                                                                <option value="E502" {{ $hwDetail->HWno === 'E502' ? 'selected' : '' }}>E502</option>
-                                                                                <option value="E503" {{ $hwDetail->HWno === 'E503' ? 'selected' : '' }}>E503</option>
-                                                                                <option value="E599" {{ $hwDetail->HWno === 'E599' ? 'selected' : '' }}>E599</option>
-                                                                                <option value="F601" {{ $hwDetail->HWno === 'F601' ? 'selected' : '' }}>F601</option>
-                                                                                <option value="F602" {{ $hwDetail->HWno === 'F602' ? 'selected' : '' }}>F602</option>
-                                                                                <option value="F603" {{ $hwDetail->HWno === 'F603' ? 'selected' : '' }}>F603</option>
-                                                                                <option value="F604" {{ $hwDetail->HWno === 'F604' ? 'selected' : '' }}>F604</option>
-                                                                                <option value="F699" {{ $hwDetail->HWno === 'F699' ? 'selected' : '' }}>F699</option>
-                                                                                <option value="G703" {{ $hwDetail->HWno === 'G703' ? 'selected' : '' }}>G703</option>
-                                                                                <option value="G704" {{ $hwDetail->HWno === 'G704' ? 'selected' : '' }}>G704</option>
-                                                                                <option value="H802" {{ $hwDetail->HWno === 'H802' ? 'selected' : '' }}>H802</option>
-                                                                                <option value="I101" {{ $hwDetail->HWno === 'I101' ? 'selected' : '' }}>I101</option>
-                                                                                <option value="I102" {{ $hwDetail->HWno === 'I102' ? 'selected' : '' }}>I102</option>
-                                                                                <option value="I103" {{ $hwDetail->HWno === 'I103' ? 'selected' : '' }}>I103</option>
-                                                                                <option value="I104" {{ $hwDetail->HWno === 'I104' ? 'selected' : '' }}>I104</option>
-                                                                                <option value="J201" {{ $hwDetail->HWno === 'J201' ? 'selected' : '' }}>J201</option>
-                                                                                <option value="K301" {{ $hwDetail->HWno === 'K301' ? 'selected' : '' }}>K301</option>
-                                                                                <option value="K302" {{ $hwDetail->HWno === 'K302' ? 'selected' : '' }}>K302</option>
-                                                                                <option value="K303" {{ $hwDetail->HWno === 'K303' ? 'selected' : '' }}>K303</option>
-                                                                                <option value="L401" {{ $hwDetail->HWno === 'L401' ? 'selected' : '' }}>L401</option>
-                                                                                <option value="L402" {{ $hwDetail->HWno === 'L402' ? 'selected' : '' }}>L402</option>
-                                                                                <option value="L403" {{ $hwDetail->HWno === 'L403' ? 'selected' : '' }}>L403</option>
-                                                                                <option value="L404" {{ $hwDetail->HWno === 'L404' ? 'selected' : '' }}>L404</option>
-                                                                                <option value="M501" {{ $hwDetail->HWno === 'M501' ? 'selected' : '' }}>M501</option>
-                                                                                <option value="M502" {{ $hwDetail->HWno === 'M502' ? 'selected' : '' }}>M502</option>
-                                                                                <option value="M503" {{ $hwDetail->HWno === 'M503' ? 'selected' : '' }}>M503</option>
-                                                                                <option value="M504" {{ $hwDetail->HWno === 'M504' ? 'selected' : '' }}>M504</option>
-                                                                                <option value="M505" {{ $hwDetail->HWno === 'M505' ? 'selected' : '' }}>M505</option>
-                                                                                <option value="M506" {{ $hwDetail->HWno === 'M506' ? 'selected' : '' }}>M506</option>
-                                                                                <option value="M507" {{ $hwDetail->HWno === 'M507' ? 'selected' : '' }}>M507</option>
-                                                                            </select>
-                                                                        </td>
+                                                        <thead>
+                                                        <tr>
+                                                            <th>HW Details</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody id="wstad">
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>HW No.</td>
+                                                            <td>HW Class</td>
+                                                        </tr>
 
 
-                                                                        <td><input type="text" class="form-control" name="hwDetails[]" value="{{$hwDetail->HWclass}}"></td>
-                                                                    </tr><tr>
-                                                                        <td></td>
-                                                                        <td>Qty of HW Treated</td>
-                                                                        <td>Unit</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td></td>
-                                                                        <td><input type="text" class="form-control" name="hwDetails[]" value="{{$hwDetail->QtyOfHWTreated}}"></td>
-                                                                        <td><select class="form-select" name="hwDetails[]" style="width: fit-content">
+                                                        <tr>
+                                                            <td class="counterCell " style="text-align: right"></td>
+                                                            <td><select class="form-select" name="hwDetails[]"
+                                                                        style="width: fit-content">
+                                                                    <option value="{{$hwDetail->HWno}}">
+                                                                        {{$hwDetail->HWno}}</option>
+                                                                    <option value="A101"
+                                                                        {{ $hwDetail->HWno === 'A101' ? 'selected' : '' }}>
+                                                                        A101</option>
+                                                                    <option value="B201"
+                                                                        {{ $hwDetail->HWno === 'B201' ? 'selected' : '' }}>
+                                                                        B201</option>
+                                                                    <option value="B202"
+                                                                        {{ $hwDetail->HWno === 'B202' ? 'selected' : '' }}>
+                                                                        B202</option>
+                                                                    <option value="B203"
+                                                                        {{ $hwDetail->HWno === 'B203' ? 'selected' : '' }}>
+                                                                        B203</option>
+                                                                    <option value="B204"
+                                                                        {{ $hwDetail->HWno === 'B204' ? 'selected' : '' }}>
+                                                                        B204</option>
+                                                                    <option value="B205"
+                                                                        {{ $hwDetail->HWno === 'B205' ? 'selected' : '' }}>
+                                                                        B205</option>
+                                                                    <option value="B206"
+                                                                        {{ $hwDetail->HWno === 'B206' ? 'selected' : '' }}>
+                                                                        B206</option>
+                                                                    <option value="B207"
+                                                                        {{ $hwDetail->HWno === 'B207' ? 'selected' : '' }}>
+                                                                        B207</option>
+                                                                    <option value="B208"
+                                                                        {{ $hwDetail->HWno === 'B208' ? 'selected' : '' }}>
+                                                                        B208</option>
+                                                                    <option value="B299"
+                                                                        {{ $hwDetail->HWno === 'B299' ? 'selected' : '' }}>
+                                                                        B299></option>
+                                                                    <option value="C301"
+                                                                        {{ $hwDetail->HWno === 'C301' ? 'selected' : '' }}>
+                                                                        C301</option>
+                                                                    <option value="C302"
+                                                                        {{ $hwDetail->HWno === 'C302' ? 'selected' : '' }}>
+                                                                        C302</option>
+                                                                    <option value="C303"
+                                                                        {{ $hwDetail->HWno === 'C303' ? 'selected' : '' }}>
+                                                                        C303</option>
+                                                                    <option value="C304"
+                                                                        {{ $hwDetail->HWno === 'C304' ? 'selected' : '' }}>
+                                                                        C304</option>
+                                                                    <option value="C305"
+                                                                        {{ $hwDetail->HWno === 'C305' ? 'selected' : '' }}>
+                                                                        C305</option>
+                                                                    <option value="C399"
+                                                                        {{ $hwDetail->HWno === 'C399' ? 'selected' : '' }}>
+                                                                        C399</option>
+                                                                    <option value="D401"
+                                                                        {{ $hwDetail->HWno === 'D401' ? 'selected' : '' }}>
+                                                                        D401</option>
+                                                                    <option value="D402"
+                                                                        {{ $hwDetail->HWno === 'D402' ? 'selected' : '' }}>
+                                                                        D402</option>
+                                                                    <option value="D403"
+                                                                        {{ $hwDetail->HWno === 'D403' ? 'selected' : '' }}>
+                                                                        D403</option>
+                                                                    <option value="D404"
+                                                                        {{ $hwDetail->HWno === 'D404' ? 'selected' : '' }}>
+                                                                        D404</option>
+                                                                    <option value="D405"
+                                                                        {{ $hwDetail->HWno === 'D405' ? 'selected' : '' }}>
+                                                                        D405</option>
+                                                                    <option value="D406"
+                                                                        {{ $hwDetail->HWno === 'D406' ? 'selected' : '' }}>
+                                                                        D406</option>
+                                                                    <option value="D407"
+                                                                        {{ $hwDetail->HWno === 'D407' ? 'selected' : '' }}>
+                                                                        D407</option>
+                                                                    <option value="D408"
+                                                                        {{ $hwDetail->HWno === 'D408' ? 'selected' : '' }}>
+                                                                        D408</option>
+                                                                    <option value="D499"
+                                                                        {{ $hwDetail->HWno === 'D499' ? 'selected' : '' }}>
+                                                                        D499</option>
+                                                                    <option value="E501"
+                                                                        {{ $hwDetail->HWno === 'E501' ? 'selected' : '' }}>
+                                                                        E501</option>
+                                                                    <option value="E502"
+                                                                        {{ $hwDetail->HWno === 'E502' ? 'selected' : '' }}>
+                                                                        E502</option>
+                                                                    <option value="E503"
+                                                                        {{ $hwDetail->HWno === 'E503' ? 'selected' : '' }}>
+                                                                        E503</option>
+                                                                    <option value="E599"
+                                                                        {{ $hwDetail->HWno === 'E599' ? 'selected' : '' }}>
+                                                                        E599</option>
+                                                                    <option value="F601"
+                                                                        {{ $hwDetail->HWno === 'F601' ? 'selected' : '' }}>
+                                                                        F601</option>
+                                                                    <option value="F602"
+                                                                        {{ $hwDetail->HWno === 'F602' ? 'selected' : '' }}>
+                                                                        F602</option>
+                                                                    <option value="F603"
+                                                                        {{ $hwDetail->HWno === 'F603' ? 'selected' : '' }}>
+                                                                        F603</option>
+                                                                    <option value="F604"
+                                                                        {{ $hwDetail->HWno === 'F604' ? 'selected' : '' }}>
+                                                                        F604</option>
+                                                                    <option value="F699"
+                                                                        {{ $hwDetail->HWno === 'F699' ? 'selected' : '' }}>
+                                                                        F699</option>
+                                                                    <option value="G703"
+                                                                        {{ $hwDetail->HWno === 'G703' ? 'selected' : '' }}>
+                                                                        G703</option>
+                                                                    <option value="G704"
+                                                                        {{ $hwDetail->HWno === 'G704' ? 'selected' : '' }}>
+                                                                        G704</option>
+                                                                    <option value="H802"
+                                                                        {{ $hwDetail->HWno === 'H802' ? 'selected' : '' }}>
+                                                                        H802</option>
+                                                                    <option value="I101"
+                                                                        {{ $hwDetail->HWno === 'I101' ? 'selected' : '' }}>
+                                                                        I101</option>
+                                                                    <option value="I102"
+                                                                        {{ $hwDetail->HWno === 'I102' ? 'selected' : '' }}>
+                                                                        I102</option>
+                                                                    <option value="I103"
+                                                                        {{ $hwDetail->HWno === 'I103' ? 'selected' : '' }}>
+                                                                        I103</option>
+                                                                    <option value="I104"
+                                                                        {{ $hwDetail->HWno === 'I104' ? 'selected' : '' }}>
+                                                                        I104</option>
+                                                                    <option value="J201"
+                                                                        {{ $hwDetail->HWno === 'J201' ? 'selected' : '' }}>
+                                                                        J201</option>
+                                                                    <option value="K301"
+                                                                        {{ $hwDetail->HWno === 'K301' ? 'selected' : '' }}>
+                                                                        K301</option>
+                                                                    <option value="K302"
+                                                                        {{ $hwDetail->HWno === 'K302' ? 'selected' : '' }}>
+                                                                        K302</option>
+                                                                    <option value="K303"
+                                                                        {{ $hwDetail->HWno === 'K303' ? 'selected' : '' }}>
+                                                                        K303</option>
+                                                                    <option value="L401"
+                                                                        {{ $hwDetail->HWno === 'L401' ? 'selected' : '' }}>
+                                                                        L401</option>
+                                                                    <option value="L402"
+                                                                        {{ $hwDetail->HWno === 'L402' ? 'selected' : '' }}>
+                                                                        L402</option>
+                                                                    <option value="L403"
+                                                                        {{ $hwDetail->HWno === 'L403' ? 'selected' : '' }}>
+                                                                        L403</option>
+                                                                    <option value="L404"
+                                                                        {{ $hwDetail->HWno === 'L404' ? 'selected' : '' }}>
+                                                                        L404</option>
+                                                                    <option value="M501"
+                                                                        {{ $hwDetail->HWno === 'M501' ? 'selected' : '' }}>
+                                                                        M501</option>
+                                                                    <option value="M502"
+                                                                        {{ $hwDetail->HWno === 'M502' ? 'selected' : '' }}>
+                                                                        M502</option>
+                                                                    <option value="M503"
+                                                                        {{ $hwDetail->HWno === 'M503' ? 'selected' : '' }}>
+                                                                        M503</option>
+                                                                    <option value="M504"
+                                                                        {{ $hwDetail->HWno === 'M504' ? 'selected' : '' }}>
+                                                                        M504</option>
+                                                                    <option value="M505"
+                                                                        {{ $hwDetail->HWno === 'M505' ? 'selected' : '' }}>
+                                                                        M505</option>
+                                                                    <option value="M506"
+                                                                        {{ $hwDetail->HWno === 'M506' ? 'selected' : '' }}>
+                                                                        M506</option>
+                                                                    <option value="M507"
+                                                                        {{ $hwDetail->HWno === 'M507' ? 'selected' : '' }}>
+                                                                        M507</option>
+                                                                </select>
+                                                            </td>
 
-                                                                                <option value ="kg" {{ $hwDetail->Unit === 'kg' ? 'selected' : '' }}>kg</option>
-                                                                                <option  value ="liter" {{ $hwDetail->Unit === 'liter' ? 'selected' : '' }}>liter</option>
-                                                                                <option value ="m3" {{ $hwDetail->Unit === 'm3' ? 'selected' : '' }}>m3</option>
-                                                                                <option value ="ton"  {{ $hwDetail->Unit === 'ton' ? 'selected' : '' }}>ton</option>
 
-                                                                            </select>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td></td>
-                                                                        <td>TSD Locations</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td></td>
-                                                                        <td><input type="text" class="form-control" name="hwDetails[]" value="{{$hwDetail->TSDLocation}}"></td>
-                                                                    </tr>
-                                                            </tbody>
+                                                            <td><input type="text" class="form-control"
+                                                                       name="hwDetails[]"
+                                                                       value="{{$hwDetail->HWclass}}"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>Qty of HW Treated</td>
+                                                            <td>Unit</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><input type="text" class="form-control"
+                                                                       name="hwDetails[]"
+                                                                       value="{{$hwDetail->QtyOfHWTreated}}"></td>
+                                                            <td><select class="form-select" name="hwDetails[]"
+                                                                        style="width: fit-content">
+
+                                                                    <option value="kg"
+                                                                        {{ $hwDetail->Unit === 'kg' ? 'selected' : '' }}>
+                                                                        kg</option>
+                                                                    <option value="liter"
+                                                                        {{ $hwDetail->Unit === 'liter' ? 'selected' : '' }}>
+                                                                        liter</option>
+                                                                    <option value="m3"
+                                                                        {{ $hwDetail->Unit === 'm3' ? 'selected' : '' }}>
+                                                                        m3</option>
+                                                                    <option value="ton"
+                                                                        {{ $hwDetail->Unit === 'ton' ? 'selected' : '' }}>
+                                                                        ton</option>
+
+                                                                </select>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td>TSD Locations</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td></td>
+                                                            <td><input type="text" class="form-control"
+                                                                       name="hwDetails[]"
+                                                                       value="{{$hwDetail->TSDLocation}}"></td>
+                                                        </tr>
 
 
 
 
-                                                  @foreach ($storage as $store)
-                                                      @if($hwDetail->id == $store->id)
+
+                                                        @foreach ($storage as $store)
+                                                            @if($hwDetail->id == $store->id)
 
 
-                                                            <thead>
-                                                            <tr>
-                                                                <th>Storage</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <tr>
-                                                                <td></td>
-                                                                <td>Name</td>
-                                                            </tr>
 
-                                                                    <tr>
-                                                                        <td></td>
-                                                                        <td><input type="text" class="form-control" name="storage[]" value="{{$store->name}}"></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td></td>
-                                                                        <td>Method</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td></td>
-                                                                        <td><input type="text" class="form-control" name="storage[]" value="{{$store->method}}"></td>
-                                                                    </tr>
+                                                                <tr>
+                                                                    <th>Storage</th>
+                                                                </tr>
 
-                                                            </tbody>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>Name</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td><input type="text" class="form-control"
+                                                                               name="storage[]" value="{{$store->name}}"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>Method</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td><input type="text" class="form-control"
+                                                                               name="storage[]" value="{{$store->method}}">
+                                                                    </td>
+                                                                </tr>
+
+
+                                                            @endif
+                                                        @endforeach {{--storage--}}
+
+                                                        @foreach ($transporter as $trans)
+                                                            @if($hwDetail->id == $trans->id)
+
+
+
+
+                                                                <tr>
+                                                                    <th>Transporter</th>
+                                                                </tr>
+
+
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>ID</td>
+                                                                    <td>Name</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td><input type="text" class="form-control"
+                                                                               name="transporter[]"
+                                                                               value="{{$trans->transpo_id}}"></td>
+                                                                    <td><input type="text" class="form-control"
+                                                                               name="transporter[]" value="{{$trans->name}}">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>Method</td>
+                                                                    <td>Date</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td><input type="text" class="form-control"
+                                                                               name="transporter[]" value="{{$trans->method}}">
+                                                                    </td>
+                                                                    <td><input type="date" class="form-control"
+                                                                               name="transporter[]" value="{{$trans->date}}">
+                                                                    </td>
+                                                                </tr>
+
+
+
+                                                            @endif
+                                                        @endforeach {{--Transporter--}}
+
+
+                                                        @foreach ($treater as $treat)
+                                                            @if($hwDetail->id == $treat->id)
+
+                                                                <tr>
+                                                                    <th>Treater</th>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>ID</td>
+                                                                    <td>Name</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>
+                                                                    </td>
+                                                                    <td><input type="text" class="form-control"
+                                                                               name="treater[]" value="{{$treat->treater_id}}">
+                                                                    </td>
+                                                                    <td><input type="text" class="form-control"
+                                                                               name="treater[]" value="{{$treat->name}}"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>Method</td>
+                                                                    <td>Date</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td><input type="text" class="form-control"
+                                                                               name="treater[]" value="{{$treat->method}}">
+                                                                    </td>
+                                                                    <td><input type="date" class="form-control"
+                                                                               name="treater[]" value="{{$treat->date}}"></td>
+                                                                </tr>
+
+
+                                                            @endif
+                                                        @endforeach {{--Treater--}}
+
+
+                                                        @foreach ($disposal as $disp)
+                                                            @if($hwDetail->id == $disp->id)
+
+                                                                <tr>
+                                                                    <th>Disposal</th>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>ID</td>
+                                                                    <td>Name</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td><input type="text" class="form-control"
+                                                                               name="disposal[]"
+                                                                               value="{{$disp->disposal_id}}"></td>
+                                                                    <td><input type="text" class="form-control"
+                                                                               name="disposal[]" value="{{$disp->name}}"></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td>Method</td>
+                                                                    <td>Date</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td><input type="text" class="form-control"
+                                                                               name="disposal[]" value="{{$disp->method}}">
+                                                                    </td>
+                                                                    <td><input type="date" class="form-control"
+                                                                               name="disposal[]" value="{{$disp->date}}"></td>
+                                                                </tr>
+
+
+                                                        </tbody>
+
+
                                                         @endif
-                                                    @endforeach  {{--storage--}}
-
-                                                    @foreach ($transporter as $trans)
-                                                        @if($hwDetail->id == $trans->id)
-
-
-
-                                                            <thead>
-                                                            <tr>
-                                                                <th>Transporter</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-
-                                                            <tr>
-                                                                <td></td>
-                                                                <td>ID</td>
-                                                                <td>Name</td>
-                                                            </tr>
-
-                                                                    <tr>
-                                                                        <td></td>
-                                                                        <td><input type="text" class="form-control" name="transporter[]" value="{{$trans->transpo_id}}"></td>
-                                                                        <td><input type="text" class="form-control" name="transporter[]"value="{{$trans->name}}"></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td></td>
-                                                                        <td>Method</td>
-                                                                        <td>Date</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td></td>
-                                                                        <td><input type="text" class="form-control" name="transporter[]" value="{{$trans->method}}"></td>
-                                                                        <td><input type="date" class="form-control" name="transporter[]" value="{{$trans->date}}"></td>
-                                                                    </tr>
-
-                                                            </tbody>
-
-                                                        @endif
-                                                        @endforeach  {{--Transporter--}}
-
-
-                                                    @foreach ($treater as $treat)
-                                                        @if($hwDetail->id == $treat->id)
-                                                            <thead>
-                                                            <tr>
-                                                                <th>Treater</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <tr>
-                                                                <td></td>
-                                                                <td>ID</td>
-                                                                <td>Name</td>
-                                                            </tr>
-
-                                                                    <tr>
-                                                                        <td>
-                                                                        </td>
-                                                                        <td><input type="text" class="form-control" name="treater[]" value="{{$treat->treater_id}}"></td>
-                                                                        <td><input type="text" class="form-control" name="treater[]"value="{{$treat->name}}"></td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td></td>
-                                                                        <td>Method</td>
-                                                                        <td>Date</td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <td></td>
-                                                                        <td><input type="text" class="form-control" name="treater[]" value="{{$treat->method}}">
-                                                                        </td>
-                                                                        <td><input type="date" class="form-control" name="treater[]" value="{{$treat->date}}"></td>
-                                                                    </tr>
-
-                                                            </tbody>
-                                                        @endif
-                                                    @endforeach {{--Treater--}}
-
-
-                                                    @foreach ($disposal as $disp)
-                                                        @if($hwDetail->id == $disp->id)
-                                                                                        <thead>
-                                                                                        <tr>
-                                                                                            <th>Disposal</th>
-                                                                                        </tr>
-                                                                                        </thead>
-                                                                                        <tbody>
-                                                                                        <tr>
-                                                                                            <td></td>
-                                                                                            <td>ID</td>
-                                                                                            <td>Name</td>
-                                                                                        </tr>
-
-                                                                                        <tr>
-                                                                                            <td></td>
-                                                                                            <td><input type="text" class="form-control" name="disposal[]" value="{{$disp->disposal_id}}"></td>
-                                                                                            <td><input type="text" class="form-control" name="disposal[]"value="{{$disp->name}}"></td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <td></td>
-                                                                                            <td>Method</td>
-                                                                                            <td>Date</td>
-                                                                                        </tr>
-                                                                                        <tr>
-                                                                                            <td></td>
-                                                                                            <td><input type="text" class="form-control" name="disposal[]" value="{{$disp->method}}"></td>
-                                                                                            <td><input type="date" class="form-control" name="disposal[]" value="{{$disp->date}}" ></td>
-                                                                                        </tr>
-
-
-                                                                                        </tbody>
-
-
-                                                        @endif
-                                                    @endforeach {{--Disposal--}}
+                                                        @endforeach {{--Disposal--}}
 
 
 
 
-                                            </table>
+                                                    </table>
+                                                </div>
                                             </div>
-                                        </div>
-                                        @endforeach    {{--hwdetails--}}
+                                        @endforeach {{--hwdetails--}}
                                     </div>
-
+                                    <div class="container"><table class="table table-borderless mt-3" id="newtable"></table>
+                                    </div>
                                     <td>
-                                        <button type="button" name="add" id="wstd" class="btn btn-outline-primary" style="margin-left: 2.5%" >+</button>
+                                        <button type="button" name="add" id="wstd" class="btn btn-outline-primary"
+                                                style="margin-left: 2.5%">+</button>
                                     </td>
+
 
                                     <table class="table table-borderless mt-3">
                                         <thead>
