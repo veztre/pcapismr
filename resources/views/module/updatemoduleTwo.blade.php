@@ -279,27 +279,27 @@
                                         @foreach ($hwDetails as $hwDetail)
                                             <div class="container" id="wstad">
 
-                                                <div class="card border-3 border-secondary mb-3">
-                                                    <table class="table table-borderless p-3">
+                                                <div class="card border-3 border-secondary mb-4" >
+                                                    <table class="table table-border p-3"   >
 
 
-                                                        <thead>
+                                                        <thead >
                                                         <tr>
-                                                            <th>HW Details</th>
+                                                            <th style="border-style: none; ">HW Details</th>
                                                         </tr>
                                                         </thead>
-                                                        <tbody id="wstad">
-                                                        <tr>
-                                                            <td></td>
-                                                            <td>HW No.</td>
-                                                            <td>HW Class</td>
+                                                        <tbody id="wstad" style="border-top-style: none; " >
+                                                        <tr >
+                                                            <td style="border-style: none; "></td>
+                                                            <td style="border-style: none; ">HW No.</td>
+                                                            <td style="border-style: none; ">HW Class</td>
                                                         </tr>
 
 
                                                         <tr>
-                                                            <td class="counterCell " style="text-align: right"></td>
-                                                            <td><select class="form-select" name="hwDetails[]"
-                                                                        style="width: fit-content">
+                                                            <td  style="text-align: right; border-style: none;"></td>
+                                                            <td style="border-style: none; "><select class="form-select" name="hwDetails[]"
+                                                                        style="width: fit-content; ">
                                                                     <option value="{{$hwDetail->HWno}}">
                                                                         {{$hwDetail->HWno}}</option>
                                                                     <option value="A101"
@@ -474,22 +474,23 @@
                                                             </td>
 
 
-                                                            <td><input type="text" class="form-control"
+                                                            <td style="border-style: none; "><input type="text" class="form-control"
                                                                        name="hwDetails[]"
                                                                        value="{{$hwDetail->HWclass}}"></td>
                                                         </tr>
                                                         <tr>
-                                                            <td></td>
-                                                            <td>Qty of HW Treated</td>
-                                                            <td>Unit</td>
+
+                                                            <td style="border-style: none; "></td>
+                                                            <td style="border-style: none; ">Qty of HW Treated</td>
+                                                            <td style="border-style: none; ">Unit</td>
                                                         </tr>
                                                         <tr>
-                                                            <td></td>
-                                                            <td><input type="text" class="form-control"
+                                                            <td style="border-style: none; "></td>
+                                                            <td style="border-style: none; "><input type="text" class="form-control"
                                                                        name="hwDetails[]"
                                                                        value="{{$hwDetail->QtyOfHWTreated}}"></td>
-                                                            <td><select class="form-select" name="hwDetails[]"
-                                                                        style="width: fit-content">
+                                                            <td style="border-style: none; "><select class="form-select" name="hwDetails[]"
+                                                                        style="width: fit-content; ">
 
                                                                     <option value="kg"
                                                                         {{ $hwDetail->Unit === 'kg' ? 'selected' : '' }}>
@@ -508,12 +509,12 @@
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td></td>
-                                                            <td>TSD Locations</td>
+                                                            <td style="border-style: none; "></td>
+                                                            <td style="border-style: none; ">TSD Locations</td>
                                                         </tr>
                                                         <tr>
-                                                            <td></td>
-                                                            <td><input type="text" class="form-control"
+                                                            <td style="border-style: none; "></td>
+                                                            <td style="border-style: none; "><input type="text" class="form-control"
                                                                        name="hwDetails[]"
                                                                        value="{{$hwDetail->TSDLocation}}"></td>
                                                         </tr>
@@ -528,26 +529,26 @@
 
 
                                                                 <tr>
-                                                                    <th>Storage</th>
+                                                                    <th style="border-style: none; ">Storage</th>
                                                                 </tr>
 
                                                                 <tr>
-                                                                    <td></td>
-                                                                    <td>Name</td>
+                                                                    <td style="border-style: none; "></td>
+                                                                    <td style="border-style: none; ">Name</td>
                                                                 </tr>
 
                                                                 <tr>
-                                                                    <td></td>
-                                                                    <td><input type="text" class="form-control"
+                                                                    <td style="border-style: none; "></td>
+                                                                    <td style="border-style: none; "><input type="text" class="form-control"
                                                                                name="storage[]" value="{{$store->name}}"></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td></td>
-                                                                    <td>Method</td>
+                                                                    <td style="border-style: none; "></td>
+                                                                    <td style="border-style: none; ">Method</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td></td>
-                                                                    <td><input type="text" class="form-control"
+                                                                    <td style="border-style: none; "></td>
+                                                                    <td style="border-style: none; "><input type="text" class="form-control"
                                                                                name="storage[]" value="{{$store->method}}">
                                                                     </td>
                                                                 </tr>
@@ -563,36 +564,36 @@
 
 
                                                                 <tr>
-                                                                    <th>Transporter</th>
+                                                                    <th style="border-style: none; ">Transporter</th>
                                                                 </tr>
 
 
                                                                 <tr>
-                                                                    <td></td>
-                                                                    <td>ID</td>
-                                                                    <td>Name</td>
+                                                                    <td style="border-style: none; "></td>
+                                                                    <td style="border-style: none; ">ID</td>
+                                                                    <td style="border-style: none; ">Name</td>
                                                                 </tr>
 
                                                                 <tr>
-                                                                    <td></td>
-                                                                    <td><input type="text" class="form-control"
+                                                                    <td style="border-style: none; "></td>
+                                                                    <td style="border-style: none; "><input type="text" class="form-control"
                                                                                name="transporter[]"
                                                                                value="{{$trans->transpo_id}}"></td>
-                                                                    <td><input type="text" class="form-control"
+                                                                    <td style="border-style: none; "><input type="text" class="form-control"
                                                                                name="transporter[]" value="{{$trans->name}}">
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td></td>
-                                                                    <td>Method</td>
-                                                                    <td>Date</td>
+                                                                    <td style="border-style: none; "></td>
+                                                                    <td style="border-style: none; ">Method</td>
+                                                                    <td style="border-style: none; ">Date</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td></td>
-                                                                    <td><input type="text" class="form-control"
+                                                                    <td style="border-style: none; "></td>
+                                                                    <td style="border-style: none; "><input type="text" class="form-control"
                                                                                name="transporter[]" value="{{$trans->method}}">
                                                                     </td>
-                                                                    <td><input type="date" class="form-control"
+                                                                    <td style="border-style: none; "><input type="date" class="form-control"
                                                                                name="transporter[]" value="{{$trans->date}}">
                                                                     </td>
                                                                 </tr>
@@ -607,35 +608,35 @@
                                                             @if($hwDetail->id == $treat->id)
 
                                                                 <tr>
-                                                                    <th>Treater</th>
+                                                                    <th style="border-style: none; ">Treater</th>
                                                                 </tr>
 
                                                                 <tr>
-                                                                    <td></td>
-                                                                    <td>ID</td>
-                                                                    <td>Name</td>
+                                                                    <td style="border-style: none; "></td>
+                                                                    <td style="border-style: none; ">ID</td>
+                                                                    <td style="border-style: none; ">Name</td>
                                                                 </tr>
 
                                                                 <tr>
-                                                                    <td>
+                                                                    <td style="border-style: none; ">
                                                                     </td>
-                                                                    <td><input type="text" class="form-control"
+                                                                    <td style="border-style: none; "><input type="text" class="form-control"
                                                                                name="treater[]" value="{{$treat->treater_id}}">
                                                                     </td>
-                                                                    <td><input type="text" class="form-control"
+                                                                    <td style="border-style: none; "><input type="text" class="form-control"
                                                                                name="treater[]" value="{{$treat->name}}"></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td></td>
-                                                                    <td>Method</td>
-                                                                    <td>Date</td>
+                                                                    <td style="border-style: none; "></td>
+                                                                    <td style="border-style: none; ">Method</td>
+                                                                    <td style="border-style: none; ">Date</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td></td>
-                                                                    <td><input type="text" class="form-control"
+                                                                    <td style="border-style: none; "></td>
+                                                                    <td style="border-style: none; "><input type="text" class="form-control"
                                                                                name="treater[]" value="{{$treat->method}}">
                                                                     </td>
-                                                                    <td><input type="date" class="form-control"
+                                                                    <td style="border-style: none; "><input type="date" class="form-control"
                                                                                name="treater[]" value="{{$treat->date}}"></td>
                                                                 </tr>
 
@@ -648,34 +649,34 @@
                                                             @if($hwDetail->id == $disp->id)
 
                                                                 <tr>
-                                                                    <th>Disposal</th>
+                                                                    <th style="border-style: none; ">Disposal</th>
                                                                 </tr>
 
                                                                 <tr>
-                                                                    <td></td>
-                                                                    <td>ID</td>
-                                                                    <td>Name</td>
+                                                                    <td style="border-style: none; "></td>
+                                                                    <td style="border-style: none; ">ID</td>
+                                                                    <td style="border-style: none; ">Name</td>
                                                                 </tr>
 
                                                                 <tr>
-                                                                    <td></td>
-                                                                    <td><input type="text" class="form-control"
+                                                                    <td style="border-style: none; "></td>
+                                                                    <td style="border-style: none; "><input type="text" class="form-control"
                                                                                name="disposal[]"
                                                                                value="{{$disp->disposal_id}}"></td>
-                                                                    <td><input type="text" class="form-control"
+                                                                    <td style="border-style: none; "><input type="text" class="form-control"
                                                                                name="disposal[]" value="{{$disp->name}}"></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td></td>
-                                                                    <td>Method</td>
-                                                                    <td>Date</td>
+                                                                    <td style="border-style: none; "></td>
+                                                                    <td style="border-style: none; ">Method</td>
+                                                                    <td style="border-style: none; ">Date</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td></td>
-                                                                    <td><input type="text" class="form-control"
+                                                                    <td style="border-style: none; "></td>
+                                                                    <td style="border-style: none; "><input type="text" class="form-control"
                                                                                name="disposal[]" value="{{$disp->method}}">
                                                                     </td>
-                                                                    <td><input type="date" class="form-control"
+                                                                    <td style="border-style: none; "><input type="date" class="form-control"
                                                                                name="disposal[]" value="{{$disp->date}}"></td>
                                                                 </tr>
 
@@ -694,6 +695,7 @@
                                             </div>
                                         @endforeach {{--hwdetails--}}
                                     </div>
+
                                     <div class="container"><table class="table table-borderless mt-3" id="newtable"></table>
                                     </div>
                                     <td>

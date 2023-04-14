@@ -140,19 +140,26 @@
                                         </table>
 
                                         <div class="container" id="wstad">
-
-                                            <table class="table table-borderless p-3">
-
-
+                                            <div lass="card border-3 border-secondary mb-3">
+                                                <table class="table table-borderless p-3">
 
 
-                                            </table>
+
+
+                                                </table>
+                                            </div>
                                         </div>
 
                                     </div>
+
+                                    <div class="container"><table class="table table-borderless mt-3" id="newtable"></table>
+                                    </div>
                                     <td>
-                                        <button type="button" name="add" id="wstd" class="btn btn-outline-primary" style="margin-left: 2.5%" >+</button>
+                                        <button type="button" name="add" id="wstd" class="btn btn-outline-primary"
+                                                style="margin-left: 2.5%">+</button>
                                     </td>
+
+
 
                                     <table class="table table-borderless mt-3">
                                         <thead>
