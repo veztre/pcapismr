@@ -51,43 +51,43 @@
 <nav class="navbar navbar-expand-lg ">
 
 
-      <form class="d-flex">
+    <form class="d-flex">
         <li class="nav-item">
-            <a class="nav-link" href="moduleOne">
+            <a class="nav-link" href="{{route('tabs.update')}}">
                 <small>Module 1: General Info</small>
             </a>
         </li>
 
         <li class="nav-item" >
-            <a class="nav-link " href="moduleTwo" >
+            <a class="nav-link" href="{{route('tabs.update2')}}">
                 <small>Module 2: RA 6969</small>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="moduleThree">
+            <a class="nav-link" href="{{route('tabs.update3')}}">
                 <small>Module 3: RA 9275</small>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="moduleFour">
+            <a class="nav-link" href="{{route('tabs.update4')}}">
                 <small>Module 4: RA 8749</small>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="moduleFive">
+            <a class="nav-link" href="{{route('tabs.update5')}}">
                 <small>Module 5: RA 1586</small>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="moduleSix">
+            <a class="nav-link" href="{{route('tabs.update6')}}">
                 <small>Module 6: Others</small>
             </a>
         </li>
-      </form>
+    </form>
 
 </nav>
     </div> <!-- collapse navbar-collapse -->

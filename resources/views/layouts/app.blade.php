@@ -924,7 +924,7 @@
 
 <!-- SCRIPT FOR OTHER ECC CONDITIONS -->
 <script type="text/javascript">
-    $(document).ready(function() {
+ $(document).ready(function() {
         var counter = <?php echo count($oeconditions ?? []); ?>;
         $("#OECondition").click(function () {
             ++counter;
@@ -942,6 +942,8 @@
             );
         });
     });
+
+
 </script>
 
 

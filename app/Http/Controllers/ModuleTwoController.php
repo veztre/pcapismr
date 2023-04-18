@@ -161,14 +161,14 @@ class ModuleTwoController extends Controller
 
     public function edit($id){
 
-        $referencens = Referencen::get();
-        $hwGeneration = HwGeneration::get();
+        $referencens = Auth::user()->reference_no()->get();
+        $hwGeneration = Auth::user()->hwGeneration()->get();
         $hwDetails = Auth::user()->hwDetails()->get();
         $storage = Auth::user()->storage()->get();
         $treater = Auth::user()->treater()->get();
         $transporter = Auth::user()->transporter()->get();
         $disposal = Auth::user()->disposal()->get();
-        $osisa = Osisa::get();
+        $osisa = Auth::user()->osisa()->get();
 
         return view('module.updatemoduleTwo',
             compact(

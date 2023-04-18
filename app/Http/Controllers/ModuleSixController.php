@@ -125,7 +125,7 @@ class ModuleSixController extends Controller
     {
 
         $users = User::find($id);
-        $referencens = Referencen::get();
+        $referencens = Auth::user()->reference_no()->get();
         $accident_records = Auth::user()->accident_records()->get();
         $personel_staff = Auth::user()->personel_staff()->get();
         $oattachment = Auth::user()->oattachment()->get();

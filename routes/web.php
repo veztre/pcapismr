@@ -93,9 +93,9 @@ Route::get('/moduleOne', [ModuleOneController::class, 'index'])->name('module.mo
 
 Route::post('/saveData', [ModuleOneController::class, 'save'])->name('saveData');
 Route::get('/view/moduleOne/{id}', [ModuleOneController::class, 'edit'])->name('view');
-Route::get('/pdf', [ModuleOneController::class, 'pdf']);
-Route::put('/view/updatemoduleOne/{id}', [ModuleOneController::class, 'update'])->name('update1');
 
+Route::put('/view/updatemoduleOne/{id}', [ModuleOneController::class, 'update'])->name('update1');
+Route::get('/pdf', [ModuleOneController::class, 'pdf']);
 Route::get('/reference', [ModuleOneController::class, 'generate'])->name('module.moduleOne.generate.save');
 
 /* Module Two Controller */
@@ -151,3 +151,31 @@ Route::get('/reference6', [ModuleSixController::class, 'generate']);
 Route::get('/addfacility', [AddFacilityController::class, 'index'])->name('addfacility');
 Route::post('/addf', [AddFacilityController::class, 'store'])->name('addf');
 
+
+
+
+/*Tabs Controller*/
+/*tabs modOne*/
+Route::get('/view/moduleOne/{id}', [TabsController::class, 'edit'])->name('view');
+Route::put('/view/updatemoduleOne', [TabsController::class, 'update'])->name('tabs.update');
+
+
+/*tabs modTwo*/
+Route::get('/view/moduleTwo/{id}', [TabsController::class, 'edit2']);
+Route::put('/view/updatemoduleTwo', [TabsController::class, 'update2'])->name('tabs.update2');
+
+/*tabs modThree*/
+Route::get('/view/moduleThree/{id}', [TabsController::class, 'edit3']);
+Route::put('/view/updatemoduleThree', [TabsController::class, 'update3'])->name('tabs.update3');
+
+/*tabs modFour*/
+Route::get('/view/moduleFour/{id}', [TabsController::class, 'edit4']);
+Route::put('/view/updatemoduleFour', [TabsController::class, 'update4'])->name('tabs.update4');
+
+/*tabs modFive*/
+Route::get('/view/moduleFive/{id}', [TabsController::class, 'edit5']);
+Route::put('/view/updatemoduleFive', [TabsController::class, 'update5'])->name('tabs.update5');
+
+/*tabs modSix*/
+Route::get('/view/moduleSix/{id}', [TabsController::class, 'edit6']);
+Route::put('/view/updatemoduleSix', [TabsController::class, 'update6'])->name('tabs.update6');
