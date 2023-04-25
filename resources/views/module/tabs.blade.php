@@ -53,40 +53,40 @@
 
     <form class="d-flex">
         <li class="nav-item">
-            <a class="nav-link" href="{{route('tabs.update')}}">
+            <a class="nav-link" href="{{ route('view', ['id' => auth()->user()->id]) }}">
                 <small>Module 1: General Info</small>
             </a>
         </li>
 
         <li class="nav-item" >
-            <a class="nav-link" href="{{route('tabs.update2')}}">
+            <a class="nav-link" href="{{ route('view2', ['id' => auth()->user()->id]) }}">
                 <small>Module 2: RA 6969</small>
             </a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="{{route('tabs.update3')}}">
+    {{--    <li class="nav-item">
+            <a class="nav-link" href="{{route('moduleThree.edit')}}">
                 <small>Module 3: RA 9275</small>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{route('tabs.update4')}}">
+            <a class="nav-link" href="{{route('moduleFour.edit')}}">
                 <small>Module 4: RA 8749</small>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{route('tabs.update5')}}">
+            <a class="nav-link" href="{{route('moduleFive.edit')}}">
                 <small>Module 5: RA 1586</small>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{route('tabs.update6')}}">
+            <a class="nav-link" href="{{route('moduleSix.edit')}}">
                 <small>Module 6: Others</small>
             </a>
-        </li>
+        </li>--}}
     </form>
 
 </nav>

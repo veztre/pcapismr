@@ -159,7 +159,9 @@ class ModuleTwoController extends Controller
 
     }
 
-    public function edit($id){
+
+
+    public function edit(){
 
         $referencens = Auth::user()->reference_no()->get();
         $hwGeneration = Auth::user()->hwGeneration()->get();
@@ -188,7 +190,7 @@ class ModuleTwoController extends Controller
 
     public function update(Request $request, $id)
     {
-
+        $userId = auth()->user()->id;
         $hwGeneration = $request->input('hwGeneration');
         $userId = Auth::user()->id;
 
@@ -372,7 +374,7 @@ class ModuleTwoController extends Controller
 
 
 
-        return redirect()->back();
+        return redirect()->route('view', ['id' => $userId]);
     }
 
     public static function generate(){

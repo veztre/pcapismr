@@ -120,6 +120,24 @@ class ModuleSixController extends Controller
         return redirect('/trainee/dashboard');
     }
 
+    public function moduleSix()
+    {
+        return view('tabs', [
+            'moduleOne' => ModuleOne::where('user_id', auth()->id())->first(),
+            'moduleTwo' => ModuleTwo::where('user_id', auth()->id())->first(),
+            'moduleThree' => ModuleThree::where('user_id', auth()->id())->first(),
+            'moduleFour' => ModuleFour::where('user_id', auth()->id())->first(),
+            'moduleFive' => ModuleFive::where('user_id', auth()->id())->first(),
+            'moduleSix' => ModuleSix::where('user_id', auth()->id())->first(),
+        ]);
+    }
+
+    public function moduleSixEdit()
+    {
+        $moduleSix = ModuleSix::where('user_id', auth()->id())->first();
+        return view('moduleSix.edit', compact('moduleSix'));
+    }
+
 
     public function edit($id)
     {

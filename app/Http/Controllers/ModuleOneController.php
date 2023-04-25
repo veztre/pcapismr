@@ -369,9 +369,11 @@ class ModuleOneController extends Controller
 
     }
 
-    public function edit($id)
-    {
 
+
+    public function edit()
+    {
+        $id = Auth::id();
         $year = Auth::user()->year()->get();
         $quarter = Auth::user()->quarter()->get();
         $plant = Auth::user()->plant()->get();

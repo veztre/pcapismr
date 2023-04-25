@@ -49,7 +49,7 @@
 
 
                     <div class="container col ml-4" style="align-content: center">
-                        <form action="{{ route('update1', $users->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('moduleOne.update', $users->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <!-- {{ csrf_field() }} -->

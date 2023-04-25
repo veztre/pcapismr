@@ -239,6 +239,23 @@ class ModuleFourController extends Controller
     }
 
 
+    public function moduleFour()
+    {
+        return view('tabs', [
+            'moduleOne' => ModuleOne::where('user_id', auth()->id())->first(),
+            'moduleTwo' => ModuleTwo::where('user_id', auth()->id())->first(),
+            'moduleThree' => ModuleThree::where('user_id', auth()->id())->first(),
+            'moduleFour' => ModuleFour::where('user_id', auth()->id())->first(),
+            'moduleFive' => ModuleFive::where('user_id', auth()->id())->first(),
+            'moduleSix' => ModuleSix::where('user_id', auth()->id())->first(),
+        ]);
+    }
+
+    public function moduleFourEdit()
+    {
+        $moduleFour = ModuleFour::where('user_id', auth()->id())->first();
+        return view('moduleFour.edit', compact('moduleFour'));
+    }
 
     public function edit($id){
 

@@ -230,9 +230,31 @@ class ModuleThreeController extends Controller
         return redirect('moduleFour');
 
     }
+    public function moduleThree()
+    {
+        return view('tabs', [
+            'moduleOne' => ModuleOne::where('user_id', auth()->id())->first(),
+            'moduleTwo' => ModuleTwo::where('user_id', auth()->id())->first(),
+            'moduleThree' => ModuleThree::where('user_id', auth()->id())->first(),
+            'moduleFour' => ModuleFour::where('user_id', auth()->id())->first(),
+            'moduleFive' => ModuleFive::where('user_id', auth()->id())->first(),
+            'moduleSix' => ModuleSix::where('user_id', auth()->id())->first(),
+        ]);
+    }
+
+    public function moduleThreeEdit()
+    {
+        $moduleThree = ModuleThree::where('user_id', auth()->id())->first();
+        return view('moduleThree.edit', compact('moduleThree'));
+    }
 
 
     public function edit($id){
+
+
+            $moduleThree = ModuleThree::where('id', $id)->where('user_id', auth()->id())->firstOrFail();
+
+
 
         $waterpolutiondata = Auth::user()->waterpolutiondata()->get();
         $personEmployed = Auth::user()->personEmployed()->get();
@@ -253,6 +275,7 @@ class ModuleThreeController extends Controller
         $users = User::find($id);
         return view ('/module.updatemoduleThree',
             compact('users',
+                'moduleThree',
                 'referencens',
                 'waterpolutiondata',
                 'personEmployed',

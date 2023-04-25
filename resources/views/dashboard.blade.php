@@ -123,7 +123,7 @@
                                         <td>33</td>
                                         <td>2008/11/28</td>
                                         <td>
-                                            <a  href="{{ route('view', $users)}}"><button class="btn btn-info"><i class="bi bi-pencil-square"></i><svg
+                                            <a  href="{{ route('view', ['id' =>  $ref->id]) }}"><button class="btn btn-info"><i class="bi bi-pencil-square"></i><svg
                                                         xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                         fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                         <path
