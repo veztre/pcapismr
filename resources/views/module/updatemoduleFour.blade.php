@@ -41,7 +41,7 @@
                  </form>--}}
                         <div class="card">
                             <div class="col">
-                                <form action="{{ route('update4', $users->id) }}" method="POST">
+                                <form action="{{ route('moduleFour.update', ['moduleFour' => Auth::user()->id]) }}" method="POST">
                                     @csrf
                                     @method('PUT')
 
@@ -387,8 +387,6 @@
                                     <div class="container">
                                         <div class="col mb-3" >
                                             <div style="float: right" class="mb-3">
-                                                <a href="" class="btn btn-lg border bg-light">Previous</a>
-                                                <a href="{{ route('module.moduleFour') }}" class="btn btn-lg btn-info">Next</a>
                                                 <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
                                             </div>
                                         </div>

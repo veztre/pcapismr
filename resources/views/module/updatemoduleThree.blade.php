@@ -36,7 +36,7 @@
                     <div class="container card col" >
 
 
-                        <form action="{{ route('update3', $users->id) }}" method="POST">
+                        <form action="{{ route('moduleThree.update', ['moduleThree' => Auth::user()->id]) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <!-- {{ csrf_field() }} -->
@@ -493,8 +493,6 @@
                             <div class="container">
                                 <div class="col mb-3" >
                                     <div style="float: right" class="mb-3">
-                                        <a href="{{ route('module.moduleTwo') }}" class="btn btn-lg border bg-light">Previous</a>
-                                        <a href="{{ route('module.moduleFour') }}" class="btn btn-lg btn-info">Next</a>
                                         <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
                                     </div>
                                 </div>

@@ -219,25 +219,10 @@ class ModuleFiveController extends Controller
         return redirect('moduleSix');
     }
 
-    public function moduleFive()
-    {
-        return view('tabs', [
-            'moduleOne' => ModuleOne::where('user_id', auth()->id())->first(),
-            'moduleTwo' => ModuleTwo::where('user_id', auth()->id())->first(),
-            'moduleThree' => ModuleThree::where('user_id', auth()->id())->first(),
-            'moduleFour' => ModuleFour::where('user_id', auth()->id())->first(),
-            'moduleFive' => ModuleFive::where('user_id', auth()->id())->first(),
-            'moduleSix' => ModuleSix::where('user_id', auth()->id())->first(),
-        ]);
-    }
 
-    public function moduleFiveEdit()
-    {
-        $moduleFive = ModuleFive::where('user_id', auth()->id())->first();
-        return view('moduleFive.edit', compact('moduleFive'));
-    }
-    public function edit($id){
+    public function edit(){
 
+        $id = Auth::id();
         $users = User::find($id);
         $referencens= Referencen::get();
         $aaqmonitoring_parameter = Auth::user()->aaqmonitoring_parameter()->get();

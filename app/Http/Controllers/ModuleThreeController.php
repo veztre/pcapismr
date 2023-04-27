@@ -230,31 +230,13 @@ class ModuleThreeController extends Controller
         return redirect('moduleFour');
 
     }
-    public function moduleThree()
-    {
-        return view('tabs', [
-            'moduleOne' => ModuleOne::where('user_id', auth()->id())->first(),
-            'moduleTwo' => ModuleTwo::where('user_id', auth()->id())->first(),
-            'moduleThree' => ModuleThree::where('user_id', auth()->id())->first(),
-            'moduleFour' => ModuleFour::where('user_id', auth()->id())->first(),
-            'moduleFive' => ModuleFive::where('user_id', auth()->id())->first(),
-            'moduleSix' => ModuleSix::where('user_id', auth()->id())->first(),
-        ]);
-    }
-
-    public function moduleThreeEdit()
-    {
-        $moduleThree = ModuleThree::where('user_id', auth()->id())->first();
-        return view('moduleThree.edit', compact('moduleThree'));
-    }
 
 
-    public function edit($id){
+    public function edit(){
 
 
-            $moduleThree = ModuleThree::where('id', $id)->where('user_id', auth()->id())->firstOrFail();
-
-
+        $id = Auth::id();
+        $users = User::find($id);
 
         $waterpolutiondata = Auth::user()->waterpolutiondata()->get();
         $personEmployed = Auth::user()->personEmployed()->get();
@@ -272,10 +254,9 @@ class ModuleThreeController extends Controller
         $dreportofwaste_parameter = Auth::user()->dreportofwaste_parameter()->get();
 
         $referencens = Referencen::get();
-        $users = User::find($id);
+
         return view ('/module.updatemoduleThree',
             compact('users',
-                'moduleThree',
                 'referencens',
                 'waterpolutiondata',
                 'personEmployed',
@@ -489,7 +470,8 @@ class ModuleThreeController extends Controller
 
 
 
-        return redirect()->back();
+
+        return redirect()->route('view2', ['id' => $userId]);
 
     }
 

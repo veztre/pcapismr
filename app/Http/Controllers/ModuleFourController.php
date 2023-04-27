@@ -239,26 +239,10 @@ class ModuleFourController extends Controller
     }
 
 
-    public function moduleFour()
-    {
-        return view('tabs', [
-            'moduleOne' => ModuleOne::where('user_id', auth()->id())->first(),
-            'moduleTwo' => ModuleTwo::where('user_id', auth()->id())->first(),
-            'moduleThree' => ModuleThree::where('user_id', auth()->id())->first(),
-            'moduleFour' => ModuleFour::where('user_id', auth()->id())->first(),
-            'moduleFive' => ModuleFive::where('user_id', auth()->id())->first(),
-            'moduleSix' => ModuleSix::where('user_id', auth()->id())->first(),
-        ]);
-    }
 
-    public function moduleFourEdit()
-    {
-        $moduleFour = ModuleFour::where('user_id', auth()->id())->first();
-        return view('moduleFour.edit', compact('moduleFour'));
-    }
-
-    public function edit($id){
-
+    public function edit(){
+        $id = Auth::id();
+        $users = User::find($id);
         $summary1 = Auth::user()->summary1()->get();
         $summary2 = Auth::user()->summary2()->get();
         $summary3 = Auth::user()->summary3()->get();
@@ -275,7 +259,7 @@ class ModuleFourController extends Controller
         $detail_parameter_value = Auth::user()->detail_parameter_value()->get();
 
         $referencens= Auth::user()->reference_no()->get();
-        $users = User::find($id);
+
 
         return view('module.updatemoduleFour',
             compact('users',
@@ -607,7 +591,7 @@ class ModuleFourController extends Controller
 
 
 
-        return redirect()->back();
+        return redirect()->route('view3', ['id' => $userId]);
     }
 
 

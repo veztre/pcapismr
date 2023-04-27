@@ -64,29 +64,29 @@
             </a>
         </li>
 
-    {{--    <li class="nav-item">
-            <a class="nav-link" href="{{route('moduleThree.edit')}}">
-                <small>Module 3: RA 9275</small>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('view3', ['id' => auth()->user()->id]) }}">
+            <small>Module 3: RA 9275</small>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{route('moduleFour.edit')}}">
+            <a class="nav-link" href="{{ route('view4', ['id' => auth()->user()->id]) }}">
                 <small>Module 4: RA 8749</small>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{route('moduleFive.edit')}}">
+            <a class="nav-link" href="{{ route('view5', ['id' => auth()->user()->id]) }}">
                 <small>Module 5: RA 1586</small>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="{{route('moduleSix.edit')}}">
+            <a class="nav-link" href="{{ route('view6', ['id' => auth()->user()->id]) }}">
                 <small>Module 6: Others</small>
             </a>
-        </li>--}}
+        </li>
     </form>
 
 </nav>
