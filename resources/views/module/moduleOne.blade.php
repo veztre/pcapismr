@@ -4,16 +4,13 @@
 
     <title>Environmental Management Bureau Online Services - SMR - General information</title>
 
-    <div class="py-12 ">
+    <div class="py-12" style="margin-top:0">
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 relative">
+            <div class="">
                 {{View::make('module.tabs')}}
 
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg container">
 
 
                     <div class="container col ml-4" style="align-content: center">
@@ -39,6 +36,7 @@
 
                                     <div class="card-body">
 
+                                        {{--reference no--}}
                                         <input type="text" class="form-control mt-0" placeholder="" value="{{ $referencen }}" readonly>
 
                                     </div>
@@ -52,6 +50,7 @@
                                 <div class="row mt-4">
 
                                     <div class="col-2 position-relative">
+                                        {{--dropdown year--}}
                                         <label for="year" hidden></label>
                                         <select class="form-select validate-input" id="year" name="year" required>
                                             <option selected disabled value="">SELECT</option>
@@ -75,6 +74,7 @@
                                     </div>
 
                                     <div class="col-2 position-relative">
+                                        {{--dropdown quarter--}}
                                         <label for="quarter" hidden></label>
                                         <select class="form-select validate-input" id="quarter" name="quarter" required>
                                             <option selected disabled value="">SELECT</option>
@@ -110,6 +110,7 @@
 
                                 <div class="container">
                                     <div class="row">
+                                        {{--pdf export button--}}
                                         <p class="p-1 mt-3  text-light " style="background-color:gray; font-size:20px ">
                                             MODULE 1: GENERAL INFORMATION
                                             <a href="/pdf" class="btn btn-lg float-right " ><img src="/images/printpdflogo.png" class="inline" height="40px" width="50px" style="backgorund-color:gray;"> EXPORT PDF</a>
@@ -121,6 +122,7 @@
 
                                 <div class="mb-2">
                                     <div class="col-11 mx-auto position-relative">
+                                        {{--Plant / add facility data--}}
                                         <p>Name of the Plant</p>
                                         <label for="plant" hidden></label>
                                         <select class="form-select text-center validate-input" id="plant" name="plantname" required>
@@ -148,6 +150,7 @@
 
 
                                 <div class="container">
+                                    {{--General Information sheet--}}
                                     <label for="description" hidden></label>
                                     <textarea name="description" class="form-control" id="description" cols="40" rows="10"
                                               style="overflow:scroll; overflow-x:hidden" required></textarea>
@@ -168,6 +171,7 @@
                                     </tr>
                                     </thead>
 
+                                    {{--A/C data table--}}
                                     <tbody>
                                     <tr>
                                         <td></td>
@@ -197,12 +201,12 @@
                                     </tbody>
 
 
-
+                                    {{--DP no. data table with add loop--}}
                                     <tbody id="dynamicAddRemove">
                                     <tr>
                                         <td></td>
                                         <td></td>
-                                        <td>DP no.</td>
+                                        <td>DP No.</td>
                                         <td class="position-relative">
                                             <label for="dpno" hidden></label>
                                             <input class="form-control validate-input" type="text" name="dpno[]" id="dpno" value="{{ old('dpno', 'N/A') }}" required>
@@ -233,12 +237,12 @@
                                     <td></td>
                                     <td></td>
 
-
+                                    {{--ECC/CNC no. data table with add loop--}}
                                     <tbody id=pd>
                                     <tr>
                                         <td></td>
                                         <td>PD 1586</td>
-                                        <td>ECC/CNC no.</td>
+                                        <td>ECC/CNC No.</td>
                                         <td class="position-relative">
                                             <label for="cncno" hidden></label>
                                             <input class="form-control validate-input" type="text" name="cncno[]" id="cncno" value="{{ old('cncno', 'N/A') }}" required>
@@ -268,7 +272,7 @@
                                     <td></td>
 
 
-                                    <!-- DENR REG -->
+                                     {{--DENR REG --}}
                                     <tbody id="reg">
                                     <tr>
                                         <td></td>
@@ -295,7 +299,7 @@
                                     </tr>
                                     </tbody>
 
-                                    <!-- Transporter-->
+                                     {{--Transporter Reg--}}
                                     <tbody id="trans">
                                     <tr>
                                         <td></td>
@@ -322,7 +326,7 @@
                                     </tr>
                                     </tbody>
 
-                                    <!-- TSD -->
+                                     {{--TSD Reg--}}
                                     <tbody id="tsd">
                                     <tr>
                                         <td></td>
@@ -348,8 +352,7 @@
                                     </tr>
                                     </tbody>
 
-                                    <!-- CCO Registration -->
-
+                                    {{--CCO Reg data table with add loop--}}
                                     <tbody id=cco>
                                     <tr>
                                         <td></td>
@@ -383,7 +386,7 @@
                                     <td></td>
                                     <td></td>
 
-                                    <!-- Importation Clearance number -->
+                                    {{--Imporation Clearance no. data table with add loop--}}
                                     <tbody id="importation">
                                     <tr>
                                         <td></td>
@@ -418,7 +421,7 @@
                                     <td></td>
 
 
-                                    <!-- Permit to Transport -->
+                                    {{--Permit to Transport data table with add loop--}}
                                     <tbody id="permit">
                                     <tr>
                                         <td></td>
@@ -453,7 +456,7 @@
                                     <td></td>
 
 
-                                    <!-- Small Quantity Importation -->
+                                    {{--Small Quantity Importation data table with add loop--}}
                                     <tbody id="smallq">
                                     <tr>
                                         <td></td>
@@ -487,7 +490,7 @@
                                     <td></td>
                                     <td></td>
 
-                                    <!-- Priority Chemical list -->
+                                    {{--Priority Chemical list data table with add loop--}}
                                     <tbody id="prio">
                                     <tr>
                                         <td></td>
@@ -522,7 +525,7 @@
                                     <td></td>
 
 
-                                    <!-- PICCS -->
+                                    {{--PICCS data table with add loop--}}
                                     <tbody id="piccs">
                                     <tr>
                                         <td></td>
@@ -556,7 +559,7 @@
                                     <td></td>
                                     <td></td>
 
-                                    <!-- PMPIN -->
+                                    {{--PMPIN data table with add loop--}}
                                     <tbody id="pmpin">
                                     <tr>
                                         <td></td>
@@ -591,12 +594,12 @@
                                     <td></td>
 
 
-                                    <!-- ACno2 -->
+                                    {{--A/C no. RA8749 --}}
                                     <tbody>
                                     <tr>
                                         <td></td>
                                         <td>RA 8749</td>
-                                        <td>A/C no.</td>
+                                        <td>A/C No.</td>
                                         <td class="position-relative">
                                             <label for="ACNOPermit" hidden></label>
                                             <input class="form-control validate-input" type="text" name="ACNOPermit" id="ACNOPermit" value="{{ old('ACNOPermit', 'N/A') }}" required>
@@ -618,7 +621,7 @@
                                     </tr>
                                     </tbody>
 
-                                    <!-- PO no -->
+                                    {{--PO no. data table with add loop--}}
                                     <tbody id="pono">
                                     <tr>
                                         <td></td>
@@ -655,7 +658,7 @@
 
                                 </table>
 
-                                <!-- Operation -->
+                                <!-- Operation text input-->
                                 <table class="table table-borderless table-hover">
                                     <h3 class="mt-3 mx-2 text-success">OPERATION</h3>
 
@@ -721,7 +724,7 @@
 
                                 </table>
 
-                                <!-- OPERATION / PRODUCTION / QUALITY-->
+                                <!-- OPERATION / PRODUCTION / QUALITY text input-->
                                 <table class="table table-borderless table-hover">
                                     <h3 class="mt-3 mx-2 text-success">OPERATION / PRODUCTION / QUALITY</h3>
 
@@ -770,6 +773,7 @@
                             </div>
 
                             <div class="mx-auto">
+                               {{-- upload 20mb pdf--}}
                                 <p class="text-secondary my-0">Attached water bills and/or electricity bills</p>
                                 <i class="text-secondary">Note: File name should not contain the following characters * ? " : ! @ #
                                     ; + ' | $ $ , <> \ / ( ) { } [ ]</i>
@@ -803,3 +807,14 @@
         </div>
     </div>
 </x-app-layout>
+
+
+
+<script>
+    config = {
+        dateFormat: "Y-m-d"
+    }
+    flatpickr("input[type=date]", config);
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

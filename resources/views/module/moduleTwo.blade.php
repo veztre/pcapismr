@@ -1,33 +1,10 @@
-{{--<!DOCTYPE html>
-<html lang="en">
-<head>
-    @extends('module.master')
-    @section('content')
-    {{View::make('module.tabs')}}
 
-
-
-    <title>Environmental Management Bureau Online Services - SMR - RA 6969</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-</head>
-<body>--}}
 <x-app-layout>
     <title>Environmental Management Bureau Online Services - SMR - RA 6969</title>
     <div class="py-12 ">
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 relative">
+            <div class="">
                 {{View::make('module.tabs')}}
 
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">

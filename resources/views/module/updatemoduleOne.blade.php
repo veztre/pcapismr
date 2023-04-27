@@ -38,17 +38,18 @@
 
     <title>Environmental Management Bureau Online Services - SMR - General information</title>
 
-    <div class="py-12">
+    <div class="py-12" style="margin-top:0">
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div>
-                {{View::make('module.tabs')}}</div>
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+            <div class="">
+                {{View::make('module.tabs')}}
+
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg container">
 
 
 
-                    <div class="container col ml-4" style="align-content: center">
+
+                <div class="container col ml-4" style="align-content: center">
                         <form action="{{ route('moduleOne.update', ['moduleOne' => Auth::user()->id]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -927,215 +928,12 @@
     </div>
 </x-app-layout>
 
-{{--
 
-</body>
-<style>
-    h1 {
-        text-align: left;
-        font-size: 26px;
-        color: gray;
-    }
-
-    h2 {
-        text-align: left;
-        font-size: 20px;
-        color: gray;
-    }
-</style>
-
-<!-- Script RA6969 -->
-<script type="text/javascript">
-    $("#dynamic-ar").click(function () { //button name
-        $("#dynamicAddRemove").append(
-            '<tr> <td></td> <td></td> <td></td> <td> <label for="dpno" hidden></label> <input class="form-control" type="text" name="dpno[]" id="" required>  </td> <td> <label for="dpno" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="dpno[]" id="dpno" required> </td> <td> <label for="dpno"  hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="dpno[]" id="dpnoe" required> </td> </tr>'
-        ); //table name
-
-        config = {
-            dateFormat: "Y-m-d"
-        }
-        flatpickr("input[type=date]", config);
-    });
-</script>
-
-<!-- Script PD-->
-<script type="text/javascript">
-    $("#ECC").click(function () { //button name
-        $("#pd").append(
-            '<tr> <td></td> <td></td> <td></td> <td> <label for="cncno" hidden></label> <input class="form-control" type="text" name="cncno[]" id="cncno" required>   </td> <td> <label for="cncno" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="cncno[]" id="cncno" required> </td> <td> <label for="cncno" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="cncno[]" id="cncno" required> </td> </tr>'
-        ); //table name
-
-        config = {
-            dateFormat: "Y-m-d"
-        }
-        flatpickr("input[type=date]", config);
-    });
-</script>
-
-<!-- Script for CCo Registration -->
-<script type="text/javascript">
-    var i = 0;
-    $("#ccoreg").click(function () { //button name
-        ++i;
-        $("#cco").append(
-            '<tr> <td></td> <td></td> <td></td> <td> <label for="ccoreg" hidden></label> <input class="form-control" type="text" name="ccoreg[]" id="ccoreg" required>  </td> <td> <label for="ccoreg" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="ccoreg[]" id="ccoreg" required> </td> <td> <label for="ccoreg" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="ccoreg[]" id="ccoreg" required> </td> </tr>'
-        ); //table name
-
-        config = {
-            dateFormat: "Y-m-d"
-        }
-        flatpickr("input[type=date]", config);
-    });
-</script>
-
-<!-- Scipt for importation clearance no -->
-<script type="text/javascript">
-    var i = 0;
-    $("#imp").click(function () { //button name
-        ++i;
-        $("#importation").append(
-            '<tr> <td></td> <td></td> <td></td> <td> <label for="import" hidden></label> <input class="form-control" type="text" name="import[]" id="import" required>   </td> <td> <label for="import" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="import[]" id="import" required> </td> <td> <label for="import" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="import[]" id="import" required> </td> </tr>'
-        ); //table name
-
-        config = {
-            dateFormat: "Y-m-d"
-        }
-        flatpickr("input[type=date]", config);
-    });
-</script>
-
-
-<!-- Script for Permit to Transport -->
-<script type="text/javascript">
-    var i = 0;
-    $("#ptt").click(function () { //button name
-        ++i;
-        $("#permit").append(
-            '<tr> <td></td> <td></td> <td></td> <td> <label for="permit" hidden></label> <input class="form-control" type="text" name="permit[]" id="" required>  </td> <td> <label for="permit" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="permit[]" id="" required> </td> <td> <label for="permit" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="permit[]" id="" required> </td>'
-        ); //table name
-
-        config = {
-            dateFormat: "Y-m-d"
-        }
-        flatpickr("input[type=date]", config);
-    });
-</script>
-
-<!-- Script for Small Quality Importation-->
-<script type="text/javascript">
-    var i = 0;
-    $("#sqi").click(function () { //button name
-        ++i;
-        $("#smallq").append(
-            '<tr> <td></td> <td></td> <td></td> <td> <label for="smallquan" hidden></label> <input class="form-control" type="text" name="smallquan[]" id="smallquan" required>  </td> <td> <label for="smallquan" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="smallquan[]" id="smallquan" required> </td> <td> <label for="smallquan" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="smallquan[]" id="smallquan" required> </td> </tr>'
-        ); //table name
-
-        config = {
-            dateFormat: "Y-m-d"
-        }
-        flatpickr("input[type=date]", config);
-    });
-</script>
-
-
-<!-- Script for priority chem list -->
-<script type="text/javascript">
-    var i = 0;
-    $("#priochem").click(function () { //button name
-        ++i;
-        $("#prio").append(
-            '<tr> <td></td> <td></td> <td></td> <td> <label for="priority" hidden></label> <input class="form-control" type="text" name="priority[]" id="priority" required>  </td> <td> <label for="priority" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="priority[]" id="priority" required> </td> <td> <label for="priority" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="priority[]" id="priority" required> </td> </tr>'
-        ); //table name
-
-        config = {
-            dateFormat: "Y-m-d"
-        }
-        flatpickr("input[type=date]", config);
-    });
-</script>
-
-<!-- Script PICCS -->
-<script type="text/javascript">
-    var i = 0;
-    $("#pccs").click(function () { //button name
-        ++i;
-        $("#piccs").append(
-            '<tr> <td></td> <td></td> <td></td> <td> <label for="piccs" hidden></label> <input class="form-control" type="text" name="piccs[]" id="piccs" required>  </td> <td> <label for="piccs" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="piccs[]" id="piccs" required> </td> <td> <label for="piccs" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="piccs[]" id="piccs" required> </td> </tr>'
-        ); //table name
-
-        config = {
-            dateFormat: "Y-m-d"
-        }
-        flatpickr("input[type=date]", config);
-    });
-</script>
-
-<!-- Script for PMPIN -->
-<script type="text/javascript">
-    $("#pin").click(function () { //button name
-        $("#pmpin").append(
-            '<tr> <td></td> <td></td> <td></td> <td> <label for="pmpin" hidden></label> <input class="form-control" type="text" name="pmpin[]" id="pmpin" required>  </td> <td> <label for="pmpin" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="pmpin[]" id="pmpin" required> </td> <td> <label for="pmpin" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="pmpin[]" id="pmpin" required> </td> </tr>'
-        ); //table name
-
-        config = {
-            dateFormat: "Y-m-d"
-        }
-        flatpickr("input[type=date]", config);
-    });
-</script>
-
-<!-- Script for PO no -->
-<script type="text/javascript">
-    var i = 0;
-    $("#ponum").click(function () { //button name
-        ++i;
-        $("#pono").append(
-            '<tr> <td></td> <td></td> <td></td> <td> <label for="pono" hidden></label> <input class="form-control" type="text" name="pono[]" id="pono" required>  </td> <td> <label for="pono" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="pono[]" id="pono" required> </td> <td> <label for="pono" hidden></label> <input class="form-select" placeholder="Date: " value="2001-01-01"  type="date" name="pono[]" id="pono" required> </td> </tr>'
-        ); //table name
-        config = {
-            dateFormat: "Y-m-d"
-        }
-        flatpickr("input[type=date]", config);
-    });
-</script>
-
-
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function () {
-        'use strict'
-
-        // Fetch all the forms we want to apply custom Bootstrap validation styles to
-        var forms = document.querySelectorAll('.needs-validation')
-
-        // Loop over them and prevent submission
-        Array.prototype.slice.call(forms)
-            .forEach(function (form) {
-                form.addEventListener('submit', function (event) {
-                    if (!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
-
-                    form.classList.add('was-validated')
-                }, false)
-            })
-    })()
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
     config = {
         dateFormat: "Y-m-d"
     }
-    flatpickr("input[type=date]", {
-        allowInput: true
-    });
+    flatpickr("input[type=date]", config);
 </script>
-
-
-
-
-@endsection
-
-</html>--}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>

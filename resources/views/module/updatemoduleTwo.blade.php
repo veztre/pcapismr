@@ -22,12 +22,11 @@
 <body>--}}
 <x-app-layout>
     <title>Environmental Management Bureau Online Services - SMR - RA 6969</title>
-    <div class="py-12">
+    <div class="py-12 ">
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div>
-                {{View::make('module.tabs')}}</div>
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="">
+                {{View::make('module.tabs')}}
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <div class="container m-auto mb-4" style="align-content: center">
                         <div class="card m-auto mb-4">

@@ -30,12 +30,12 @@
 
     <title>Environmental Management Bureau Online Services - SMR - Others</title>
 
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+    <div class="py-12 ">
 
-
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 ">
-            {{View::make('module.tabs')}}
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="">
+                {{View::make('module.tabs')}}
+                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
 
 
@@ -285,53 +285,9 @@
             </div>
         </div>
     </div>
+    </div>
 </x-app-layout>
 
 
 
 
-
-
-{{--
-</body>
-<style>
-    h1 {
-      text-align: left;
-      font-size: 26px;
-      color:gray;
-    }
-    h2 {
-      text-align: left;
-      font-size: 20px;
-      color:gray;
-    }
-  </style>
-
-
-
-<!-- Script for ACCIDENTS & EMERGENCY RECORDS -->
-    <script type="text/javascript">
-        var i = 0;
-        $("#AERT").click(function () { //button name
-            ++i;
-            $("#AER").append
-            (' <tr><td><input type="date" class="form-control" name="accident_records[]"></td><td><input type="text" class="form-control" name="accident_records[]"></td><td><input type="text" class="form-control" name="accident_records[]"></td><td><input type="text" class="form-control" name="accident_records[]"></td><td><input type="text" class="form-control" name="accident_records[]"></td></tr>'); //table name
-        });
-    </script>
-
-
-<!--  Script for ACCIDENTS & Personel Staff RECORDS -->
-    <script type="text/javascript">
-        var i = 0;
-        $("#PersonelStaff").click(function () { //button name
-            ++i;
-            $("#PST").append
-            (' <tr><td><input type="date" class="form-control" name="personel_staff[]"></td><td><input type="text" class="form-control" name="personel_staff[]"></td><td><input type="text" class="form-control" name="personel_staff[]"></td></tr>'); //table name
-        });
-    </script>
-
-
-
-@endsection
-</html>
---}}
