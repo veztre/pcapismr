@@ -35,7 +35,7 @@
                     <div class="container card col" >
 
 
-                        <form action="{{ route('moduleThree.update', ['moduleThree' => Auth::user()->id]) }}" method="POST">
+                        <form action="{{ route('moduleThree.update', ['moduleThreeUpdate' => Auth::user()->id]) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <!-- {{ csrf_field() }} -->

@@ -20,7 +20,7 @@
                  </form>--}}
                         <div class="card">
                             <div class="col">
-                                <form action="{{ route('moduleFour.update', ['moduleFour' => Auth::user()->id]) }}" method="POST">
+                                <form action="{{ route('moduleFour.update', ['moduleFourUpdate' => Auth::user()->id]) }}" method="POST">
                                     @csrf
                                     @method('PUT')
 

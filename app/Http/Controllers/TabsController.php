@@ -107,12 +107,12 @@ class TabsController extends Controller
     public function index()
     {
         return view('tabs', [
-            'moduleOne' => route('view'),
-            'moduleTwo' => route('view2'),
-            'moduleThree' => route('view3'),
-            'moduleFour' => route('view4'),
-            'moduleFive' => route('view5'),
-            'moduleSix' => route('view6'),
+            'moduleOneUpdate' => route('view'),
+            'moduleTwoUpdate' => route('view2'),
+            'moduleThreeUpdate' => route('view3'),
+            'moduleFourUpdate' => route('view4'),
+            'moduleFiveUpdate' => route('view5'),
+            'moduleSixUpdate' => route('view6'),
         ]);
     }
 

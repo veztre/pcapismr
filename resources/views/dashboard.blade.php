@@ -184,8 +184,8 @@
                                 <td>{{$facility->baranggay}}</td>
                                 <td>{{$facility->city}}</td>
                                 <td>{{$facility->province}}</td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $facility->created_at->format('Y-m-d') }}</td>
+                                <td>ACTIVE</td>
                             </tr>
                                 @endif
                             @endforeach

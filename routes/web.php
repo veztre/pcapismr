@@ -154,11 +154,11 @@ Route::post('/addf', [AddFacilityController::class, 'store'])->name('addf');
 
 Route::get('/tabs', [TabsController::class, 'index'])->name('tabs.index');
 
-Route::resource('moduleOne', ModuleOneController::class);
-Route::resource('moduleTwo', ModuleTwoController::class);
-Route::resource('moduleThree', ModuleThreeController::class);
-Route::resource('moduleFour', ModuleFourController::class);
-Route::resource('moduleFive', ModuleFiveController::class);
-Route::resource('moduleSix', ModuleSixController::class);
+Route::resource('moduleOneUpdate', ModuleOneController::class);
+Route::resource('moduleTwoUpdate', ModuleTwoController::class);
+Route::resource('moduleThreeUpdate', ModuleThreeController::class);
+Route::resource('moduleFourUpdate', ModuleFourController::class);
+Route::resource('moduleFiveUpdate', ModuleFiveController::class);
+Route::resource('moduleSixUpdate', ModuleSixController::class);
 
 
