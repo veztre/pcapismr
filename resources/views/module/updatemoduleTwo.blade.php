@@ -32,7 +32,7 @@
                         <div class="card m-auto mb-4">
                             <div class="col">
 
-                                <form action="{{ route('moduleTwo.update', ['moduleTwoUpdate' => Auth::user()->id]) }}" method="POST">
+                                <form action="{{ route('moduleTwo.update', ['module2' => Auth::user()->id]) }}" method="POST">
 
                                 @csrf
                                     @method('PUT')
