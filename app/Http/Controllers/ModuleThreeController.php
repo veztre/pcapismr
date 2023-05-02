@@ -412,7 +412,7 @@ class ModuleThreeController extends Controller
         }
 
 
-        for ($x = count($DBdreportofwaste)*9; $x < count($dreportofwaste); $x += 10) {
+        for ($x = count($DBdreportofwaste)*10; $x < count($dreportofwaste); $x += 10) {
             $newRecord = new DreportofWaste();
             $newRecord->userid = $userId;
             $newRecord->Outlet_No = $dreportofwaste[$x];

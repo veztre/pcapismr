@@ -35,7 +35,7 @@
                     <div class="container card col" >
 
 
-                        <form action="{{ route('moduleThree.update', ['moduleThreeUpdate' => Auth::user()->id]) }}" method="POST">
+                        <form action="{{ route('moduleThree.update', ['moduleThree' => Auth::user()->id]) }}" method="POST">
                             @csrf
                             @method('PUT')
                             <!-- {{ csrf_field() }} -->
@@ -360,14 +360,14 @@
                                             <tr>
                                                 <td><input class="form-control" type="text" name="dreportofwaste[]" value="{{$dreport->Outlet_No }}"></td>
                                                 <td ><input class="form-control" type="date"  id="wcdate" name="dreportofwaste[]" value="{{$dreport->date }}"></td>
-                                                <td><input class="form-control" type="text"  id="nfr" name="dreportofwaste[]" value="{{$dreport->NEffluent_Flow_Rate }}"></td>
+                                                <td><input class="form-control" type="text"  id="nfr" name="dreportofwaste[]" value="{{$dreport->Effluent_Flow_Rate }}"></td>
                                                 <td><input class="form-control" type="text"  id="bod" name="dreportofwaste[]" value="{{$dreport->BOD_mg_L }}"></td>
                                                 <td><input class="form-control" type="text"  id="tss" name="dreportofwaste[]" value="{{$dreport->TSS_mg_L }}"></td>
                                                 <td><input class="form-control" type="text"  id="clr" name="dreportofwaste[]" value="{{$dreport->Color }}"></td>
                                                 <td><input class="form-control" type="text"  id="phl" name="dreportofwaste[]" value="{{$dreport->pH }}"></td>
                                                 <td><input class="form-control" type="text"  id="oag" name="dreportofwaste[]" value="{{$dreport->Oil_Grease_mg_L }}"></td>
                                                 <td><input class="form-control" type="text"  id="tempr" name="dreportofwaste[]" value="{{$dreport->Temp_Rise }}"></td>
-                                                <td><input class="form-control" type="text" id="add_p" name="dreportofwaste[]" value="{{ $dreport->Add_Pm }}"></td>
+                                                <td><input class="form-control" type="text" id="add_p" name="dreportofwaste[]" value="{{ $dreport->Add_parameter }}"></td>
                                                 <td></td>
                                             </tr>
 

@@ -48,7 +48,7 @@ Route::get('/dashboard', function () {
 
 
 
-Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
+/*Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [IndexController::class, 'index'])->name('index');
     Route::resource('/roles', RoleController::class);
     Route::post('/roles/{role}/permissions', [RoleController::class, 'givePermission'])->name('roles.permissions');
@@ -58,13 +58,12 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::delete('/permissions/{permission}/roles/{role}', [PermissionController::class, 'removeRole'])->name('permissions.roles.remove');
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
-    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
     Route::post('/users/{user}/roles', [UserController::class, 'assignRole'])->name('users.roles');
     Route::delete('/users/{user}/roles/{role}', [UserController::class, 'removeRole'])->name('users.roles.remove');
     Route::post('/users/{user}/permissions', [UserController::class, 'givePermission'])->name('users.permissions');
     Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('users.permissions.revoke');
 
-});
+});*/
 
 Route::redirect('/', destination: 'login');
 //transition
@@ -155,10 +154,10 @@ Route::post('/addf', [AddFacilityController::class, 'store'])->name('addf');
 Route::get('/tabs', [TabsController::class, 'index'])->name('tabs.index');
 
 Route::resource('moduleOne', ModuleOneController::class);
-Route::resource('module2', ModuleTwoController::class);
-Route::resource('module3', ModuleThreeController::class);
-Route::resource('module4', ModuleFourController::class);
-Route::resource('module5', ModuleFiveController::class);
-Route::resource('module6', ModuleSixController::class);
+Route::resource('moduleTwo', ModuleTwoController::class);
+Route::resource('moduleThree', ModuleThreeController::class);
+Route::resource('moduleFour', ModuleFourController::class);
+Route::resource('moduleFive', ModuleFiveController::class);
+Route::resource('moduleSix', ModuleSixController::class);
 
 

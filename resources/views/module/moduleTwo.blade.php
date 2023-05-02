@@ -178,7 +178,7 @@
                                         <div class="col mb-3">
                                             <div class="mb-3" style="float: right">
                                                 <a href="{{ route('module.moduleOne') }}" class="btn btn-lg border bg-light">Previous</a>
-                                                <a href="{{ route('module.moduleThree') }}" class="btn btn-lg btn-info">Next</a>
+                                                <a href="{{ url('moduleThree') }}" class="btn btn-lg btn-info">Next</a>
 
 
                                                 <input type="submit" value="Save Page" class="btn btn-lg btn-primary">

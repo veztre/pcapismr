@@ -108,11 +108,11 @@ class TabsController extends Controller
     {
         return view('tabs', [
             'moduleOne' => route('view'),
-            'module2' => route('view2'),
-            'module3' => route('view3'),
-            'module4' => route('view4'),
-            'module5' => route('view5'),
-            'module6' => route('view6'),
+            'moduleTwo' => route('view2'),
+            'moduleThree' => route('view3'),
+            'moduleFour' => route('view4'),
+            'moduleFive' => route('view5'),
+            'moduleSix' => route('view6'),
         ]);
     }
 
