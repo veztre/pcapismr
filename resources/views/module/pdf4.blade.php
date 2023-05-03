@@ -80,7 +80,7 @@
         <th style="text-align: center; border-bottom-style: none;">Location</th>
         <th style="text-align: center; border-bottom-style: none;">Fuel Used (indicate % if mixed composition)</th>
         <th colspan="2" style="text-align: center">Quantity Consumed for the quarter</th>
-        <th style="text-align: center"># of hours of operation for the quarter</th>
+        <th style="text-align: center; border-bottom-style: none;"># of hours of operation for the quarter</th>
     </tr>
 
     <tr>
@@ -149,21 +149,21 @@
 
             <td>Cost of Person employed, (# of employess)</td>
             <td style="text-align: center">
-                @if (!is_null($cpe->month1) && $cpe->month1 !== 'NA')
+                @if (!is_null($cpe->month1) && !in_array(strtolower($cpe->month1), ['na', 'n/a', 'none']))
                     <span class="currency-sign">&#8369;</span> {{ $cpe->month1}}
                 @else
                     {{ $cpe->month1 }}
                 @endif
             </td>
             <td style="text-align: center">
-                @if (!is_null($cpe->month2) && $cpe->month2 !== 'NA')
+                @if (!is_null($cpe->month2) && !in_array(strtolower($cpe->month2), ['na', 'n/a', 'none']))
                     <span class="currency-sign">&#8369;</span> {{ $cpe->month2}}
                 @else
                     {{ $cpe->month2 }}
                 @endif
             </td>
             <td style="text-align: center">
-                @if (!is_null($cpe->month3) && $cpe->month3 !== 'NA')
+                @if (!is_null($cpe->month3) && !in_array(strtolower($cpe->month3), ['na', 'n/a', 'none']))
                     <span class="currency-sign">&#8369;</span> {{ $cpe->month3}}
                 @else
                     {{ $cpe->month3 }}
@@ -180,21 +180,21 @@
             <tr>
                 <td>Total Consumption of Water (cubic meters)</td>
                 <td style="text-align: center">
-                @if (!is_null($tow->month1) && $tow->month1 !== 'NA')
+                    @if (!is_null($tow->month1) && !in_array(strtolower($tow->month1), ['na', 'n/a', 'none']))
                     <span class="currency-sign">&#8369;</span> {{ $tow->month1}}
                     @else
                         {{ $tow->month1 }}
                     @endif
                     </td>
                     <td style="text-align: center">
-                        @if (!is_null($tow->month2) && $tow->month2 !== 'NA')
+                        @if (!is_null($tow->month2) && !in_array(strtolower($tow->month2), ['na', 'n/a', 'none']))
                             <span class="currency-sign">&#8369;</span> {{ $tow->month2}}
                         @else
                             {{ $tow->month2 }}
                         @endif
                     </td>
                     <td style="text-align: center">
-                        @if (!is_null($tow->month3) && $tow->month3 !== 'NA')
+                        @if (!is_null($tow->month3) && !in_array(strtolower($tow->month3), ['na', 'n/a', 'none']))
                             <span class="currency-sign">&#8369;</span> {{ $tow->month3}}
                         @else
                             {{ $tow->month3 }}
@@ -212,21 +212,21 @@
                 <tr>
                     <td>Total Cost of Chemicals used (e.g., activated carbon, KMnO4)</td>
                     <td style="text-align: center">
-                    @if (!is_null($tcocu->month1) && $tcocu->month1 !== 'NA')
+                        @if (!is_null($tcocu->month1) && !in_array(strtolower($tcocu->month1), ['na', 'n/a', 'none']))
                         <span class="currency-sign">&#8369;</span> {{ $tcocu->month1}}
                         @else
                             {{ $tcocu->month1 }}
                         @endif
                         </td>
                         <td style="text-align: center">
-                            @if (!is_null($tcocu->month2) && $tcocu->month2 !== 'NA')
+                            @if (!is_null($tcocu->month2) && !in_array(strtolower($tcocu->month2), ['na', 'n/a', 'none']))
                                 <span class="currency-sign">&#8369;</span> {{ $tcocu->month2}}
                             @else
                                 {{ $tcocu->month2 }}
                             @endif
                         </td>
                         <td style="text-align: center">
-                            @if (!is_null($tcocu->month3) && $tcocu->month3 !== 'NA')
+                            @if (!is_null($tcocu->month3) && !in_array(strtolower($tcocu->month3), ['na', 'n/a', 'none']))
                                 <span class="currency-sign">&#8369;</span> {{ $tcocu->month3}}
                             @else
                                 {{ $tcocu->month3 }}
@@ -243,21 +243,21 @@
                 <tr>
                     <td>Total Consumption of Electricity (kWh)</td>
                     <td style="text-align: center">
-                    @if (!is_null($tcoe->month1) && $tcoe->month1 !== 'NA')
+                        @if (!is_null($tcoe->month1) && !in_array(strtolower($tcoe->month1), ['na', 'n/a', 'none']))
                         <span class="currency-sign">&#8369;</span> {{ $tcoe->month1}}
                         @else
                             {{ $tcoe->month1 }}
                         @endif
                         </td>
                         <td style="text-align: center">
-                            @if (!is_null($tcoe->month2) && $tcoe->month2 !== 'NA')
+                            @if (!is_null($tcoe->month2) && !in_array(strtolower($tcoe->month2), ['na', 'n/a', 'none']))
                                 <span class="currency-sign">&#8369;</span> {{ $tcoe->month2}}
                             @else
                                 {{ $tcoe->month2 }}
                             @endif
                         </td>
                         <td style="text-align: center">
-                            @if (!is_null($tcoe->month3) && $tcoe->month3 !== 'NA')
+                            @if (!is_null($tcoe->month3) && !in_array(strtolower($tcoe->month3), ['na', 'n/a', 'none']))
                                 <span class="currency-sign">&#8369;</span> {{ $tcoe->month3}}
                             @else
                                 {{ $tcoe->month3 }}
@@ -274,21 +274,21 @@
                 <tr>
                     <td>Administrative and Overhead Costs</td>
                     <td style="text-align: center">
-                    @if (!is_null($aaoc->month1) && $aaoc->month1 !== 'NA')
+                        @if (!is_null($aaoc->month1) && !in_array(strtolower($aaoc->month1), ['na', 'n/a', 'none']))
                         <span class="currency-sign">&#8369;</span> {{ $aaoc->month1}}
                         @else
                             {{ $aaoc->month1 }}
                         @endif
                         </td>
                         <td style="text-align: center">
-                            @if (!is_null($aaoc->month2) && $aaoc->month2 !== 'NA')
+                            @if (!is_null($aaoc->month2) && !in_array(strtolower($aaoc->month2), ['na', 'n/a', 'none']))
                                 <span class="currency-sign">&#8369;</span> {{ $aaoc->month2}}
                             @else
                                 {{ $aaoc->month2 }}
                             @endif
                         </td>
                         <td style="text-align: center">
-                            @if (!is_null($aaoc->month3) && $aaoc->month3 !== 'NA')
+                            @if (!is_null($aaoc->month3) && !in_array(strtolower($aaoc->month3), ['na', 'n/a', 'none']))
                                 <span class="currency-sign">&#8369;</span> {{ $aaoc->month3}}
                             @else
                                 {{ $aaoc->month3 }}
@@ -306,21 +306,21 @@
                 <tr>
                     <td>Cost of operating in-house laboratory</td>
                     <td style="text-align: center">
-                    @if (!is_null($cooihl->month1) && $cooihl->month1 !== 'NA')
+                        @if (!is_null($cooihl->month1) && !in_array(strtolower($cooihl->month1), ['na', 'n/a', 'none']))
                         <span class="currency-sign">&#8369;</span> {{ $cooihl->month1}}
                         @else
                             {{ $cooihl->month1 }}
                         @endif
                         </td>
                         <td style="text-align: center">
-                            @if (!is_null($cooihl->month2) && $cooihl->month2 !== 'NA')
+                            @if (!is_null($cooihl->month2) && !in_array(strtolower($cooihl->month2), ['na', 'n/a', 'none']))
                                 <span class="currency-sign">&#8369;</span> {{ $cooihl->month2}}
                             @else
                                 {{ $cooihl->month2 }}
                             @endif
                         </td>
                         <td style="text-align: center">
-                            @if (!is_null($cooihl->month3) && $cooihl->month3 !== 'NA')
+                            @if (!is_null($cooihl->month3) && !in_array(strtolower($cooihl->month3), ['na', 'n/a', 'none']))
                                 <span class="currency-sign">&#8369;</span> {{ $cooihl->month3}}
                             @else
                                 {{ $cooihl->month3 }}
@@ -358,21 +358,21 @@
                 <tr>
                     <td>Cost of improvement of modification</td>
                     <td style="text-align: center">
-                    @if (!is_null($coiom->month1) && $coiom->month1 !== 'NA')
+                        @if (!is_null($coiom->month1) && !in_array(strtolower($coiom->month1), ['na', 'n/a', 'none']))
                         <span class="currency-sign">&#8369;</span> {{ $coiom->month1}}
                         @else
                             {{ $coiom->month1 }}
                         @endif
                         </td>
                         <td style="text-align: center">
-                            @if (!is_null($coiom->month2) && $coiom->month2 !== 'NA')
+                            @if (!is_null($coiom->month2) && !in_array(strtolower($coiom->month2), ['na', 'n/a', 'none']))
                                 <span class="currency-sign">&#8369;</span> {{ $coiom->month2}}
                             @else
                                 {{ $coiom->month2 }}
                             @endif
                         </td>
                         <td style="text-align: center">
-                            @if (!is_null($coiom->month3) && $coiom->month3 !== 'NA')
+                            @if (!is_null($coiom->month3) && !in_array(strtolower($coiom->month3), ['na', 'n/a', 'none']))
                                 <span class="currency-sign">&#8369;</span> {{ $coiom->month3}}
                             @else
                                 {{ $coiom->month3 }}

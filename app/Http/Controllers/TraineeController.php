@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Oaupload;
+use App\Models\Addfacility;
 use App\Models\Plant;
+use App\Models\Oaupload;
 use Illuminate\Http\Request;
 use App\Models\referencen;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Addfacility;
 
 class TraineeController extends Controller
 {
     public function index(){
 
-        $referencens =Auth::user()->reference_no()->get();
+        $referencens =Auth::user()->reference_no()->first();
         $users = Auth::user()->id;
         $addfacility = Addfacility::get();
         $plant = Plant::get();

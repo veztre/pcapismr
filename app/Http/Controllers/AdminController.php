@@ -25,7 +25,7 @@ class AdminController extends Controller
     {
         $referencens = referencen::all();
         $users = User::all();
-        $addfacility = Addfacility::get();
+        $addfacility = Addfacility::all();
         $plant = Plant::get();
         $oaupload = Oaupload::get();
         $userTypes = ['admin', 'trainee'];
