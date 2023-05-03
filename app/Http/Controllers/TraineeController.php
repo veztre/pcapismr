@@ -14,7 +14,7 @@ class TraineeController extends Controller
 {
     public function index(){
 
-        $referencens =Auth::user()->reference_no()->first();
+        $referencens= Auth::user()->reference_no()->get();
         $users = Auth::user()->id;
         $addfacility = Addfacility::get();
         $plant = Plant::get();

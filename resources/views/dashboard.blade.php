@@ -124,7 +124,7 @@
 
 
                             @foreach ($referencens as $ref)
-@
+
 
                                     <tr role="row" class="odd">
                                         <td tabindex="0" class="sorting_1">{{$ref->ref_no}}</td>
