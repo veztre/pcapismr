@@ -779,7 +779,8 @@
                                     ; + ' | $ $ , <> \ / ( ) { } [ ]</i>
                                 <label for="fls" hidden></label>
 
-                                <input class="form-control my-3" name="file" type="file" style="width:300px" id="fls" multiple required>
+                                <input class="form-control my-3" name="file[]" type="file" style="width:300px" id="fls" multiple required>
+
                                 <style>
                                     #pdf-error {
                                         color: red;

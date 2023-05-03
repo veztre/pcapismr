@@ -1,7 +1,5 @@
 
 
-
-
 <x-app-layout>
 
     <title>Environmental Management Bureau Online Services - SMR - General information</title>
@@ -864,19 +862,18 @@
                                 <i class="text-secondary">Note: File name should not contain the following characters * ? " : ! @ #
                                     ; + ' | $ $ , <> \ / ( ) { } [ ]</i>
                                 <label for="fls" hidden></label>
-                                @foreach ($upload as $up)
-                                    @if ($up->userid == Auth::user()->id)
-                                        <input class="form-control my-3" name="file" type="file" style="width:300px" id="fls" multiple required>
-                                        <style>
-                                            #pdf-error {
-                                                color: red;
-                                                font-size: 14px;
-                                            }
-                                        </style>
 
-                                        <span id="pdf-error"></span>
-                                    @endif
-                                @endforeach
+                                <input class="form-control my-3" name="file[]" type="file" style="width:300px" id="fls" multiple required>
+
+                                <style>
+                                    #pdf-error {
+                                        color: red;
+                                        font-size: 14px;
+                                    }
+                                </style>
+
+                                <span id="pdf-error"></span>
+
 
                                 <h2>Uploaded Files</h2>
                                 @if ($upload->count() > 0)
@@ -890,6 +887,7 @@
                                 @else
                                     <p>No files uploaded yet.</p>
                                 @endif
+
 
                             </div>
 

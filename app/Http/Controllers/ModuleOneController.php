@@ -293,17 +293,25 @@ class ModuleOneController extends Controller
 
         }
 
-        if($file = $request->file('file')){
-            $name = $file->getClientOriginalName();
-            $userId = Auth::user()->id; // assuming you are using Laravel's authentication system
-            $userFolder = 'docs/' . $userId;
-            if($file->move($userFolder, $name)){
-                $upload = new Upload();
-                $upload->file = $name;
-                $upload->userid = $userId;
-                $upload->save();
-            };
+        if ($files = $request->file('file')) {
+            $userId = Auth::user()->id;
+            $reference = Auth::user()->reference_no()->first(); // Fetch reference number of authenticated user
+            $refNo = $reference->reference_number; // Extract the reference number from the fetched object
+            $userFolder = $userId . '/' . $refNo . '/moduleOneattachment'; // Set user folder path
+
+            foreach ($files as $file) {
+                $name = $file->getClientOriginalName();
+
+                if ($file->move($userFolder, $name)) {
+                    $upload = new Upload();
+                    $upload->file = $name;
+                    $upload->userid = $userId;
+                    $upload->save();
+                }
+            }
         }
+
+
 
         return redirect('moduleTwoTransition');
 
@@ -441,19 +449,26 @@ class ModuleOneController extends Controller
         $year->year = $request->input('year');
         $year->update();
 
-//upload file
-        $upload = Upload::where('userid', $id)->first();
-        $file = $request->file('file');
 
-        if ($file) {
-            $name = $file->getClientOriginalName();
+        if ($files = $request->file('file')) {
             $userId = Auth::user()->id;
-            $userFolder = 'docs/' . $userId;
-            if($file->move($userFolder, $name)){
-                $upload->file = $name;
-                $upload->update();
+            $reference = Auth::user()->reference_no()->first(); // Fetch reference number of authenticated user
+            $refNo = $reference->reference_number; // Extract the reference number from the fetched object
+            $userFolder = $userId . '/' . $refNo . '/moduleOneattachment'; // Set user folder path
+
+            foreach ($files as $file) {
+                $name = $file->getClientOriginalName();
+
+                if ($file->move($userFolder, $name)) {
+                    $upload = new Upload();
+                    $upload->file = $name;
+                    $upload->userid = $userId;
+                    $upload->save();
+                }
             }
         }
+
+
 //end of update upload file
 
 
