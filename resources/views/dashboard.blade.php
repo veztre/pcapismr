@@ -41,12 +41,16 @@
                                         <td>{{$user->company}}</td>
                                         <td>{{$user->email}}</td>
                                         <td>
-                                            <select id="usertype" name="usertype" class="form-select">
-                                                <option value="admin" {{$user->usertype == 'admin' ? 'selected' : ''}}>Admin</option>
-                                                <option value="trainee" {{$user->usertype == 'trainee' ? 'selected' : ''}}>Trainee</option>
-                                            </select>
-
+                                            <form action="{{ route('updateUsertype') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                                <select id="usertype" name="usertype" class="form-select" onchange="this.form.submit()">
+                                                    <option value="admin" {{ $user->usertype == 'admin' ? 'selected' : '' }}>Admin</option>
+                                                    <option value="trainee" {{ $user->usertype == 'trainee' ? 'selected' : '' }}>Trainee</option>
+                                                </select>
+                                            </form>
                                         </td>
+
 
                                         <td>ACTIVE</td>
                                         <td>

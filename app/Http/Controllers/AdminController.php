@@ -119,4 +119,16 @@ class AdminController extends Controller
         return redirect('/admin/dashboard');
     }
 
+    public function updateUsertype(Request $request)
+    {
+        $user = User::findOrFail($request->input('user_id'));
+
+        $user->usertype = $request->input('usertype');
+
+        $user->save();
+
+        return redirect()->back()->with('success', 'Usertype updated successfully.');
+    }
+
+
 }

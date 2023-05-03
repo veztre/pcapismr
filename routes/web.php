@@ -161,3 +161,5 @@ Route::resource('moduleFive', ModuleFiveController::class);
 Route::resource('moduleSix', ModuleSixController::class);
 
 
+/*dashboard update usertype*/
+Route::post('/admin/updateUsertype', [AdminController::class, 'updateUsertype'])->name('updateUsertype');

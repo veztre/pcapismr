@@ -344,31 +344,11 @@
     });
 </script>
 
-{{--dashboard usertype--}}
+
+
+
+
 <script>
-    var userId = {{auth()->user()->id}};
-    $(function() {
-        $('#usertype').on('change', function() {
-            var newUsertype = $(this).val();
-            $.ajax({
-                url: '/users/' + userId,
-                type: 'PUT',
-                data: {usertype: newUsertype},
-                success: function(response) {
-                    // Success callback
-                },
-                error: function(xhr) {
-                    // Error callback
-                }
-            });
-        });
-
-
-
-
-
-
-        <script>
     $(document).ready(function() {
 
         var table = $('#example1').DataTable({
