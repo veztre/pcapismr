@@ -9,4 +9,8 @@ class Plant extends Model
 {
     use HasFactory;
     protected $table = 'plants';
+    public function facility()
+    {
+        return $this->hasOne(Addfacility::class,foreignKey: 'id');
+    }
 }

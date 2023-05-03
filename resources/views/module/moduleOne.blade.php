@@ -14,7 +14,7 @@
 
 
                     <div class="container col ml-4" style="align-content: center">
-                        <form action="/saveData" method="post"  enctype="multipart/form-data">
+                        <form id="myForm" action="/saveData" method="post"  enctype="multipart/form-data">
                             @csrf
                             <!-- {{ csrf_field() }} -->
                             <br>
@@ -129,9 +129,9 @@
                                             <option selected disabled value="">-- Select --</option>
                                             @foreach ($addfacility as $data)
                                                 @if ($data->userid == Auth::id())
-                                                <option value="{{$data->embregion}}- {{$data->embid}}  {{$data->establishment}} " @if(old('plantname') == $data->embregion && $data->embid && $data->establishment) selected @endif >
-                                                    {{$data->embregion}}- {{$data->embid}}  {{$data->establishment}}
-                                                </option>
+                                                    <option value="{{$data->embregion}}- {{$data->embid}}  {{$data->establishment}} " @if(old('plantname') == $data->embregion && $data->embid && $data->establishment) selected @endif >
+                                                        {{$data->embregion}}- {{$data->embid}}  {{$data->establishment}}
+                                                    </option>
                                                 @endif
                                             @endforeach
                                         </select>
@@ -272,7 +272,7 @@
                                     <td></td>
 
 
-                                     {{--DENR REG --}}
+                                    {{--DENR REG --}}
                                     <tbody id="reg">
                                     <tr>
                                         <td></td>
@@ -299,7 +299,7 @@
                                     </tr>
                                     </tbody>
 
-                                     {{--Transporter Reg--}}
+                                    {{--Transporter Reg--}}
                                     <tbody id="trans">
                                     <tr>
                                         <td></td>
@@ -326,7 +326,7 @@
                                     </tr>
                                     </tbody>
 
-                                     {{--TSD Reg--}}
+                                    {{--TSD Reg--}}
                                     <tbody id="tsd">
                                     <tr>
                                         <td></td>
@@ -773,12 +773,23 @@
                             </div>
 
                             <div class="mx-auto">
-                               {{-- upload 20mb pdf--}}
+                                {{-- upload 20mb pdf--}}
                                 <p class="text-secondary my-0">Attached water bills and/or electricity bills</p>
                                 <i class="text-secondary">Note: File name should not contain the following characters * ? " : ! @ #
                                     ; + ' | $ $ , <> \ / ( ) { } [ ]</i>
                                 <label for="fls" hidden></label>
+
                                 <input class="form-control my-3" name="file" type="file" style="width:300px" id="fls" multiple required>
+                                <style>
+                                    #pdf-error {
+                                        color: red;
+                                        font-size: 14px;
+                                    }
+                                </style>
+
+                                <span id="pdf-error"></span>
+
+
                             </div>
 
 

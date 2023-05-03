@@ -406,6 +406,50 @@
 </script>
 
 {{--Module1 Script start--}}
+
+<!-- Script Upload-->
+
+<script>
+    document.getElementById('fls').addEventListener('change', function() {
+        var files = this.files;
+        var pdfRegex = /^.*\.(pdf)$/i;
+        var maxSize = 20 * 1024 * 1024; // 20 MB in bytes
+        var errors = [];
+
+        for (var i = 0; i < files.length; i++) {
+            var file = files[i];
+            var fileType = file.type;
+            var fileName = file.name;
+
+            if (!pdfRegex.test(fileName)) {
+                errors.push('&#10005; ' + fileName + ': File must be a PDF');
+            } else if (file.size > maxSize) {
+                errors.push('&#10005; ' + fileName + ': Maximum file size is 20 MB');
+            } else if (/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(fileName)) {
+                errors.push('&#10005; ' + fileName + ': File name cannot contain special characters');
+            }
+        }
+
+        if (errors.length > 0) {
+            document.getElementById('pdf-error').innerHTML = errors.join('<br>');
+        } else {
+            document.getElementById('pdf-error').innerHTML = '';
+        }
+    });
+
+    document.getElementById('myForm').addEventListener('submit', function(e) {
+        var errorMessage = document.getElementById('pdf-error').innerHTML;
+        console.log('errorMessage:', errorMessage);
+        if (errorMessage) {
+            console.log('Preventing form submission');
+            e.preventDefault(); // prevent form submission
+        } else {
+            console.log('Allowing form submission');
+        }
+    });
+
+</script>
+
 <!-- Script RA6969 -->
 <script type="text/javascript">
 
@@ -924,7 +968,7 @@
 
 <!-- SCRIPT FOR OTHER ECC CONDITIONS -->
 <script type="text/javascript">
- $(document).ready(function() {
+    $(document).ready(function() {
         var counter = <?php echo count($oeconditions ?? []); ?>;
         $("#OECondition").click(function () {
             ++counter;

@@ -295,15 +295,16 @@ class ModuleOneController extends Controller
 
         if($file = $request->file('file')){
             $name = $file->getClientOriginalName();
-            if($file->move('docs', $name)){
-
+            $userId = Auth::user()->id; // assuming you are using Laravel's authentication system
+            $userFolder = 'docs/' . $userId;
+            if($file->move($userFolder, $name)){
                 $upload = new Upload();
                 $upload->file = $name;
                 $upload->userid = $userId;
                 $upload->save();
-
             };
         }
+
         return redirect('moduleTwoTransition');
 
 
@@ -398,7 +399,9 @@ class ModuleOneController extends Controller
         $production = Auth::user()->production()->get();
         $uploads = Upload::get();
         $users = User::find($id);
+        $upload = Upload::get();
         $addfacility = Addfacility::get();
+
         return view('module.updatemoduleOne',
             compact('users',
                 'year',
@@ -425,6 +428,7 @@ class ModuleOneController extends Controller
                 'production',
                 'uploads',
                 'addfacility',
+                'upload',
 
 
 
@@ -436,6 +440,21 @@ class ModuleOneController extends Controller
         $year = Yeardd::where('userid', $id)->first();
         $year->year = $request->input('year');
         $year->update();
+
+//upload file
+        $upload = Upload::where('userid', $id)->first();
+        $file = $request->file('file');
+
+        if ($file) {
+            $name = $file->getClientOriginalName();
+            $userId = Auth::user()->id;
+            $userFolder = 'docs/' . $userId;
+            if($file->move($userFolder, $name)){
+                $upload->file = $name;
+                $upload->update();
+            }
+        }
+//end of update upload file
 
 
         $quarter = Quarterdd::where('userid', $id)->first();

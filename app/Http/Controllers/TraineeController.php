@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Oaupload;
+use App\Models\Plant;
 use Illuminate\Http\Request;
 use App\Models\referencen;
 use App\Models\User;
@@ -15,7 +17,9 @@ class TraineeController extends Controller
         $referencens = Referencen::get();
         $users = Auth::user()->id;
         $addfacility = Addfacility::get();
-        return view('dashboard', compact('referencens', 'users', 'addfacility'));
+        $plant = Plant::get();
+        $oaupload = Oaupload::get();
+        return view('dashboard', compact('referencens', 'users', 'addfacility', 'plant', 'oaupload'));
     }
 
 }

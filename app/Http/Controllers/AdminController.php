@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use App\Actions\Fortify\PasswordValidationRules;
 use App\Models\Addfacility;
+use App\Models\Oaupload;
+use App\Models\Plant;
 use App\Models\referencen;
 use App\Models\Region;
 use App\Models\User;
@@ -24,7 +26,9 @@ class AdminController extends Controller
         $referencens = referencen::all();
         $users = User::all();
         $addfacility = Addfacility::get();
-        return view('dashboard', compact('users', 'referencens', 'addfacility'));
+        $plant = Plant::get();
+        $oaupload = Oaupload::get();
+        return view('dashboard', compact('users', 'referencens', 'addfacility', 'plant', 'oaupload'));
 
         $usertype = ['admin', 'trainee'];
         return view('navigation-menu', compact('usertype'));

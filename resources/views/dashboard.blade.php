@@ -117,11 +117,19 @@
                                     <tr role="row" class="odd">
                                         <td tabindex="0" class="sorting_1">{{$ref->ref_no}}</td>
 
-                                        <td>Accountant</td>
+                                        @foreach ($plant as $plants)
+
+                                            <td>{{ $plants->facility->establishment ?? 'No facility found' }}</td>
+
+                                        @endforeach
                                         <td>{{ $ref->created_at->format('Y-m-d') }}</td>
 
-                                        <td>33</td>
-                                        <td>2008/11/28</td>
+                                        @foreach ($oaupload as $oau)
+
+                                            <td>{{ $oau->updated_at->format('Y-m-d h:i:s a') }}</td>
+
+                                        @endforeach
+                                        <td>ACTIVE</td>
                                         <td>
                                             <a  href="{{ route('view', ['id' =>  $ref->id]) }}"><button class="btn btn-info"><i class="bi bi-pencil-square"></i><svg
                                                         xmlns="http://www.w3.org/2000/svg" width="16" height="16"
