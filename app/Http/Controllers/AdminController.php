@@ -28,7 +28,8 @@ class AdminController extends Controller
         $addfacility = Addfacility::get();
         $plant = Plant::get();
         $oaupload = Oaupload::get();
-        return view('dashboard', compact('users', 'referencens', 'addfacility', 'plant', 'oaupload'));
+        $userTypes = ['admin', 'trainee'];
+        return view('dashboard', compact('users', 'referencens', 'addfacility', 'plant', 'oaupload', 'userTypes'));
 
         $usertype = ['admin', 'trainee'];
         return view('navigation-menu', compact('usertype'));
@@ -82,7 +83,9 @@ class AdminController extends Controller
         $userTypes = ['admin', 'trainee'];
 
         return view('module.editaccount', compact('users','regions', 'userTypes'));
+
     }
+
 
 
     public function update(Request $request, $id){
@@ -112,6 +115,7 @@ class AdminController extends Controller
         $users->usertype = $request->input('usertype');
         $users->region = $request->input('region');
         $users->update();
+
         return redirect('/admin/dashboard');
     }
 
