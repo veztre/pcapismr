@@ -229,7 +229,7 @@
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Profile') }}
                 </x-jet-responsive-nav-link>
-                @role('admin')
+       {{--         @role('admin')
 
                 <x-jet-responsive-nav-link href="{{ route('admin.roles.index') }}" :active="request()->routeIs('admin.roles.index')" >
                     {{ __('Add Role') }}
@@ -240,7 +240,7 @@
                 <x-jet-responsive-nav-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('admin.users.index')">
                     {{ __("Assign User's role and permission") }}
                 </x-jet-responsive-nav-link>
-                @endrole
+                @endrole--}}
                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                     <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                         {{ __('API Tokens') }}

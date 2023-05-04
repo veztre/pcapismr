@@ -54,9 +54,22 @@
 
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="name" value="{{ __('Name') }}" />
-            <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
-            <x-jet-input-error for="name" class="mt-2" />
+            <x-jet-label for="firstname" value="{{ __('First Name') }}" />
+            <x-jet-input id="firstname" type="text" class="mt-1 block w-full" wire:model.defer="state.firstname" autocomplete="firstname" />
+            <x-jet-input-error for="firstname" class="mt-2" />
+        </div>
+
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="lastname" value="{{ __('Last Name') }}" />
+            <x-jet-input id="lastname" type="text" class="mt-1 block w-full" wire:model.defer="state.lastname" autocomplete="lastname" />
+            <x-jet-input-error for="lastname" class="mt-2" />
+        </div>
+
+
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="company" value="{{ __('Company') }}" />
+            <x-jet-input id="company" type="text" class="mt-1 block w-full" wire:model.defer="state.company" autocomplete="company" />
+            <x-jet-input-error for="company" class="mt-2" />
         </div>
 
         <!-- Email -->
@@ -64,6 +77,25 @@
             <x-jet-label for="email" value="{{ __('Email') }}" />
             <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
             <x-jet-input-error for="email" class="mt-2" />
+
+        {{--Contact--}}
+            <div class="col-span-6 sm:col-span-4">
+                <x-jet-label for="contact" value="{{ __('Telephone/Mobile No.') }}" />
+                <x-jet-input id="contact" type="text" class="mt-1 block w-full" wire:model.defer="state.contact" autocomplete="contact" />
+                <x-jet-input-error for="contact" class="mt-2" />
+            </div>
+
+            <div class="col-span-6 sm:col-span-4">
+                <x-jet-label for="region" value="{{ __('Region') }}" />
+                <select id="region" name="region" class="form-control mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" aria-required="true" aria-invalid="false" wire:model.defer="state.region">
+                    <option selected disabled value="">SELECT REGION - (user location)</option>
+                    @foreach ($regionn as $data)
+                        <option value="{{$data->regionname}}" @if(old('region', $state['region']) == $data->regionname) selected @endif>{{$data->regionname}}</option>
+                    @endforeach
+                </select>
+                <x-jet-input-error for="region" class="mt-2" />
+            </div>
+
 
             @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::emailVerification()) && ! $this->user->hasVerifiedEmail())
                 <p class="text-sm mt-2">

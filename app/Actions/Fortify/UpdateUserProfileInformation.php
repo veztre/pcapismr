@@ -21,7 +21,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             'username' => ['required', 'string', 'max:255', 'unique:users'],
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
-            'position' => ['required', 'string', 'max:255'],
+            'company' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
             'contact' => ['required', 'string', 'max:255'],
             'region' => ['required', 'string'],
