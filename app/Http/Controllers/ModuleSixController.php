@@ -98,26 +98,20 @@ class ModuleSixController extends Controller
 
         $oaemployee1->save();
 
-
-
-
         if($file = $request->file('file')){
             $name = $file->getClientOriginalName();
-            if($file->move('moduleSixAttatchment', $name)){
-
-                $oaupload = new Oaupload();
-                $oaupload->userid = Auth::user()->id;
-                $oaupload->file = $name;
-                $oaupload->save();
-
+            $userId = Auth::user()->id; // assuming you are using Laravel's authentication system
+            $userFolder = 'moduleSixAttatchment/' . $userId;
+            if($file->move($userFolder, $name)){
+                $upload = new Oaupload();
+                $upload->file = $name;
+                $upload->userid = $userId;
+                $upload->save();
             };
         }
 
 
-
-
-
-        return redirect('/trainee/dashboard');
+        return redirect()->back();
     }
 
 
@@ -133,6 +127,7 @@ class ModuleSixController extends Controller
         $oattachment = Auth::user()->oattachment()->get();
         $oaemployee = Auth::user()->oaemployee()->get();
         $oaemployee1 =Auth::user()->oaemployee1()->get();
+        $oaupload = Oaupload::get();
 
 
         return view('module.updatemoduleSix',compact(
@@ -143,6 +138,7 @@ class ModuleSixController extends Controller
             'oaemployee1',
             'users',
             'referencens',
+            'oaupload',
 
         ));
     }
@@ -151,6 +147,21 @@ class ModuleSixController extends Controller
     public function update(Request $request, $id)
     {
 
+
+        //upload file
+        $upload = Oaupload::where('userid', $id)->first();
+        $file = $request->file('file');
+
+        if ($file) {
+            $name = $file->getClientOriginalName();
+            $userId = Auth::user()->id;
+            $userFolder = 'moduleSixAttatchment/' . $userId;
+            if($file->move($userFolder, $name)){
+                $upload->file = $name;
+                $upload->update();
+            }
+        }
+//end of update upload file
 
 
         $oattachment = Oattachment::where('userid', $id)->first();

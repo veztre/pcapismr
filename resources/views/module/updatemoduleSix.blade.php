@@ -1,30 +1,3 @@
-{{--
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    @extends('layout.master')
-    @section('content')
-    {{View::make('layout.tabs')}}
-
-    <title>Environmental Management Bureau Online Services - SMR - Others</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-    </script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-</head>
-
-<body>
---}}
-
 
 <x-app-layout>
 
@@ -39,75 +12,75 @@
 
 
 
-                <div class="container col ml-4 mt-4" style="align-content: center">
+                    <div class="container col ml-4 mt-4" style="align-content: center">
 
-                    <form action="{{ route('moduleSix.update', ['moduleSix' => Auth::user()->id]) }}"  method="POST">
-                        @csrf
-                        @method('PUT')
-                        <!-- {{ csrf_field() }} -->
-                        <br>
+                        <form id="myForm1" action="{{ route('moduleSix.update', ['moduleSix' => Auth::user()->id]) }}"  method="POST">
+                            @csrf
+                            @method('PUT')
+                            <!-- {{ csrf_field() }} -->
+                            <br>
 
-                        <div class="row" >
+                            <div class="row" >
 
+                                <div class="col">
+
+                                    <h1 style="text-align: center" > POLLUTION CONTROL ASSOCIATION OF THE PHILIPPINES, INC. (PCAPI)</h1>
+                                    <h2 style="text-align: center">SELF- MONITORING REPORT TRAINING MODULE</h2>
+
+                                </div>
+
+                                <div class="card col-5 mr-4" style="float:right">
+
+                                    <div class="mt-1 mx-3">
+                                        Reference no.
+                                    </div>
+
+                                    <div class="card-body">
+                                        @foreach ($referencens as $ref)
+
+                                            <input type="text" class="form-control mt-0" placeholder=""  value="{{$ref->ref_no}}" readonly >
+
+                                        @endforeach
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Message input -->
                             <div class="col">
-
-                                <h1 style="text-align: center" > POLLUTION CONTROL ASSOCIATION OF THE PHILIPPINES, INC. (PCAPI)</h1>
-                                <h2 style="text-align: center">SELF- MONITORING REPORT TRAINING MODULE</h2>
-
+                                <p class="text-primary my-0">Note.</p>
+                                <p class="text-primary my-0">1. Put "N/A" for field not applicable to you.</p>
+                                <p class="text-primary my-0">2. You Can now Export data on Each module by clicking "EXPORT" Link Below.</p>
                             </div>
 
-                            <div class="card col-5 mr-4" style="float:right">
+                            <div class="container">
+                                <div class="row">
+                                    <p class="p-1 mt-3  text-light" style="background-color:gray; font-size:20px ">
+                                        MODULE 6: OTHERS
+                                        <a href="/pdf6" class="btn btn-lg float-right " ><img src="/images/printpdflogo.png" class="inline" height="40px" width="50px" style="backgorund-color:gray;"> EXPORT PDF</a>
+                                    </p>
 
-                                <div class="mt-1 mx-3">
-                                    Reference no.
                                 </div>
-
-                                <div class="card-body">
-                                    @foreach ($referencens as $ref)
-
-                                        <input type="text" class="form-control mt-0" placeholder=""  value="{{$ref->ref_no}}" readonly >
-
-                                    @endforeach
-                                </div>
-
                             </div>
-                        </div>
 
-                        <!-- Message input -->
-                        <div class="col">
-                            <p class="text-primary my-0">Note.</p>
-                            <p class="text-primary my-0">1. Put "N/A" for field not applicable to you.</p>
-                            <p class="text-primary my-0">2. You Can now Export data on Each module by clicking "EXPORT" Link Below.</p>
-                        </div>
+                            <div class="container " >
 
-                        <div class="container">
-                            <div class="row">
-                                <p class="p-1 mt-3  text-light" style="background-color:gray; font-size:20px ">
-                                    MODULE 6: OTHERS
-                                    <a href="/pdf6" class="btn btn-lg float-right " ><img src="/images/printpdflogo.png" class="inline" height="40px" width="50px" style="backgorund-color:gray;"> EXPORT PDF</a>
-                                </p>
+                                <table class="table table-borderless table-hover" >
+                                    <h3 class="mt-3 mx-2 text-success">ACCIDENTS & EMERGENCY RECORDS</h3>
 
-                            </div>
-                        </div>
+                                    <!-- AER -->
+                                    <table class="w3-table w3-striped w3-border" id ="AER">
 
-                        <div class="container " >
+                                        <tbody>
 
-                            <table class="table table-borderless table-hover" >
-                                <h3 class="mt-3 mx-2 text-success">ACCIDENTS & EMERGENCY RECORDS</h3>
-
-                                <!-- AER -->
-                                <table class="w3-table w3-striped w3-border" id ="AER">
-
-                                    <tbody>
-
-                                    <tr>
-                                        <td style="text-align: center">Date</td>
-                                        <td style="text-align: center">Area / Location</td>
-                                        <td style="text-align: center">Findings and Obeservations</td>
-                                        <td style="text-align: center">Action Taken</td>
-                                        <td style="text-align: center">Remarks</td>
-                                    </tr>
-                                    @foreach ($accident_records as $accident_record)
+                                        <tr>
+                                            <td style="text-align: center">Date</td>
+                                            <td style="text-align: center">Area / Location</td>
+                                            <td style="text-align: center">Findings and Obeservations</td>
+                                            <td style="text-align: center">Action Taken</td>
+                                            <td style="text-align: center">Remarks</td>
+                                        </tr>
+                                        @foreach ($accident_records as $accident_record)
 
                                             <tr>
                                                 <td><input type="date" class="form-control" name="accident_records[]" value="{{ $accident_record->date }}"></td>
@@ -118,28 +91,28 @@
 
                                             </tr>
 
-                                    @endforeach
+                                        @endforeach
 
-                                    </tbody>
+                                        </tbody>
 
+                                    </table>
+                                    <td><button type="button" name="add" id="AERT" class="btn btn-outline-primary mt-3" >+</button></td>
                                 </table>
-                                <td><button type="button" name="add" id="AERT" class="btn btn-outline-primary mt-3" >+</button></td>
-                            </table>
 
-                            <table class="table table-borderless table-hover" >
-                                <h3 class="mt-3 mx-2 text-success">PERSONNEL / STAFF TRAINING</h3>
+                                <table class="table table-borderless table-hover" >
+                                    <h3 class="mt-3 mx-2 text-success">PERSONNEL / STAFF TRAINING</h3>
 
-                                <!-- PST -->
-                                <table class="w3-table w3-striped w3-border" id ="PST">
+                                    <!-- PST -->
+                                    <table class="w3-table w3-striped w3-border" id ="PST">
 
-                                    <tbody>
+                                        <tbody>
 
-                                    <tr>
-                                        <td style="text-align: center">Date Conducted</td>
-                                        <td style="text-align: center">Course/ Training Description</td>
-                                        <td style="text-align: center"># of Personnel Trained</td>
-                                    </tr>
-                                    @foreach ($personel_staff as $personel)
+                                        <tr>
+                                            <td style="text-align: center">Date Conducted</td>
+                                            <td style="text-align: center">Course/ Training Description</td>
+                                            <td style="text-align: center"># of Personnel Trained</td>
+                                        </tr>
+                                        @foreach ($personel_staff as $personel)
 
                                             <tr>
                                                 <td><input type="date" class="form-control" name="personel_staff[]" value="{{$personel->date}}"></td>
@@ -148,36 +121,61 @@
 
                                             </tr>
 
-                                    @endforeach
+                                        @endforeach
 
-                                    </tbody>
+                                        </tbody>
+
+                                    </table>
+
+                                    <td><button type="button" name="add" id="PersonelStaff" class="btn btn-outline-primary mt-3" >+</button></td>
 
                                 </table>
 
-                                <td><button type="button" name="add" id="PersonelStaff" class="btn btn-outline-primary mt-3" >+</button></td>
+                                <table class="table table-borderless table-hover" >
+                                    <h3 class="mt-3 mx-2 text-success">UPLOAD OTHER ATTACHMENTS:</h3>
+                                    <p class="my-0"><i>Upload relevant documents (e.g. Effluent/Emission sampling test results) and label files accordingly.</i></p>
+                                    <p class="my-0"><i>UPLOAD SIGNED AND NOTARIZED MODULE 6 HERE WITH FILE NAME "NOTARIZED_DOC" BEFORE CLICKING SUBMIT</i></p>
+                                    <p class="my-0"><i>Note: File name should not contain the following characters \ / : * ? " <> | $ &</i></p>
 
-                            </table>
+                                    @foreach ($oaupload as $upload)
+                                        @if ($upload->userid == Auth::user()->id)
+                                            <input class="form-control my-3" name="file" type="file" style="width:300px" id="file" multiple required>
+                                            <style>
+                                                #pdf-error1 {
+                                                    color: red;
+                                                    font-size: 14px;
+                                                }
+                                            </style>
+                                            <span id="pdf-error1"></span>
+                                        @endif
+                                    @endforeach
 
-                            <table class="table table-borderless table-hover" >
-                                <h3 class="mt-3 mx-2 text-success">UPLOAD OTHER ATTACHMENTS:</h3>
-                                <p class="my-0"><i>Upload relevant documents (e.g. Effluent/Emission sampling test results) and label files accordingly.</i></p>
-                                <p class="my-0"><i>UPLOAD SIGNED AND NOTARIZED MODULE 6 HERE WITH FILE NAME "NOTARIZED_DOC" BEFORE CLICKING SUBMIT</i></p>
-                                <p class="my-0"><i>Note: File name should not contain the following characters \ / : * ? " <> | $ &</i></p>
+                                    <h2>Uploaded Files</h2>
+                                    @if ($oaupload->count() > 0)
+                                        <ul>
+                                            @foreach ($oaupload as $upload)
+                                                @if ($upload->userid == Auth::user()->id)
+                                                    <li>{{ $upload->file }}</li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    @else
+                                        <p>No files uploaded yet.</p>
+                                    @endif
 
-                                <input class="form-control my-3" type="file" style="width:300px" multiple>
 
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                        I hereby certify that the above information are true and correct.
-                                    </label>
-                                    <div class="invalid-feedback">
-                                        You must certify that the above information are true and correct to proceed.
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            I hereby certify that the above information are true and correct.
+                                        </label>
+                                        <div class="invalid-feedback">
+                                            You must certify that the above information are true and correct to proceed.
+                                        </div>
                                     </div>
-                                </div>
 
 
-                            @foreach ($oattachment as $attachment)
+                                    @foreach ($oattachment as $attachment)
 
                                         <div class="row mt-3">
                                             <div class="col " style="text-align: left; margin-left: 10%" >
@@ -200,33 +198,33 @@
                                         </div>
 
 
-                                    <div class="row mt-5">
+                                        <div class="row mt-5">
+                                            <div class="col">
+                                                <p class="text-center text-sm font-medium">SUBSCRIBED AND SWORN before me, a Notary Public, this <input type="text" name ="subsAndSworn" value="{{$attachment->SUBSCRIBED_AND_SWORN}}"> day of <input type="date" name="dayOf" value="{{$attachment->dayOf}}">  , affiants exhibiting to me their IDs:</p>
+                                            </div>
+                                        </div>
+
+
+
+                                    @endforeach
+
+
+                                    <div class="row mt-5" style="text-align: center">
                                         <div class="col">
-                                            <p class="text-center text-sm font-medium">SUBSCRIBED AND SWORN before me, a Notary Public, this <input type="text" name ="subsAndSworn" value="{{$attachment->SUBSCRIBED_AND_SWORN}}"> day of <input type="date" name="dayOf" value="{{$attachment->dayOf}}">  , affiants exhibiting to me their IDs:</p>
+                                            <p>Name</p>
+                                        </div>
+                                        <div class="col">
+                                            <p>ID No.</p>
+                                        </div>
+                                        <div class="col">
+                                            <p>Issued at</p>
+                                        </div>
+                                        <div class="col">
+                                            <p>Issued on</p>
                                         </div>
                                     </div>
 
-
-
-                                @endforeach
-
-
-                                <div class="row mt-5" style="text-align: center">
-                                    <div class="col">
-                                        <p>Name</p>
-                                    </div>
-                                    <div class="col">
-                                        <p>ID No.</p>
-                                    </div>
-                                    <div class="col">
-                                        <p>Issued at</p>
-                                    </div>
-                                    <div class="col">
-                                        <p>Issued on</p>
-                                    </div>
-                                </div>
-
-                                @foreach ($oaemployee as $emloyee)
+                                    @foreach ($oaemployee as $emloyee)
 
                                         <div class="row">
                                             <div class="col">
@@ -243,9 +241,9 @@
                                             </div>
                                         </div>
 
-                                @endforeach
+                                    @endforeach
 
-                                @foreach ($oaemployee1 as $emloyee1)
+                                    @foreach ($oaemployee1 as $emloyee1)
 
                                         <div class="row mt-3">
                                             <div class="col">
@@ -262,29 +260,29 @@
                                             </div>
                                         </div>
 
-                                @endforeach
+                                    @endforeach
 
-                            </table>
+                                </table>
 
-                        </div>
+                            </div>
 
 
-                        <!-- 13th row -->
-                        <div class="container">
-                            <div class="col mb-3" >
-                                <div style="float: right" class="mb-3">
-                                    <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
-                                    <input type="submit" value="Submit SMR" class="btn btn-lg btn-success">
+                            <!-- 13th row -->
+                            <div class="container">
+                                <div class="col mb-3" >
+                                    <div style="float: right" class="mb-3">
+                                        <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
+                                        <input type="submit" value="Submit SMR" class="btn btn-lg btn-success">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+
+                    </div>
 
                 </div>
-
             </div>
         </div>
-    </div>
     </div>
 </x-app-layout>
 

@@ -1024,6 +1024,42 @@
 
 
 {{--Module 6 Script start--}}
+<!-- Script for upload -->
+
+<script>
+    document.getElementById('file').addEventListener('change', function() {
+        var file = this.files[0];
+        var fileType = file.type;
+        var fileName = file.name;
+        var pdfRegex = /^.*\.(pdf)$/i;
+        var maxSize = 20 * 1024 * 1024; // 20 MB in bytes
+
+        if (!pdfRegex.test(fileName)) {
+            document.getElementById('pdf-error1').innerHTML = '&#10005; File must be a PDF';
+        } else if (file.size > maxSize) {
+            document.getElementById('pdf-error1').innerHTML = '&#10005; Maximum file size is 20 MB';
+        } else if (/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(fileName)) {
+            document.getElementById('pdf-error').innerHTML = '&#10005; File name cannot contain special characters';
+        } else if (fileName.indexOf('NOTARIZED_DOC') === -1) {
+            document.getElementById('pdf-error1').innerHTML = '&#10005; File name must contain the string "NOTARIZED_DOC"';
+        } else {
+            document.getElementById('pdf-error1').innerHTML = '';
+        }
+    });
+
+    document.getElementById('myForm1').addEventListener('submit', function(e) {
+        var errorMessage = document.getElementById('pdf-error1').innerHTML;
+        console.log('errorMessage:', errorMessage);
+        if (errorMessage) {
+            console.log('Preventing form submission');
+            e.preventDefault(); // prevent form submission
+        } else {
+            console.log('Allowing form submission');
+        }
+    });
+</script>
+
+
 
 <!-- Script for ACCIDENTS & EMERGENCY RECORDS -->
 <script type="text/javascript">
