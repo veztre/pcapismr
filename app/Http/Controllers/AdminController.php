@@ -11,6 +11,7 @@ use App\Models\referencen;
 use App\Models\Region;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Concerns\ValidatesAttributes;
@@ -24,7 +25,7 @@ class AdminController extends Controller
     public function index()
     {
         $referencens = referencen::all();
-        $users = User::all();
+        $users = Auth::user()->all();
         $addfacility = Addfacility::all();
         $plant = Plant::get();
         $oaupload = Oaupload::get();

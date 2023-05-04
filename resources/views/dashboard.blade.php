@@ -87,6 +87,14 @@
                             </table>
 
                         </div>
+                        <div class="m-auto flex justify-end p-2  mt-4">
+                            @if (Route::has('register'))
+
+                                <a href="{{ route('create') }}" class="px-4 py-2 mb-6 text-white no-underline rounded-full transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-700 duration-300">RESET Accounts</a>
+
+                            @endif
+                        </div>
+
                     </div>
 
 
@@ -195,20 +203,35 @@
 
                             <tbody>
 
-                            @foreach($addfacility as $facility)
-                                @if ($facility->userid == Auth::id())
-                            <tr role="row" class="odd">
-                                <td tabindex="0" class="sorting_1">{{$facility->embregion}}- {{$facility->embid}}</td>
-                                <td>{{$facility->establishment}}</td>
-                                <td>{{$facility->street}}</td>
-                                <td>{{$facility->baranggay}}</td>
-                                <td>{{$facility->city}}</td>
-                                <td>{{$facility->province}}</td>
-                                <td>{{ $facility->created_at->format('Y-m-d') }}</td>
-                                <td>ACTIVE</td>
-                            </tr>
-                                @endif
-                            @endforeach
+                            @if(Auth::user()->usertype=='admin')
+                                @foreach($addfacility as $facility)
+                                    <tr role="row" class="odd">
+                                        <td tabindex="0" class="sorting_1">{{$facility->embregion}}- {{$facility->embid}}</td>
+                                        <td>{{$facility->establishment}}</td>
+                                        <td>{{$facility->street}}</td>
+                                        <td>{{$facility->baranggay}}</td>
+                                        <td>{{$facility->city}}</td>
+                                        <td>{{$facility->province}}</td>
+                                        <td>{{ $facility->created_at->format('Y-m-d') }}</td>
+                                        <td>ACTIVE</td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                @foreach($addfacility as $facility)
+                                    @if ($facility->userid == Auth::id())
+                                        <tr role="row" class="odd">
+                                            <td tabindex="0" class="sorting_1">{{$facility->embregion}}- {{$facility->embid}}</td>
+                                            <td>{{$facility->establishment}}</td>
+                                            <td>{{$facility->street}}</td>
+                                            <td>{{$facility->baranggay}}</td>
+                                            <td>{{$facility->city}}</td>
+                                            <td>{{$facility->province}}</td>
+                                            <td>{{ $facility->created_at->format('Y-m-d') }}</td>
+                                            <td>ACTIVE</td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            @endif
 
                             </tbody>
 
