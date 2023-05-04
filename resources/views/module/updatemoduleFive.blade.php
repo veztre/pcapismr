@@ -149,9 +149,11 @@
                                                 <td class="counterCell" style="text-align: right"></td>
                                                 <td><input class="form-control" type="text" name="oecondition[{{$loop->index}}][ecc_condition]" value="{{ $oec ? $oec->ECC_Condition : '' }}"></td>
                                                 <td style="text-align: center">
-                                                    <label style="margin-right: 10px"><input type="radio" name="oecondition[{{$loop->index}}][status_of_compliance]"
-                                                                                             value="Yes" {{ $oec && $oec->Status_of_Compliance == 'Yes' ? 'checked' : '' }} required>Yes</label>
-                                                    <label style="margin-right: 10px"><input type="radio" name="oecondition[{{$loop->index}}][status_of_compliance]"
+                                                    <label style="margin-right: 10px">
+                                                        <input type="radio" name="oecondition[{{$loop->index}}][status_of_compliance]"
+                                                               value="Yes" {{ $oec && $oec->Status_of_Compliance == 'Yes' ? 'checked' : '' }} required>Yes</label>
+                                                    <label style="margin-right: 10px">
+                                                        <input type="radio" name="oecondition[{{$loop->index}}][status_of_compliance]"
                                                                                              value="No" {{ $oec && $oec->Status_of_Compliance == 'No' ? 'checked' : '' }} required>No</label>
                                                 </td>
                                                 <td><textarea class="form-control" type="text" name="oecondition[{{$loop->index}}][actions_taken]"

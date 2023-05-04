@@ -393,26 +393,25 @@ class ModuleFiveController extends Controller
             $newRecord->save();
         }
 
-        $oecondition = $request->input('oecondition');
+        $oeconditions = $request->input('oecondition');
         $userId = Auth::user()->id;
-        // Get all records for the current user
-        $DBoecondition = OECondition::where('userid', $userId)->get();
-        // Loop through all records and update each one
-        foreach ($DBoecondition as $index => $record) {
-            $record->ECC_Condition = $oecondition[$index]['ecc_condition'];
-            $record->Status_of_Compliance = $oecondition[$index]['status_of_compliance'];
-            $record->Actions_Taken = $oecondition[$index]['actions_taken'];
-            $record->update();
-        }
 
-        // Create a new record for any remaining data
-        for ($index = count($DBoecondition); $index < count($oecondition); $index++) {
-            $newRecord = new OECondition();
-            $newRecord->userid = $userId;
-            $newRecord->ECC_Condition = $oecondition[$index]['ecc_condition'];
-            $newRecord->Status_of_Compliance = $oecondition[$index]['status_of_compliance'];
-            $newRecord->Actions_Taken = $oecondition[$index]['actions_taken'];
-            $newRecord->save();
+        foreach ($oeconditions as $oec) {
+            // Check if the record exists in the database
+            if (isset($oec['id'])) {
+                $record = OECondition::where('userid', $userId)
+                    ->where('id', $oec['id'])
+                    ->first();
+            } else {
+                $record = new OECondition();
+                $record->userid = $userId;
+            }
+
+            // Update the record with the new data
+            $record->ECC_Condition = $oec['ecc_condition'];
+            $record->Status_of_Compliance = $oec['status_of_compliance'];
+            $record->Actions_Taken = $oec['actions_taken'];
+            $record->save();
         }
 
         $evmpprogram = $request->input('evmpprogram');
