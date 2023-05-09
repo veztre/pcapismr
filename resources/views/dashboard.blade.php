@@ -134,8 +134,8 @@
                             @foreach ($referencens as $ref)
                                 <tr role="row" class="odd">
                                     <td tabindex="0" class="sorting_1">{{ $ref->ref_no }}</td>
-                                    @forelse ($addfacility as $facility)
-                                        <td>{{ $facility->establishment }}</td>
+                                    @forelse ($plant as $plants)
+                                        <td>{{ $plants->facility->establishment }}</td>
                                     @empty
                                         <td>No facility found</td>
                                     @endforelse
