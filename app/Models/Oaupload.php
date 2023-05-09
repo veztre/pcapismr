@@ -8,5 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Oaupload extends Model
 {
     use HasFactory;
-    protected $table = 'oaupload'; 
+    protected $table = 'oaupload';
+
+
+
 }

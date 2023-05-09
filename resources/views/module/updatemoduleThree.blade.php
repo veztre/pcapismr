@@ -60,6 +60,7 @@
                                             <input type="text" class="form-control mt-0" placeholder=""  value="{{$ref->ref_no}}" readonly >
 
                                         @endforeach
+
                                     </div>
 
                                 </div>

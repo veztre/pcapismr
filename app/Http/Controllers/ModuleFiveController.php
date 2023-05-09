@@ -224,7 +224,7 @@ class ModuleFiveController extends Controller
 
         $id = Auth::id();
         $users = User::find($id);
-        $referencens= Referencen::get();
+        $referencens= Auth::user()->reference_no()->get();
         $aaqmonitoring_parameter = Auth::user()->aaqmonitoring_parameter()->get();
         $aaqmonitoring = Auth::user()->aaqmonitoring()->get();
         $oecondition = Auth::user()->oecondition()->get();

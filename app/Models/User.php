@@ -329,7 +329,11 @@ class User extends Authenticatable
     public function oaemployee1 (){
         return $this->hasone(Oaemployee1::class,foreignKey: 'userid');
     }
-/*    Module 6 end*/
+    public function oaupload (){
+        return $this->hasone(Oaupload::class,foreignKey: 'userid');
+    }
+
+    /*    Module 6 end*/
 
     public function reference_no (){
         return $this->hasOne(Referencen::class,foreignKey: 'userid');
@@ -357,6 +361,9 @@ class User extends Authenticatable
 
 
     /*Facility*/
+    public function facility (){
+        return $this->hasOne(Addfacility::class,foreignKey: 'userid');
+    }
     public function addfacility (){
         return $this->hasOne(Addfacility::class,foreignKey: 'userid');
     }

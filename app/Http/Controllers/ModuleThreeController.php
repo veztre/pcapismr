@@ -253,7 +253,7 @@ class ModuleThreeController extends Controller
         $drowcfop1 = Auth::user()->drowcfop1()->get();
         $dreportofwaste_parameter = Auth::user()->dreportofwaste_parameter()->get();
 
-        $referencens = Referencen::get();
+        $referencens = Auth::user()->reference_no()->get();
 
         return view ('/module.updatemoduleThree',
             compact('users',

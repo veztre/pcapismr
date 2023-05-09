@@ -24,14 +24,15 @@ class AdminController extends Controller
    use ValidatesAttributes;
     public function index()
     {
-        $users = Auth::user()->all();
+        $users = User::all();
         $referencens = referencen::all();
         $addfacility = Addfacility::all();
-        $plant = Plant::get();
-        $oaupload = Oaupload::get();
+        $plant = Plant::all();
+        $oaupload = Oaupload::all();
         $userTypes = ['admin', 'trainee'];
-        return view('dashboard', compact('users', 'referencens', 'addfacility', 'plant', 'oaupload', 'userTypes'));
 
+        return view('dashboard', compact('users', 'referencens', 'addfacility', 'plant', 'oaupload', 'userTypes'))
+            ->with('usertype', $userTypes);
         $usertype = ['admin', 'trainee'];
         return view('navigation-menu', compact('usertype'));
 

@@ -130,23 +130,26 @@
                             <tbody>
 
 
+                                @foreach ($referencens as $ref)
+                                    <tr role="row" class="odd">
+                                        <td tabindex="0" class="sorting_1">{{ $ref->ref_no }}</td>
+                                        @if ($ref->plant)
+                                            <td>{{ $ref->plant->facility->establishment }}</td>
+                                        @else
+                                            <td>No facility found</td>
+                                        @endif
+                                        <td>{{ $ref->created_at->format('Y-m-d') }}</td>
+                                        <td>
+                                            @if ($oaupload->where('userid', $ref->userid)->count() > 0)
+                                                {{ $oaupload->where('userid', $ref->userid)->first()->updated_at->format('Y-m-d h:i:s a') }}
+                                            @else
+                                                No upload found
+                                            @endif
+                                        </td>
 
-                            @foreach ($referencens as $ref)
-                                <tr role="row" class="odd">
-                                    <td tabindex="0" class="sorting_1">{{ $ref->ref_no }}</td>
-                                    @forelse ($plant as $plants)
-                                        <td>{{ $plants->facility->establishment }}</td>
-                                    @empty
-                                        <td>No facility found</td>
-                                    @endforelse
 
-                                    <td>{{ $ref->created_at->format('Y-m-d') }}</td>
-                                    @forelse ($oaupload as $oau)
-                                        <td>{{ $oau->updated_at->format('Y-m-d h:i:s a') }}</td>
-                                    @empty
-                                        <td>No upload found</td>
-                                    @endforelse
-                                    <td>ACTIVE</td>
+
+                                        <td>ACTIVE</td>
 
 
                                         <td>
@@ -163,7 +166,7 @@
 
                                     </tr>
 
-                            @endforeach
+                                @endforeach
 
                             </tbody>
 
