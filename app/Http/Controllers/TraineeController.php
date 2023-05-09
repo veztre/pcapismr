@@ -15,9 +15,10 @@ class TraineeController extends Controller
     public function index(){
 
         $referencens= Auth::user()->reference_no()->get();
+        $plant = Auth::user()->plant()->get();
         $users = Auth::user()->id;
         $addfacility = Auth::user()->addfacility()->get();
-        $plant = Plant::get();
+
         $oaupload = Oaupload::get();
         return view('dashboard', compact('referencens', 'users', 'addfacility', 'plant', 'oaupload'));
     }

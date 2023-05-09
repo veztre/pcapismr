@@ -84,7 +84,7 @@
                     </select>
                 </div>
 
-                      <div class="grid  grid-cols-2 gap-4 auto-cols-1">
+       {{--               <div class="grid  grid-cols-2 gap-4 auto-cols-1">
                           <div class="mt-4">
 
                               <x-jet-label for="company_id" class="text-red-600 mb-4" value="{{ __('* Company ID') }}" />
@@ -101,7 +101,7 @@
 
 
 
-                      </div>
+                      </div>--}}
 
 
 

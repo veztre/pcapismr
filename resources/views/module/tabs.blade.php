@@ -52,48 +52,140 @@
 
 
     <form class="d-flex">
-        <li class="nav-item active">
-            <a class="nav-link" href="{{ route('view', ['id' => auth()->user()->id]) }}" data-required="moduleOne">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('view', ['id' => auth()->user()->id]) }}">
                 <small>Module 1: General Info</small>
             </a>
         </li>
 
-        <li class="nav-item disabled">
-            <a class="nav-link" href="{{ route('view2', ['id' => auth()->user()->id]) }}" data-required="moduleTwo" disabled>
+        <li class="nav-item" >
+            <a class="nav-link" href="{{ route('view2', ['id' => auth()->user()->id]) }}" disabled>
                 <small>Module 2: RA 6969</small>
             </a>
         </li>
 
-        <li class="nav-item disabled">
-            <a class="nav-link" href="{{ route('view3', ['id' => auth()->user()->id]) }}" data-required="moduleThree" disabled>
+        <li class="nav-item" >
+            <a class="nav-link" href="{{ route('view3', ['id' => auth()->user()->id]) }}" disabled>
                 <small>Module 3: RA 9275</small>
             </a>
         </li>
 
-        <li class="nav-item disabled">
-            <a class="nav-link" href="{{ route('view4', ['id' => auth()->user()->id]) }}" data-required="moduleFour" disabled>
+        <li class="nav-item" >
+            <a class="nav-link" href="{{ route('view4', ['id' => auth()->user()->id]) }}" disabled>
                 <small>Module 4: RA 8749</small>
             </a>
         </li>
 
-        <li class="nav-item disabled">
-            <a class="nav-link" href="{{ route('view5', ['id' => auth()->user()->id]) }}" data-required="moduleFive" disabled>
+        <li class="nav-item" >
+            <a class="nav-link" href="{{ route('view5', ['id' => auth()->user()->id]) }}" disabled>
                 <small>Module 5: RA 1586</small>
             </a>
         </li>
 
-        <li class="nav-item disabled">
-            <a class="nav-link" href="{{ route('view6', ['id' => auth()->user()->id]) }}" data-required="moduleSix" disabled>
+        <li class="nav-item" >
+            <a class="nav-link" href="{{ route('view6', ['id' => auth()->user()->id]) }}" disabled>
                 <small>Module 6: Others</small>
             </a>
         </li>
     </form>
-
 </nav>
     </div> <!-- collapse navbar-collapse -->
 
   </div> <!-- container -->
 </nav>
+
+
+
+{{--Enable tabs--}}
+<script>
+    // get the form and navigation links
+    const form = document.querySelector('form');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // add a submit event listener to the form
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // prevent form submission
+
+        // validate the form data
+        if (form.checkValidity()) {
+            // get the name of the current tab
+            const currentTab = event.target.closest('.tab-pane').id;
+
+            // enable the next tab's navigation link
+            const nextTab = navLinks.find(link => link.dataset.required === currentTab).parentNode.nextElementSibling;
+            nextTab.querySelector('.nav-link').removeAttribute('disabled');
+            nextTab.classList.remove('disabled');
+
+            // submit the form
+            event.target.submit();
+        } else {
+            form.reportValidity(); // show validation errors
+        }
+    });
+
+    // add an event listener to the navigation links
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // prevent link from opening
+
+            // get the index of the clicked link
+            const clickedIndex = [...navLinks].indexOf(event.target.closest('.nav-link'));
+
+            // check if the previous tabs have been saved
+            let canNavigate = true;
+            for (let i = 0; i < clickedIndex; i++) {
+                if (navLinks[i].hasAttribute('disabled')) {
+                    canNavigate = false;
+                    break;
+                }
+            }
+
+            if (canNavigate) {
+                // navigate to the clicked tab
+                window.location = event.target.closest('.nav-link').href;
+            } else {
+                // show an error message if previous tabs have not been saved
+                alert('Please save the previous tabs before proceeding.');
+            }
+
+</script>
+{{--Enable tabs end--}}
+
+
+{{--Disable tabs--}}
+<script>
+    // get the form and navigation links
+    const form = document.querySelector('form');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // disable all tabs except the first one
+    for (let i = 1; i < navLinks.length; i++) {
+        navLinks[i].setAttribute('disabled', true);
+        navLinks[i].parentNode.classList.add('disabled');
+    }
+
+    // add a submit event listener to the form
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // prevent form submission
+
+        // validate the form data
+        if (form.checkValidity()) {
+            // get the name of the current tab
+            const currentTab = event.target.closest('.tab-pane').id;
+
+            // enable the next tab's navigation link
+            const nextTab = navLinks.find(link => link.dataset.required === currentTab).parentNode.nextElementSibling;
+            nextTab.querySelector('.nav-link').removeAttribute('disabled');
+            nextTab.classList.remove('disabled');
+
+            // submit the form
+            event.target.submit();
+        } else {
+            form.reportValidity(); // show validation errors
+        }
+    });
+</script>
+{{--Disable tabs end--}}
 
 
 

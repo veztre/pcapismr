@@ -132,23 +132,21 @@
 
 
                             @foreach ($referencens as $ref)
+                                <tr role="row" class="odd">
+                                    <td tabindex="0" class="sorting_1">{{ $ref->ref_no }}</td>
+                                    @forelse ($addfacility as $facility)
+                                        <td>{{ $facility->establishment }}</td>
+                                    @empty
+                                        <td>No facility found</td>
+                                    @endforelse
 
-                                    <tr role="row" class="odd">
-                                        <td tabindex="0" class="sorting_1">{{$ref->ref_no}}</td>
-
-                                        @foreach ($plant as $plants)
-
-                                            <td>{{ $plants->facility->establishment ?? 'No facility found' }}</td>
-
-                                        @endforeach
-                                        <td>{{ $ref->created_at->format('Y-m-d') }}</td>
-
-                                        @foreach ($oaupload as $oau)
-
-                                            <td>{{ $oau->updated_at->format('Y-m-d h:i:s a') }}</td>
-
-                                        @endforeach
-                                        <td>ACTIVE</td>
+                                    <td>{{ $ref->created_at->format('Y-m-d') }}</td>
+                                    @forelse ($oaupload as $oau)
+                                        <td>{{ $oau->updated_at->format('Y-m-d h:i:s a') }}</td>
+                                    @empty
+                                        <td>No upload found</td>
+                                    @endforelse
+                                    <td>ACTIVE</td>
 
 
                                         <td>
