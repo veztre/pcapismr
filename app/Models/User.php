@@ -357,6 +357,9 @@ class User extends Authenticatable
 
 
     /*Facility*/
+    public function addfacility (){
+        return $this->hasOne(Addfacility::class,foreignKey: 'userid');
+    }
     public function embregion (){
         return $this->hasOne(Addfacility::class,foreignKey: 'userid');
     }

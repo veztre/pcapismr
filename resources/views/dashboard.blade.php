@@ -219,7 +219,7 @@
                                         <td>ACTIVE</td>
                                     </tr>
                                 @endforeach
-                            @else
+                            @elseif(Auth::user()->usertype=='trainee')
                                 @foreach($addfacility as $facility)
 
                                         <tr role="row" class="odd">
