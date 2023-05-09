@@ -52,38 +52,38 @@
 
 
     <form class="d-flex">
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('view', ['id' => auth()->user()->id]) }}">
+        <li class="nav-item active">
+            <a class="nav-link" href="{{ route('view', ['id' => auth()->user()->id]) }}" data-required="moduleOne">
                 <small>Module 1: General Info</small>
             </a>
         </li>
 
-        <li class="nav-item" >
-            <a class="nav-link" href="{{ route('view2', ['id' => auth()->user()->id]) }}">
+        <li class="nav-item disabled">
+            <a class="nav-link" href="{{ route('view2', ['id' => auth()->user()->id]) }}" data-required="moduleTwo" disabled>
                 <small>Module 2: RA 6969</small>
             </a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('view3', ['id' => auth()->user()->id]) }}">
-            <small>Module 3: RA 9275</small>
+        <li class="nav-item disabled">
+            <a class="nav-link" href="{{ route('view3', ['id' => auth()->user()->id]) }}" data-required="moduleThree" disabled>
+                <small>Module 3: RA 9275</small>
             </a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('view4', ['id' => auth()->user()->id]) }}">
+        <li class="nav-item disabled">
+            <a class="nav-link" href="{{ route('view4', ['id' => auth()->user()->id]) }}" data-required="moduleFour" disabled>
                 <small>Module 4: RA 8749</small>
             </a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('view5', ['id' => auth()->user()->id]) }}">
+        <li class="nav-item disabled">
+            <a class="nav-link" href="{{ route('view5', ['id' => auth()->user()->id]) }}" data-required="moduleFive" disabled>
                 <small>Module 5: RA 1586</small>
             </a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('view6', ['id' => auth()->user()->id]) }}">
+        <li class="nav-item disabled">
+            <a class="nav-link" href="{{ route('view6', ['id' => auth()->user()->id]) }}" data-required="moduleSix" disabled>
                 <small>Module 6: Others</small>
             </a>
         </li>

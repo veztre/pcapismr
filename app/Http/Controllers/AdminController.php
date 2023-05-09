@@ -24,8 +24,8 @@ class AdminController extends Controller
    use ValidatesAttributes;
     public function index()
     {
-        $referencens = referencen::all();
         $users = Auth::user()->all();
+        $referencens = referencen::all();
         $addfacility = Addfacility::all();
         $plant = Plant::get();
         $oaupload = Oaupload::get();

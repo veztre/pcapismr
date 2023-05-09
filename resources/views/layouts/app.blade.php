@@ -1101,6 +1101,33 @@
 </script>
 {{--Module 6 Script end--}}
 
+{{--Enable tabs--}}
+<script>
+    // get the form and navigation links
+    const form = document.querySelector('form');
+    const navLinks = document.querySelectorAll('.nav-link');
 
+    // add a submit event listener to the form
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // prevent form submission
+
+        // validate the form data
+        if (form.checkValidity()) {
+            // get the name of the current tab
+            const currentTab = event.target.closest('.tab-pane').id;
+
+            // enable the next tab's navigation link
+            const nextTab = navLinks.find(link => link.dataset.required === currentTab).parentNode.nextElementSibling;
+            nextTab.querySelector('.nav-link').removeAttribute('disabled');
+            nextTab.classList.remove('disabled');
+
+            // submit the form
+            event.target.submit();
+        } else {
+            form.reportValidity(); // show validation errors
+        }
+    });
+</script>
+{{--Enable tabs end--}}
 
 </html>
