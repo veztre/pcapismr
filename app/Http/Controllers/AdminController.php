@@ -32,7 +32,15 @@ class AdminController extends Controller
         $oaupload = Oaupload::all();
         $userTypes = ['admin', 'trainee'];
 
-        return view('dashboard', compact('users', 'referencens', 'addfacility', 'plant', 'oaupload', 'userTypes'))
+        $currentUserId = auth()->user()->id;
+
+        return view('dashboard', compact('users',
+            'referencens',
+                    'addfacility',
+                    'plant',
+                    'oaupload',
+                    'userTypes',
+                    'currentUserId'))
             ->with('usertype', $userTypes);
         $usertype = ['admin', 'trainee'];
         return view('navigation-menu', compact('usertype'));
@@ -137,6 +145,11 @@ class AdminController extends Controller
         $admin = $request->user();
 
         if ($admin->isAdmin()) {
+            // Display a confirmation prompt
+            if (!$request->has('_confirmed')) {
+                return redirect()->back()->with('_confirm', true);
+            }
+
             // Delete trainee accounts
             User::where('usertype', 'trainee')->delete();
 

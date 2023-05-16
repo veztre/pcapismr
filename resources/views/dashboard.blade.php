@@ -36,7 +36,7 @@
                                 <tbody>
 
                                 @foreach($users as $user)
-                                    <tr role="row" class="odd">
+                                    <tr role="row" class="{{ $user->id == auth()->user()->id && auth()->user()->usertype == 'admin' ? 'current-admin' : 'odd' }}">
                                         <td tabindex="0" class="sorting_1">{{$user->lastname}}, {{$user->firstname}}</td>
                                         <td>{{$user->company}}</td>
                                         <td>{{$user->email}}</td>
@@ -87,10 +87,15 @@
                             </table>
 
                         </div>
-                        <div class="m-auto flex justify-end p-2  mt-4">
-
-                                <a href="{{ route('delete-trainee-accounts') }}" class="px-4 py-2 mb-6 text-white no-underline rounded-full transition ease-in-out delay-150 bg-red-300 hover:-translate-y-1 hover:scale-110 hover:bg-red-600 duration-300">DELETE Trainee Accounts</a>
-
+                        <div class="m-auto flex justify-end p-2 mt-4">
+                            <form id="delete-form" action="{{ route('delete-trainee-accounts') }}" method="POST">
+                                @csrf
+                                <a href="#" class="px-4 py-2 mb-6 text-white no-underline rounded-full transition ease-in-out delay-150 bg-red-300 hover:-translate-y-1 hover:scale-110 hover:bg-red-600 duration-300"
+                                   onclick="event.preventDefault(); showConfirmationModal()">
+                                    DELETE Trainee Accounts
+                                </a>
+                                <input type="hidden" name="_confirmed" id="_confirmed" value="0">
+                            </form>
                         </div>
 
                     </div>
@@ -249,3 +254,21 @@
         </div>
     </div>
 </x-app-layout>
+
+
+
+<style>
+    .current-admin {
+        background-color: yellow; /* Customize the highlighting style */
+    }
+</style>
+
+{{--confirmation on deleting all trainee accounts--}}
+<script>
+    function showConfirmationModal() {
+        if (confirm('Are you sure you want to delete the trainee accounts?')) {
+            document.getElementById('_confirmed').value = 1;
+            document.getElementById('delete-form').submit();
+        }
+    }
+</script>
