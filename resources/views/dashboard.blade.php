@@ -88,11 +88,9 @@
 
                         </div>
                         <div class="m-auto flex justify-end p-2  mt-4">
-                            @if (Route::has('register'))
 
-                                <a href="{{ route('create') }}" class="px-4 py-2 mb-6 text-white no-underline rounded-full transition ease-in-out delay-150 bg-green-500 hover:-translate-y-1 hover:scale-110 hover:bg-green-700 duration-300">RESET Accounts</a>
+                                <a href="{{ route('delete-trainee-accounts') }}" class="px-4 py-2 mb-6 text-white no-underline rounded-full transition ease-in-out delay-150 bg-red-300 hover:-translate-y-1 hover:scale-110 hover:bg-red-600 duration-300">DELETE Trainee Accounts</a>
 
-                            @endif
                         </div>
 
                     </div>

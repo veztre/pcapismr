@@ -390,4 +390,11 @@ class User extends Authenticatable
     }
     /*Facility end*/
 
+
+
+
+    public function isAdmin()
+    {
+        return $this->usertype === 'admin';
+    }
 }

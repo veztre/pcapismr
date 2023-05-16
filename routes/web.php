@@ -163,3 +163,6 @@ Route::resource('moduleSix', ModuleSixController::class);
 
 /*dashboard update usertype*/
 Route::post('/admin/updateUsertype', [AdminController::class, 'updateUsertype'])->name('updateUsertype');
+
+/*delete trainee account*/
+Route::match(['get', 'post'], '/delete-trainee-accounts', [AdminController::class, 'deleteTraineeAccounts'])->name('delete-trainee-accounts');

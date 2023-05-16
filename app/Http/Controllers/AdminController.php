@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Concerns\ValidatesAttributes;
 use Laravel\Jetstream\Jetstream;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -131,6 +132,22 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Usertype updated successfully.');
     }
+    public function deleteTraineeAccounts(Request $request)
+    {
+        $admin = $request->user();
 
+        if ($admin->isAdmin()) {
+            // Delete trainee accounts
+            User::where('usertype', 'trainee')->delete();
 
+            // Flash success message
+            Session::flash('success', 'Trainee accounts deleted successfully.');
+
+            // Redirect back to the dashboard
+            return redirect()->route('dashboard');
+        }
+
+        // Redirect back with unauthorized message
+        return redirect()->back()->with('error', 'Unauthorized action.');
+    }
 }
