@@ -18,11 +18,13 @@ use Illuminate\Validation\Concerns\ValidatesAttributes;
 use Laravel\Jetstream\Jetstream;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Artisan;
 
 class AdminController extends Controller
 {
-   use PasswordValidationRules;
-   use ValidatesAttributes;
+    use PasswordValidationRules;
+    use ValidatesAttributes;
+
     public function index()
     {
         $users = User::all();
@@ -36,23 +38,26 @@ class AdminController extends Controller
 
         return view('dashboard', compact('users',
             'referencens',
-                    'addfacility',
-                    'plant',
-                    'oaupload',
-                    'userTypes',
-                    'currentUserId'))
+            'addfacility',
+            'plant',
+            'oaupload',
+            'userTypes',
+            'currentUserId'))
             ->with('usertype', $userTypes);
         $usertype = ['admin', 'trainee'];
         return view('navigation-menu', compact('usertype'));
 
 
     }
-    public function create(){
+
+    public function create()
+    {
 
         return view('module.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $validator = Validator::make($request->all(), [
             'username' => ['required', 'string', 'max:255', 'unique:users'],
@@ -85,7 +90,7 @@ class AdminController extends Controller
         return redirect('/admin/dashboard');
     }
 
-    public function edit( $id)
+    public function edit($id)
     {
 
 
@@ -93,13 +98,13 @@ class AdminController extends Controller
         $regions = Region::all();
         $userTypes = ['admin', 'trainee'];
 
-        return view('module.editaccount', compact('users','regions', 'userTypes'));
+        return view('module.editaccount', compact('users', 'regions', 'userTypes'));
 
     }
 
 
-
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
 
         $validator = Validator::make($request->all(), [
             'username' => ['required', 'string', 'max:255', Rule::unique('users')->ignore($id)],
@@ -140,21 +145,44 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Usertype updated successfully.');
     }
+
+
     public function deleteTraineeAccounts(Request $request)
     {
-        $admin = $request->user();
+        $admin = Auth::user();
 
         if ($admin->isAdmin()) {
             // Display a confirmation prompt
-            if (!$request->has('_confirmed')) {
+            if (!$request->has('_confirmed') || $request->input('_confirmed') != '1') {
                 return redirect()->back()->with('_confirm', true);
             }
 
-            // Delete trainee accounts
-            User::where('usertype', 'trainee')->delete();
+            // Get the IDs of the admin and newly created admin account
+            $adminId = $admin->id;
+            $newAdminId = User::where('usertype', 'admin')->orderBy('id', 'desc')->value('id');
+
+            // Delete trainee accounts and associated data
+            User::where('usertype', 'trainee')
+                ->where('id', '<>', $adminId)
+                ->where('id', '<>', $newAdminId)
+                ->delete();
+
+            // Delete all associated data
+            // Replace the code below with the actual code to delete associated data
+
+            // Example code:
+            // AssociatedModel::where('user_id', '<>', $adminId)
+            //     ->where('user_id', '<>', $newAdminId)
+            //     ->delete();
+
+            // Perform fresh migration
+            Artisan::call('migrate:fresh');
+
+            // Seed the database
+            Artisan::call('db:seed');
 
             // Flash success message
-            Session::flash('success', 'Trainee accounts deleted successfully.');
+            Session::flash('success', 'Trainee accounts and associated data deleted successfully. Database migrated and seeded.');
 
             // Redirect back to the dashboard
             return redirect()->route('dashboard');
