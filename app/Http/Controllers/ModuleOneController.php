@@ -297,7 +297,7 @@ class ModuleOneController extends Controller
             $userId = Auth::user()->id;
             $reference = Auth::user()->reference_no()->first(); // Fetch reference number of authenticated user
             $refNo = $reference->reference_number; // Extract the reference number from the fetched object
-            $userFolder = $userId . '/' . $refNo . '/moduleOneattachment'; // Set user folder path
+            $userFolder = $userId . '/' . $refNo . '/moduleOneAttachment'; // Set user folder path
 
             foreach ($files as $file) {
                 $name = $file->getClientOriginalName();
@@ -450,11 +450,14 @@ class ModuleOneController extends Controller
         $year->update();
 
 
-        if ($files = $request->file('file')) {
+        $upload = Upload::where('userid', $id)->first();
+        $files = $request->file('file');
+
+        if ($files) {
             $userId = Auth::user()->id;
             $reference = Auth::user()->reference_no()->first(); // Fetch reference number of authenticated user
             $refNo = $reference->reference_number; // Extract the reference number from the fetched object
-            $userFolder = $userId . '/' . $refNo . '/moduleOneattachment'; // Set user folder path
+            $userFolder = $userId . '/' . $refNo . '/moduleOneAttachment'; // Set user folder path
 
             foreach ($files as $file) {
                 $name = $file->getClientOriginalName();

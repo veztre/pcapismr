@@ -98,17 +98,26 @@ class ModuleSixController extends Controller
 
         $oaemployee1->save();
 
-        if($file = $request->file('file')){
+        if ($file = $request->file('file')) {
             $name = $file->getClientOriginalName();
-            $userId = Auth::user()->id; // assuming you are using Laravel's authentication system
-            $userFolder = 'moduleSixAttatchment/' . $userId;
-            if($file->move($userFolder, $name)){
+            $userId = Auth::user()->id;
+            $reference = Auth::user()->reference_no()->first(); // Fetch reference number of authenticated user
+            $refNo = $reference->reference_number; // Extract the reference number from the fetched object
+
+            // Build the user folder path
+            $userFolder = $userId . '/' . $refNo . '/moduleSixAttachment';
+
+            // Build the file path
+            $filePath = $userFolder . '/' . $name;
+
+            if ($file->move($userFolder, $name)) {
                 $upload = new Oaupload();
                 $upload->file = $name;
                 $upload->userid = $userId;
                 $upload->save();
-            };
+            }
         }
+
 
 
         return redirect()->back();
@@ -148,19 +157,38 @@ class ModuleSixController extends Controller
     {
 
 
-        //upload file
+        // Upload file
         $upload = Oaupload::where('userid', $id)->first();
         $file = $request->file('file');
 
         if ($file) {
             $name = $file->getClientOriginalName();
             $userId = Auth::user()->id;
-            $userFolder = 'moduleSixAttatchment/' . $userId;
-            if($file->move($userFolder, $name)){
-                $upload->file = $name;
-                $upload->update();
+            $reference = Auth::user()->reference_no()->first(); // Fetch reference number of authenticated user
+            $refNo = $reference->reference_number; // Extract the reference number from the fetched object
+
+            // Build the user folder path
+            $userFolder = $userId . '/' . $refNo . '/moduleSixAttachment';
+
+            // Build the file path
+            $filePath = $userFolder . '/' . $name;
+
+            if ($file->move($userFolder, $name)) {
+                if ($upload) {
+                    // Update existing upload record
+                    $upload->file = $name;
+                    $upload->userid = $userId;
+                    $upload->save();
+                } else {
+                    // Create new upload record
+                    $upload = new Oaupload();
+                    $upload->file = $name;
+                    $upload->userid = $userId;
+                    $upload->save();
+                }
             }
         }
+
 //end of update upload file
 
 
