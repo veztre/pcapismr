@@ -51,7 +51,7 @@
                                     <!-- Message input -->
                                     <div class="col">
                                         <p class="text-primary my-0">Note.</p>
-                                        <p class="text-primary my-0">1. Put "N/A" for field not applicable to you.</p>
+                                        <p class="text-primary my-0">1. Put " " for field not applicable to you.</p>
                                         <p class="text-primary my-0">2. You Can now Export data on Each module by clicking "EXPORT" Link Below.</p>
                                     </div>
 
@@ -136,7 +136,7 @@
                                                                     <option value ="kg"  {{ $sum2->Unit_Consumed_for_the_quarter === 'kg' ? 'selected' : '' }}>kg</option>
                                                                     <option  value ="liter" {{ $sum2->Unit_Consumed_for_the_quarter === 'liter' ? 'selected' : '' }}>liter</option>
                                                                     <option value ="m3"  {{ $sum2->Unit_Consumed_for_the_quarter === 'm3' ? 'selected' : '' }}>m3</option>
-                                                                    <option value ="n/a"  {{ $sum2->Unit_Consumed_for_the_quarter === 'n/a' ? 'selected' : '' }}>n/a</option>
+                                                                    <option value =" "  {{ $sum2->Unit_Consumed_for_the_quarter === ' ' ? 'selected' : '' }}> </option>
                                                                     <option value ="pc"  {{ $sum2->Unit_Consumed_for_the_quarter === 'pc' ? 'selected' : '' }}>pc</option>
                                                                     <option value ="ton"  {{ $sum2->Unit_Consumed_for_the_quarter === 'ton' ? 'selected' : '' }}>ton</option>
                                                                 </select>
@@ -425,7 +425,7 @@ h1 {
   $("#sum2").click(function () { //button name
       ++i;
       $("#summaryy2").append
-          ('<tr><td class="counterCell " style="text-align: right" ></td><td ><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><select class="form-select" name="summary2[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>kg</option><option>liter</option><option>m3</option><option>n/a</option><option>pc</option><option>ton</option></select></td><td></td><td></td><td><input type="text" class="form-control" name="summary2[]"></td></tr>'); //table name
+          ('<tr><td class="counterCell " style="text-align: right" ></td><td ><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><select class="form-select" name="summary2[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>kg</option><option>liter</option><option>m3</option><option> </option><option>pc</option><option>ton</option></select></td><td></td><td></td><td><input type="text" class="form-control" name="summary2[]"></td></tr>'); //table name
   });
 </script>
 

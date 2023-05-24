@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('summary1', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->string('Process_Equipment');
-            $table->string('Location');
-            $table->string('no_of_hours_of_operation_for_the_quarter');
+            $table->string('Process_Equipment')->nullable();
+            $table->string('Location')->nullable();
+            $table->string('no_of_hours_of_operation_for_the_quarter')->nullable();
             $table->timestamps();
         });
     }

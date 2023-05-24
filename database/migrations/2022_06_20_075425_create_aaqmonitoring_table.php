@@ -16,15 +16,15 @@ return new class extends Migration
         Schema::create('aaqmonitoring', function (Blueprint $table) {
             $table->id();
             $table->integer('userid');
-            $table->string('station_description');
-            $table->date('date');
-            $table->string('noise_level_db');
-            $table->string('CO_mg_ncm');
-            $table->string('NOx_mg_ncm');
-            $table->string('particulates_mg_ncm');
-            $table->string('Value_parameter1');
-            $table->string('Value_parameter2');
-            $table->string('Value_parameter3');
+            $table->string('station_description')->nullable();
+            $table->date('date')->nullable();
+            $table->string('noise_level_db')->nullable();
+            $table->string('CO_mg_ncm')->nullable();
+            $table->string('NOx_mg_ncm')->nullable();
+            $table->string('particulates_mg_ncm')->nullable();
+            $table->string('Value_parameter1')->nullable();
+            $table->string('Value_parameter2')->nullable();
+            $table->string('Value_parameter3')->nullable();
             $table->timestamps();
         });
     }

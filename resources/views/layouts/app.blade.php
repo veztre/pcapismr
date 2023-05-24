@@ -469,7 +469,7 @@
 
     $("#dynamic-ar").click(function () { //button name
         $("#dynamicAddRemove").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="dpno" hidden></label><input class="form-control validate-input" type="text" name="dpno[]" id="dpno" value="{{ old('dpno', 'N/A') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="dpno" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="dpno[]" id="dpno" required><span class="checkmark"></span></td><td class="position-relative"><label for="dpno"  hidden></label> <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="dpno[]" id="dpnoe" required><span class="checkmark"></span></td></tr>'
+            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="dpno" hidden></label><input class="form-control validate-input" type="text" name="dpno[]" id="dpno" value="{{ old('dpno', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="dpno" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="dpno[]" id="dpno" required><span class="checkmark"></span></td><td class="position-relative"><label for="dpno"  hidden></label> <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="dpno[]" id="dpnoe" required><span class="checkmark"></span></td></tr>'
         ); //table name
         config = {
             dateFormat: "Y-m-d"
@@ -492,7 +492,7 @@
     });
     $("#ECC").click(function () { //button name
         $("#pd").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="cncno" hidden></label><input class="form-control validate-input" type="text" name="cncno[]" id="cncno" value="{{ old('cncno', 'N/A') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="cncno" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="cncno[]" id="cncno" required><span class="checkmark"></span></td><td class="position-relative"><label for="cncno" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="cncno[]" id="cncno" required><span class="checkmark"></span></td></tr>'
+            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="cncno" hidden></label><input class="form-control validate-input" type="text" name="cncno[]" id="cncno" value="{{ old('cncno', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="cncno" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="cncno[]" id="cncno" required><span class="checkmark"></span></td><td class="position-relative"><label for="cncno" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="cncno[]" id="cncno" required><span class="checkmark"></span></td></tr>'
         ); //table name
         config = {
             dateFormat: "Y-m-d"
@@ -514,7 +514,7 @@
     });
     $("#ccoregister").click(function () { //button name
         $("#cco").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="ccoreg" hidden></label><input class="form-control validate-input" type="text" name="ccoreg[]" id="ccoreg" value="{{ old('ccoreg', 'N/A') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="ccoreg" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="ccoreg[]" id="ccoreg" required><span class="checkmark"></span></td><td class="position-relative"><label for="ccoreg" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="ccoreg[]" id="ccoreg" required><span class="checkmark"></span></td></tr>'
+            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="ccoreg" hidden></label><input class="form-control validate-input" type="text" name="ccoreg[]" id="ccoreg" value="{{ old('ccoreg', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="ccoreg" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="ccoreg[]" id="ccoreg" required><span class="checkmark"></span></td><td class="position-relative"><label for="ccoreg" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="ccoreg[]" id="ccoreg" required><span class="checkmark"></span></td></tr>'
         ); //table name
         config = {
             dateFormat: "Y-m-d"
@@ -540,7 +540,7 @@
     $("#imp").click(function () { //button name
         ++i;
         $("#importation").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="import" hidden></label><input class="form-control validate-input" type="text" name="import[]" id="import" value="{{ old('import', 'N/A') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="import" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="import[]" id="import" required><span class="checkmark"></span></td><td class="position-relative"><label for="import" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="import[]" id="import" required><span class="checkmark"></span></td></tr>'
+            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="import" hidden></label><input class="form-control validate-input" type="text" name="import[]" id="import" value="{{ old('import', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="import" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="import[]" id="import" required><span class="checkmark"></span></td><td class="position-relative"><label for="import" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="import[]" id="import" required><span class="checkmark"></span></td></tr>'
         ); //table name
         config = {
             dateFormat: "Y-m-d"
@@ -565,7 +565,7 @@
     $("#ptt").click(function () { //button name
         ++i;
         $("#permit").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="permit" hidden></label><input class="form-control validate-input" type="text" name="permit[]" id="permit" value="{{ old('permit', 'N/A') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="permit" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="permit[]" id="" required><span class="checkmark"></span></td><td class="position-relative"><label for="permit" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="permit[]" id="" required><span class="checkmark"></span></td></tr>'
+            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="permit" hidden></label><input class="form-control validate-input" type="text" name="permit[]" id="permit" value="{{ old('permit', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="permit" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="permit[]" id="" required><span class="checkmark"></span></td><td class="position-relative"><label for="permit" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="permit[]" id="" required><span class="checkmark"></span></td></tr>'
         ); //table name
         config = {
             dateFormat: "Y-m-d"
@@ -589,7 +589,7 @@
     $("#sqi").click(function () { //button name
         ++i;
         $("#smallq").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="smallquan" hidden></label> <input class="form-control validate-input" type="text" name="smallquan[]" id="smallquan" value="{{ old('smallquan', 'N/A') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="smallquan" hidden></label> <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="smallquan[]" id="smallquan" required><span class="checkmark"></span></td><td class="position-relative"><label for="smallquan" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="smallquan[]" id="smallquan" required><span class="checkmark"></span></td></tr>'
+            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="smallquan" hidden></label> <input class="form-control validate-input" type="text" name="smallquan[]" id="smallquan" value="{{ old('smallquan', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="smallquan" hidden></label> <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="smallquan[]" id="smallquan" required><span class="checkmark"></span></td><td class="position-relative"><label for="smallquan" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="smallquan[]" id="smallquan" required><span class="checkmark"></span></td></tr>'
         ); //table name
 
         config = {
@@ -615,7 +615,7 @@
     $("#priochem").click(function () { //button name
         ++i;
         $("#prio").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="priority" hidden></label><input class="form-control validate-input" type="text" name="priority[]" id="priority" value="{{ old('priority', 'N/A') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="priority" hidden></label> <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="priority[]" id="priority" required><span class="checkmark"></span></td><td class="position-relative"><label for="priority" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="priority[]" id="priority" required><span class="checkmark"></span></td></tr>'
+            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="priority" hidden></label><input class="form-control validate-input" type="text" name="priority[]" id="priority" value="{{ old('priority', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="priority" hidden></label> <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="priority[]" id="priority" required><span class="checkmark"></span></td><td class="position-relative"><label for="priority" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="priority[]" id="priority" required><span class="checkmark"></span></td></tr>'
         ); //table name
         config = {
             dateFormat: "Y-m-d"
@@ -638,7 +638,7 @@
     $("#pccs").click(function () { //button name
         ++i;
         $("#piccs").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="piccs" hidden></label><input class="form-control validate-input" type="text" name="piccs[]" id="piccs" value="{{ old('piccs', 'N/A') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="piccs" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="piccs[]" id="piccs" required><span class="checkmark"></span></td><td class="position-relative"><label for="piccs" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="piccs[]" id="piccs" required><span class="checkmark"></span></td></tr>'
+            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="piccs" hidden></label><input class="form-control validate-input" type="text" name="piccs[]" id="piccs" value="{{ old('piccs', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="piccs" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="piccs[]" id="piccs" required><span class="checkmark"></span></td><td class="position-relative"><label for="piccs" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="piccs[]" id="piccs" required><span class="checkmark"></span></td></tr>'
         ); //table name
         config = {
             dateFormat: "Y-m-d"
@@ -661,7 +661,7 @@
     });
     $("#pin").click(function () { //button name
         $("#pmpin").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="pmpin" hidden></label><input class="form-control validate-input" type="text" name="pmpin[]" id="pmpin" value="{{ old('pmpin', 'N/A') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="pmpin" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pmpin[]" id="pmpin" required><span class="checkmark"></span></td><td class="position-relative"><label for="pmpin" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pmpin[]" id="pmpin" required><span class="checkmark"></span></td></tr>'
+            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="pmpin" hidden></label><input class="form-control validate-input" type="text" name="pmpin[]" id="pmpin" value="{{ old('pmpin', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="pmpin" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pmpin[]" id="pmpin" required><span class="checkmark"></span></td><td class="position-relative"><label for="pmpin" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pmpin[]" id="pmpin" required><span class="checkmark"></span></td></tr>'
         ); //table name
         config = {
             dateFormat: "Y-m-d"
@@ -685,7 +685,7 @@
     $("#ponum").click(function () { //button name
         ++i;
         $("#pono").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="pono" hidden></label><input class="form-control validate-input" type="text" name="pono[]" id="pono" value="{{ old('pono', 'N/A') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="pono" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pono[]" id="pono" required><span class="checkmark"></span></td><td class="position-relative"><label for="pono" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pono[]" id="pono" required><span class="checkmark"></span></td></tr>'
+            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="pono" hidden></label><input class="form-control validate-input" type="text" name="pono[]" id="pono" value="{{ old('pono', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="pono" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pono[]" id="pono" required><span class="checkmark"></span></td><td class="position-relative"><label for="pono" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pono[]" id="pono" required><span class="checkmark"></span></td></tr>'
         ); //table name
         config = {
             dateFormat: "Y-m-d"
@@ -730,10 +730,24 @@
     $("#haz").click(function () { //button name
         ++i;
         $("#hazzardous").append(
-            '<tr><td class="counterCell " style="text-align: right" ></td><td><select class="form-select" name="hwGeneration[]" style="width: fit-content" ><option selected disabled value="">-- Select --</option><option>A101</option><option>B201</option><option>B202</option><option>B203</option><option>B204</option><option>B205</option><option>B206</option><option>B207</option><option>B208</option><option>B299</option><option>C301</option><option>C302</option><option>C303</option><option>C304</option><option>C305</option><option>C399</option><option>D401</option><option>D402</option><option>D403</option><option>D404</option><option>D405</option><option>D406</option><option>D407</option><option>D408</option><option>D499</option><option>E501</option><option>E502</option><option>E503</option><option>E599</option><option>F601</option><option>F602</option><option>F603</option><option>F604</option><option>F699</option><option>G703</option><option>G704</option><option>H802</option><option>I101</option><option>I102</option><option>I103</option><option>I104</option><option>J201</option><option>K301</option><option>K302</option><option>K303</option><option>L401</option><option>L402</option><option>L403</option><option>L404</option><option>M501</option><option>M502</option><option>M503</option><option>M504</option><option>M505</option><option>M506</option><option>M507</option></select></td><td><input type="text" class="form-control" name="hwGeneration[]"></td><td><select class="form-select" name="hwGeneration[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>Solid</option><option>Liquid</option><option>Gas</option><option>Sludge</option></select></td><td><select class="form-select" name="hwGeneration[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>Toxic(T)</option><option>Corrosive(C)</option><option>Reactive(R)</option><option>Flammable(F)</option><option>T/C</option><option>T/R</option><option>T/F</option><option>C/R</option><option>C/F</option><option>R/F</option><option>T/C/R</option><option>T/C/F</option><option>T/R/F</option><option>C/R/F</option><option>T/C/R/F</option></select></td><td></td><td><input type="text" class="form-control" name="hwGeneration[]"></td><td><select class="form-select" name="hwGeneration[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>kg</option><option>liter</option><option>m3</option><option>n/a</option><option>pc</option><option>ton</option></select></td><td></td><td></td><td></td><td><input type="text" class="form-control" name="hwGeneration[]"></td>	<td><select class="form-select" name="hwGeneration[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>kg</option><option>liter</option><option>m3</option><option>n/a</option><option>pc</option><option>ton</option></select></td><td></td><td></td></tr>'
+            '<tr><td class="counterCell" style="text-align: right"></td><td><select class="form-select" name="hwGeneration[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>A101</option><option>B201</option><option>B202</option><option>B203</option><option>B204</option><option>B205</option><option>B206</option><option>B207</option><option>B208</option><option>B299</option><option>C301</option><option>C302</option><option>C303</option><option>C304</option><option>C305</option><option>C399</option><option>D401</option><option>D402</option><option>D403</option><option>D404</option><option>D405</option><option>D406</option><option>D407</option><option>D408</option><option>D499</option><option>E501</option><option>E502</option><option>E503</option><option>E599</option><option>F601</option><option>F602</option><option>F603</option><option>F604</option><option>F699</option><option>G703</option><option>G704</option><option>H802</option><option>I101</option><option>I102</option><option>I103</option><option>I104</option><option>J201</option><option>K301</option><option>K302</option><option>K303</option><option>L401</option><option>L402</option><option>L403</option><option>L404</option><option>M501</option><option>M502</option><option>M503</option><option>M504</option><option>M505</option><option>M506</option><option>M507</option></select></td><td><input type="text" class="form-control" name="hwGeneration[]"></td><td><select class="form-select" name="hwGeneration[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>Solid</option><option>Liquid</option><option>Gas</option><option>Sludge</option></select></td><td><select class="form-select" name="hwGeneration[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>Toxic(T)</option><option>Corrosive(C)</option><option>Reactive(R)</option><option>Flammable(F)</option><option>T/C</option><option>T/R</option><option>T/F</option><option>C/R</option><option>C/F</option><option>R/F</option><option>T/C/R</option><option>T/C/F</option><option>T/R/F</option><option>C/R/F</option><option>T/C/R/F</option></select></td><td></td><td><input type="number" class="form-control" name="hwGeneration[]" inputmode="numeric"></td><td><select class="form-select" name="hwGeneration[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>kg</option><option>liter</option><option>m3</option><option> </option><option>pc</option><option>ton</option></select></td><td></td><td></td><td></td><td><input type="number" class="form-control" name="hwGeneration[]" inputmode="numeric"></td><td><select class="form-select" name="hwGeneration[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>kg</option><option>liter</option><option>m3</option><option> </option><option>pc</option><option>ton</option></select></td><td></td><td></td></tr>'
         ); //table name
     });
 </script>
+
+<style>
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+    }
+</style>
+
+
 
 
 <!--  SCRIPT FOR WASTE STORAGE, TREATMENT AND DISPOSAL (PLEASE FILL-UP ONE TABLE PER HW -->
@@ -747,7 +761,121 @@
     // add a click event listener to the button
     wstd.click(function() {
         // create a new table element with jQuery
-        var newTable = $('<div class="container" id="wstad"><div class="card border-3 border-secondary mb-3" ><table class="table table-borderless p-3"><thead><tr><th>HW Details</th></tr></thead><tbody id="wstad"><tr><td></td><td>HW No.</td><td>HW Class</td></tr><tr><td></td><td><select class="form-select" name="hwDetails[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>A101</option><option>B201</option><option>B202</option><option>B203</option><option>B204</option><option>B205</option><option>B206</option><option>B207</option><option>B208</option><option>B299</option><option>C301</option><option>C302</option><option>C303</option><option>C304</option><option>C305</option><option>C399</option><option>D401</option><option>D402</option><option>D403</option><option>D404</option><option>D405</option><option>D406</option><option>D407</option><option>D408</option><option>D499</option><option>E501</option><option>E502</option><option>E503</option><option>E599</option><option>F601</option><option>F602</option><option>F603</option><option>F604</option><option>F699</option><option>G703</option><option>G704</option><option>H802</option><option>I101</option><option>I102</option><option>I103</option><option>I104</option><option>J201</option><option>K301</option><option>K302</option><option>K303</option><option>L401</option><option>L402</option><option>L403</option><option>L404</option><option>M501</option><option>M502</option><option>M503</option><option>M504</option><option>M505</option><option>M506</option><option>M507</option></select></td><td><input type="text" class="form-control" name="hwDetails[]"></td></tr><tr><td></td><td>Qty of HW Treated</td><td>Unit</td></tr><tr><td></td><td><input type="text" class="form-control" name="hwDetails[]"></td><td><select class="form-select" name="hwDetails[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>kg</option><option>liter</option><option>m3</option><option>pc</option><option>ton</option><option>n/a</option></select></td></tr><tr><td></td><td>TSD Locations</td></tr><tr><td></td><td><input type="text" class="form-control" name="hwDetails[]"></td></tr></tbody><thead><tr><th>Storage</th></tr></thead><tbody><tr><td></td><td>Name</td> </tr><tr><td></td><td><input type="text" class="form-control" name="storage[]"></td></tr><tr><td></td><td>Method</td></tr><tr><td></td><td><input type="text" class="form-control" name="storage[]"></td></tr></tbody><thead><tr><th>Transporter</th></tr></thead><tbody><tr><td></td><td>ID</td><td>Name</td></tr><tr><td></td><td><input type="text" class="form-control" name="transporter[]"></td><td><input type="text" class="form-control" name="transporter[]"></td></tr><tr><td></td><td>Method</td><td>Date</td></tr><tr><td></td><td><input type="text" class="form-control" name="transporter[]" ></td><td><input type="date" class="form-control" name="transporter[]" value="January 01, 2001"></td></tr></tbody><thead><tr><th>Treater</th></tr></thead><tbody><tr><td></td><td>ID</td><td>Name</td></tr><tr><td></td><td><input type="text" class="form-control" name="treater[]"></td><td><input type="text" class="form-control" name="treater[]"></td></tr><tr><td></td><td>Method</td><td>Date</td></tr><tr><td></td><td><input type="text" class="form-control" name="treater[]"></td><td><input type="date" class="form-control" name="treater[]" value="January 01, 2001"></td></tr></tbody><thead><tr><th>Disposal</th></tr></thead><tbody><tr><td></td><td>ID</td><td>Name</td></tr><tr><td></td><td><input type="text" class="form-control" name="disposal[]"></td><td><input type="text" class="form-control" name="disposal[]"></td></tr><tr><td></td><td>Method</td><td>Date</td></tr><tr><td></td><td><input type="text" class="form-control" name="disposal[]"></td><td><input type="date" class="form-control" name="disposal[]" value="January 01, 2001" ></td></tr></tbody></table></div></div>');
+        var newTable = $('<div class="container" id="wstad">' +
+            '<div class="card border-3 border-secondary mb-3">' +
+            '<table class="table table-borderless p-3">' +
+            '<thead><tr><th>HW Details</th></tr></thead>' +
+            '<tbody id="wstad">' +
+            '<tr><td></td><td>HW No.</td><td>HW Class</td></tr>' +
+            '<tr><td></td><td><select class="form-select" name="hwDetails[]" style="width: fit-content">' +
+            '<option selected disabled value="">-- Select --</option>' +
+            '<option>A101</option>' +
+            '<option>B201</option>' +
+            '<option>B202</option>' +
+            '<option>B203</option>' +
+            '<option>B204</option>' +
+            '<option>B205</option>' +
+            '<option>B206</option>' +
+            '<option>B207</option>' +
+            '<option>B208</option>' +
+            '<option>B299</option>' +
+            '<option>C301</option>' +
+            '<option>C302</option>' +
+            '<option>C303</option>' +
+            '<option>C304</option>' +
+            '<option>C305</option>' +
+            '<option>C399</option>' +
+            '<option>D401</option>' +
+            '<option>D402</option>' +
+            '<option>D403</option>' +
+            '<option>D404</option>' +
+            '<option>D405</option>' +
+            '<option>D406</option>' +
+            '<option>D407</option>' +
+            '<option>D408</option>' +
+            '<option>D499</option>' +
+            '<option>E501</option>' +
+            '<option>E502</option>' +
+            '<option>E503</option>' +
+            '<option>E599</option>' +
+            '<option>F601</option>' +
+            '<option>F602</option>' +
+            '<option>F603</option>' +
+            '<option>F604</option>' +
+            '<option>F699</option>' +
+            '<option>G703</option>' +
+            '<option>G704</option>' +
+            '<option>H802</option>' +
+            '<option>I101</option>' +
+            '<option>I102</option>' +
+            '<option>I103</option>' +
+            '<option>I104</option>' +
+            '<option>J201</option>' +
+            '<option>K301</option>' +
+            '<option>K302</option>' +
+            '<option>K303</option>' +
+            '<option>L401</option>' +
+            '<option>L402</option>' +
+            '<option>L403</option>' +
+            '<option>L404</option>' +
+            '<option>M501</option>' +
+            '<option>M502</option>' +
+            '<option>M503</option>' +
+            '<option>M504</option>' +
+            '<option>M505</option>' +
+            '<option>M506</option>' +
+            '<option>M507</option>' +
+            '</select></td>' +
+            '<td><input type="text" class="form-control" name="hwDetails[]"></td></tr>' +
+            '<tr><td></td><td>Qty of HW Treated</td><td>Unit</td></tr>' +
+            '<tr><td></td><td><input type="text" class="form-control" name="hwDetails[]"></td>' +
+            '<td><select class="form-select" name="hwDetails[]" style="width: fit-content">' +
+            '<option selected disabled value="">-- Select --</option>' +
+            '<option>kg</option>' +
+            '<option>liter</option>' +
+            '<option>m3</option>' +
+            '<option>pc</option>' +
+            '<option>ton</option>' +
+            '<option> </option>' +
+            '</select></td></tr>' +
+            '<tr><td></td><td>TSD Locations</td></tr>' +
+            '<tr><td></td><td><input type="text" class="form-control" name="hwDetails[]"></td></tr>' +
+            '</tbody>' +
+            '<thead><tr><th>Storage</th></tr></thead>' +
+            '<tbody>' +
+            '<tr><td></td><td>Name</td></tr>' +
+            '<tr><td></td><td><input type="text" class="form-control" name="storage[]"></td></tr>' +
+            '<tr><td></td><td>Method</td></tr>' +
+            '<tr><td></td><td><input type="text" class="form-control" name="storage[]"></td></tr>' +
+            '</tbody>' +
+            '<thead><tr><th>Transporter</th></tr></thead>' +
+            '<tbody>' +
+            '<tr><td></td><td>ID</td><td>Name</td></tr>' +
+            '<tr><td></td><td><input type="text" class="form-control" name="transporter[]"></td>' +
+            '<td><input type="text" class="form-control" name="transporter[]"></td></tr>' +
+            '<tr><td></td><td>Method</td><td>Date</td></tr>' +
+            '<tr><td></td><td><input type="text" class="form-control" name="transporter[]"></td>' +
+            '<td><input type="date" class="form-control" name="transporter[]" value="January 01, 2001"></td></tr>' +
+            '</tbody>' +
+            '<thead><tr><th>Treater</th></tr></thead>' +
+            '<tbody>' +
+            '<tr><td></td><td>ID</td><td>Name</td></tr>' +
+            '<tr><td></td><td><input type="text" class="form-control" name="treater[]"></td>' +
+            '<td><input type="text" class="form-control" name="treater[]"></td></tr>' +
+            '<tr><td></td><td>Method</td><td>Date</td></tr>' +
+            '<tr><td></td><td><input type="text" class="form-control" name="treater[]"></td>' +
+            '<td><input type="date" class="form-control" name="treater[]" value="January 01, 2001"></td></tr>' +
+            '</tbody>' +
+            '<thead><tr><th>Disposal</th></tr></thead>' +
+            '<tbody>' +
+            '<tr><td></td><td>ID</td><td>Name</td></tr>' +
+            '<tr><td></td><td><input type="text" class="form-control" name="disposal[]"></td>' +
+            '<td><input type="text" class="form-control" name="disposal[]"></td></tr>' +
+            '<tr><td></td><td>Method</td><td>Date</td></tr>' +
+            '<tr><td></td><td><input type="text" class="form-control" name="disposal[]"></td>' +
+            '<td><input type="date" class="form-control" name="disposal[]" value="January 01, 2001"></td></tr>' +
+            '</tbody>' +
+            '</table></div></div>');
 
         // append the new table to the container
         newTable.appendTo(newtable);
@@ -757,6 +885,7 @@
         flatpickr("input[type=date]", config);
     });
 </script>
+
 {{--
 <script type="text/javascript">
 
@@ -764,7 +893,7 @@
     $("#wstd").click(function () { //button name
         ++i;
         $("#wstad").append(
-            '<div class="container" id="wstad"><div class="card border-3 border-secondary mb-3" ><table class="table table-borderless p-3"><thead><tr><th>HW Details</th></tr></thead><tbody><tr><td></td><td>HW No.</td><td>HW Class</td></tr><tr><td class="counterCell " style="text-align: right" ></td><td><select class="form-select" name="hwDetails[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>A101</option><option>B201</option><option>B202</option><option>B203</option><option>B204</option><option>B205</option><option>B206</option><option>B207</option><option>B208</option><option>B299</option><option>C301</option><option>C302</option><option>C303</option><option>C304</option><option>C305</option><option>C399</option><option>D401</option><option>D402</option><option>D403</option><option>D404</option><option>D405</option><option>D406</option><option>D407</option><option>D408</option><option>D499</option><option>E501</option><option>E502</option><option>E503</option><option>E599</option><option>F601</option><option>F602</option><option>F603</option><option>F604</option><option>F699</option><option>G703</option><option>G704</option><option>H802</option><option>I101</option><option>I102</option><option>I103</option><option>I104</option><option>J201</option><option>K301</option><option>K302</option><option>K303</option><option>L401</option><option>L402</option><option>L403</option><option>L404</option><option>M501</option><option>M502</option><option>M503</option><option>M504</option><option>M505</option><option>M506</option><option>M507</option></select></td><td><input type="text" class="form-control" name="hwDetails[]"></td></tr><tr><td></td><td>Qty of HW Treated</td><td>Unit</td></tr><tr><td></td><td><input type="text" class="form-control" name="hwDetails[]"></td><td><select class="form-select" name="hwDetails[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>kg</option><option>liter</option><option>m3</option><option>pc</option><option>ton</option><option>n/a</option></select></td></tr><tr><td></td><td>TSD Locations</td></tr><tr><td></td><td><input type="text" class="form-control" name="hwDetails[]"></td></tr></tbody><thead><tr><th>Storage</th></tr></thead><tbody><tr><td></td><td>Name</td> </tr><tr><td></td><td><input type="text" class="form-control" name="storage[]"></td></tr><tr><td></td><td>Method</td></tr><tr><td></td><td><input type="text" class="form-control" name="storage[]"></td></tr></tbody><thead><tr><th>Transporter</th></tr></thead><tbody><tr><td></td><td>ID</td><td>Name</td></tr><tr><td></td><td><input type="text" class="form-control" name="transporter[]"></td><td><input type="text" class="form-control" name="transporter[]"></td></tr><tr><td></td><td>Method</td><td>Date</td></tr><tr><td></td><td><input type="text" class="form-control" name="transporter[]" ></td><td><input type="date" class="form-control" name="transporter[]" value="January 01, 2001"></td></tr></tbody><thead><tr><th>Treater</th></tr></thead><tbody><tr><td></td><td>ID</td><td>Name</td></tr><tr><td></td><td><input type="text" class="form-control" name="treater[]"></td><td><input type="text" class="form-control" name="treater[]"></td></tr><tr><td></td><td>Method</td><td>Date</td></tr><tr><td></td><td><input type="text" class="form-control" name="treater[]"></td><td><input type="date" class="form-control" name="treater[]" value="January 01, 2001"></td></tr></tbody><thead><tr><th>Disposal</th></tr></thead><tbody><tr><td></td><td>ID</td><td>Name</td> </tr><tr><td></td><td><input type="text" class="form-control" name="disposal[]"></td><td><input type="text" class="form-control" name="disposal[]"></td></tr><tr><td></td><td>Method</td><td>Date</td></tr><tr><td></td><td><input type="text" class="form-control" name="disposal[]"></td><td><input type="date" class="form-control" name="disposal[]" value="January 01, 2001" ></td></tr></tbody></table></div></div>'
+            '<div class="container" id="wstad"><div class="card border-3 border-secondary mb-3" ><table class="table table-borderless p-3"><thead><tr><th>HW Details</th></tr></thead><tbody><tr><td></td><td>HW No.</td><td>HW Class</td></tr><tr><td class="counterCell " style="text-align: right" ></td><td><select class="form-select" name="hwDetails[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>A101</option><option>B201</option><option>B202</option><option>B203</option><option>B204</option><option>B205</option><option>B206</option><option>B207</option><option>B208</option><option>B299</option><option>C301</option><option>C302</option><option>C303</option><option>C304</option><option>C305</option><option>C399</option><option>D401</option><option>D402</option><option>D403</option><option>D404</option><option>D405</option><option>D406</option><option>D407</option><option>D408</option><option>D499</option><option>E501</option><option>E502</option><option>E503</option><option>E599</option><option>F601</option><option>F602</option><option>F603</option><option>F604</option><option>F699</option><option>G703</option><option>G704</option><option>H802</option><option>I101</option><option>I102</option><option>I103</option><option>I104</option><option>J201</option><option>K301</option><option>K302</option><option>K303</option><option>L401</option><option>L402</option><option>L403</option><option>L404</option><option>M501</option><option>M502</option><option>M503</option><option>M504</option><option>M505</option><option>M506</option><option>M507</option></select></td><td><input type="text" class="form-control" name="hwDetails[]"></td></tr><tr><td></td><td>Qty of HW Treated</td><td>Unit</td></tr><tr><td></td><td><input type="text" class="form-control" name="hwDetails[]"></td><td><select class="form-select" name="hwDetails[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>kg</option><option>liter</option><option>m3</option><option>pc</option><option>ton</option><option> </option></select></td></tr><tr><td></td><td>TSD Locations</td></tr><tr><td></td><td><input type="text" class="form-control" name="hwDetails[]"></td></tr></tbody><thead><tr><th>Storage</th></tr></thead><tbody><tr><td></td><td>Name</td> </tr><tr><td></td><td><input type="text" class="form-control" name="storage[]"></td></tr><tr><td></td><td>Method</td></tr><tr><td></td><td><input type="text" class="form-control" name="storage[]"></td></tr></tbody><thead><tr><th>Transporter</th></tr></thead><tbody><tr><td></td><td>ID</td><td>Name</td></tr><tr><td></td><td><input type="text" class="form-control" name="transporter[]"></td><td><input type="text" class="form-control" name="transporter[]"></td></tr><tr><td></td><td>Method</td><td>Date</td></tr><tr><td></td><td><input type="text" class="form-control" name="transporter[]" ></td><td><input type="date" class="form-control" name="transporter[]" value="January 01, 2001"></td></tr></tbody><thead><tr><th>Treater</th></tr></thead><tbody><tr><td></td><td>ID</td><td>Name</td></tr><tr><td></td><td><input type="text" class="form-control" name="treater[]"></td><td><input type="text" class="form-control" name="treater[]"></td></tr><tr><td></td><td>Method</td><td>Date</td></tr><tr><td></td><td><input type="text" class="form-control" name="treater[]"></td><td><input type="date" class="form-control" name="treater[]" value="January 01, 2001"></td></tr></tbody><thead><tr><th>Disposal</th></tr></thead><tbody><tr><td></td><td>ID</td><td>Name</td> </tr><tr><td></td><td><input type="text" class="form-control" name="disposal[]"></td><td><input type="text" class="form-control" name="disposal[]"></td></tr><tr><td></td><td>Method</td><td>Date</td></tr><tr><td></td><td><input type="text" class="form-control" name="disposal[]"></td><td><input type="date" class="form-control" name="disposal[]" value="January 01, 2001" ></td></tr></tbody></table></div></div>'
         ); //table name
         config = {
             dateFormat: "F d, Y"
@@ -804,7 +933,7 @@
     $("#wdladd").click(function () { //button name
         ++i;
         $("#wdl").append(
-            '<tr><td ><input class="form-control" type="text" name="dischargeLocation[]" ></td><td><input class="form-control" type="text"  id="lo" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', 'N/A') }}"></td><td><input class="form-control" type="text"  id="nrwb" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', 'N/A') }}"></td><td></td></tr>'
+            '<tr><td ><input class="form-control" type="text" name="dischargeLocation[]" ></td><td><input class="form-control" type="text"  id="lo" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', ' ') }}"></td><td><input class="form-control" type="text"  id="nrwb" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', ' ') }}"></td><td></td></tr>'
         ); //table name
     });
 </script>
@@ -814,7 +943,7 @@
     $("#wdladd").click(function () { //button name
         ++i;
         $("#wdl").append(
-            '<tr><td class="counterCell " style="text-align: left"></td><td><input class="form-control" type="text"  id="lo" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', 'N/A') }}"></td><td><input class="form-control" type="text"  id="nrwb" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', 'N/A') }}"></td></tr>'
+            '<tr><td class="counterCell " style="text-align: left"></td><td><input class="form-control" type="text"  id="lo" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', ' ') }}"></td><td><input class="form-control" type="text"  id="nrwb" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', ' ') }}"></td></tr>'
         ); //table name
     });
 </script>
@@ -831,7 +960,7 @@
     $("#drwcccadd").click(function () { //button name
         ++i;
         $("#drwccc").append(
-            '<tr><td><input class="form-control" type="text" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td><td><input class="form-control m-auto" type="date"  id="wcdate" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', '2001-01-01') }}"></td><td><input class="form-control" type="text"  id="nfr" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td><td><input class="form-control" type="text"  id="bod" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td><td><input class="form-control" type="text"  id="tss" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td><td><input class="form-control" type="text"  id="clr" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td><td><input class="form-control" type="text"  id="phl" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td><td><input class="form-control" type="text"  id="oag" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td><td><input class="form-control" type="text"  id="tempr" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td><td><input class="form-control" type="text" id="add_p" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td></tr>'
+            '<tr><td><input class="form-control" type="text" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', ' ') }}"></td><td><input class="form-control m-auto" type="date"  id="wcdate" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', '2001-01-01') }}"></td><td><input class="form-control" type="text"  id="nfr" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', ' ') }}"></td><td><input class="form-control" type="text"  id="bod" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', ' ') }}"></td><td><input class="form-control" type="text"  id="tss" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', ' ') }}"></td><td><input class="form-control" type="text"  id="clr" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', ' ') }}"></td><td><input class="form-control" type="text"  id="phl" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', ' ') }}"></td><td><input class="form-control" type="text"  id="oag" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', ' ') }}"></td><td><input class="form-control" type="text"  id="tempr" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', ' ') }}"></td><td><input class="form-control" type="text" id="add_p" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', ' ') }}"></td></tr>'
         ); //table name
         config = {
             dateFormat: "Y-m-d"
@@ -850,7 +979,7 @@
     $("#dwrcopadd").click(function () { //button name
         ++i;
         $("#dwrcop").append(
-            ' <tr><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="date"   name="drowcfop1[]" value="{{ old('drowcfop1[]', '2001-01-01') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td></tr>'
+            ' <tr><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td><td><input class="form-control" type="date"   name="drowcfop1[]" value="{{ old('drowcfop1[]', '2001-01-01') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td></tr>'
         ); //table name
         config = {
             dateFormat: "Y-m-d"
@@ -863,7 +992,7 @@
     $("#dwrcopadd").click(function () { //button name
         ++i;
         $("#dwrcop").append(
-            ' <tr><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="date"   name="drowcfop1[]" value="{{ old('drowcfop1[]', '2001-01-01') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td></tr>'
+            ' <tr><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td><td><input class="form-control" type="date"   name="drowcfop1[]" value="{{ old('drowcfop1[]', '2001-01-01') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td><td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td></tr>'
         ); //table name
         config = {
             dateFormat: "Y-m-d"
@@ -894,7 +1023,7 @@
     $("#sum2").click(function () { //button name
         ++i;
         $("#summaryy2").append
-        ('<tr><td class="counterCell " style="text-align: right" ></td><td ><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><select class="form-select" name="summary2[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>kg</option><option>liter</option><option>m3</option><option>n/a</option><option>pc</option><option>ton</option></select></td><td></td><td></td><td><input type="text" class="form-control" name="summary2[]"></td></tr>'); //table name
+        ('<tr><td class="counterCell " style="text-align: right" ></td><td ><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><select class="form-select" name="summary2[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>kg</option><option>liter</option><option>m3</option><option> </option><option>pc</option><option>ton</option></select></td><td></td><td></td><td><input type="text" class="form-control" name="summary2[]"></td></tr>'); //table name
     });
 </script>
 
@@ -956,7 +1085,7 @@
     $("#AAQMonitoring").click(function () { //button name
         ++i;
         $("#AAQM").append(
-            '<tr><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td><td><input class="form-control" type="date" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', '2001-01-01') }}"></td><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td></tr>'
+            '<tr><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', ' ') }}"></td><td><input class="form-control" type="date" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', '2001-01-01') }}"></td><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', ' ') }}"></td><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', ' ') }}"></td><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', ' ') }}"></td><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', ' ') }}"></td><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', ' ') }}"></td><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', ' ') }}"></td><td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', ' ') }}"></td></tr>'
         ); //table name
     });
 </script>
@@ -967,7 +1096,7 @@
     $("#AWQMonitoring").click(function () { //button name
         ++i;
         $("#AWQM").append(
-            '<tr><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td><td><input class="form-control" type="date" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', '2001-01-01') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td></tr>'
+            '<tr><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', ' ') }}"></td><td><input class="form-control" type="date" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', '2001-01-01') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', ' ') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', ' ') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', ' ') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', ' ') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', ' ') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', ' ') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', ' ') }}"></td><td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', ' ') }}"></td></tr>'
         ); //table name
     });
 </script>

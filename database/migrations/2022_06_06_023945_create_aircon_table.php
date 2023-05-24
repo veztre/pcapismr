@@ -17,9 +17,9 @@ return new class extends Migration
         Schema::create('aircon', function (Blueprint $table) {
             $table->id();
             $table->integer('userid');
-            $table->string('permit');
-            $table->date('dateIssued');
-            $table->date('dateExpired');
+            $table->string('permit')->nullable();
+            $table->date('dateIssued')->nullable();
+            $table->date('dateExpired')->nullable();
             $table->timestamps();
         });
     }

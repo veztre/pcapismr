@@ -19,13 +19,13 @@ return new class extends Migration
 
             $table->id();
             $table->string('userid');
-            $table->string('FBE_No');
-            $table->date('Date');
-            $table->string('Flow_Rate_Ncm_day');
-            $table->string('CO_mg_Ncm');
-            $table->string('NOx_mg_Ncm');
-            $table->string('Particulates_mg_Ncm');
-            $table->string('SOx_mg_Ncm');
+            $table->string('FBE_No')->nullable();
+            $table->date('Date')->nullable();
+            $table->string('Flow_Rate_Ncm_day')->nullable();
+            $table->string('CO_mg_Ncm')->nullable();
+            $table->string('NOx_mg_Ncm')->nullable();
+            $table->string('Particulates_mg_Ncm')->nullable();
+            $table->string('SOx_mg_Ncm')->nullable();
 
 
 

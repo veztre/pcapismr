@@ -103,7 +103,7 @@
                                 <!-- Message input -->
                                 <div class="col">
                                     <p class="text-primary my-0">Note.</p>
-                                    <p class="text-primary my-0">1. Put "N/A" for field not applicable to you.</p>
+                                    <p class="text-primary my-0">1. Put " " for field not applicable to you.</p>
                                     <p class="text-primary my-0">2. You Can now Export data on Each module by clicking "EXPORT" Link
                                         Below.</p>
                                 </div>
@@ -179,7 +179,7 @@
                                         <td>A/C</td>
                                         <td class="position-relative">
                                             <label for="ACPermit" hidden></label>
-                                            <input class="form-control validate-input" type="text" name="ACPermit" id="ACPermit" value="{{ old('ACPermit', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="ACPermit" id="ACPermit" value="{{ old('ACPermit', ' ') }}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
@@ -209,7 +209,7 @@
                                         <td>DP No.</td>
                                         <td class="position-relative">
                                             <label for="dpno" hidden></label>
-                                            <input class="form-control validate-input" type="text" name="dpno[]" id="dpno" value="{{ old('dpno', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="dpno[]" id="dpno" value="{{ old('dpno', ' ') }}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
@@ -245,7 +245,7 @@
                                         <td>ECC/CNC No.</td>
                                         <td class="position-relative">
                                             <label for="cncno" hidden></label>
-                                            <input class="form-control validate-input" type="text" name="cncno[]" id="cncno" value="{{ old('cncno', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="cncno[]" id="cncno" value="{{ old('cncno', ' ') }}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
@@ -280,7 +280,7 @@
                                         <td>DENR Registry ID</td>
                                         <td class="position-relative">
                                             <label for="DENRpermit" hidden></label>
-                                            <input class="form-control validate-input" type="text" name="DENRpermit" id="DENRpermit" value="{{ old('DENRpermit', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="DENRpermit" id="DENRpermit" value="{{ old('DENRpermit', ' ') }}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
@@ -308,7 +308,7 @@
                                         <td class="position-relative">
                                             <label for="Transportpermit" hidden></label>
                                             <input class="form-control validate-input" type="text" name="Transportpermit" id="Transportpermit"
-                                                   value="{{ old('Transportpermit', 'N/A') }}" required>
+                                                   value="{{ old('Transportpermit', ' ') }}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
@@ -334,7 +334,7 @@
                                         <td>TSD Registration</td>
                                         <td class="position-relative">
                                             <label for="TSDpermit" hidden></label>
-                                            <input class="form-control validate-input" type="text" name="TSDpermit" id="TSDpermit" value="{{ old('TSDpermit', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="TSDpermit" id="TSDpermit" value="{{ old('TSDpermit', ' ') }}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
@@ -360,7 +360,7 @@
                                         <td>CCO Registration</td>
                                         <td class="position-relative">
                                             <label for="ccoreg" hidden></label>
-                                            <input class="form-control validate-input" type="text" name="ccoreg[]" id="ccoreg" value="{{ old('ccoreg', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="ccoreg[]" id="ccoreg" value="{{ old('ccoreg', ' ') }}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
@@ -394,7 +394,7 @@
                                         <td>Importation Clearance No.</td>
                                         <td class="position-relative">
                                             <label for="import" hidden></label>
-                                            <input class="form-control validate-input" type="text" name="import[]" id="import" value="{{ old('import', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="import[]" id="import" value="{{ old('import', ' ') }}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
@@ -429,7 +429,7 @@
                                         <td>Permit to Transport</td>
                                         <td class="position-relative">
                                             <label for="permit" hidden></label>
-                                            <input class="form-control validate-input" type="text" name="permit[]" id="permit" value="{{ old('permit', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="permit[]" id="permit" value="{{ old('permit', ' ') }}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
@@ -464,7 +464,7 @@
                                         <td> Small Quantity Importation</td>
                                         <td class="position-relative">
                                             <label for="smallquan" hidden></label>
-                                            <input class="form-control validate-input" type="text" name="smallquan[]" id="smallquan" value="{{ old('smallquan', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="smallquan[]" id="smallquan" value="{{ old('smallquan', ' ') }}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
@@ -498,7 +498,7 @@
                                         <td>Priority Chemical List</td>
                                         <td class="position-relative">
                                             <label for="priority" hidden></label>
-                                            <input class="form-control validate-input" type="text" name="priority[]" id="priority" value="{{ old('priority', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="priority[]" id="priority" value="{{ old('priority', ' ') }}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
@@ -533,7 +533,7 @@
                                         <td>PICCS</td>
                                         <td class="position-relative">
                                             <label for="piccs" hidden></label>
-                                            <input class="form-control validate-input" type="text" name="piccs[]" id="piccs" value="{{ old('piccs', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="piccs[]" id="piccs" value="{{ old('piccs', ' ') }}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
@@ -567,7 +567,7 @@
                                         <td>PMPIN</td>
                                         <td class="position-relative">
                                             <label for="pmpin" hidden></label>
-                                            <input class="form-control validate-input" type="text" name="pmpin[]" id="pmpin" value="{{ old('pmpin', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="pmpin[]" id="pmpin" value="{{ old('pmpin', ' ') }}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
@@ -602,7 +602,7 @@
                                         <td>A/C No.</td>
                                         <td class="position-relative">
                                             <label for="ACNOPermit" hidden></label>
-                                            <input class="form-control validate-input" type="text" name="ACNOPermit" id="ACNOPermit" value="{{ old('ACNOPermit', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="ACNOPermit" id="ACNOPermit" value="{{ old('ACNOPermit', ' ') }}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
@@ -629,7 +629,7 @@
                                         <td>PO No.</td>
                                         <td class="position-relative">
                                             <label for="pono" hidden></label>
-                                            <input class="form-control validate-input" type="text" name="pono[]" id="pono" value="{{ old('pono', 'N/A') }}" required>
+                                            <input class="form-control validate-input" type="text" name="pono[]" id="pono" value="{{ old('pono', ' ') }}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">

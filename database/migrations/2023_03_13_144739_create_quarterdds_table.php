@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('quarterdds', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->string('quarter');
+            $table->string('quarter')->nullable();
             $table->timestamps();
         });
     }

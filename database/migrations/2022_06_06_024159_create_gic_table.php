@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('gic', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

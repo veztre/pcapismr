@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('oattachment', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->date('doneThis');
-            $table->string('In');
-            $table->string('name_signature_of_PCO');
-            $table->string('Name_Signature_of_CEO_Managing_Head');
-            $table->string('SUBSCRIBED_AND_SWORN');
-            $table->date('dayOf');
+            $table->date('doneThis')->nullable();
+            $table->string('In')->nullable();
+            $table->string('name_signature_of_PCO')->nullable();
+            $table->string('Name_Signature_of_CEO_Managing_Head')->nullable();
+            $table->string('SUBSCRIBED_AND_SWORN')->nullable();
+            $table->date('dayOf')->nullable();
 
 
             $table->timestamps();

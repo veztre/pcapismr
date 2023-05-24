@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('utilitycost', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->string('Month_1');
-            $table->string('Month_2');
-            $table->string('Month_3');
+            $table->string('Month_1')->nullable();
+            $table->string('Month_2')->nullable();
+            $table->string('Month_3')->nullable();
             $table->timestamps();
         });
     }

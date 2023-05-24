@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('plants', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->string('plantname');
+            $table->string('plantname')->nullable();
             $table->timestamps();
         });
     }

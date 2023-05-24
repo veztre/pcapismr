@@ -16,22 +16,22 @@ return new class extends Migration
         Schema::create('awqmonitoring', function (Blueprint $table) {
             $table->id();
             $table->integer('userid');
-            $table->string('name1');
-            $table->string('name2');
-            $table->string('name3');
-            $table->string('name4');
-            $table->string('name5');
-            $table->string('name6');
-            $table->string('name7');
-            $table->string('name8');
-            $table->string('unit1');
-            $table->string('unit2');
-            $table->string('unit3');
-            $table->string('unit4');
-            $table->string('unit5');
-            $table->string('unit6');
-            $table->string('unit7');
-            $table->string('unit8');
+            $table->string('name1')->nullable();
+            $table->string('name2')->nullable();
+            $table->string('name3')->nullable();
+            $table->string('name4')->nullable();
+            $table->string('name5')->nullable();
+            $table->string('name6')->nullable();
+            $table->string('name7')->nullable();
+            $table->string('name8')->nullable();
+            $table->string('unit1')->nullable();
+            $table->string('unit2')->nullable();
+            $table->string('unit3')->nullable();
+            $table->string('unit4')->nullable();
+            $table->string('unit5')->nullable();
+            $table->string('unit6')->nullable();
+            $table->string('unit7')->nullable();
+            $table->string('unit8')->nullable();
             $table->timestamps();
         });
         Schema::create('awqmonitoring1', function (Blueprint $table) {

@@ -44,7 +44,7 @@
                             <!-- Message input -->
                             <div class="col">
                                 <p class="text-primary my-0">Note.</p>
-                                <p class="text-primary my-0">1. Put "N/A" for field not applicable to you.</p>
+                                <p class="text-primary my-0">1. Put " " for field not applicable to you.</p>
                                 <p class="text-primary my-0">2. You Can now Export data on Each module by clicking "EXPORT" Link Below.
                                 </p>
                             </div>
@@ -96,15 +96,15 @@
                                         </tr>
 
                                         <tr>
-                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', ' ') }}"></td>
                                             <td><input class="form-control" type="date" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', '2001-01-01') }}"></td>
-                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="aaqmonitoring[]" value="{{ old('aaqmonitoring[]', ' ') }}"></td>
 
                                         </tr>
 
@@ -166,14 +166,14 @@
                                         <tr>
                                             <td></td>
                                             <td></td>
-                                            <td><input class="form-control" type="text" name="name1" value="{{ old('name1', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="name2" value="{{ old('name2', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="name3" value="{{ old('name3', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="name4" value="{{ old('name4', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="name5" value="{{ old('name5', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="name6" value="{{ old('name6', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="name7" value="{{ old('name7', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="name8" value="{{ old('name8', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="name1" value="{{ old('name1', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="name2" value="{{ old('name2', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="name3" value="{{ old('name3', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="name4" value="{{ old('name4', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="name5" value="{{ old('name5', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="name6" value="{{ old('name6', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="name7" value="{{ old('name7', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="name8" value="{{ old('name8', ' ') }}"></td>
                                         </tr>
 
                                         <tr>
@@ -192,14 +192,14 @@
                                         <tr>
                                             <td></td>
                                             <td></td>
-                                            <td><input class="form-control" type="text" name="unit1" value="{{ old('unit1', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="unit2" value="{{ old('unit2', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="unit3" value="{{ old('unit3', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="unit4" value="{{ old('unit4', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="unit5" value="{{ old('unit5', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="unit6" value="{{ old('unit6', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="unit7" value="{{ old('unit7', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="unit8" value="{{ old('unit8', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="unit1" value="{{ old('unit1', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="unit2" value="{{ old('unit2', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="unit3" value="{{ old('unit3', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="unit4" value="{{ old('unit4', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="unit5" value="{{ old('unit5', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="unit6" value="{{ old('unit6', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="unit7" value="{{ old('unit7', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="unit8" value="{{ old('unit8', ' ') }}"></td>
                                         </tr>
 
                                         <tr>
@@ -216,16 +216,16 @@
                                         </tr>
 
                                         <tr>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', ' ') }}"></td>
                                             <td><input class="form-control" type="date" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', '2001-01-01') }}"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="awqmonitoring1[]" value="{{ old('awqmonitoring1[]', ' ') }}"></td>
 
                                         </tr>
 
@@ -288,37 +288,37 @@
 
                                         <tr>
                                             <td>Average Quantity Generated (tons/ month)</td>
-                                            <td><input class="form-control" type="text" name="AQG1" value="{{ old('AQG1', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="AQG2" value="{{ old('AQG2', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="AQG3" value="{{ old('AQG3', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="AQG1" value="{{ old('AQG1', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="AQG2" value="{{ old('AQG2', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="AQG3" value="{{ old('AQG3', ' ') }}"></td>
                                         </tr>
 
                                         <tr>
                                             <td>Total Quantity Generated (tons/ quarter)</td>
-                                            <td><input class="form-control" type="text" name="TQG1" value="{{ old('TQG1', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="TQG2" value="{{ old('TQG2', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="TQG3" value="{{ old('TQG3', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="TQG1" value="{{ old('TQG1', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="TQG2" value="{{ old('TQG2', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="TQG3" value="{{ old('TQG3', ' ') }}"></td>
                                         </tr>
 
                                         <tr>
                                             <td>Average Quantity Collected (tons/ month)</td>
-                                            <td><input class="form-control" type="text" name="AQC1" value="{{ old('AQC1', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="AQC2" value="{{ old('AQC2', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="AQC3" value="{{ old('AQC3', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="AQC1" value="{{ old('AQC1', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="AQC2" value="{{ old('AQC2', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="AQC3" value="{{ old('AQC3', ' ') }}"></td>
                                         </tr>
 
                                         <tr>
                                             <td>Total Quantity Collected (tons/quarter)</td>
-                                            <td><input class="form-control" type="text" name="TQC1" value="{{ old('TQC1', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="TQC2" value="{{ old('TQC2', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="TQC3" value="{{ old('TQC3', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="TQC1" value="{{ old('TQC1', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="TQC2" value="{{ old('TQC2', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="TQC3" value="{{ old('TQC3', ' ') }}"></td>
                                         </tr>
 
                                         <tr>
                                             <td>Entity in charge of collection</td>
-                                            <td><input class="form-control" type="text" name="EICC1" value="{{ old('EICC1', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="EICC2" value="{{ old('EICC2', 'N/A') }}"></td>
-                                            <td><input class="form-control" type="text" name="EICC3" value="{{ old('EICC3', 'N/A') }}"></td>
+                                            <td><input class="form-control" type="text" name="EICC1" value="{{ old('EICC1', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="EICC2" value="{{ old('EICC2', ' ') }}"></td>
+                                            <td><input class="form-control" type="text" name="EICC3" value="{{ old('EICC3', ' ') }}"></td>
                                         </tr>
 
                                         </tbody>

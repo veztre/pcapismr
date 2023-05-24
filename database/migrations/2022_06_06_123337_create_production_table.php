@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('production', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->integer('aveProduction');
-            $table->string('totalOutput');
-            $table->string('totalConsumption');
-            $table->string('totalElectric');
+            $table->integer('aveProduction')->nullable();
+            $table->string('totalOutput')->nullable();
+            $table->string('totalConsumption')->nullable();
+            $table->string('totalElectric')->nullable();
 
             $table->timestamps();
         });

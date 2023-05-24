@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('summary2', function (Blueprint $table) {
             $table->id();
             $table->integer('userid');
-            $table->string('Fuel_Burning_Equipment');
-            $table->string('Rated_Capacity');
-            $table->string('Location');
-            $table->string('Fuel_Used');
-            $table->string('Quantity_Consumed_for_the_quarter');
-            $table->string('Unit_Consumed_for_the_quarter');
-            $table->string('no_of_hours_of_operation_for_the_quarter');
+            $table->string('Fuel_Burning_Equipment')->nullable();
+            $table->string('Rated_Capacity')->nullable();
+            $table->string('Location')->nullable();
+            $table->string('Fuel_Used')->nullable();
+            $table->string('Quantity_Consumed_for_the_quarter')->nullable();
+            $table->string('Unit_Consumed_for_the_quarter')->nullable();
+            $table->string('no_of_hours_of_operation_for_the_quarter')->nullable();
             $table->timestamps();
         });
     }

@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('storage', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->string('name');
-            $table->string('method');
+            $table->string('name')->nullable();
+            $table->string('method')->nullable();
             $table->timestamps();
         });
     }

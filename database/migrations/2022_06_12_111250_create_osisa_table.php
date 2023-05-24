@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('osisa', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->date('DateConducted');
-            $table->string('PremisesAreaInspected');
-            $table->string('FindingsAndObservations');
-            $table->string('CorrectiveActionsTaken');
+            $table->date('DateConducted')->nullable();
+            $table->string('PremisesAreaInspected')->nullable();
+            $table->string('FindingsAndObservations')->nullable();
+            $table->string('CorrectiveActionsTaken')->nullable();
             $table->timestamps();
         });
     }

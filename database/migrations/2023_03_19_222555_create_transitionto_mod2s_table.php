@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('transitionto_mod2s', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->string('eidm');
-            $table->string('ehwt');
+            $table->string('eidm')->nullable();
+            $table->string('ehwt')->nullable();
             $table->timestamps();
         });
     }

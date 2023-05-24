@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('operation', function (Blueprint $table) {
             $table->id();
             $table->integer('userid');
-            $table->string('aveOPhours');
-            $table->string('aveOPdays');
-            $table->string('aveOPshift');
-            $table->string('maxOPhours');
-            $table->string('maxOPdays');
-            $table->string('maxOPshift');
+            $table->string('aveOPhours')->nullable();
+            $table->string('aveOPdays')->nullable();
+            $table->string('aveOPshift')->nullable();
+            $table->string('maxOPhours')->nullable();
+            $table->string('maxOPdays')->nullable();
+            $table->string('maxOPshift')->nullable();
 
             $table->timestamps();
         });

@@ -70,7 +70,7 @@
                             <!-- Message input -->
                             <div class="col">
                                 <p class="text-primary my-0">Note.</p>
-                                <p class="text-primary my-0">1. Put "N/A" for field not applicable to you.</p>
+                                <p class="text-primary my-0">1. Put " " for field not applicable to you.</p>
                                 <p class="text-primary my-0">2. You Can now Export data on Each module by clicking "EXPORT" Link Below.</p>
                             </div>
 

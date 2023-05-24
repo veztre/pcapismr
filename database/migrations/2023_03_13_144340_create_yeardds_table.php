@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('yeardds', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->string('year');
+            $table->string('year')->nullable();
             $table->timestamps();
         });
     }

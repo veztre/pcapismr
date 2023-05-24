@@ -16,16 +16,16 @@ return new class extends Migration
         Schema::create('dreportofwaste', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->string('Outlet_No');
-            $table->date('date');
-            $table->string('Effluent_Flow_Rate');
-            $table->string('BOD_mg_L');
-            $table->string('TSS_mg_L');
-            $table->string('Color');
-            $table->string('pH');
-            $table->string('Oil_Grease_mg_L');
-            $table->string('Temp_Rise');
-            $table->string('Add_parameter');
+            $table->string('Outlet_No')->nullable();
+            $table->date('date')->nullable();
+            $table->string('Effluent_Flow_Rate')->nullable();
+            $table->string('BOD_mg_L')->nullable();
+            $table->string('TSS_mg_L')->nullable();
+            $table->string('Color')->nullable();
+            $table->string('pH')->nullable();
+            $table->string('Oil_Grease_mg_L')->nullable();
+            $table->string('Temp_Rise')->nullable();
+            $table->string('Add_parameter')->nullable();
             $table->timestamps();
         });
     }

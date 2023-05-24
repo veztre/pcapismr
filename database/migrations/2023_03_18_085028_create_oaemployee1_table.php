@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('oaemployee1', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->string('name1');
-            $table->string('id_no1');
-            $table->string('IssuedAt1');
-            $table->string('IssuedOn1');
+            $table->string('name1')->nullable();
+            $table->string('id_no1')->nullable();
+            $table->string('IssuedAt1')->nullable();
+            $table->string('IssuedOn1')->nullable();
             $table->timestamps();
         });
 

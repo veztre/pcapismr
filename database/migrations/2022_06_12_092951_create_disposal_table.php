@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('disposal', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->string('disposal_id');
-            $table->string('name');
-            $table->string('method');
-            $table->date('date');
+            $table->string('disposal_id')->nullable();
+            $table->string('name')->nullable();
+            $table->string('method')->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }

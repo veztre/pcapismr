@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('aqg', function (Blueprint $table) {
             $table->id();
             $table->integer('userid');
-            $table->string('Recyclable');
-            $table->string('Biodegradable');
-            $table->string('Residual');
+            $table->string('Recyclable')->nullable();
+            $table->string('Biodegradable')->nullable();
+            $table->string('Residual')->nullable();
             $table->timestamps();
         });
     }

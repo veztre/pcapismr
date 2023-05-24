@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('waterpolutiondata', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->string('Domestic_wastewater');
-            $table->string('Cooling_water');
-            $table->string('Waste_water_equipment');
-            $table->string('Processs_wastewater');
-            $table->string('others_n');
-            $table->string('others_m');
-            $table->string('Waste_water_floor');
+            $table->string('Domestic_wastewater')->nullable();
+            $table->string('Cooling_water')->nullable();
+            $table->string('Waste_water_equipment')->nullable();
+            $table->string('Processs_wastewater')->nullable();
+            $table->string('others_n')->nullable();
+            $table->string('others_m')->nullable();
+            $table->string('Waste_water_floor')->nullable();
             $table->timestamps();
         });
     }

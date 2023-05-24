@@ -48,7 +48,7 @@
                                     <!-- Message input -->
                                     <div class="col">
                                         <p class="text-primary my-0">Note.</p>
-                                        <p class="text-primary my-0">1. Put "N/A" for field not applicable to you.</p>
+                                        <p class="text-primary my-0">1. Put " " for field not applicable to you.</p>
                                         <p class="text-primary my-0">2. You Can now Export data on Each module by clicking "EXPORT" Link Below.</p>
                                     </div>
 
@@ -128,7 +128,7 @@
                                                             <option>kg</option>
                                                             <option>liter</option>
                                                             <option>m3</option>
-                                                            <option>n/a</option>
+                                                            <option> </option>
                                                             <option>pc</option>
                                                             <option>ton</option>
                                                         </select>

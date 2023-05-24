@@ -42,7 +42,7 @@
                             <!-- Message input -->
                             <div class="col">
                                 <p class="text-primary my-0">Note.</p>
-                                <p class="text-primary my-0">1. Put "N/A" for field not applicable to you.</p>
+                                <p class="text-primary my-0">1. Put " " for field not applicable to you.</p>
                                 <p class="text-primary my-0">2. You Can now Export data on Each module by clicking "EXPORT" Link Below.</p>
                             </div>
 
@@ -63,24 +63,24 @@
                                     <tbody>
                                     <tr>
                                         <td>Domestic wastewater (cubicmeters/day)</td>
-                                        <td><input class="form-control" type="text" style="text-align:center" name="domwaste" id="dww" value="{{ old('domwaste', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text" style="text-align:center" name="domwaste" id="dww" value="{{ old('domwaste', ' ') }}"></td>
 
                                         <td></td>
                                         <td>Processs wastewater (cubicmeters/day)</td>
-                                        <td><input class="form-control" type="text" style="text-align:center" name="processwaste" id="pww" value="{{ old('processwaste', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text" style="text-align:center" name="processwaste" id="pww" value="{{ old('processwaste', ' ') }}"></td>
                                     </tr>
                                     </tbody>
 
                                     <tbody>
                                     <tr>
                                         <td>Cooling water (cubicmeters/day)</td>
-                                        <td><input class="form-control" type="text" style="text-align:center" name="coolingw" id="cwmd" value="{{ old('coolingw', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text" style="text-align:center" name="coolingw" id="cwmd" value="{{ old('coolingw', ' ') }}"></td>
 
                                         <td>
                                         <td class="grid-rows-1 grid-cols-2"><label for="othern">Others</label>
-                                            <input class="form-control inline" type="text" style="text-align:center" name="othern" id="otn" value="{{ old('othern', 'N/A') }}"></td>
+                                            <input class="form-control inline" type="text" style="text-align:center" name="othern" id="otn" value="{{ old('othern', ' ') }}"></td>
                                         <td> <label for="othercm">(cubicmeters/day)</label>
-                                            <input class="form-control" type="text" style="text-align:center" name="othercm" id="ocmd" value="{{ old('othercm', 'N/A') }}"></td>
+                                            <input class="form-control" type="text" style="text-align:center" name="othercm" id="ocmd" value="{{ old('othercm', ' ') }}"></td>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -88,11 +88,11 @@
                                     <tbody>
                                     <tr>
                                         <td>Waste water, equipment (cubicmeters/day)</td>
-                                        <td><input class="form-control" type="text" style="text-align:center" name="wequip" id="wweq" value="{{ old('wequip', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text" style="text-align:center" name="wequip" id="wweq" value="{{ old('wequip', ' ') }}"></td>
 
                                         <td></td>
                                         <td>Waste water, floor (cubicmeters/day)</td>
-                                        <td><input class="form-control" type="text" style="text-align:center" name="wwfloor" id="wwfl" value="{{ old('wwfloor', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text" style="text-align:center" name="wwfloor" id="wwfl" value="{{ old('wwfloor', ' ') }}"></td>
 
                                     </tr>
                                     </tbody>
@@ -116,9 +116,9 @@
                                     <tbody id="penum">
                                     <tr>
                                         <td>Person employed, (# of employees)</td>
-                                        <td><input class="form-control" type="text" name="pemonth1" id="pem1" value="{{ old('pemonth1', 'N/A') }}"></td>
-                                        <td><input class="form-control"type="text" name="pemonth2" id="pem2" value="{{ old('pemonth2', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text" name="pemonth3" id="pem3" value="{{ old('pemonth3', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text" name="pemonth1" id="pem1" value="{{ old('pemonth1', ' ') }}"></td>
+                                        <td><input class="form-control"type="text" name="pemonth2" id="pem2" value="{{ old('pemonth2', ' ') }}"></td>
+                                        <td><input class="form-control" type="text" name="pemonth3" id="pem3" value="{{ old('pemonth3', ' ') }}"></td>
                                     </tr>
                                     </tbody>
 
@@ -126,54 +126,54 @@
                                     <tbody id="pecost">
                                     <tr>
                                         <td>Person employed, (cost)</td>
-                                        <td><input class="form-control" type="text" name="pecmonth1" id="pecm1" value="{{ old('pecmonth1', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text" name="pecmonth2" id="pecm2" value="{{ old('pecmonth2', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text" name="pecmonth3" id="pecm3" value="{{ old('pecmonth3', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text" name="pecmonth1" id="pecm1" value="{{ old('pecmonth1', ' ') }}"></td>
+                                        <td><input class="form-control" type="text" name="pecmonth2" id="pecm2" value="{{ old('pecmonth2', ' ') }}"></td>
+                                        <td><input class="form-control" type="text" name="pecmonth3" id="pecm3" value="{{ old('pecmonth3', ' ') }}"></td>
                                     </tr>
                                     </tbody>
 
                                     <tbody id="cocwtp">
                                     <tr>
                                         <td>Cost of Chemicals used by WTP</td>
-                                        <td><input class="form-control" type="text" name="cocw1" id="cocwm1" value="{{ old('cocwm1', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text" name="cocw2" id="cocwm2" value="{{ old('cocwm2', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text" name="cocw3" id="cocwm3" value="{{ old('cocwm3', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text" name="cocw1" id="cocwm1" value="{{ old('cocwm1', ' ') }}"></td>
+                                        <td><input class="form-control" type="text" name="cocw2" id="cocwm2" value="{{ old('cocwm2', ' ') }}"></td>
+                                        <td><input class="form-control" type="text" name="cocw3" id="cocwm3" value="{{ old('cocwm3', ' ') }}"></td>
                                     </tr>
                                     </tbody>
 
                                     <tbody id="ucwtp">
                                     <tr>
                                         <td>Utility Costs of WTP(electricity & water)</td>
-                                        <td><input class="form-control" type="text" name="ucw1" id="ucwm1" value="{{ old('ucwm1', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text" name="ucw2" id="ucwm2" value="{{ old('ucwm2', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text" name="ucw3" id="ucwm3" value="{{ old('ucwm3', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text" name="ucw1" id="ucwm1" value="{{ old('ucwm1', ' ') }}"></td>
+                                        <td><input class="form-control" type="text" name="ucw2" id="ucwm2" value="{{ old('ucwm2', ' ') }}"></td>
+                                        <td><input class="form-control" type="text" name="ucw3" id="ucwm3" value="{{ old('ucwm3', ' ') }}"></td>
                                     </tr>
                                     </tbody>
 
                                     <tbody id="aoc">
                                     <tr>
                                         <td>Administrative and Overhead Costs</td>
-                                        <td><input class="form-control" type="text" name="aoc1" id="aocm1" value="{{ old('aocm1', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text" name="aoc2" id="aocm2" value="{{ old('aocm2', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text" name="aoc3" id="aocm3" value="{{ old('aocm3', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text" name="aoc1" id="aocm1" value="{{ old('aocm1', ' ') }}"></td>
+                                        <td><input class="form-control" type="text" name="aoc2" id="aocm2" value="{{ old('aocm2', ' ') }}"></td>
+                                        <td><input class="form-control" type="text" name="aoc3" id="aocm3" value="{{ old('aocm3', ' ') }}"></td>
                                     </tr>
                                     </tbody>
 
                                     <tbody id="colab">
                                     <tr>
                                         <td>Cost of operating in-house laboratory</td>
-                                        <td><input class="form-control" type="text" name="colab1" id="colabm1" value="{{ old('colabm1', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text" name="colab2" id="colabm2" value="{{ old('colabm2', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text" name="colab3" id="colabm3" value="{{ old('colabm3', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text" name="colab1" id="colabm1" value="{{ old('colabm1', ' ') }}"></td>
+                                        <td><input class="form-control" type="text" name="colab2" id="colabm2" value="{{ old('colabm2', ' ') }}"></td>
+                                        <td><input class="form-control" type="text" name="colab3" id="colabm3" value="{{ old('colabm3', ' ') }}"></td>
                                     </tr>
                                     </tbody>
 
                                     <tbody id="nai">
                                     <tr>
                                         <td>New/Additional Investments in WTP <br> (description)</td>
-                                        <td><input class="form-control" type="text" name="nai1" id="naim1" value="{{ old('naim1', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text" name="nai2" id="naim2" value="{{ old('naim2', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text" name="nai3" id="naim3" value="{{ old('naim3', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text" name="nai1" id="naim1" value="{{ old('naim1', ' ') }}"></td>
+                                        <td><input class="form-control" type="text" name="nai2" id="naim2" value="{{ old('naim2', ' ') }}"></td>
+                                        <td><input class="form-control" type="text" name="nai3" id="naim3" value="{{ old('naim3', ' ') }}"></td>
                                     </tr>
                                     </tbody>
 
@@ -181,9 +181,9 @@
                                     <tbody id="cnai">
                                     <tr>
                                         <td>Costs of New/Add Investments <br> (description)</td>
-                                        <td><input class="form-control" type="text" name="cnai1" id="cnaim1" value="{{ old('cnaim1', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text" name="cnai2" id="cnaim2" value="{{ old('cnaim2', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text" name="cnai3" id="cnaim3" value="{{ old('cnaim3', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text" name="cnai1" id="cnaim1" value="{{ old('cnaim1', ' ') }}"></td>
+                                        <td><input class="form-control" type="text" name="cnai2" id="cnaim2" value="{{ old('cnaim2', ' ') }}"></td>
+                                        <td><input class="form-control" type="text" name="cnai3" id="cnaim3" value="{{ old('cnaim3', ' ') }}"></td>
                                     </tr>
                                     </tbody>
 
@@ -203,8 +203,8 @@
 
                                     <tr>
                                         <td ><input class="form-control" type="text" name="dischargeLocation[]" ></td>
-                                        <td><input class="form-control" type="text"  id="lo" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"  id="nrwb" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text"  id="lo" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"  id="nrwb" name="dischargeLocation[]" value="{{ old('dischargeLocation[]', ' ') }}"></td>
                                         <td></td>
                                     </tr>
                                     </tbody>
@@ -272,16 +272,16 @@
 
 
                                     <tr>
-                                        <td><input class="form-control" type="text" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', ' ') }}"></td>
                                         <td ><input class="form-control" type="date"  id="wcdate" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', '2001-01-01') }}"></td>
-                                        <td><input class="form-control" type="text"  id="nfr" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"  id="bod" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"  id="tss" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"  id="clr" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"  id="phl" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"  id="oag" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"  id="tempr" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text" id="add_p" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text"  id="nfr" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"  id="bod" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"  id="tss" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"  id="clr" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"  id="phl" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"  id="oag" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"  id="tempr" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', ' ') }}"></td>
+                                        <td><input class="form-control" type="text" id="add_p" name="dreportofwaste[]" value="{{ old('dreportofwaste[]', ' ') }}"></td>
                                         <td></td>
                                     </tr>
                                     </tbody>
@@ -307,13 +307,13 @@
                                         <th style="text-align: center">Outlet No.</th>
                                         <th style="text-align: center">Date</th>
                                         <th style="text-align: center">Effluent Flow Rate (m3/day)</th>
-                                        <td><input class="form-control" type="text"  id="opn1" name="name1" value="{{ old('name1', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"  id="opn2" name="name2" value="{{ old('name2', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"  id="opn3" name="name3" value="{{ old('name3', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"  id="opn4" name="name4" value="{{ old('name4', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"  id="opn5" name="name5" value="{{ old('name5', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"  id="opn6" name="name6" value="{{ old('name6', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"  id="opn7" name="name7" value="{{ old('name7', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text"  id="opn1" name="name1" value="{{ old('name1', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"  id="opn2" name="name2" value="{{ old('name2', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"  id="opn3" name="name3" value="{{ old('name3', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"  id="opn4" name="name4" value="{{ old('name4', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"  id="opn5" name="name5" value="{{ old('name5', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"  id="opn6" name="name6" value="{{ old('name6', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"  id="opn7" name="name7" value="{{ old('name7', ' ') }}"></td>
                                     </tr>
 
                                     <tr>
@@ -333,13 +333,13 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input class="form-control" type="text"  id="opu1" name="unit1" value="{{ old('unit1', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"  id="opu2" name="unit2" value="{{ old('unit1', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"  id="opu3" name="unit3" value="{{ old('unit3', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"  id="opu4" name="unit4" value="{{ old('unit4', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"  id="opu5" name="unit5" value="{{ old('unit5', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"  id="opu6" name="unit6" value="{{ old('unit6', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"  id="opu7" name="unit7" value="{{ old('unit7', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text"  id="opu1" name="unit1" value="{{ old('unit1', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"  id="opu2" name="unit2" value="{{ old('unit1', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"  id="opu3" name="unit3" value="{{ old('unit3', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"  id="opu4" name="unit4" value="{{ old('unit4', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"  id="opu5" name="unit5" value="{{ old('unit5', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"  id="opu6" name="unit6" value="{{ old('unit6', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"  id="opu7" name="unit7" value="{{ old('unit7', ' ') }}"></td>
                                     </tr>
 
                                     <tr>
@@ -357,16 +357,16 @@
 
                                     <tr>
 
-                                        <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td>
                                         <td><input class="form-control" type="date"   name="drowcfop1[]" value="{{ old('drowcfop1[]', '2001-01-01') }}"></td>
-                                        <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td>
-                                        <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', 'N/A') }}"></td>
+                                        <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td>
+                                        <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{ old('drowcfop1[]', ' ') }}"></td>
                                         <td></td>
                                     </tr>
 

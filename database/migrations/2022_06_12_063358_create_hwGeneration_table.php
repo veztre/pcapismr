@@ -16,14 +16,14 @@ return new class extends Migration
         Schema::create('hwGeneration', function (Blueprint $table) {
             $table->id();
             $table->integer('userid');
-            $table->string('HWno');
-            $table->string('HWclass');
-            $table->string('HWNature');
-            $table->string('HWcataloguing');
-            $table->string('RemainingQty');
-            $table->string('PreviousReportUnit');
-            $table->string('HWGeneratedQty');
-            $table->string('QuarterUnit');
+            $table->string('HWno')->nullable();
+            $table->string('HWclass')->nullable();
+            $table->string('HWNature')->nullable();
+            $table->string('HWcataloguing')->nullable();
+            $table->string('RemainingQty')->nullable();
+            $table->string('PreviousReportUnit')->nullable();
+            $table->string('HWGeneratedQty')->nullable();
+            $table->string('QuarterUnit')->nullable();
             $table->timestamps();
         });
     }

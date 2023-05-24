@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('accident_records', function (Blueprint $table) {
             $table->id();
             $table->integer('userid');
-            $table->date('date');
-            $table->string('Area_Location');
-            $table->string('Findings_and_Obeservations');
-            $table->string('Action_Taken');
-            $table->string('Remarks');
+            $table->date('date')->nullable();
+            $table->string('Area_Location')->nullable();
+            $table->string('Findings_and_Obeservations')->nullable();
+            $table->string('Action_Taken')->nullable();
+            $table->string('Remarks')->nullable();
             $table->timestamps();
         });
     }

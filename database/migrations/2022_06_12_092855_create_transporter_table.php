@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('transporter', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->string('transpo_id');
-            $table->string('name');
-            $table->string('method');
-            $table->date('date');
+            $table->string('transpo_id')->nullable();
+            $table->string('name')->nullable();
+            $table->string('method')->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }

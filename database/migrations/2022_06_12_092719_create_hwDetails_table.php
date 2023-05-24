@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('hwDetails', function (Blueprint $table) {
             $table->id();
             $table->string('userid');
-            $table->string('HWno');
-            $table->string('HWclass');
-            $table->string('QtyOfHWTreated');
-            $table->string('Unit');
-            $table->string('TSDLocation');
+            $table->string('HWno')->nullable();
+            $table->string('HWclass')->nullable();
+            $table->string('QtyOfHWTreated')->nullable();
+            $table->string('Unit')->nullable();
+            $table->string('TSDLocation')->nullable();
             $table->timestamps();
         });
     }
