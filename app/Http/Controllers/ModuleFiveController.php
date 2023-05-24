@@ -425,25 +425,32 @@ class ModuleFiveController extends Controller
 
         $evmpprogram = $request->input('evmpprogram');
         $userId = Auth::user()->id;
-        // Get all records for the current user
+
+// Get all records for the current user
         $DBevmpprogram = EVMPprogram::where('userid', $userId)->get();
-        // Loop through all records and update each one
+
+// Loop through all records and update each one
         foreach ($DBevmpprogram as $index => $record) {
-            $record->Enhancement_Mitigation_Measures = $evmpprogram[$index]['evm_condition'];
-            $record->Status_of_Compliance = $evmpprogram[$index]['evm_status_of_compliance'];
-            $record->Actions_Taken = $evmpprogram[$index]['evm_actions_taken'];
-            $record->update();
+            if (isset($evmpprogram[$index])) {
+                $record->Enhancement_Mitigation_Measures = $evmpprogram[$index]['evm_condition'];
+                $record->Status_of_Compliance = $evmpprogram[$index]['evm_status_of_compliance'];
+                $record->Actions_Taken = $evmpprogram[$index]['evm_actions_taken'];
+                $record->update();
+            }
         }
 
-        // Create a new record for any remaining data
+// Create a new record for any remaining data
         for ($index = count($DBevmpprogram); $index < count($evmpprogram); $index++) {
-            $newRecord = new EVMPprogram();
-            $newRecord->userid = $userId;
-            $newRecord->Enhancement_Mitigation_Measures = $evmpprogram[$index]['evm_condition'];
-            $newRecord->Status_of_Compliance = $evmpprogram[$index]['evm_status_of_compliance'];
-            $newRecord->Actions_Taken = $evmpprogram[$index]['evm_actions_taken'];
-            $newRecord->save();
+            if (isset($evmpprogram[$index])) {
+                $newRecord = new EVMPprogram();
+                $newRecord->userid = $userId;
+                $newRecord->Enhancement_Mitigation_Measures = $evmpprogram[$index]['evm_condition'];
+                $newRecord->Status_of_Compliance = $evmpprogram[$index]['evm_status_of_compliance'];
+                $newRecord->Actions_Taken = $evmpprogram[$index]['evm_actions_taken'];
+                $newRecord->save();
+            }
         }
+
 
 
 

@@ -408,3 +408,31 @@
     });
 </script>
 
+
+<!-- SCRIPT FOR ENVIRONMENTAL MANAGEMENT PLAN/ PROGRAM  -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        var counter = 0;
+        $("#EMPlanProgram").click(function () {
+            ++counter;
+
+            // Capture the input values
+            var evmConditionValue = $('input[name="evmpprogram[' + counter + '][evm_condition]"]').val() || "";
+            var statusOfComplianceValue = $('input[name="evmpprogram[' + counter + '][evm_status_of_compliance]"]:checked').val() || "";
+            var actionsTakenValue = $('textarea[name="evmpprogram[' + counter + '][evm_actions_taken]"]').val() || "";
+
+            // Add the new row with the captured values
+            $("#EMPP").append(
+                '<tr>' +
+                '<td class="counterCell" style="text-align: right"></td>' +
+                '<td><input class="form-control" type="text" name="evmpprogram[' + counter + '][evm_condition]" value="' + evmConditionValue + '"></td>' +
+                '<td style="text-align: center">' +
+                '<label style="margin-right: 10px"><input type="radio" name="evmpprogram[' + counter + '][evm_status_of_compliance]" value="Yes" required' + (statusOfComplianceValue === 'Yes' ? ' checked' : '') + '>Yes</label>' +
+                '<label style="margin-right: 10px"><input type="radio" name="evmpprogram[' + counter + '][evm_status_of_compliance]" value="No" required' + (statusOfComplianceValue === 'No' ? ' checked' : '') + '>No</label>' +
+                '</td>' +
+                '<td><textarea class="form-control" type="text" name="evmpprogram[' + counter + '][evm_actions_taken]" style="overflow:scroll; overflow: hidden visible;">' + actionsTakenValue + '</textarea></td>' +
+                '</tr>'
+            );
+        });
+    });
+</script>

@@ -275,21 +275,24 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($evmpprogram as $evm)
-
-                                                <tr>
-                                                    <td class="counterCell" style="text-align: right"></td>
-                                                    <td><input class="form-control" type="text" name="evmpprogram[{{$loop->index}}][evm_condition]" value="{{$evm ? $evm->Enhancement_Mitigation_Measures : ''}}"></td>
-                                                    <td style="text-align: center">
-                                                        <label style="margin-right: 10px"><input type="radio" name="evmpprogram[{{$loop->index}}][evm_status_of_compliance]"
-                                                                                                 value="Yes" {{$evm && $evm->Status_of_Compliance == 'Yes' ? 'checked' : ''}} required>Yes</label>
-                                                        <label style="margin-right: 10px"><input type="radio" name="evmpprogram[{{$loop->index}}][evm_status_of_compliance]"
-                                                                                                 value="No" {{$evm && $evm->Status_of_Compliance == 'No' ? 'checked' : ''}} required>No</label>
-                                                    </td>
-                                                    <td><textarea class="form-control" type="text" name="evmpprogram[{{$loop->index}}][evm_actions_taken]" style="overflow:scroll; overflow: hidden visible;">{{$evm ? $evm->Actions_Taken : ''}}</textarea></td>
-                                                </tr>
-
+                                        @foreach ($evmpprogram as $index => $evm)
+                                            <tr>
+                                                <td class="counterCell" style="text-align: right"></td>
+                                                <td><input class="form-control" type="text" name="evmpprogram[{{ $index }}][evm_condition]" value="{{ isset($evm->Enhancement_Mitigation_Measures) ? $evm->Enhancement_Mitigation_Measures : '' }}"></td>
+                                                <td style="text-align: center">
+                                                    <label style="margin-right: 10px">
+                                                        <input type="radio" name="evmpprogram[{{ $index }}][evm_status_of_compliance]" value="Yes" {{ isset($evm->Status_of_Compliance) && $evm->Status_of_Compliance == 'Yes' ? 'checked' : '' }} required>Yes
+                                                    </label>
+                                                    <label style="margin-right: 10px">
+                                                        <input type="radio" name="evmpprogram[{{ $index }}][evm_status_of_compliance]" value="No" {{ isset($evm->Status_of_Compliance) && $evm->Status_of_Compliance == 'No' ? 'checked' : '' }} required>No
+                                                    </label>
+                                                </td>
+                                                <td>
+                                                    <textarea class="form-control" type="text" name="evmpprogram[{{ $index }}][evm_actions_taken]" style="overflow:scroll; overflow: hidden visible;">{{ isset($evm->Actions_Taken) ? $evm->Actions_Taken : '' }}</textarea>
+                                                </td>
+                                            </tr>
                                         @endforeach
+
 
                                         </tbody>
 
@@ -452,9 +455,45 @@
 
         // Populate the fields with existing data
         @foreach ($oecondition as $index => $oec)
-        $("input[name='oecondition[{{$index}}][ecc_condition]']").val("{{ $oec ? $oec->ecc_condition : '' }}");
-        $("input[name='oecondition[{{$index}}][status_of_compliance]'][value='{{ $oec ? $oec->status_of_compliance : '' }}']").prop('checked', true);
-        $("textarea[name='oecondition[{{$index}}][actions_taken]']").val("{{ $oec ? $oec->actions_taken : '' }}");
+        $("input[name='oecondition[{{$index}}][ecc_condition]']").val("{{ $oec ? $oec->ECC_Condition : '' }}");
+        $("input[name='oecondition[{{$index}}][status_of_compliance]'][value='{{ $oec ? $oec->Status_of_Compliance : '' }}']").prop('checked', true);
+        $("textarea[name='oecondition[{{$index}}][actions_taken]']").val("{{ $oec ? $oec->Actions_Taken : '' }}");
+        @endforeach
+    });
+</script>
+
+
+<!-- SCRIPT FOR ENVIRONMENTAL MANAGEMENT PLAN/ PROGRAM  -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        var counter = <?php echo count($evmpprogram ?? []); ?>;
+        $("#EMPlanProgram").click(function () {
+            ++counter;
+
+            // Capture the input values
+            var evmConditionValue = $('input[name="evmpprogram[' + counter + '][evm_condition]"]').val() || "";
+            var statusOfComplianceValue = $('input[name="evmpprogram[' + counter + '][evm_status_of_compliance]"]:checked').val() || "";
+            var actionsTakenValue = $('textarea[name="evmpprogram[' + counter + '][evm_actions_taken]"]').val() || "";
+
+            // Add the new row with the captured values
+            $("#EMPP").append(
+                '<tr>' +
+                '<td class="counterCell" style="text-align: right"></td>' +
+                '<td><input class="form-control" type="text" name="evmpprogram[' + counter + '][evm_condition]" value="' + evmConditionValue + '"></td>' +
+                '<td style="text-align: center">' +
+                '<label style="margin-right: 10px"><input type="radio" name="evmpprogram[' + counter + '][evm_status_of_compliance]" value="Yes" required' + (statusOfComplianceValue === 'Yes' ? ' checked' : '') + '>Yes</label>' +
+                '<label style="margin-right: 10px"><input type="radio" name="evmpprogram[' + counter + '][evm_status_of_compliance]" value="No" required' + (statusOfComplianceValue === 'No' ? ' checked' : '') + '>No</label>' +
+                '</td>' +
+                '<td><textarea class="form-control" type="text" name="evmpprogram[' + counter + '][evm_actions_taken]" style="overflow:scroll; overflow: hidden visible;">' + actionsTakenValue + '</textarea></td>' +
+                '</tr>'
+            );
+        });
+
+        // Populate the fields with existing data
+        @foreach ($evmpprogram as $index => $evm)
+        $("input[name='evmpprogram[{{$index}}][evm_condition]']").val("{{ $evm ? $evm->Enhancement_Mitigation_Measures : '' }}");
+        $("input[name='evmpprogram[{{$index}}][evm_status_of_compliance]'][value='{{ $evm ? $evm->Status_of_Compliance : '' }}']").prop('checked', true);
+        $("textarea[name='evmpprogram[{{$index}}][evm_actions_taken]']").val("{{ $evm ? $evm->Actions_Taken : '' }}");
         @endforeach
     });
 </script>
