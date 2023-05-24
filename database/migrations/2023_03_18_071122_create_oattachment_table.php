@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('Name_Signature_of_CEO_Managing_Head');
             $table->string('SUBSCRIBED_AND_SWORN');
             $table->date('dayOf');
-            
-            
+
+
             $table->timestamps();
         });
     }
@@ -35,6 +35,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('oattatchment');
+        Schema::dropIfExists('oattachment');
     }
+
 };
