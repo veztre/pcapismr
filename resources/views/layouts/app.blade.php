@@ -972,29 +972,10 @@
     });
 </script>
 
-<!-- SCRIPT FOR OTHER ECC CONDITIONS -->
-<script type="text/javascript">
-    $(document).ready(function() {
-        var counter = <?php echo count($oeconditions ?? []); ?>;
-        $("#OECondition").click(function () {
-            ++counter;
-            // Add the new row with the default value of the radio button set to empty
-            $("#OEC").append(
-                '<tr>' +
-                '<td class="counterCell" style="text-align: right"></td>' +
-                '<td><input class="form-control" type="text" name="oecondition[' + counter +'][ecc_condition]" value=""></td>' +
-                '<td style="text-align: center">' +
-                '<label style="margin-right: 10px"><input type="radio" name="oecondition[' + counter + '][status_of_compliance]" value="Yes" required>Yes</label>' +
-                '<label style="margin-right: 10px"><input type="radio" name="oecondition[' + counter + '][status_of_compliance]" value="No" required>No</label>' +
-                '</td>' +
-                '<td><textarea class="form-control" type="text" name="oecondition[' + counter + '][actions_taken]" style="overflow:scroll; overflow: hidden visible;"></textarea></td>' +
-                '</tr>'
-            );
-        });
-    });
+<!-- SCRIPT FOR OTHER ECC CONDITIONS move to modulefive view and updateview -->
 
 
-</script>
+
 
 
 

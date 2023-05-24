@@ -377,115 +377,34 @@
     </div>
 
 </x-app-layout>
-{{--
-</body>
-<style>
-    h1 {
-        text-align: left;
-        font-size: 26px;
-        color: gray;
-    }
-
-    h2 {
-        text-align: left;
-        font-size: 20px;
-        color: gray;
-    }
-
-    @media only screen and (max-width: 700px) {
-        section {
-            flex-direction: column;
-        }
-    }
 
 
-
-    input[type='radio'] {
-        -webkit-appearance: none;
-        width: 50px;
-        height: 50px;
-
-
-    }
-
-    input[type='radio']:hover {
-        box-shadow: 0 0 5px 0px green inset;
-
-    }
-
-    input[type='radio']:before {
-        content: '';
-        width: 60%;
-        height: 60%;
-        margin: 20% auto;
-
-    }
-
-    input[type='radio']:checked:before {
-        background: green;
-        border-radius: 100%;
-    }
-
-    table {
-    counter-reset: tableCount;
-}
-.counterCell:before {
-    content: counter(tableCount);
-    counter-increment: tableCount;
-
-}
-</style>
-
-
-
-
-<!-- SCRIPT FOR  AMBIENT AIR QUALITY MONITORING (IF REQUIRED AS PART OF ECC CONDITIONS)-->
+<!-- Script for moduleFive.blade.php (Save functionality) -->
 <script type="text/javascript">
-    var i = 0;
-    $("#AAQMonitoring").click(function () { //button name
-        ++i;
-        $("#AAQM").append(
-            ' <tr><td><input class="form-control" type="text" name="aaqmonitoring[]"></td><td><input class="form-control" type="date" name="aaqmonitoring[]"></td><td><input class="form-control" type="text" name="aaqmonitoring[]"></td><td><input class="form-control" type="text" name="aaqmonitoring[]"></td><td><input class="form-control" type="text" name="aaqmonitoring[]"></td><td><input class="form-control" type="text" name="aaqmonitoring[]"></td><td><input class="form-control" type="text" name=" "></td><td><input class="form-control" type="text" name=" "></td><td><input class="form-control" type="text" name=" "></td></tr>'
-        ); //table name
+    $(document).ready(function() {
+        var counter = <?php echo count($oecondition instanceof Illuminate\Database\Eloquent\Collection ? $oecondition->all() : []); ?>;
+
+        $("#OECondition").click(function () {
+            ++counter;
+
+            // Capture the input values
+            var eccConditionValue = $('input[name="oecondition[' + counter + '][ecc_condition]"]').val() || "";
+            var statusOfComplianceValue = $('input[name="oecondition[' + counter + '][status_of_compliance]"]:checked').val() || "";
+            var actionsTakenValue = $('textarea[name="oecondition[' + counter + '][actions_taken]"]').val() || "";
+
+            // Add the new row with the captured values
+            $("#OEC").append(
+                '<tr>' +
+                '<td class="counterCell" style="text-align: right"></td>' +
+                '<td><input class="form-control" type="text" name="oecondition[' + counter +'][ecc_condition]" value="' + eccConditionValue + '"></td>' +
+                '<td style="text-align: center">' +
+                '<label style="margin-right: 10px"><input type="radio" name="oecondition[' + counter + '][status_of_compliance]" value="Yes" required' + (statusOfComplianceValue === 'Yes' ? ' checked' : '') + '>Yes</label>' +
+                '<label style="margin-right: 10px"><input type="radio" name="oecondition[' + counter + '][status_of_compliance]" value="No" required' + (statusOfComplianceValue === 'No' ? ' checked' : '') + '>No</label>' +
+                '</td>' +
+                '<td><textarea class="form-control" type="text" name="oecondition[' + counter + '][actions_taken]" style="overflow:scroll; overflow: hidden visible;">' + actionsTakenValue + '</textarea></td>' +
+                '</tr>'
+            );
+        });
     });
 </script>
 
-<!-- SCRIPT FOR  AMBIENT WATER QUALITY MONITORING (IF REQUIRED AS PART OF ECC CONDITIONS))-->
-<script type="text/javascript">
-    var i = 0;
-    $("#AWQMonitoring").click(function () { //button name
-        ++i;
-        $("#AWQM").append(
-            '<tr><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="date" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td><td><input class="form-control" type="text" name="awqmonitoring1[]"></td></tr>'
-        ); //table name
-    });
-</script>
-
-<!-- SCRIPT FOR OTHER ECC CONDITIONS -->
-<script type="text/javascript">
-    var i = 0;
-    $("#OECondition").click(function () { //button name
-        ++i;
-        $("#OEC").append(
-            '<tr><td class="counterCell " style="text-align: right" ></td><td><input class="form-control" type="text" name="oecondition[]"></td><td style="text-align: center"><form action=""><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="oecondition[]"id="oecRadio1" value="Yes"><label class="form-check-label" for="oecRadio1"><p class="mt-3 mx-1">Yes</p></label></div><div class="form-check form-check-inline"><input class="form-check-input" type="radio" name="oecondition[]"id="oecRadio2" value="No"><label class="form-check-label" for="oecRadio2"><p class="mt-3 mx-1">No</p></label></div></form></td><td><textarea class="form-control" type="text" name="oecondition[]"style="overflow:scroll; overflow: hidden visible;"></textarea></td></tr>'
-        ); //table name
-    });
-</script>
-
-<!-- SCRIPT FOR ENVIRONMENTAL MANAGEMENT PLAN/ PROGRAM -->
-<script type="text/javascript">
-    var i = 0;
-    $("#EMPlanProgram").click(function () { //button name
-        ++i;
-        $("#EMPP").append(
-            '<tr><td class="counterCell " style="text-align: right" ></td><td><input class="form-control" type="text" name=" "></td> <td style="text-align: center"> <form action=""> <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="inlineRadioOptions" id="emppRadio1" value="option1"> <label class="form-check-label" for="emppRadio1"><p class="mt-3 mx-1">Yes</p></label> </div> <div class="form-check form-check-inline"> <input class="form-check-input" type="radio" name="inlineRadioOptions" id="emppRadio2" value="option2"> <label class="form-check-label" for="emppRadio2"><p class="mt-3 mx-1">No</p></label> </div> </form> </td> <td><textarea class="form-control" type="text" name=" "  style="overflow:scroll; overflow: hidden visible;"></textarea></td> </tr>'
-        ); //table name
-    });
-</script>
-
-
-
-@endsection
-
-</html>
---}}

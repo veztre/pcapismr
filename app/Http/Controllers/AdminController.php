@@ -19,6 +19,10 @@ use Laravel\Jetstream\Jetstream;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Schema;
+use App\Console\Commands\MigrateFreshCustom;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Schema\Blueprint;
 
 class AdminController extends Controller
 {
@@ -159,30 +163,47 @@ class AdminController extends Controller
 
             // Get the IDs of the admin and newly created admin account
             $adminId = $admin->id;
-            $newAdminId = User::where('usertype', 'admin')->orderBy('id', 'desc')->value('id');
+            $newAdmin = User::where('usertype', 'admin')->orderBy('id', 'desc')->first();
+            $newAdminId = $newAdmin ? $newAdmin->id : null;
 
-            // Delete trainee accounts and associated data
+            // Delete trainee accounts and associated data excluding the new admin
             User::where('usertype', 'trainee')
                 ->where('id', '<>', $adminId)
-                ->where('id', '<>', $newAdminId)
+                ->when($newAdminId, function ($query) use ($newAdminId) {
+                    return $query->where('id', '<>', $newAdminId);
+                })
                 ->delete();
 
-            // Delete all associated data
+            // Delete associated data excluding the new admin
             // Replace the code below with the actual code to delete associated data
-
             // Example code:
             // AssociatedModel::where('user_id', '<>', $adminId)
-            //     ->where('user_id', '<>', $newAdminId)
+            //     ->when($newAdminId, function ($query) use ($newAdminId) {
+            //         return $query->where('user_id', '<>', $newAdminId);
+            //     })
             //     ->delete();
 
-            // Perform fresh migration
-            Artisan::call('migrate:fresh');
+            // Manually drop tables associated with the newly created admin account
+            if ($newAdminId) {
+                Schema::dropIfExists('new_admin_table1');
+                Schema::dropIfExists('new_admin_table2');
+                // Add more table names as needed
+            }
+
+            // Perform fresh migration for non-excluded tables
+            $this->migrateFreshCustom();
 
             // Seed the database
             Artisan::call('db:seed');
 
             // Flash success message
             Session::flash('success', 'Trainee accounts and associated data deleted successfully. Database migrated and seeded.');
+
+            // Retrieve the admin user instance again after the migration and seeding
+            $admin = User::find($adminId);
+
+            // Log the admin user back in
+            Auth::guard('web')->login($admin, false);
 
             // Redirect back to the dashboard
             return redirect()->route('dashboard');
@@ -191,4 +212,52 @@ class AdminController extends Controller
         // Redirect back with unauthorized message
         return redirect()->back()->with('error', 'Unauthorized action.');
     }
+
+    protected function migrateFreshCustom()
+    {
+        $tablesToExclude = [
+            'new_admin_table1',
+            'new_admin_table2',
+            'sessions', // Exclude the sessions table
+            // Add more table names as needed
+        ];
+
+        Schema::disableForeignKeyConstraints();
+
+        $this->dropAllTables();
+
+        Artisan::call('migrate');
+
+        foreach ($tablesToExclude as $table) {
+            $this->excludeTable($table);
+        }
+
+        Schema::enableForeignKeyConstraints();
+    }
+
+    protected function dropAllTables()
+    {
+        $tables = DB::select('SHOW TABLES');
+
+        foreach ($tables as $table) {
+            $table = reset($table);
+            Schema::dropIfExists($table);
+        }
+    }
+
+    protected function excludeTable($table)
+    {
+        $this->info("Excluding table: $table");
+
+        $database = app('db');
+        $schemaBuilder = $database->connection()->getSchemaBuilder();
+
+        if ($schemaBuilder->hasTable($table)) {
+            $schemaBuilder->drop($table);
+        }
+    }
+
+
+
+
 }

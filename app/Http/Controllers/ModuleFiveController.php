@@ -395,25 +395,33 @@ class ModuleFiveController extends Controller
 
         $oecondition = $request->input('oecondition');
         $userId = Auth::user()->id;
-        // Get all records for the current user
+
+// Get all records for the current user
         $DBoecondition = OECondition::where('userid', $userId)->get();
-        // Loop through all records and update each one
+
+// Loop through all records and update each one
         foreach ($DBoecondition as $index => $record) {
-            $record->ECC_Condition = $oecondition[$index]['ecc_condition'];
-            $record->Status_of_Compliance = $oecondition[$index]['status_of_compliance'];
-            $record->Actions_Taken = $oecondition[$index]['actions_taken'];
-            $record->update();
+            if (isset($oecondition[$index])) {
+                $record->ECC_Condition = $oecondition[$index]['ecc_condition'];
+                $record->Status_of_Compliance = $oecondition[$index]['status_of_compliance'];
+                $record->Actions_Taken = $oecondition[$index]['actions_taken'];
+                $record->update();
+            }
         }
 
-        // Create a new record for any remaining data
+// Create a new record for any remaining data
         for ($index = count($DBoecondition); $index < count($oecondition); $index++) {
-            $newRecord = new OECondition();
-            $newRecord->userid = $userId;
-            $newRecord->ECC_Condition = $oecondition[$index]['ecc_condition'];
-            $newRecord->Status_of_Compliance = $oecondition[$index]['status_of_compliance'];
-            $newRecord->Actions_Taken = $oecondition[$index]['actions_taken'];
-            $newRecord->save();
+            if (isset($oecondition[$index])) {
+                $newRecord = new OECondition();
+                $newRecord->userid = $userId;
+                $newRecord->ECC_Condition = $oecondition[$index]['ecc_condition'];
+                $newRecord->Status_of_Compliance = $oecondition[$index]['status_of_compliance'];
+                $newRecord->Actions_Taken = $oecondition[$index]['actions_taken'];
+                $newRecord->save();
+            }
         }
+
+
 
         $evmpprogram = $request->input('evmpprogram');
         $userId = Auth::user()->id;

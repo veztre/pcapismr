@@ -18,6 +18,11 @@ class AdminSeeder extends Seeder
 
     public function run()
     {
+        // Check if the admin user already exists
+        if (User::where('username', 'Admin')->exists()) {
+            return;
+        }
+
         User::create([
             'username' => 'Admin',
             'firstname' => 'admin',
@@ -28,10 +33,7 @@ class AdminSeeder extends Seeder
             'usertype' => 'admin',
             'email' => 'admin@gmail.com',
             'email_verified_at' => now(),
-            'password' => Hash::make('password'), // Replace 'admin123' with the desired password
+            'password' => Hash::make('password'), // Replace 'password' with the desired password
         ]);
-
-
-
     }
 }
