@@ -91,12 +91,14 @@
                             <form id="delete-form" action="{{ route('delete-trainee-accounts') }}" method="POST">
                                 @csrf
                                 <a href="#" class="px-4 py-2 mb-6 text-white no-underline rounded-full transition ease-in-out delay-150 bg-red-300 hover:-translate-y-1 hover:scale-110 hover:bg-red-600 duration-300"
-                                   onclick="event.preventDefault(); showConfirmationModal()">
+                                   onclick="event.preventDefault(); if(confirm('Are you sure you want to delete trainee accounts?')) { document.getElementById('_confirmed').value = 'yes'; document.getElementById('delete-form').submit(); }">
                                     DELETE Trainee Accounts
                                 </a>
-                                <input type="hidden" name="_confirmed" id="_confirmed" value="0">
+                                <input type="hidden" name="_confirmed" id="_confirmed" value="no">
                             </form>
                         </div>
+
+
 
                     </div>
 

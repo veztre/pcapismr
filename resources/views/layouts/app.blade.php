@@ -982,24 +982,7 @@
 
 
 
-<!-- SCRIPT FOR ENVIRONMENTAL MANAGEMENT PLAN/ PROGRAM -->
-<script type="text/javascript">
-    var counter = 0;
-    $("#EMPlanProgram").click(function () {
-        ++counter;
-        $("#EMPP").append(
-            '<tr>' +
-            '<td class="counterCell" style="text-align: right"></td>' +
-            '<td><input class="form-control" type="text" name="evmpprogram[' + counter + '][evm_condition]" value=""></td>' +
-            '<td style="text-align: center">' +
-            '<label style="margin-right: 10px"><input type="radio" name="evmpprogram[' + counter + '][evm_status_of_compliance]" value="Yes" required>Yes</label>' +
-            '<label style="margin-right: 10px"><input type="radio" name="evmpprogram[' + counter + '][evm_status_of_compliance]" value="No" required>No</label>' +
-            '</td>' +
-            '<td><textarea class="form-control" type="text" name="evmpprogram[' + counter + '][evm_actions_taken]" style="overflow:scroll; overflow: hidden visible;"></textarea></td>' +
-            '</tr>'
-        );
-    });
-</script>
+<!-- SCRIPT FOR ENVIRONMENTAL MANAGEMENT PLAN/ PROGRAM move to modulefive view and updateview  -->
 
 
 {{--Module 5 Script end--}}

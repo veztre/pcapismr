@@ -19,16 +19,11 @@ use Laravel\Jetstream\Jetstream;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Schema;
-use App\Console\Commands\MigrateFreshCustom;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Database\Schema\Blueprint;
 
 class AdminController extends Controller
 {
-    use PasswordValidationRules;
-    use ValidatesAttributes;
-
+   use PasswordValidationRules;
+   use ValidatesAttributes;
     public function index()
     {
         $users = User::all();
@@ -42,26 +37,23 @@ class AdminController extends Controller
 
         return view('dashboard', compact('users',
             'referencens',
-            'addfacility',
-            'plant',
-            'oaupload',
-            'userTypes',
-            'currentUserId'))
+                    'addfacility',
+                    'plant',
+                    'oaupload',
+                    'userTypes',
+                    'currentUserId'))
             ->with('usertype', $userTypes);
         $usertype = ['admin', 'trainee'];
         return view('navigation-menu', compact('usertype'));
 
 
     }
-
-    public function create()
-    {
+    public function create(){
 
         return view('module.create');
     }
 
-    public function store(Request $request)
-    {
+    public function store(Request $request){
 
         $validator = Validator::make($request->all(), [
             'username' => ['required', 'string', 'max:255', 'unique:users'],
@@ -94,7 +86,7 @@ class AdminController extends Controller
         return redirect('/admin/dashboard');
     }
 
-    public function edit($id)
+    public function edit( $id)
     {
 
 
@@ -102,13 +94,13 @@ class AdminController extends Controller
         $regions = Region::all();
         $userTypes = ['admin', 'trainee'];
 
-        return view('module.editaccount', compact('users', 'regions', 'userTypes'));
+        return view('module.editaccount', compact('users','regions', 'userTypes'));
 
     }
 
 
-    public function update(Request $request, $id)
-    {
+
+    public function update(Request $request, $id){
 
         $validator = Validator::make($request->all(), [
             'username' => ['required', 'string', 'max:255', Rule::unique('users')->ignore($id)],
@@ -149,114 +141,35 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Usertype updated successfully.');
     }
-
-
     public function deleteTraineeAccounts(Request $request)
     {
-        $admin = Auth::user();
+        $admin = $request->user();
 
         if ($admin->isAdmin()) {
             // Display a confirmation prompt
-            if (!$request->has('_confirmed') || $request->input('_confirmed') != '1') {
+            if (!$request->has('_confirmed')) {
                 return redirect()->back()->with('_confirm', true);
             }
 
-            // Get the IDs of the admin and newly created admin account
-            $adminId = $admin->id;
-            $newAdmin = User::where('usertype', 'admin')->orderBy('id', 'desc')->first();
-            $newAdminId = $newAdmin ? $newAdmin->id : null;
+            // User confirmed the action, proceed with deletion
+            if ($request->input('_confirmed') === 'yes') {
+                // Delete trainee accounts
+                User::where('usertype', 'trainee')->delete();
 
-            // Delete trainee accounts and associated data excluding the new admin
-            User::where('usertype', 'trainee')
-                ->where('id', '<>', $adminId)
-                ->when($newAdminId, function ($query) use ($newAdminId) {
-                    return $query->where('id', '<>', $newAdminId);
-                })
-                ->delete();
-
-            // Delete associated data excluding the new admin
-            // Replace the code below with the actual code to delete associated data
-            // Example code:
-            // AssociatedModel::where('user_id', '<>', $adminId)
-            //     ->when($newAdminId, function ($query) use ($newAdminId) {
-            //         return $query->where('user_id', '<>', $newAdminId);
-            //     })
-            //     ->delete();
-
-            // Manually drop tables associated with the newly created admin account
-            if ($newAdminId) {
-                Schema::dropIfExists('new_admin_table1');
-                Schema::dropIfExists('new_admin_table2');
-                // Add more table names as needed
+                // Flash success message
+                Session::flash('success', 'Trainee accounts deleted successfully.');
+            } else {
+                // User canceled the action, display a cancellation message
+                Session::flash('error', 'Deletion of trainee accounts was canceled.');
             }
-
-            // Perform fresh migration for non-excluded tables
-            $this->migrateFreshCustom();
-
-            // Seed the database
-            Artisan::call('db:seed');
-
-            // Flash success message
-            Session::flash('success', 'Trainee accounts and associated data deleted successfully. Database migrated and seeded.');
-
-            // Retrieve the admin user instance again after the migration and seeding
-            $admin = User::find($adminId);
-
-            // Log the admin user back in
-            Auth::guard('web')->login($admin, false);
-
-            // Redirect back to the dashboard
-            return redirect()->route('dashboard');
+        } else {
+            // Redirect back with unauthorized message
+            return redirect()->back()->with('error', 'Unauthorized action.');
         }
 
-        // Redirect back with unauthorized message
-        return redirect()->back()->with('error', 'Unauthorized action.');
+        // Redirect back to the previous page
+        return redirect()->back();
     }
-
-    protected function migrateFreshCustom()
-    {
-        $tablesToExclude = [
-            'new_admin_table1',
-            'new_admin_table2',
-            'sessions', // Exclude the sessions table
-            // Add more table names as needed
-        ];
-
-        Schema::disableForeignKeyConstraints();
-
-        $this->dropAllTables();
-
-        Artisan::call('migrate');
-
-        foreach ($tablesToExclude as $table) {
-            $this->excludeTable($table);
-        }
-
-        Schema::enableForeignKeyConstraints();
-    }
-
-    protected function dropAllTables()
-    {
-        $tables = DB::select('SHOW TABLES');
-
-        foreach ($tables as $table) {
-            $table = reset($table);
-            Schema::dropIfExists($table);
-        }
-    }
-
-    protected function excludeTable($table)
-    {
-        $this->info("Excluding table: $table");
-
-        $database = app('db');
-        $schemaBuilder = $database->connection()->getSchemaBuilder();
-
-        if ($schemaBuilder->hasTable($table)) {
-            $schemaBuilder->drop($table);
-        }
-    }
-
 
 
 
