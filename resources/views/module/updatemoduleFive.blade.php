@@ -144,24 +144,20 @@
                                         @foreach ($oecondition as $index => $oec)
                                             <tr>
                                                 <td class="counterCell" style="text-align: right"></td>
-                                                <td>
-                                                    <input class="form-control" type="text" name="oecondition[{{$index}}][ecc_condition]" value="{{ $oec['ecc_condition'] }}">
-                                                </td>
+                                                <td><input class="form-control" type="text" name="oecondition[{{ $index }}][ecc_condition]" value="{{ isset($oec->ECC_Condition) ? $oec->ECC_Condition : '' }}"></td>
                                                 <td style="text-align: center">
                                                     <label style="margin-right: 10px">
-                                                        <input type="radio" name="oecondition[{{$index}}][status_of_compliance]" value="Yes" {{ $oec['status_of_compliance'] == 'Yes' ? 'checked' : '' }} required>Yes
+                                                        <input type="radio" name="oecondition[{{ $index }}][status_of_compliance]" value="Yes" {{ isset($oec->Status_of_Compliance) && $oec->Status_of_Compliance == 'Yes' ? 'checked' : '' }} required>Yes
                                                     </label>
                                                     <label style="margin-right: 10px">
-                                                        <input type="radio" name="oecondition[{{$index}}][status_of_compliance]" value="No" {{ $oec['status_of_compliance'] == 'No' ? 'checked' : '' }} required>No
+                                                        <input type="radio" name="oecondition[{{ $index }}][status_of_compliance]" value="No" {{ isset($oec->Status_of_Compliance) && $oec->Status_of_Compliance == 'No' ? 'checked' : '' }} required>No
                                                     </label>
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control" type="text" name="oecondition[{{$index}}][actions_taken]" style="overflow:scroll; overflow: hidden visible;">{{ $oec['actions_taken'] }}</textarea>
+                                                    <textarea class="form-control" type="text" name="oecondition[{{ $index }}][actions_taken]" style="overflow:scroll; overflow: hidden visible;">{{ isset($oec->Actions_Taken) ? $oec->Actions_Taken : '' }}</textarea>
                                                 </td>
                                             </tr>
                                         @endforeach
-
-
 
 
                                         </tbody>
