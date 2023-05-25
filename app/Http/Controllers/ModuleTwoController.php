@@ -7,7 +7,7 @@ use App\Models\Disposal;
 use App\Models\HWDetails;
 use App\Models\HwGeneration;
 use App\Models\Osisa;
-use App\Models\referencen;
+use App\Models\Referencen;
 use App\Models\Storage;
 use App\Models\Transporter;
 use App\Models\Treater;

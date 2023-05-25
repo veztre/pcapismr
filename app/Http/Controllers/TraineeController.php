@@ -6,7 +6,7 @@ use App\Models\Addfacility;
 use App\Models\Plant;
 use App\Models\Oaupload;
 use Illuminate\Http\Request;
-use App\Models\referencen;
+use App\Models\Referencen;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 

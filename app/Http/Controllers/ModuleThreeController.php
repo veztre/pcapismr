@@ -15,7 +15,7 @@ use App\Models\Drowcfop1;
 use App\Models\NewInvestment;
 use App\Models\PersonEmployed;
 use App\Models\PersonEmployedCost;
-use App\Models\referencen;
+use App\Models\Referencen;
 use App\Models\User;
 use App\Models\UtilityCost;
 use App\Models\WaterPolutionData;
