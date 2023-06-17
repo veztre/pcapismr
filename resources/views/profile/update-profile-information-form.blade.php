@@ -79,13 +79,13 @@
             <x-jet-input-error for="email" class="mt-2" />
 
         {{--Contact--}}
-            <div class="col-span-6 sm:col-span-4">
+            <div class="col-span-6 sm:col-span-4" style="margin-top: 1.5rem" >
                 <x-jet-label for="contact" value="{{ __('Telephone/Mobile No.') }}" />
                 <x-jet-input id="contact" type="text" class="mt-1 block w-full" wire:model.defer="state.contact" autocomplete="contact" />
                 <x-jet-input-error for="contact" class="mt-2" />
             </div>
 
-            <div class="col-span-6 sm:col-span-4">
+            <div class="col-span-6 sm:col-span-4 gap-6" style="margin-top: 1.5rem" >
                 <x-jet-label for="region" value="{{ __('Region') }}" />
                 <select id="region" name="region" class="form-control mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" aria-required="true" aria-invalid="false" wire:model.defer="state.region">
                     <option selected disabled value="">SELECT REGION - (user location)</option>

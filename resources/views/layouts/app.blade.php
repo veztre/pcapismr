@@ -468,21 +468,29 @@
     });
 
     $("#dynamic-ar").click(function () { //button name
-        $("#dynamicAddRemove").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="dpno" hidden></label><input class="form-control validate-input" type="text" name="dpno[]" id="dpno" value="{{ old('dpno', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="dpno" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="dpno[]" id="dpno" required><span class="checkmark"></span></td><td class="position-relative"><label for="dpno"  hidden></label> <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="dpno[]" id="dpnoe" required><span class="checkmark"></span></td></tr>'
-        ); //table name
+        var newRow = $('<tr><td></td><td></td><td></td><td class="position-relative"><label for="dpno" hidden></label><input class="form-control validate-input" type="text" name="dpno[]" id="dpno" value="{{ old('dpno', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="dpno" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="dpno[]" id="dpno" required><span class="checkmark"></span></td><td class="position-relative"><label for="dpno" hidden></label> <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="dpno[]" id="dpnoe" required><span class="checkmark"></span></td></tr>');
+
+
+        $("#dynamicAddRemove").append(newRow);
+
+        // Apply validation logic to the dynamically added input fields
+        newRow.find('.validate-input').on('blur', function() {
+            if ($(this).val() !== '') {
+                $(this).addClass('is-valid');
+            } else {
+                $(this).removeClass('is-valid');
+            }
+        });
         config = {
             dateFormat: "Y-m-d"
         }
         flatpickr("input[type=date]", config);
-
     });
 </script>
 
+
 <!-- Script PD-->
 <script type="text/javascript">
-
-
     $('.validate-input').on('blur', function() {
         if ($(this).val() !== '') {
             $(this).addClass('is-valid');
@@ -490,10 +498,20 @@
             $(this).removeClass('is-valid');
         }
     });
+
     $("#ECC").click(function () { //button name
-        $("#pd").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="cncno" hidden></label><input class="form-control validate-input" type="text" name="cncno[]" id="cncno" value="{{ old('cncno', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="cncno" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="cncno[]" id="cncno" required><span class="checkmark"></span></td><td class="position-relative"><label for="cncno" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="cncno[]" id="cncno" required><span class="checkmark"></span></td></tr>'
-        ); //table name
+        var newRow = $('<tr><td></td><td></td><td></td><td class="position-relative"><label for="cncno" hidden></label><input class="form-control validate-input" type="text" name="cncno[]" id="cncno" value="{{ old('cncno', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="cncno" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="cncno[]" id="cncno" required><span class="checkmark"></span></td><td class="position-relative"><label for="cncno" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="cncno[]" id="cncno" required><span class="checkmark"></span></td></tr>');
+
+        $("#pd").append(newRow);
+
+        // Apply validation logic to the dynamically added input fields
+        newRow.find('.validate-input').on('blur', function() {
+            if ($(this).val() !== '') {
+                $(this).addClass('is-valid');
+            } else {
+                $(this).removeClass('is-valid');
+            }
+        });
         config = {
             dateFormat: "Y-m-d"
         }
@@ -503,8 +521,6 @@
 
 <!-- Script for CCo Registration -->
 <script type="text/javascript">
-
-
     $('.validate-input').on('blur', function() {
         if ($(this).val() !== '') {
             $(this).addClass('is-valid');
@@ -512,14 +528,26 @@
             $(this).removeClass('is-valid');
         }
     });
+
     $("#ccoregister").click(function () { //button name
-        $("#cco").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="ccoreg" hidden></label><input class="form-control validate-input" type="text" name="ccoreg[]" id="ccoreg" value="{{ old('ccoreg', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="ccoreg" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="ccoreg[]" id="ccoreg" required><span class="checkmark"></span></td><td class="position-relative"><label for="ccoreg" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="ccoreg[]" id="ccoreg" required><span class="checkmark"></span></td></tr>'
-        ); //table name
-        config = {
+        var newRow = $('<tr><td></td><td></td><td></td><td class="position-relative"><label for="ccoreg" hidden></label><input class="form-control validate-input" type="text" name="ccoreg[]" id="ccoreg" value="{{ old('ccoreg', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="ccoreg" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="ccoreg[]" id="ccoreg" required><span class="checkmark"></span></td><td class="position-relative"><label for="ccoreg" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="ccoreg[]" id="ccoreg" required><span class="checkmark"></span></td></tr>');
+
+        $("#cco").append(newRow);
+
+        // Apply validation logic to the dynamically added input fields
+        newRow.find('.validate-input').on('blur', function() {
+            if ($(this).val() !== '') {
+                $(this).addClass('is-valid');
+            } else {
+                $(this).removeClass('is-valid');
+            }
+        });
+
+        // Initialize date picker for the newly added row
+        var config = {
             dateFormat: "Y-m-d"
-        }
-        flatpickr("input[type=date]", config);
+        };
+        flatpickr(newRow.find("input[type=date]"), config);
     });
 </script>
 
@@ -527,8 +555,6 @@
 
 <!-- Scipt for importation clearance no -->
 <script type="text/javascript">
-
-
     $('.validate-input').on('blur', function() {
         if ($(this).val() !== '') {
             $(this).addClass('is-valid');
@@ -536,24 +562,34 @@
             $(this).removeClass('is-valid');
         }
     });
+
     var i = 0;
     $("#imp").click(function () { //button name
         ++i;
-        $("#importation").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="import" hidden></label><input class="form-control validate-input" type="text" name="import[]" id="import" value="{{ old('import', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="import" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="import[]" id="import" required><span class="checkmark"></span></td><td class="position-relative"><label for="import" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="import[]" id="import" required><span class="checkmark"></span></td></tr>'
-        ); //table name
-        config = {
+        var newRow = $('<tr><td></td><td></td><td></td><td class="position-relative"><label for="import" hidden></label><input class="form-control validate-input" type="text" name="import[]" id="import" value="{{ old('import', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="import" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="import[]" id="import" required><span class="checkmark"></span></td><td class="position-relative"><label for="import" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="import[]" id="import" required><span class="checkmark"></span></td></tr>');
+
+        $("#importation").append(newRow);
+
+        // Apply validation logic to the dynamically added input fields
+        newRow.find('.validate-input').on('blur', function() {
+            if ($(this).val() !== '') {
+                $(this).addClass('is-valid');
+            } else {
+                $(this).removeClass('is-valid');
+            }
+        });
+
+        // Initialize date picker for the newly added row
+        var config = {
             dateFormat: "Y-m-d"
-        }
-        flatpickr("input[type=date]", config);
+        };
+        flatpickr(newRow.find("input[type=date]"), config);
     });
 </script>
 
 
 <!-- Script for Permit to Transport -->
 <script type="text/javascript">
-
-
     $('.validate-input').on('blur', function() {
         if ($(this).val() !== '') {
             $(this).addClass('is-valid');
@@ -561,23 +597,33 @@
             $(this).removeClass('is-valid');
         }
     });
+
     var i = 0;
     $("#ptt").click(function () { //button name
         ++i;
-        $("#permit").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="permit" hidden></label><input class="form-control validate-input" type="text" name="permit[]" id="permit" value="{{ old('permit', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="permit" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="permit[]" id="" required><span class="checkmark"></span></td><td class="position-relative"><label for="permit" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="permit[]" id="" required><span class="checkmark"></span></td></tr>'
-        ); //table name
-        config = {
+        var newRow = $('<tr><td></td><td></td><td></td><td class="position-relative"><label for="permit" hidden></label><input class="form-control validate-input" type="text" name="permit[]" id="permit" value="{{ old('permit', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="permit" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="permit[]" id="" required><span class="checkmark"></span></td><td class="position-relative"><label for="permit" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="permit[]" id="" required><span class="checkmark"></span></td></tr>');
+
+        $("#permit").append(newRow);
+
+        // Apply validation logic to the dynamically added input fields
+        newRow.find('.validate-input').on('blur', function() {
+            if ($(this).val() !== '') {
+                $(this).addClass('is-valid');
+            } else {
+                $(this).removeClass('is-valid');
+            }
+        });
+
+        // Initialize date picker for the newly added row
+        var config = {
             dateFormat: "Y-m-d"
-        }
-        flatpickr("input[type=date]", config);
+        };
+        flatpickr(newRow.find("input[type=date]"), config);
     });
 </script>
 
 <!-- Script for Small Quality Importation-->
 <script type="text/javascript">
-
-
     $('.validate-input').on('blur', function() {
         if ($(this).val() !== '') {
             $(this).addClass('is-valid');
@@ -585,25 +631,34 @@
             $(this).removeClass('is-valid');
         }
     });
+
     var i = 0;
     $("#sqi").click(function () { //button name
         ++i;
-        $("#smallq").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="smallquan" hidden></label> <input class="form-control validate-input" type="text" name="smallquan[]" id="smallquan" value="{{ old('smallquan', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="smallquan" hidden></label> <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="smallquan[]" id="smallquan" required><span class="checkmark"></span></td><td class="position-relative"><label for="smallquan" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="smallquan[]" id="smallquan" required><span class="checkmark"></span></td></tr>'
-        ); //table name
+        var newRow = $('<tr><td></td><td></td><td></td><td class="position-relative"><label for="smallquan" hidden></label> <input class="form-control validate-input" type="text" name="smallquan[]" id="smallquan" value="{{ old('smallquan', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="smallquan" hidden></label> <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="smallquan[]" id="smallquan" required><span class="checkmark"></span></td><td class="position-relative"><label for="smallquan" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="smallquan[]" id="smallquan" required><span class="checkmark"></span></td></tr>');
 
-        config = {
+        $("#smallq").append(newRow);
+
+        // Apply validation logic to the dynamically added input fields
+        newRow.find('.validate-input').on('blur', function() {
+            if ($(this).val() !== '') {
+                $(this).addClass('is-valid');
+            } else {
+                $(this).removeClass('is-valid');
+            }
+        });
+
+        // Initialize date picker for the newly added row
+        var config = {
             dateFormat: "Y-m-d"
-        }
-        flatpickr("input[type=date]", config);
+        };
+        flatpickr(newRow.find("input[type=date]"), config);
     });
 </script>
 
 
 <!-- Script for priority chem list -->
 <script type="text/javascript">
-
-
     $('.validate-input').on('blur', function() {
         if ($(this).val() !== '') {
             $(this).addClass('is-valid');
@@ -611,22 +666,33 @@
             $(this).removeClass('is-valid');
         }
     });
+
     var i = 0;
     $("#priochem").click(function () { //button name
         ++i;
-        $("#prio").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="priority" hidden></label><input class="form-control validate-input" type="text" name="priority[]" id="priority" value="{{ old('priority', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="priority" hidden></label> <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="priority[]" id="priority" required><span class="checkmark"></span></td><td class="position-relative"><label for="priority" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="priority[]" id="priority" required><span class="checkmark"></span></td></tr>'
-        ); //table name
-        config = {
+        var newRow = $('<tr><td></td><td></td><td></td><td class="position-relative"><label for="priority" hidden></label><input class="form-control validate-input" type="text" name="priority[]" id="priority" value="{{ old('priority', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="priority" hidden></label> <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="priority[]" id="priority" required><span class="checkmark"></span></td><td class="position-relative"><label for="priority" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="priority[]" id="priority" required><span class="checkmark"></span></td></tr>');
+
+        $("#prio").append(newRow);
+
+        // Apply validation logic to the dynamically added input fields
+        newRow.find('.validate-input').on('blur', function() {
+            if ($(this).val() !== '') {
+                $(this).addClass('is-valid');
+            } else {
+                $(this).removeClass('is-valid');
+            }
+        });
+
+        // Initialize date picker for the newly added row
+        var config = {
             dateFormat: "Y-m-d"
-        }
-        flatpickr("input[type=date]", config);
+        };
+        flatpickr(newRow.find("input[type=date]"), config);
     });
 </script>
 
 <!-- Script PICCS -->
 <script type="text/javascript">
-
     $('.validate-input').on('blur', function() {
         if ($(this).val() !== '') {
             $(this).addClass('is-valid');
@@ -634,24 +700,33 @@
             $(this).removeClass('is-valid');
         }
     });
+
     var i = 0;
     $("#pccs").click(function () { //button name
         ++i;
-        $("#piccs").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="piccs" hidden></label><input class="form-control validate-input" type="text" name="piccs[]" id="piccs" value="{{ old('piccs', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="piccs" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="piccs[]" id="piccs" required><span class="checkmark"></span></td><td class="position-relative"><label for="piccs" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="piccs[]" id="piccs" required><span class="checkmark"></span></td></tr>'
-        ); //table name
-        config = {
-            dateFormat: "Y-m-d"
-        }
-        flatpickr("input[type=date]", config);
+        var newRow = $('<tr><td></td><td></td><td></td><td class="position-relative"><label for="piccs" hidden></label><input class="form-control validate-input" type="text" name="piccs[]" id="piccs" value="{{ old('piccs', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="piccs" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="piccs[]" id="piccs" required><span class="checkmark"></span></td><td class="position-relative"><label for="piccs" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="piccs[]" id="piccs" required><span class="checkmark"></span></td></tr>');
 
+        $("#piccs").append(newRow);
+
+        // Apply validation logic to the dynamically added input fields
+        newRow.find('.validate-input').on('blur', function() {
+            if ($(this).val() !== '') {
+                $(this).addClass('is-valid');
+            } else {
+                $(this).removeClass('is-valid');
+            }
+        });
+
+        // Initialize date picker for the newly added row
+        var config = {
+            dateFormat: "Y-m-d"
+        };
+        flatpickr(newRow.find("input[type=date]"), config);
     });
 </script>
 
 <!-- Script for PMPIN -->
 <script type="text/javascript">
-
-
     $('.validate-input').on('blur', function() {
         if ($(this).val() !== '') {
             $(this).addClass('is-valid');
@@ -659,21 +734,31 @@
             $(this).removeClass('is-valid');
         }
     });
+
     $("#pin").click(function () { //button name
-        $("#pmpin").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="pmpin" hidden></label><input class="form-control validate-input" type="text" name="pmpin[]" id="pmpin" value="{{ old('pmpin', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="pmpin" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pmpin[]" id="pmpin" required><span class="checkmark"></span></td><td class="position-relative"><label for="pmpin" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pmpin[]" id="pmpin" required><span class="checkmark"></span></td></tr>'
-        ); //table name
-        config = {
+        var newRow = $('<tr><td></td><td></td><td></td><td class="position-relative"><label for="pmpin" hidden></label><input class="form-control validate-input" type="text" name="pmpin[]" id="pmpin" value="{{ old('pmpin', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="pmpin" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pmpin[]" id="pmpin" required><span class="checkmark"></span></td><td class="position-relative"><label for="pmpin" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pmpin[]" id="pmpin" required><span class="checkmark"></span></td></tr>');
+
+        $("#pmpin").append(newRow);
+
+        // Apply validation logic to the dynamically added input fields
+        newRow.find('.validate-input').on('blur', function() {
+            if ($(this).val() !== '') {
+                $(this).addClass('is-valid');
+            } else {
+                $(this).removeClass('is-valid');
+            }
+        });
+
+        // Initialize date picker for the newly added row
+        var config = {
             dateFormat: "Y-m-d"
-        }
-        flatpickr("input[type=date]", config);
+        };
+        flatpickr(newRow.find("input[type=date]"), config);
     });
 </script>
 
 <!-- Script for PO no -->
 <script type="text/javascript">
-
-
     $('.validate-input').on('blur', function() {
         if ($(this).val() !== '') {
             $(this).addClass('is-valid');
@@ -681,19 +766,28 @@
             $(this).removeClass('is-valid');
         }
     });
-    var i = 0;
+
     $("#ponum").click(function () { //button name
-        ++i;
-        $("#pono").append(
-            '<tr><td></td><td></td><td></td><td class="position-relative"><label for="pono" hidden></label><input class="form-control validate-input" type="text" name="pono[]" id="pono" value="{{ old('pono', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="pono" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pono[]" id="pono" required><span class="checkmark"></span></td><td class="position-relative"><label for="pono" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pono[]" id="pono" required><span class="checkmark"></span></td></tr>'
-        ); //table name
-        config = {
+        var newRow = $('<tr><td></td><td></td><td></td><td class="position-relative"><label for="pono" hidden></label><input class="form-control validate-input" type="text" name="pono[]" id="pono" value="{{ old('pono', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="pono" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pono[]" id="pono" required><span class="checkmark"></span></td><td class="position-relative"><label for="pono" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="pono[]" id="pono" required><span class="checkmark"></span></td></tr>');
+
+        $("#pono").append(newRow);
+
+        // Apply validation logic to the dynamically added input fields
+        newRow.find('.validate-input').on('blur', function() {
+            if ($(this).val() !== '') {
+                $(this).addClass('is-valid');
+            } else {
+                $(this).removeClass('is-valid');
+            }
+        });
+
+        // Initialize date picker for the newly added row
+        var config = {
             dateFormat: "Y-m-d"
-        }
-        flatpickr("input[type=date]", config);
+        };
+        flatpickr(newRow.find("input[type=date]"), config);
     });
 </script>
-
 
 <script>
     // Example starter JavaScript for disabling form submissions if there are invalid fields

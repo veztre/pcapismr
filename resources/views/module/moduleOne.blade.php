@@ -821,6 +821,18 @@
 </x-app-layout>
 
 
+{{--green checkmarked script--}}
+<script>
+    $(document).ready(function() {
+        $('.validate-input').on('blur', function() {
+            if ($(this).val() !== '') {
+                $(this).addClass('is-valid');
+            } else {
+                $(this).removeClass('is-valid');
+            }
+        });
+    });
+</script>
 
 <script>
     config = {

@@ -2,15 +2,15 @@
 
     <title>Add Facility</title>
 
-        <div class="py-12 ">
+    <div class="py-12 ">
 
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <form method="POST" action="{{ route('addf') }}">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+                <form method="POST" action="{{ route('addf') }}">
 
                     @csrf
-                        <!-- {{ csrf_field() }} -->
+                    <!-- {{ csrf_field() }} -->
 
 
                     <div class="container col ml-2" style="align-content: center">
@@ -36,7 +36,7 @@
                                                 </option>
                                             @endforeach
                                         </select>
-                                        <input type="text" class="form-control mr-4" placeholder="EMB ID No." style="width:150px;" name="embid">
+                                        <input type="text" class="form-control mr-4" placeholder="EMB ID No." style="width:150px; margin-left: 10px" name="embid">
                                     </div>
                                 </td>
                             </tr>
@@ -91,10 +91,10 @@
                     </div>
 
 
-</form>
-                </div>
-
+                </form>
             </div>
+
         </div>
+    </div>
     </form>
 </x-app-layout>
