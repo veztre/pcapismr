@@ -39,16 +39,16 @@ return new class extends Migration
             $table->id();
             $table->integer('userid');
 
-            $table->string('Outlet_No');
-            $table->date('Date');
-            $table->string('Effluent_Flow_Rate_m3_day');
-            $table->string('value1');
-            $table->string('value2');
-            $table->string('value3');
-            $table->string('value4');
-            $table->string('value5');
-            $table->string('value6');
-            $table->string('value7');
+            $table->string('Outlet_No')->nullable();
+            $table->date('Date')->nullable();
+            $table->string('Effluent_Flow_Rate_m3_day')->nullable();
+            $table->string('value1')->nullable();
+            $table->string('value2')->nullable();
+            $table->string('value3')->nullable();
+            $table->string('value4')->nullable();
+            $table->string('value5')->nullable();
+            $table->string('value6')->nullable();
+            $table->string('value7')->nullable();
              $table->timestamps();
         });
 

@@ -12,6 +12,7 @@ use App\Models\Region;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Concerns\ValidatesAttributes;
@@ -143,9 +144,19 @@ class AdminController extends Controller
     }
     public function deleteTraineeAccounts(Request $request)
     {
-        $admin = $request->user();
+        // Check if the user is authenticated
+        if (!auth()->check()) {
+            // Redirect to login page
+            return redirect()->route('login')->with('error', 'Unauthorized action. Please login again.');
+        }
+
+        // Retrieve the current user
+        $admin = auth()->user();
 
         if ($admin->isAdmin()) {
+            // Store admin user's ID
+            $adminId = $admin->id;
+
             // Display a confirmation prompt
             if (!$request->has('_confirmed')) {
                 return redirect()->back()->with('_confirm', true);
@@ -153,24 +164,41 @@ class AdminController extends Controller
 
             // User confirmed the action, proceed with deletion
             if ($request->input('_confirmed') === 'yes') {
+                // Get the IDs of all trainee accounts
+                $traineeIds = DB::table('users')->where('usertype', 'trainee')->pluck('id')->toArray();
+
+                // Remove the current admin user ID from the trainee IDs array
+                $traineeIds = array_diff($traineeIds, [$adminId]);
+
                 // Delete trainee accounts
-                User::where('usertype', 'trainee')->delete();
+                DB::table('users')->whereIn('id', $traineeIds)->delete();
 
                 // Flash success message
                 Session::flash('success', 'Trainee accounts deleted successfully.');
+
+                // Run the migrate:fresh command without dropping users table
+                \Artisan::call('migrate:fresh', [
+                    '--path' => 'database/migrations',
+                    '--force' => true,
+                ]);
+
+                // Run the database seeder
+                \Artisan::call('db:seed');
+
+                // Authenticate the admin user by ID
+                Auth::loginUsingId($adminId);
             } else {
                 // User canceled the action, display a cancellation message
                 Session::flash('error', 'Deletion of trainee accounts was canceled.');
             }
         } else {
-            // Redirect back with unauthorized message
-            return redirect()->back()->with('error', 'Unauthorized action.');
+            // Redirect to login page
+            return redirect()->route('login')->with('error', 'Unauthorized action. Please login again.');
         }
 
         // Redirect back to the previous page
         return redirect()->back();
     }
-
 
 
 }
