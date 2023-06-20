@@ -48,156 +48,106 @@
 
 
 <div class="container mt-auto position-relative">
-<nav class="navbar navbar-expand-lg ">
+    <nav class="navbar navbar-expand-lg ">
+        <form class="d-flex">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('view', ['id' => auth()->user()->id]) }}">
+                    <small>Module 1: General Info</small>
+                </a>
+            </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('view2', ['id' => auth()->user()->id]) }}" onclick="moduleTwo(event)">
+                    <small>Module 2: RA 6969</small>
+                </a>
+            </li>
 
-    <form class="d-flex">
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('view', ['id' => auth()->user()->id]) }}">
-                <small>Module 1: General Info</small>
-            </a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('view3', ['id' => auth()->user()->id]) }}" onclick="moduleThree(event)">
+                    <small>Module 3: RA 9275</small>
+                </a>
+            </li>
 
-        <li class="nav-item" >
-            <a class="nav-link" href="{{ route('view2', ['id' => auth()->user()->id]) }}" disabled>
-                <small>Module 2: RA 6969</small>
-            </a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('view4', ['id' => auth()->user()->id]) }}" onclick="moduleFour(event)">
+                    <small>Module 4: RA 8749</small>
+                </a>
+            </li>
 
-        <li class="nav-item" >
-            <a class="nav-link" href="{{ route('view3', ['id' => auth()->user()->id]) }}" disabled>
-                <small>Module 3: RA 9275</small>
-            </a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('view5', ['id' => auth()->user()->id]) }}" onclick="moduleFive(event)">
+                    <small>Module 5: RA 1586</small>
+                </a>
+            </li>
 
-        <li class="nav-item" >
-            <a class="nav-link" href="{{ route('view4', ['id' => auth()->user()->id]) }}" disabled>
-                <small>Module 4: RA 8749</small>
-            </a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('view6', ['id' => auth()->user()->id]) }}" onclick="moduleSix(event)">
+                    <small>Module 6: Others</small>
+                </a>
+            </li>
+        </form>
+    </nav>
+</div> <!-- container -->
 
-        <li class="nav-item" >
-            <a class="nav-link" href="{{ route('view5', ['id' => auth()->user()->id]) }}" disabled>
-                <small>Module 5: RA 1586</small>
-            </a>
-        </li>
-
-        <li class="nav-item" >
-            <a class="nav-link" href="{{ route('view6', ['id' => auth()->user()->id]) }}" disabled>
-                <small>Module 6: Others</small>
-            </a>
-        </li>
-    </form>
-</nav>
-    </div> <!-- collapse navbar-collapse -->
-
-  </div> <!-- container -->
-</nav>
-
-
-
-{{--Enable tabs--}}
 <script>
-    // get the form and navigation links
-    const form = document.querySelector('form');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    // add a submit event listener to the form
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); // prevent form submission
-
-        // validate the form data
-        if (form.checkValidity()) {
-            // get the name of the current tab
-            const currentTab = event.target.closest('.tab-pane').id;
-
-            // enable the next tab's navigation link
-            const nextTab = navLinks.find(link => link.dataset.required === currentTab).parentNode.nextElementSibling;
-            nextTab.querySelector('.nav-link').removeAttribute('disabled');
-            nextTab.classList.remove('disabled');
-
-            // submit the form
-            event.target.submit();
+    function moduleTwo(event) {
+        event.preventDefault();
+        if (hasData()) {
+            showConfirmation(event.target.href);
         } else {
-            form.reportValidity(); // show validation errors
+            alert("No data available. Please save the current module before proceeding.");
         }
-    });
-
-    // add an event listener to the navigation links
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault(); // prevent link from opening
-
-            // get the index of the clicked link
-            const clickedIndex = [...navLinks].indexOf(event.target.closest('.nav-link'));
-
-            // check if the previous tabs have been saved
-            let canNavigate = true;
-            for (let i = 0; i < clickedIndex; i++) {
-                if (navLinks[i].hasAttribute('disabled')) {
-                    canNavigate = false;
-                    break;
-                }
-            }
-
-            if (canNavigate) {
-                // navigate to the clicked tab
-                window.location = event.target.closest('.nav-link').href;
-            } else {
-                // show an error message if previous tabs have not been saved
-                alert('Please save the previous tabs before proceeding.');
-            }
-
-</script>
-{{--Enable tabs end--}}
-
-
-{{--Disable tabs--}}
-<script>
-    // get the form and navigation links
-    const form = document.querySelector('form');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    // disable all tabs except the first one
-    for (let i = 1; i < navLinks.length; i++) {
-        navLinks[i].setAttribute('disabled', true);
-        navLinks[i].parentNode.classList.add('disabled');
     }
 
-    // add a submit event listener to the form
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); // prevent form submission
-
-        // validate the form data
-        if (form.checkValidity()) {
-            // get the name of the current tab
-            const currentTab = event.target.closest('.tab-pane').id;
-
-            // enable the next tab's navigation link
-            const nextTab = navLinks.find(link => link.dataset.required === currentTab).parentNode.nextElementSibling;
-            nextTab.querySelector('.nav-link').removeAttribute('disabled');
-            nextTab.classList.remove('disabled');
-
-            // submit the form
-            event.target.submit();
+    function moduleThree(event) {
+        event.preventDefault();
+        if (hasData()) {
+            showConfirmation(event.target.href);
         } else {
-            form.reportValidity(); // show validation errors
+            alert("No data available. Please save the current module before proceeding.");
         }
-    });
+    }
+
+    function moduleFour(event) {
+        event.preventDefault();
+        if (hasData()) {
+            showConfirmation(event.target.href);
+        } else {
+            alert("No data available. Please save the current module before proceeding.");
+        }
+    }
+
+    function moduleFive(event) {
+        event.preventDefault();
+        if (hasData()) {
+            showConfirmation(event.target.href);
+        } else {
+            alert("No data available. Please save the current module before proceeding.");
+        }
+    }
+
+    function moduleSix(event) {
+        event.preventDefault();
+        if (hasData()) {
+            showConfirmation(event.target.href);
+        } else {
+            alert("No data available. Please save the current module before proceeding.");
+        }
+    }
+
+    function hasData() {
+        // Perform your data check here
+        // Return true if there is data, false otherwise
+        return false; // Replace this with your actual data check logic
+    }
+
+    function showConfirmation(url) {
+        if (confirm("Are you sure that you saved the current module? Please save first before proceeding.")) {
+            window.location.href = url;
+        }
+    }
 </script>
-{{--Disable tabs end--}}
 
-
-
-<script>
-const activePage = window.location.pathname;
-const navLinks = document.querySelectorAll('nav a').forEach(link => {
-  if(link.href.includes(`${activePage}`)){
-    link.classList.add('active');
-    console.log(link);
-  }
-})
-</script>
 
 
 <!-- JavaScript Bundle with Popper -->
