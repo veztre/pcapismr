@@ -51,7 +51,7 @@
     <nav class="navbar navbar-expand-lg ">
         <form class="d-flex">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('view', ['id' => auth()->user()->id]) }}">
+                <a class="nav-link" href="{{ route('view', ['id' => auth()->user()->id]) }}" onclick="moduleOne(event)">
                     <small>Module 1: General Info</small>
                 </a>
             </li>
@@ -90,39 +90,48 @@
 </div> <!-- container -->
 
 <script>
+    function moduleOne(event) {
+        event.preventDefault();
+        if (hasData()) {
+            window.location.href = event.target.href;
+        } else {
+            alert("Please save and complete all the modules first before going back to the previous module.");
+        }
+    }
+
     function moduleTwo(event) {
         event.preventDefault();
         if (hasData()) {
-            showConfirmation(event.target.href);
+            window.location.href = event.target.href;
         } else {
-            alert("No data available. Please save the current module before proceeding.");
+            alert("Please save and complete the current module before proceeding to the next module.");
         }
     }
 
     function moduleThree(event) {
         event.preventDefault();
         if (hasData()) {
-            showConfirmation(event.target.href);
+            window.location.href = event.target.href;
         } else {
-            alert("No data available. Please save the current module before proceeding.");
+            alert("Please save and complete the current module before proceeding to the next module.");
         }
     }
 
     function moduleFour(event) {
         event.preventDefault();
         if (hasData()) {
-            showConfirmation(event.target.href);
+            window.location.href = event.target.href;
         } else {
-            alert("No data available. Please save the current module before proceeding.");
+            alert("Please save and complete the current module before proceeding to the next module.");
         }
     }
 
     function moduleFive(event) {
         event.preventDefault();
         if (hasData()) {
-            showConfirmation(event.target.href);
+            window.location.href = event.target.href;
         } else {
-            alert("No data available. Please save the current module before proceeding.");
+            alert("Please save and complete the current module before proceeding to the next module.");
         }
     }
 
@@ -131,18 +140,19 @@
         if (hasData()) {
             showConfirmation(event.target.href);
         } else {
-            alert("No data available. Please save the current module before proceeding.");
+            alert("Please save and complete the current module before proceeding to the previous module.");
         }
     }
 
     function hasData() {
         // Perform your data check here
-        // Return true if there is data, false otherwise
+        // Return true if there is data,false otherwise
         return false; // Replace this with your actual data check logic
     }
 
     function showConfirmation(url) {
-        if (confirm("Are you sure that you saved the current module? Please save first before proceeding.")) {
+        var confirmation = confirm("Are you sure that you saved the current module? Please save first before proceeding.");
+        if (confirmation) {
             window.location.href = url;
         }
     }

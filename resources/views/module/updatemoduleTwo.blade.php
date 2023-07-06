@@ -230,7 +230,7 @@
                                                                 <option value ="kg" {{ $hwGen->PreviousReportUnit === 'kg' ? 'selected' : '' }}>kg</option>
                                                                 <option value ="liter" {{ $hwGen->PreviousReportUnit === 'liter' ? 'selected' : '' }}>liter</option>
                                                                 <option value ="m3" {{ $hwGen->PreviousReportUnit === 'm3' ? 'selected' : '' }}>m3</option>
-                                                                <option value =" " {{ $hwGen->PreviousReportUnit === ' ' ? 'selected' : '' }}> </option>
+                                                                <option value ="n/a" {{ $hwGen->PreviousReportUnit === 'n/a' ? 'selected' : '' }}>n/a</option>
                                                                 <option value ="pc" {{ $hwGen->PreviousReportUnit === 'pc' ? 'selected' : '' }}>pc</option>
                                                                 <option value ="ton"  {{ $hwGen->PreviousReportUnit === 'ton' ? 'selected' : '' }}>ton</option>
                                                             </select>
@@ -247,7 +247,7 @@
 
                                                                 <option value ="kg" {{ $hwGen->QuarterUnit === 'kg' ? 'selected' : '' }}>kg</option><option>liter</option>
                                                                 <option value ="m3" {{ $hwGen->QuarterUnit === 'm3' ? 'selected' : '' }}>m3</option>
-                                                                <option value =" " {{ $hwGen->QuarterUnit === ' ' ? 'selected' : '' }}> </option>
+                                                                <option value ="n/a" {{ $hwGen->QuarterUnit === 'n/a' ? 'selected' : '' }}>n/a</option>
                                                                 <option value ="pc" {{ $hwGen->QuarterUnit === 'pc' ? 'selected' : '' }}>pc</option>
                                                                 <option value ="ton"  {{ $hwGen->QuarterUnit === 'ton' ? 'selected' : '' }}>ton</option>
                                                             </select>
@@ -504,7 +504,9 @@
                                                                     <option value="ton"
                                                                         {{ $hwDetail->Unit === 'ton' ? 'selected' : '' }}>
                                                                         ton</option>
-
+                                                                    <option value="n/a"
+                                                                        {{ $hwDetail->Unit === 'n/a' ? 'selected' : '' }}>
+                                                                        ton</option>
                                                                 </select>
                                                             </td>
                                                         </tr>
