@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use PDF;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
+
 
 
 class ModuleSixController extends Controller

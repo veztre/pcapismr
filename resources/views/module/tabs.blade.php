@@ -51,37 +51,37 @@
     <nav class="navbar navbar-expand-lg ">
         <form class="d-flex">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('view', ['id' => auth()->user()->id]) }}" onclick="moduleOne(event)">
+                <a class="nav-link {{ Request::route()->getName() == 'view' ? 'active' : '' }}" href="{{ route('view', ['id' => auth()->user()->id]) }}" onclick="moduleOne(event)">
                     <small>Module 1: General Info</small>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('view2', ['id' => auth()->user()->id]) }}" onclick="moduleTwo(event)">
+                <a class="nav-link {{ Request::route()->getName() == 'view2' ? 'active' : '' }}" href="{{ route('view2', ['id' => auth()->user()->id]) }}" onclick="moduleTwo(event)">
                     <small>Module 2: RA 6969</small>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('view3', ['id' => auth()->user()->id]) }}" onclick="moduleThree(event)">
+                <a class="nav-link {{ Request::route()->getName() == 'view3' ? 'active' : '' }}" href="{{ route('view3', ['id' => auth()->user()->id]) }}" onclick="moduleThree(event)">
                     <small>Module 3: RA 9275</small>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('view4', ['id' => auth()->user()->id]) }}" onclick="moduleFour(event)">
+                <a class="nav-link {{ Request::route()->getName() == 'view4' ? 'active' : '' }}" href="{{ route('view4', ['id' => auth()->user()->id]) }}" onclick="moduleFour(event)">
                     <small>Module 4: RA 8749</small>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('view5', ['id' => auth()->user()->id]) }}" onclick="moduleFive(event)">
+                <a class="nav-link {{ Request::route()->getName() == 'view5' ? 'active' : '' }}" href="{{ route('view5', ['id' => auth()->user()->id]) }}" onclick="moduleFive(event)">
                     <small>Module 5: RA 1586</small>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('view6', ['id' => auth()->user()->id]) }}" onclick="moduleSix(event)">
+                <a class="nav-link {{ Request::route()->getName() == 'view6' ? 'active' : '' }}" href="{{ route('view6', ['id' => auth()->user()->id]) }}" onclick="moduleSix(event)">
                     <small>Module 6: Others</small>
                 </a>
             </li>
@@ -95,7 +95,7 @@
         if (hasData()) {
             window.location.href = event.target.href;
         } else {
-            alert("Please save and complete all the modules first before going back to the previous module.");
+            alert("Please save and complete all the modules first before going back to the next module.");
         }
     }
 
@@ -104,7 +104,7 @@
         if (hasData()) {
             window.location.href = event.target.href;
         } else {
-            alert("Please save and complete the current module before proceeding to the next module.");
+            alert("Please save and complete the current module before proceeding to the previous/next module.");
         }
     }
 
@@ -113,7 +113,7 @@
         if (hasData()) {
             window.location.href = event.target.href;
         } else {
-            alert("Please save and complete the current module before proceeding to the next module.");
+            alert("Please save and complete the current module before proceeding to the previous/next module.");
         }
     }
 
@@ -122,7 +122,7 @@
         if (hasData()) {
             window.location.href = event.target.href;
         } else {
-            alert("Please save and complete the current module before proceeding to the next module.");
+            alert("Please save and complete the current module before proceeding to the previous/next module.");
         }
     }
 
@@ -131,7 +131,7 @@
         if (hasData()) {
             window.location.href = event.target.href;
         } else {
-            alert("Please save and complete the current module before proceeding to the next module.");
+            alert("Please save and complete the current module before proceeding to the previous/next module.");
         }
     }
 

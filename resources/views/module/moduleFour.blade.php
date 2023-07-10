@@ -128,7 +128,7 @@
                                                             <option>kg</option>
                                                             <option>liter</option>
                                                             <option>m3</option>
-                                                            <option> </option>
+                                                            <option>n/a</option>
                                                             <option>pc</option>
                                                             <option>ton</option>
                                                         </select>

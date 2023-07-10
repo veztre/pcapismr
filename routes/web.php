@@ -21,7 +21,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AddFacilityController;
 use App\Http\Controllers\TabsController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -80,6 +79,13 @@ Route::put('/update/{id}', [AdminController::class, 'update'])->name('update');
 // end of updated route
 Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 // admin controller end
+
+//admin store
+Route::post('/admin/store', [AdminController::class, 'store'])->name('admin.store');
+Route::get('/admin/download-file/{id}', [AdminController::class, 'downloadFile'])->name('admin.download-file');
+
+
+
 //Trainee controller
 Route::get('/trainee/dashboard', [TraineeController::class, 'index']);
 

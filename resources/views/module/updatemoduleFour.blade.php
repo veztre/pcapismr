@@ -136,7 +136,7 @@
                                                                     <option value ="kg"  {{ $sum2->Unit_Consumed_for_the_quarter === 'kg' ? 'selected' : '' }}>kg</option>
                                                                     <option  value ="liter" {{ $sum2->Unit_Consumed_for_the_quarter === 'liter' ? 'selected' : '' }}>liter</option>
                                                                     <option value ="m3"  {{ $sum2->Unit_Consumed_for_the_quarter === 'm3' ? 'selected' : '' }}>m3</option>
-                                                                    <option value =" "  {{ $sum2->Unit_Consumed_for_the_quarter === ' ' ? 'selected' : '' }}> </option>
+                                                                    <option value ="n/a"  {{ $sum2->Unit_Consumed_for_the_quarter === 'n/a' ? 'selected' : '' }}>n/a</option>
                                                                     <option value ="pc"  {{ $sum2->Unit_Consumed_for_the_quarter === 'pc' ? 'selected' : '' }}>pc</option>
                                                                     <option value ="ton"  {{ $sum2->Unit_Consumed_for_the_quarter === 'ton' ? 'selected' : '' }}>ton</option>
                                                                 </select>

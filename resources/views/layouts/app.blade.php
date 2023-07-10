@@ -1117,7 +1117,7 @@
     $("#sum2").click(function () { //button name
         ++i;
         $("#summaryy2").append
-        ('<tr><td class="counterCell " style="text-align: right" ></td><td ><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><select class="form-select" name="summary2[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>kg</option><option>liter</option><option>m3</option><option> </option><option>pc</option><option>ton</option></select></td><td></td><td></td><td><input type="text" class="form-control" name="summary2[]"></td></tr>'); //table name
+        ('<tr><td class="counterCell " style="text-align: right" ></td><td ><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><input type="text" class="form-control" name="summary2[]"></td><td><select class="form-select" name="summary2[]" style="width: fit-content"><option selected disabled value="">-- Select --</option><option>kg</option><option>liter</option><option>m3</option><option>n/a</option><option>pc</option><option>ton</option></select></td><td></td><td></td><td><input type="text" class="form-control" name="summary2[]"></td></tr>'); //table name
     });
 </script>
 

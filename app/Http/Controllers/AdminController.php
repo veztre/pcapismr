@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\User;
 use App\Actions\Fortify\PasswordValidationRules;
 use App\Models\Addfacility;
 use App\Models\Oaupload;
 use App\Models\Plant;
 use App\Models\Referencen;
 use App\Models\Region;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -20,42 +19,50 @@ use Laravel\Jetstream\Jetstream;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Storage;
+
 
 class AdminController extends Controller
 {
    use PasswordValidationRules;
    use ValidatesAttributes;
+
+
     public function index()
     {
         $users = User::all();
         $referencens = referencen::all();
         $addfacility = Addfacility::all();
         $plant = Plant::all();
-        $oaupload = Oaupload::all();
+        $oaupload = Oaupload::all(); // Retrieve all Oaupload records
         $userTypes = ['admin', 'trainee'];
 
         $currentUserId = auth()->user()->id;
+        $uploadedFilePath = Session::pull('uploadedFilePath');
+        $upload = Oaupload::where('userid', $currentUserId)->first();
 
-        return view('dashboard', compact('users',
+        return view('dashboard', compact(
+            'users',
             'referencens',
-                    'addfacility',
-                    'plant',
-                    'oaupload',
-                    'userTypes',
-                    'currentUserId'))
+            'addfacility',
+            'plant',
+            'oaupload',
+            'userTypes',
+            'currentUserId',
+            'uploadedFilePath',
+            'upload'))
             ->with('usertype', $userTypes);
-        $usertype = ['admin', 'trainee'];
-        return view('navigation-menu', compact('usertype'));
-
-
     }
+
+
+
     public function create(){
 
         return view('module.create');
     }
 
-    public function store(Request $request){
-
+    public function store(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'username' => ['required', 'string', 'max:255', 'unique:users'],
             'firstname' => ['required', 'string', 'max:255'],
@@ -71,7 +78,6 @@ class AdminController extends Controller
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-
         $data = new User();
         $data->username = $request->input('username');
         $data->firstname = $request->input('firstname');
@@ -84,8 +90,35 @@ class AdminController extends Controller
         $data->password = Hash::make($request->input('password'));
         $data->save();
 
+        // File upload code...
+        if ($file = $request->file('file')) {
+            $name = $file->getClientOriginalName();
+            $userId = $data->id;
+            $reference = $data->reference_no()->first();
+            $refNo = $reference->reference_number;
+
+            // Build the user folder path
+            $userFolder = $userId . '/' . $refNo . '/moduleSixAttachment';
+
+            // Build the file path
+            $filePath = $userFolder . '/' . $name;
+
+            if ($file->move($userFolder, $name)) {
+                $upload = new Oaupload();
+                $upload->file = $name;
+                $upload->userid = $userId;
+                $upload->save();
+
+                // Store the file path in a session variable
+                Session::put('uploadedFilePath', $filePath);
+            }
+        }
+
         return redirect('/admin/dashboard');
     }
+
+
+
 
     public function edit( $id)
     {
@@ -142,6 +175,11 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Usertype updated successfully.');
     }
+
+
+
+
+
     public function deleteTraineeAccounts(Request $request)
     {
         // Check if the user is authenticated
@@ -200,5 +238,19 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
+    public function downloadFile($id)
+    {
+        $upload = Oaupload::find($id);
 
+        if ($upload) {
+            $filePath = $upload->file;
+            $file = Storage::disk('local')->path($filePath);
+
+            if (file_exists($file)) {
+                return response()->download($file);
+            }
+        }
+
+        return redirect()->back()->with('error', 'File not found.');
+    }
 }
