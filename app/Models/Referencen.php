@@ -13,7 +13,7 @@ class referencen extends Model
 
     public function plant()
     {
-        return $this->hasOne(Plant::class,foreignKey: 'id');
+        return $this->hasOne(Plant::class, 'id');
     }
 
     public function oaupload()

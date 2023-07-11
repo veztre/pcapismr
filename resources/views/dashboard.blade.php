@@ -147,8 +147,32 @@
                                         <td tabindex="0" class="sorting_1">{{ $ref->ref_no }}</td>
 
                                         @if ($ref->plant)
+                                            @php
+                                                $facility = $ref->plant->facility; // Retrieve the facility
+                                                $downloadUrl = null;
 
-                                            <td>{{ $ref->plant->facility->establishment }}</td>
+                                                if ($facility) {
+                                                    $userId = $facility->userid;
+                                                    $upload = $oaupload->where('userid', $userId)->first();
+                                                    $fileName = $upload ? $upload->file : '';
+
+                                                    // Build the user folder path
+                                                    $userFolder = $userId . '/' . $ref->reference_number . '/moduleSixAttachment';
+
+                                                    // Build the file path
+                                                    $filePath = $userFolder . '/' . $fileName;
+
+                                                    // Generate the download URL
+                                                    $downloadUrl = asset($filePath);
+                                                }
+                                            @endphp
+                                            <td>
+                                                @if ($downloadUrl)
+                                                    <a href="{{ $downloadUrl }}">{{ $facility->establishment }}</a>
+                                                @else
+                                                    No facility found
+                                                @endif
+                                            </td>
                                         @else
                                             <td>No facility found</td>
                                         @endif

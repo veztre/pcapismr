@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 
 
+
 class AdminController extends Controller
 {
    use PasswordValidationRules;
@@ -31,15 +32,29 @@ class AdminController extends Controller
     public function index()
     {
         $users = User::all();
-        $referencens = referencen::all();
+        $referencens = Referencen::all();
         $addfacility = Addfacility::all();
         $plant = Plant::all();
-        $oaupload = Oaupload::all(); // Retrieve all Oaupload records
+        $oaupload = Oaupload::all();
         $userTypes = ['admin', 'trainee'];
 
         $currentUserId = auth()->user()->id;
         $uploadedFilePath = Session::pull('uploadedFilePath');
+        $trainee = User::with('facility')->findOrFail($currentUserId);
+        // Retrieve the trainee's facility
+        $facility = $trainee->facility ? $trainee->facility->establishment : 'No facility found';
+        // Retrieve the trainee's uploaded file
         $upload = Oaupload::where('userid', $currentUserId)->first();
+        $fileName = $upload ? $upload->file : '';
+
+        // Build the user folder path
+        $userFolder = $currentUserId . '/moduleSixAttachment';
+
+        // Build the file path
+        $filePath = $userFolder . '/' . $fileName;
+
+        // Generate the download URL
+        $downloadUrl = $fileName ? asset($filePath) : null;
 
         return view('dashboard', compact(
             'users',
@@ -50,11 +65,18 @@ class AdminController extends Controller
             'userTypes',
             'currentUserId',
             'uploadedFilePath',
-            'upload'))
-            ->with('usertype', $userTypes);
+            'trainee',
+            'facility',
+            'downloadUrl'
+        ))->with('usertype', $userTypes);
     }
 
 
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function create(){
 
