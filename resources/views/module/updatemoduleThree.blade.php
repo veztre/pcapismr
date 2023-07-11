@@ -30,7 +30,7 @@
 
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="">
-                {{View::make('module.tabs')}}
+                {{View::make('module.tabsupdate')}}
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <div class="container card col" >
 
