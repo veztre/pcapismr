@@ -114,12 +114,18 @@
 
                     <!--Title-->
 
-                    <div class="m-auto flex justify-end p-2 ">
-                        <a href="{{ route('module.moduleOne.generate.save') }}" class="px-4 py-2 mb-6 text-white no-underline rounded-full transition ease-in-out delay-150 bg-indigo-400 hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 duration-300">Create SMR</a>
+                    <div class="m-auto flex justify-end p-2">
+                        <a href="{{ route('module.moduleOne.generate.save') }}" id="createSmrLink" class="px-4 py-2 mb-6 text-white no-underline rounded-full transition ease-in-out delay-150 bg-indigo-400 hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 duration-300" onclick="disableCreateSmrLink()">
+                            Create SMR
+                        </a>
                     </div>
+
+
+
 
                     <div id="example_wrapper" class="mb-2 dataTables_wrapper no-footer mr-2">
                         <table id="example1" class="stripe hover dataTable no-footer dtr-inline" style="width: 100%; padding-top: 1em; padding-bottom: 1em;" role="grid" aria-describedby="example_info">
+                            @if(Auth::user()->usertype=='admin')
                             <thead>
                             <tr role="row">
                                 <th data-priority="1" class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 142px;" aria-sort="ascending" aria-label="Reference No.: activate to sort column descending">Reference No.</th>
@@ -127,58 +133,25 @@
                                 <th data-priority="3" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100px;" aria-label="Date Created: activate to sort column ascending">Date Created</th>
                                 <th data-priority="4" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100px;" aria-label="Date Submitted: activate to sort column ascending">Date Submitted</th>
                                 <th data-priority="5" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 92px;" aria-label="Status: activate to sort column ascending">Status</th>
-                                <th data-priority="6" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 77px;" aria-label="Action: activate to sort column ascending">Action</th>
+
                             </tr>
 
                             </thead>
 
                             <tbody>
 
-                            @if(Auth::user()->usertype=='admin')
+
 
                                 @foreach ($referencens as $ref)
                                     <tr role="row" class="odd">
                                         <td tabindex="0" class="sorting_1">{{ $ref->ref_no }}</td>
 
                                         @if ($ref->plant)
-                                            @php
-                                                $userId = $ref->userid;
-                                                $user = \App\Models\User::find($userId);
-                                                $referencens = $user->reference_no()->first();
 
-                                                if ($referencens) {
-                                                    $refNo = $referencens->reference_number;
-
-                                                    // Get the upload record for the current user
-                                                    $upload = $user->oaupload()->first();
-
-                                                    // Check if an upload record exists and retrieve the file name
-                                                    $fileName = $upload ? $upload->file : '';
-
-                                                    // Build the user folder path
-                                                    $userFolder = $userId . '/' . $refNo . '/moduleSixAttachment';
-
-                                                    // Build the file path
-                                                    $filePath = $userFolder . '/' . $fileName;
-
-                                                    // Generate the download URL
-                                                    $downloadUrl = Storage::disk('local')->exists($filePath) ? asset($filePath) : null;
-                                                } else {
-                                                    $downloadUrl = null;
-                                                }
-                                            @endphp
-                                            <td>
-                                                @if ($downloadUrl)
-                                                    <a href="{{ $downloadUrl }}">{{ $ref->plant->facility->establishment }}</a>
-                                                @else
-                                                    No facility found
-                                                @endif
-                                            </td>
+                                            <td>{{ $ref->plant->facility->establishment }}</td>
                                         @else
                                             <td>No facility found</td>
                                         @endif
-
-
 
 
                                         <td>{{ $ref->created_at->format('Y-m-d') }}</td>
@@ -195,16 +168,6 @@
                                         <td>ACTIVE</td>
 
 
-                                        <td>
-                                            <a  href="{{ route('view', ['id' =>  Auth::user()->id]) }}"><button class="btn btn-info"><i class="bi bi-pencil-square"></i><svg
-                                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                        fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                                                        <path fill-rule="evenodd"
-                                                              d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-                                                    </svg></button></a>
-                                        </td>
 
 
                                     </tr>
@@ -213,7 +176,19 @@
 
 
                             @elseif(Auth::user()->usertype=='trainee')
+                                <thead>
+                                <tr role="row">
+                                    <th data-priority="1" class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 142px;" aria-sort="ascending" aria-label="Reference No.: activate to sort column descending">Reference No.</th>
+                                    <th data-priority="2" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 224px;" aria-label="Facility: activate to sort column ascending">Facility</th>
+                                    <th data-priority="3" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100px;" aria-label="Date Created: activate to sort column ascending">Date Created</th>
+                                    <th data-priority="4" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100px;" aria-label="Date Submitted: activate to sort column ascending">Date Submitted</th>
+                                    <th data-priority="5" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 92px;" aria-label="Status: activate to sort column ascending">Status</th>
+                                    <th data-priority="6" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 77px;" aria-label="Action: activate to sort column ascending">Action</th>
+                                </tr>
 
+                                </thead>
+
+                                <tbody>
                                 @foreach ($referencens as $ref)
                                     <tr role="row" class="odd">
                                         <td tabindex="0" class="sorting_1">{{ $ref->ref_no }}</td>
@@ -376,6 +351,12 @@
     .current-admin {
         background-color: yellow; /* Customize the highlighting style */
     }
+
+
+    .disabled {
+        opacity: 0.5; /* Example styling: reduce opacity for disabled appearance */
+        /* Add any additional disabled styling as needed */
+    }
 </style>
 
 {{--confirmation on deleting all trainee accounts--}}
@@ -386,4 +367,27 @@
             document.getElementById('delete-form').submit();
         }
     }
+</script>
+
+{{--disable createsmrlink button--}}
+<script>
+    function disableCreateSmrLink() {
+        var createSmrLink = document.getElementById('createSmrLink');
+        createSmrLink.style.pointerEvents = 'none'; // Disable pointer events to prevent clicks
+        createSmrLink.classList.add('disabled'); // Add a disabled class for visual styling
+
+        // Store the disabled state in local storage
+        localStorage.setItem('createSmrDisabled', 'true');
+    }
+
+    // Check if the link should be disabled on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        var createSmrLink = document.getElementById('createSmrLink');
+        var isCreateSmrDisabled = localStorage.getItem('createSmrDisabled');
+
+        if (isCreateSmrDisabled === 'true') {
+            createSmrLink.style.pointerEvents = 'none';
+            createSmrLink.classList.add('disabled');
+        }
+    });
 </script>
