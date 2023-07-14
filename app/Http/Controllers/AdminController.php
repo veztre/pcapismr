@@ -25,8 +25,8 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
-   use PasswordValidationRules;
-   use ValidatesAttributes;
+    use PasswordValidationRules;
+    use ValidatesAttributes;
 
 
     public function index()

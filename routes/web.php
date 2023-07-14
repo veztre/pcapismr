@@ -172,3 +172,5 @@ Route::post('/admin/updateUsertype', [AdminController::class, 'updateUsertype'])
 
 /*delete trainee account*/
 Route::match(['get', 'post'], '/delete-trainee-accounts', [AdminController::class, 'deleteTraineeAccounts'])->name('delete-trainee-accounts');
+
+

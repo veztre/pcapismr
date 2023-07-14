@@ -99,7 +99,6 @@
                         </div>
 
 
-
                     </div>
 
 
@@ -113,33 +112,33 @@
                     </h1>
 
                     <!--Title-->
-
                     <div class="m-auto flex justify-end p-2">
-                        <a href="{{ route('module.moduleOne.generate.save') }}" id="createSmrLink" class="px-4 py-2 mb-6 text-white no-underline rounded-full transition ease-in-out delay-150 bg-indigo-400 hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 duration-300" onclick="disableCreateSmrLink()">
-                            Create SMR
-                        </a>
+                        @unless(Request::is('admin*'))
+                            <a href="{{ route('module.moduleOne.generate.save') }}" id="createButton" class="px-4 py-2 mb-6 text-white no-underline rounded-full transition ease-in-out delay-150 bg-indigo-400 hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 duration-300">
+                                Create SMR
+                            </a>
+                        @endunless
                     </div>
-
 
 
 
                     <div id="example_wrapper" class="mb-2 dataTables_wrapper no-footer mr-2">
                         <table id="example1" class="stripe hover dataTable no-footer dtr-inline" style="width: 100%; padding-top: 1em; padding-bottom: 1em;" role="grid" aria-describedby="example_info">
                             @if(Auth::user()->usertype=='admin')
-                            <thead>
-                            <tr role="row">
-                                <th data-priority="1" class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 142px;" aria-sort="ascending" aria-label="Reference No.: activate to sort column descending">Reference No.</th>
-                                <th data-priority="2" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 224px;" aria-label="Facility: activate to sort column ascending">Facility</th>
-                                <th data-priority="3" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 224px;" aria-label="Name: activate to sort column descending">Name</th>
-                                <th data-priority="4" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100px;" aria-label="Date Created: activate to sort column ascending">Date Created</th>
-                                <th data-priority="5" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100px;" aria-label="Date Submitted: activate to sort column ascending">Date Submitted</th>
-                                <th data-priority="6" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 92px;" aria-label="Status: activate to sort column ascending">Status</th>
+                                <thead>
+                                <tr role="row">
+                                    <th data-priority="1" class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 142px;" aria-sort="ascending" aria-label="Reference No.: activate to sort column descending">Reference No.</th>
+                                    <th data-priority="2" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 224px;" aria-label="Facility: activate to sort column ascending">Facility</th>
+                                    <th data-priority="3" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 224px;" aria-label="Name: activate to sort column descending">Name</th>
+                                    <th data-priority="4" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100px;" aria-label="Date Created: activate to sort column ascending">Date Created</th>
+                                    <th data-priority="5" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100px;" aria-label="Date Submitted: activate to sort column ascending">Date Submitted</th>
+                                    <th data-priority="6" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 92px;" aria-label="Status: activate to sort column ascending">Status</th>
 
-                            </tr>
+                                </tr>
 
-                            </thead>
+                                </thead>
 
-                            <tbody>
+                                <tbody>
 
 
 
@@ -200,18 +199,18 @@
                                 @endforeach
 
 
-                            @elseif(Auth::user()->usertype=='trainee')
-                                <thead>
-                                <tr role="row">
-                                    <th data-priority="1" class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 142px;" aria-sort="ascending" aria-label="Reference No.: activate to sort column descending">Reference No.</th>
-                                    <th data-priority="2" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 224px;" aria-label="Facility: activate to sort column ascending">Facility</th>
-                                    <th data-priority="3" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100px;" aria-label="Date Created: activate to sort column ascending">Date Created</th>
-                                    <th data-priority="4" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100px;" aria-label="Date Submitted: activate to sort column ascending">Date Submitted</th>
-                                    <th data-priority="5" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 92px;" aria-label="Status: activate to sort column ascending">Status</th>
-                                    <th data-priority="6" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 77px;" aria-label="Action: activate to sort column ascending">Action</th>
-                                </tr>
+                                @elseif(Auth::user()->usertype=='trainee')
+                                    <thead>
+                                    <tr role="row">
+                                        <th data-priority="1" class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 142px;" aria-sort="ascending" aria-label="Reference No.: activate to sort column descending">Reference No.</th>
+                                        <th data-priority="2" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 224px;" aria-label="Facility: activate to sort column ascending">Facility</th>
+                                        <th data-priority="3" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100px;" aria-label="Date Created: activate to sort column ascending">Date Created</th>
+                                        <th data-priority="4" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100px;" aria-label="Date Submitted: activate to sort column ascending">Date Submitted</th>
+                                        <th data-priority="5" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 92px;" aria-label="Status: activate to sort column ascending">Status</th>
+                                        <th data-priority="6" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 77px;" aria-label="Action: activate to sort column ascending">Action</th>
+                                    </tr>
 
-                                </thead>
+                                    </thead>
 
                                 <tbody>
                                 @foreach ($referencens as $ref)
@@ -283,10 +282,10 @@
 
                                 @endforeach
 
-                            @endif
+                                @endif
 
 
-                            </tbody>
+                                </tbody>
 
                         </table>
 
@@ -301,7 +300,7 @@
 
                     <div class="m-auto flex justify-end p-2 ">
 
-                            <a href="{{ route('addfacility') }}" class="px-4 py-2 mb-6 text-white no-underline rounded-full transition ease-in-out delay-150 bg-indigo-400 hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 duration-300">Add Facility</a>
+                        <a href="{{ route('addfacility') }}" class="px-4 py-2 mb-6 text-white no-underline rounded-full transition ease-in-out delay-150 bg-indigo-400 hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 duration-300">Add Facility</a>
 
                     </div>
 
@@ -341,16 +340,16 @@
                             @elseif(Auth::user()->usertype=='trainee')
                                 @foreach($addfacility as $facility)
 
-                                        <tr role="row" class="odd">
-                                            <td tabindex="0" class="sorting_1">{{$facility->embregion}}- {{$facility->embid}}</td>
-                                            <td>{{$facility->establishment}}</td>
-                                            <td>{{$facility->street}}</td>
-                                            <td>{{$facility->baranggay}}</td>
-                                            <td>{{$facility->city}}</td>
-                                            <td>{{$facility->province}}</td>
-                                            <td>{{ $facility->created_at->format('Y-m-d') }}</td>
-                                            <td>ACTIVE</td>
-                                        </tr>
+                                    <tr role="row" class="odd">
+                                        <td tabindex="0" class="sorting_1">{{$facility->embregion}}- {{$facility->embid}}</td>
+                                        <td>{{$facility->establishment}}</td>
+                                        <td>{{$facility->street}}</td>
+                                        <td>{{$facility->baranggay}}</td>
+                                        <td>{{$facility->city}}</td>
+                                        <td>{{$facility->province}}</td>
+                                        <td>{{ $facility->created_at->format('Y-m-d') }}</td>
+                                        <td>ACTIVE</td>
+                                    </tr>
 
                                 @endforeach
                             @endif
@@ -379,8 +378,8 @@
 
 
     .disabled {
-        opacity: 0.5; /* Example styling: reduce opacity for disabled appearance */
-        /* Add any additional disabled styling as needed */
+        pointer-events: none;
+        opacity: 0.5; /* Optionally reduce the opacity to indicate disabled state */
     }
 </style>
 
@@ -394,25 +393,87 @@
     }
 </script>
 
-{{--disable createsmrlink button--}}
-<script>
-    function disableCreateSmrLink() {
-        var createSmrLink = document.getElementById('createSmrLink');
-        createSmrLink.style.pointerEvents = 'none'; // Disable pointer events to prevent clicks
-        createSmrLink.classList.add('disabled'); // Add a disabled class for visual styling
 
-        // Store the disabled state in local storage
-        localStorage.setItem('createSmrDisabled', 'true');
+// Remove the button in the admin panel
+const isAdminPanel = '{{ Request::is('admin*') }}';
+if (isAdminPanel) {
+createButton.remove();
+}
+
+{{-- New script for disable create smr --}}
+{{--
+<script>
+    // Get the button element
+    const createButton = document.getElementById('createButton');
+
+    // Function to disable the button and update the text
+    function disableButton() {
+        createButton.setAttribute('disabled', 'disabled');
+        createButton.innerText = 'SMR Created';
+        createButton.classList.add('disabled');
     }
 
-    // Check if the link should be disabled on page load
-    document.addEventListener('DOMContentLoaded', function() {
-        var createSmrLink = document.getElementById('createSmrLink');
-        var isCreateSmrDisabled = localStorage.getItem('createSmrDisabled');
+    // Function to enable the button and update the text
+    function enableButton() {
+        createButton.removeAttribute('disabled');
+        createButton.innerText = 'Create SMR';
+        createButton.classList.remove('disabled');
+    }
 
-        if (isCreateSmrDisabled === 'true') {
-            createSmrLink.style.pointerEvents = 'none';
-            createSmrLink.classList.add('disabled');
+    // Function to handle button click
+    function handleButtonClick(event) {
+        event.preventDefault();
+
+        // Disable the button and update the text
+        disableButton();
+
+        // Store the SMR creation status for the current user
+        localStorage.setItem('isSMRCreated_' + currentUserID, 'true');
+
+        // Proceed to Module 1 page
+        window.location.href = createButton.href;
+    }
+
+    // Add click event listener to the button
+    createButton.addEventListener('click', handleButtonClick);
+
+    // Check if the SMR has been created for the trainee
+    const currentUserID = '{{ Auth::user()->id }}';
+    const isSMRCreated = localStorage.getItem('isSMRCreated_' + currentUserID);
+    if (isSMRCreated === 'true') {
+        disableButton();
+    } else {
+        enableButton();
+    }
+
+    // Remove the button in the admin panel
+    const isAdminPanel = '{{ Request::is('admin*') }}';
+    if (isAdminPanel) {
+        createButton.remove();
+    }
+
+    // Check if the user has returned to the dashboard from the module
+    const isReturnedToDashboard = sessionStorage.getItem('isReturnedToDashboard_' + currentUserID);
+    if (isReturnedToDashboard === 'true') {
+        disableButton();
+        // Clear the return to dashboard status
+        sessionStorage.removeItem('isReturnedToDashboard_' + currentUserID);
+    }
+
+    // Listen for the page unload event
+    window.addEventListener('beforeunload', function () {
+        // Store the return to dashboard status
+        sessionStorage.setItem('isReturnedToDashboard_' + currentUserID, 'true');
+    });
+
+    // Check if the user has returned to the dashboard when the page loads
+    window.addEventListener('load', function () {
+        const isReturnedToDashboardOnLoad = sessionStorage.getItem('isReturnedToDashboard_' + currentUserID);
+        if (isReturnedToDashboardOnLoad === 'true') {
+            disableButton();
+            // Clear the return to dashboard status
+            sessionStorage.removeItem('isReturnedToDashboard_' + currentUserID);
         }
     });
 </script>
+--}}

@@ -48,93 +48,93 @@
 
 
 <div class="container mt-auto position-relative">
-    <nav class="navbar navbar-expand-lg ">
+    <nav class="navbar navbar-expand-lg">
         <form class="d-flex">
             <li class="nav-item">
-                <a class="nav-link {{ Request::route()->getName() == 'view' ? 'active' : '' }}" href="{{ route('view', ['id' => auth()->user()->id]) }}" onclick="moduleOne(event)">
+                <a class="nav-link {{ Request::route()->getName() == 'view' ? 'active' : '' }}" href="{{ route('view', ['id' => auth()->user()->id]) }}" onclick="moduleOne(event, '{{ route('view', ['id' => auth()->user()->id]) }}')">
                     <small>Module 1: General Info</small>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {{ Request::route()->getName() == 'view2' ? 'active' : '' }}" href="{{ route('view2', ['id' => auth()->user()->id]) }}" onclick="moduleTwo(event)">
+                <a class="nav-link {{ Request::route()->getName() == 'view2' ? 'active' : '' }}" href="{{ route('view2', ['id' => auth()->user()->id]) }}" onclick="moduleTwo(event, '{{ route('view2', ['id' => auth()->user()->id]) }}')">
                     <small>Module 2: RA 6969</small>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {{ Request::route()->getName() == 'view3' ? 'active' : '' }}" href="{{ route('view3', ['id' => auth()->user()->id]) }}" onclick="moduleThree(event)">
+                <a class="nav-link {{ Request::route()->getName() == 'view3' ? 'active' : '' }}" href="{{ route('view3', ['id' => auth()->user()->id]) }}" onclick="moduleThree(event, '{{ route('view3', ['id' => auth()->user()->id]) }}')">
                     <small>Module 3: RA 9275</small>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {{ Request::route()->getName() == 'view4' ? 'active' : '' }}" href="{{ route('view4', ['id' => auth()->user()->id]) }}" onclick="moduleFour(event)">
+                <a class="nav-link {{ Request::route()->getName() == 'view4' ? 'active' : '' }}" href="{{ route('view4', ['id' => auth()->user()->id]) }}" onclick="moduleFour(event, '{{ route('view4', ['id' => auth()->user()->id]) }}')">
                     <small>Module 4: RA 8749</small>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {{ Request::route()->getName() == 'view5' ? 'active' : '' }}" href="{{ route('view5', ['id' => auth()->user()->id]) }}" onclick="moduleFive(event)">
+                <a class="nav-link {{ Request::route()->getName() == 'view5' ? 'active' : '' }}" href="{{ route('view5', ['id' => auth()->user()->id]) }}" onclick="moduleFive(event, '{{ route('view5', ['id' => auth()->user()->id]) }}')">
                     <small>Module 5: RA 1586</small>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link {{ Request::route()->getName() == 'view6' ? 'active' : '' }}" href="{{ route('view6', ['id' => auth()->user()->id]) }}" onclick="moduleSix(event)">
+                <a class="nav-link {{ Request::route()->getName() == 'view6' ? 'active' : '' }}" href="{{ route('view6', ['id' => auth()->user()->id]) }}" onclick="moduleSix(event, '{{ route('view6', ['id' => auth()->user()->id]) }}')">
                     <small>Module 6: Others</small>
                 </a>
             </li>
         </form>
     </nav>
-</div> <!-- container -->
+</div>
 
 <script>
-    function moduleOne(event) {
+    function moduleOne(event, href) {
         event.preventDefault();
         var confirmation = confirm("Do you want to continue to proceed to the module? without saving");
         if (confirmation) {
-            window.location.href = event.target.href;
+            window.location.href = href;
         }
     }
 
-    function moduleTwo(event) {
+    function moduleTwo(event, href) {
         event.preventDefault();
         var confirmation = confirm("Do you want to continue to proceed to the module? without saving");
         if (confirmation) {
-            window.location.href = event.target.href;
+            window.location.href = href;
         }
     }
 
-    function moduleThree(event) {
+    function moduleThree(event, href) {
         event.preventDefault();
         var confirmation = confirm("Do you want to continue to proceed to the module? without saving");
         if (confirmation) {
-            window.location.href = event.target.href;
+            window.location.href = href;
         }
     }
 
-    function moduleFour(event) {
+    function moduleFour(event, href) {
         event.preventDefault();
         var confirmation = confirm("Do you want to continue to proceed to the module? without saving");
         if (confirmation) {
-            window.location.href = event.target.href;
+            window.location.href = href;
         }
     }
 
-    function moduleFive(event) {
+    function moduleFive(event, href) {
         event.preventDefault();
         var confirmation = confirm("Do you want to continue to proceed to the module? without saving");
         if (confirmation) {
-            window.location.href = event.target.href;
+            window.location.href = href;
         }
     }
 
-    function moduleSix(event) {
+    function moduleSix(event, href) {
         event.preventDefault();
         var confirmation = confirm("Do you want to continue to proceed to the module? without saving");
         if (confirmation) {
-            window.location.href = event.target.href;
+            window.location.href = href;
         }
     }
 </script>
