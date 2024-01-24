@@ -21,27 +21,7 @@
 
 
                         <table class="table table-borderless table-hover">
-                            <thead>
-                            <tr>
-                                <td style="vertical-align: middle; text-align: right;">
-                                    <label class="inline-block" style="display: block; text-align: left; margin-bottom: 0;">EMB ID:</label>
-                                </td>
-                                <td>
-                                    <div class="input-group mt-4 mb-3" style="display: flex; align-items: center; justify-content: center;">
-                                        <select id="region" name="embregion" class="form-control valid w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" aria-required="true" aria-invalid="false" style="width:400px;">
-                                            <option selected disabled value=" ">SELECT EMB (Region)</option>
-                                            @foreach ($regionn as $data)
-                                                <option value="EMB {{$data->regionname}}" @if(old('embregion') == $data->regionname) selected @endif>
-                                                    EMB {{$data->regionname}}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                        <input type="text" class="form-control mr-4" placeholder="EMB ID No." style="width:150px; margin-left: 10px" name="embid">
-                                    </div>
-                                </td>
-                            </tr>
-
-                            </thead>
+                           
                             <tbody>
                             <tr>
                                 <td style="text-align: left;">

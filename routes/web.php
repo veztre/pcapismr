@@ -20,6 +20,7 @@ use App\Http\Controllers\TransitiontoMod2Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AddFacilityController;
 use App\Http\Controllers\TabsController;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +33,6 @@ use App\Http\Controllers\TabsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::get('/dashboard', function () {
     if (Auth::user()->usertype== 'admin'){
@@ -46,24 +44,6 @@ Route::get('/dashboard', function () {
 
 
 
-
-/*Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
-    Route::get('/', [IndexController::class, 'index'])->name('index');
-    Route::resource('/roles', RoleController::class);
-    Route::post('/roles/{role}/permissions', [RoleController::class, 'givePermission'])->name('roles.permissions');
-    Route::delete('/roles/{role}/permissions/{permission}', [RoleController::class, 'revokePermission'])->name('roles.permissions.revoke');
-    Route::resource('/permissions', PermissionController::class);
-    Route::post('/permissions/{permission}/roles', [PermissionController::class, 'assignRole'])->name('permissions.roles');
-    Route::delete('/permissions/{permission}/roles/{role}', [PermissionController::class, 'removeRole'])->name('permissions.roles.remove');
-    Route::get('/users', [UserController::class, 'index'])->name('users.index');
-    Route::get('/users/{user}', [UserController::class, 'show'])->name('users.show');
-    Route::post('/users/{user}/roles', [UserController::class, 'assignRole'])->name('users.roles');
-    Route::delete('/users/{user}/roles/{role}', [UserController::class, 'removeRole'])->name('users.roles.remove');
-    Route::post('/users/{user}/permissions', [UserController::class, 'givePermission'])->name('users.permissions');
-    Route::delete('/users/{user}/permissions/{permission}', [UserController::class, 'revokePermission'])->name('users.permissions.revoke');
-
-});*/
-
 Route::redirect('/', destination: 'login');
 //transition
 Route::get('/moduleTwoTransition', [TransitiontoMod2Controller::class, 'index']);
@@ -72,7 +52,10 @@ Route::post('/check', [TransitiontoMod2Controller::class, 'check'])->name('check
 
 
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.index');
+
+
 Route::get('/create/user', [AdminController::class, 'create'])->name('create');
+
 Route::post('/save', [AdminController::class, 'store']);
 Route::get('/edit/{id}', [AdminController::class, 'edit'])->name('editaccount');
 Route::put('/update/{id}', [AdminController::class, 'update'])->name('update');

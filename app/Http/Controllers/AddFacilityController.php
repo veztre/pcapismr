@@ -12,23 +12,25 @@ class AddFacilityController extends Controller
     public function index()
     {
 
-        return view('module.addfacilitymod');
+        return view('module.addfacility');
 
     }
 
     public function store(Request $request)
     {
-        $data = new Addfacility();
-        $data->userid = Auth::user()->id;
-        $data->embregion = $request->input('embregion');
-        $data->embid = $request->input('embid');
-        $data->establishment = $request->input('establishment');
-        $data->street = $request->input('street');
-        $data->baranggay = $request->input('baranggay');
-        $data->city = $request->input('city');
-        $data->province = $request->input('province');
+        $facility = new Addfacility();
 
-        $data->save();
+        $facility->userid = Auth::user()->id;
+        $facility->embregion = Auth::user()->region;
+        
+        $facility->embid = $request->input('embid');
+        $facility->establishment = $request->input('establishment');
+        $facility->street = $request->input('street');
+        $facility->baranggay = $request->input('baranggay');
+        $facility->city = $request->input('city');
+        $facility->province = $request->input('province');
+
+        $facility->save();
 
         return redirect('/trainee/dashboard');
     }

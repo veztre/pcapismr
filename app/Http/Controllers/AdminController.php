@@ -15,10 +15,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Concerns\ValidatesAttributes;
-use Laravel\Jetstream\Jetstream;
+
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -39,6 +38,7 @@ class AdminController extends Controller
         $userTypes = ['admin', 'trainee'];
 
         $currentUserId = auth()->user()->id;
+        
         $uploadedFilePath = Session::pull('uploadedFilePath');
         $trainee = User::with('facility')->findOrFail($currentUserId);
         // Retrieve the trainee's facility
