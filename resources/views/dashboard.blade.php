@@ -391,7 +391,7 @@
             document.getElementById('delete-form').submit();
         }
     }
-</script>
+
 
 
 // Remove the button in the admin panel
@@ -399,7 +399,7 @@ const isAdminPanel = '{{ Request::is('admin*') }}';
 if (isAdminPanel) {
 createButton.remove();
 }
-
+</script>
 {{-- New script for disable create smr --}}
 {{--
 <script>

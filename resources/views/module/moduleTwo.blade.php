@@ -177,7 +177,7 @@
                                     <div class="container">
                                         <div class="col mb-3">
                                             <div class="mb-3" style="float: right">
-                                                <a href="{{ route('module.moduleOne') }}" class="btn btn-lg border bg-light">Previous</a>
+                                                <a href="{{ route('view',['id' => Auth::id()]) }}" class="btn btn-lg border bg-light">Previous</a>
                                                 <a href="{{ url('moduleThree') }}" class="btn btn-lg btn-info">Next</a>
 
 

@@ -70,7 +70,7 @@ Route::get('/admin/download-file/{id}', [AdminController::class, 'downloadFile']
 
 
 //Trainee controller
-Route::get('/trainee/dashboard', [TraineeController::class, 'index']);
+Route::get('/trainee/dashboard', [TraineeController::class, 'index'])->name('traineedb');
 
 // updated
 

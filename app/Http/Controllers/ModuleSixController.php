@@ -122,7 +122,7 @@ class ModuleSixController extends Controller
 
 
 
-        return redirect()->back();
+        return redirect()->route('traineedb');
     }
 
 
@@ -274,7 +274,7 @@ class ModuleSixController extends Controller
             $newRecord->save();
         }
 
-        return redirect()->back();
+        return redirect()->route('traineedb');
 
     }
 

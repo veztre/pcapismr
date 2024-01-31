@@ -89,8 +89,6 @@
 
                                     @foreach ($waterpolutiondata as $water)
                                     <tbody>
-
-
                                             <tr>
                                                 <td>Domestic wastewater (cubicmeters/day)</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
@@ -309,9 +307,8 @@
                                 <table class="table table-borderless table-hover" >
                                     <h3 class="mt-3 mx-2 text-success">DETAILED REPORT OF WASTEWATER CHARACTERISTICS FOR CONVENTIONAL POLLUTANTS</h3>
 
-                                    @foreach ($dreportofwaste_parameter as $dreport_parameter)
-                                    <tbody id=drwccc>
-                                    <tr>
+                                     <tbody id=drwccc>
+                                     <tr>
                                         <th style="text-align: center">Outlet No.</th>
                                         <th style="text-align: center">Date</th>
                                         <th style="text-align: center">Effluent Flow Rate (m3/day)</th>
@@ -321,6 +318,9 @@
                                         <th style="text-align: center">pH</th>
                                         <th style="text-align: center">Oil & Grease (mg/L)</th>
                                         <th style="text-align: center">Temp Rise ©</th>
+                                     </tr>
+                                     @foreach ($dreportofwaste_parameter as $dreport_parameter)
+                                    <tr>
                                         <td><input class="form-control" type="text" name="name_parameter" id="npara" value="{{ $dreport_parameter->name_parameter }}"></td>
                                     </tr>
                                     <td></td>
@@ -375,7 +375,7 @@
                                     @endforeach
                                     </tbody>
 
-                                    <td><button type="button" name="add" id="drwcccadd" class="btn btn-outline-primary">+</button></td>
+                                    <td><button type="button" id="drwcccadd" class="btn btn-outline-primary">+</button></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
@@ -559,7 +559,7 @@
     $("#dwrcopadd").click(function () { //button name
         ++i;
         $("#dwrcop").append(
-            ' <tr><td><input class="form-control" type="text"   name="drowcfop1[]"></td><td><input class="form-control" type="date"   name="drowcfop1[]"></td><td><input class="form-control" type="text"   name="drowcfop1[]"></td><td><input class="form-control" type="text"   name="drowcfop1[]"></td><td><input class="form-control" type="text"   name="drowcfop1[]"></td><td><input class="form-control" type="text"   name="drowcfop1[]"></td><td><input class="form-control" type="text"   name="drowcfop1[]"></td><td><input class="form-control" type="text"   name="drowcfop1[]"></td><td><input class="form-control" type="text"   name="drowcfop1[]"></td></tr>'
+            ' <tr><td><input class="form-control" type="text" name="drowcfop1[]"></td><td><input class="form-control" type="date"   name="drowcfop1[]"></td><td><input class="form-control" type="text"   name="drowcfop1[]"></td><td><input class="form-control" type="text"   name="drowcfop1[]"></td><td><input class="form-control" type="text"   name="drowcfop1[]"></td><td><input class="form-control" type="text"   name="drowcfop1[]"></td><td><input class="form-control" type="text"   name="drowcfop1[]"></td><td><input class="form-control" type="text"   name="drowcfop1[]"></td><td><input class="form-control" type="text"   name="drowcfop1[]"></td></tr>'
                 ); //table name
     });
 </script>

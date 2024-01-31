@@ -5,53 +5,44 @@
     <title>Environmental Management Bureau Online Services - SMR - General information</title>
 
     <div class="py-12" style="margin-top:0">
-
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="">
+        <div class="container-fluid">
+            <div class="container">
                 {{View::make('module.tabs')}}
 
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg container">
 
 
-                    <div class="container col ml-4" style="align-content: center">
+                    <div class="container">
                         <form id="myForm" action="/saveData" method="post"  enctype="multipart/form-data">
                             @csrf
                             <!-- {{ csrf_field() }} -->
                             <br>
 
                             <div class="row">
-
-                                <div class="col">
-
+                                <div class="col-8">
                                     <h1 style="text-align: center"> POLLUTION CONTROL ASSOCIATION OF THE PHILIPPINES, INC. (PCAPI)</h1>
                                     <h2 style="text-align: center">SELF- MONITORING REPORT TRAINING MODULE</h2>
-
                                 </div>
-
-                                <div class="card col-5 mr-4" style="float:right">
-
-                                    <div class="mt-1 mx-3">
-                                        Reference no.
+                                <div class="col-4">
+                                    <div class="card mr-4">
+                                        <div class="mt-1 mx-3">
+                                            Reference no.
+                                        </div>
+                                        <div class="card-body">
+                                            {{--reference no--}}
+                                            <input type="text" class="form-control mt-0" placeholder="" value="{{ $referencen }}" readonly>
+                                        </div>
                                     </div>
-
-                                    <div class="card-body">
-
-                                        {{--reference no--}}
-                                        <input type="text" class="form-control mt-0" placeholder="" value="{{ $referencen }}" readonly>
-
-                                    </div>
-
                                 </div>
-
                             </div>
 
-                            <div class="container">
+                            <div class="row">
 
                                 <div class="row mt-4">
 
-                                    <div class="col-2 position-relative">
+                                    <div class="col-3 position-relative">
                                         {{--dropdown year--}}
-                                        <label for="year" hidden></label>
+                                        <label for="year">Year</label>
                                         <select class="form-select validate-input" id="year" name="year" required>
                                             <option selected disabled value="">SELECT</option>
                                             <option class="">2025</option>
@@ -73,9 +64,9 @@
 
                                     </div>
 
-                                    <div class="col-2 position-relative">
+                                    <div class="col-3 position-relative">
                                         {{--dropdown quarter--}}
-                                        <label for="quarter" hidden></label>
+                                        <label for="quarter">Quarter</label>
                                         <select class="form-select validate-input" id="quarter" name="quarter" required>
                                             <option selected disabled value="">SELECT</option>
                                             <option class="">1st Quarter</option>
@@ -90,8 +81,8 @@
 
                                     </div>
 
-                                    <div class="col" style="margin-left: 5%">
-                                        <p class="mx-auto mt-2">QUARTERLY SELF-MONITORING REPORT</p>
+                                    <div class="col-6 text-center pt-6">
+                                        <p>QUARTERLY SELF-MONITORING REPORT</p>
                                     </div>
 
                                 </div>
@@ -108,20 +99,18 @@
                                         Below.</p>
                                 </div>
 
-                                <div class="container">
                                     <div class="row">
                                         {{--pdf export button--}}
-                                        <p class="p-1 mt-3  text-light " style="background-color:gray; font-size:20px ">
+                                        <p class="col p-1 mt-3  text-light " style="background-color:gray; font-size:20px ">
                                             MODULE 1: GENERAL INFORMATION
                                             <a href="/pdf" class="btn btn-lg float-right " ><img src="/images/printpdflogo.png" class="inline" height="40px" width="50px" style="backgorund-color:gray;"> EXPORT PDF</a>
                                         </p>
 
                                     </div>
-                                </div>
 
 
-                                <div class="mb-2">
-                                    <div class="col-11 mx-auto position-relative">
+                                <div class="row ">
+                                    <div class="col mx-auto position-relative">
                                         {{--Plant / add facility data--}}
                                         <p>Name of the Plant</p>
                                         <label for="plant" hidden></label>
@@ -143,17 +132,19 @@
                                 </div>
 
                                 <!-- Message input class="form-control" -->
-                                <div class="container pt-4">
-                                    <P class="text-secondary ml-3 mt-3">Please provide the necessary revised, corrected or updated
+                                <div class="row">
+                                    <P class="col text-secondary ml-3 mt-3">Please provide the necessary revised, corrected or updated
                                         information not contained in your <br> General Information Sheet.</P>
                                 </div>
 
 
-                                <div class="container">
+                                <div class="row">
                                     {{--General Information sheet--}}
-                                    <label for="description" hidden></label>
-                                    <textarea name="description" class="form-control" id="description" cols="40" rows="10"
+                                    <div class="col">
+                                        <label class="fw-bold" for="description">Description</label>
+                                        <textarea name="description" class="form-control" id="description" cols="40" rows="10"
                                               style="overflow:scroll; overflow-x:hidden" required></textarea>
+                                    </div>
                                 </div>
 
                                 <table class="table table-borderless table-hover">
@@ -178,18 +169,15 @@
                                         <td>RA 9275</td>
                                         <td>A/C</td>
                                         <td class="position-relative">
-                                            <label for="ACPermit" hidden></label>
                                             <input class="form-control validate-input" type="text" name="ACPermit" id="ACPermit" value="{{ old('ACPermit', ' ') }}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
-                                            <label for="ACIssued" hidden></label>
-                                            <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="ACIssued"
+                                             <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="ACIssued"
                                                    id="ACIssued" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
-                                            <label for="ACExpire" hidden></label>
                                             <input class="form-select validate-input" placeholder="Date: " value="2001-01-01" type="date" name="ACExpire"
                                                    id="ACExpire" required>
                                             <span class="checkmark"></span>
@@ -208,30 +196,27 @@
                                         <td></td>
                                         <td>DP No.</td>
                                         <td class="position-relative">
-                                            <label for="dpno" hidden></label>
                                             <input class="form-control validate-input" type="text" name="dpno[]" id="dpno" value="{{ old('dpno', ' ') }}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
-                                            <label for="dpno" hidden></label>
                                             <input class="form-select validate-input" placeholder="Date: " value="2001-01-01" type="date" name="dpno[]" id="dpno"
                                                    required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
-                                            <label for="dpno" hidden></label>
                                             <input class="form-select validate-input" placeholder="Date: " value="2001-01-01" type="date" name="dpno[]" id="dpnoe"
                                                    required>
                                             <span class="checkmark"></span>
                                         </td>
-
-                                    </tr>
+                                     </tr>
 
                                     </tbody>
 
                                     <td></td>
                                     <td></td>
                                     <td></td>
+
                                     <td><button type="button" name="add" id="dynamic-ar"
                                                 class="btn btn-outline-primary">+</button></td>
                                     <td></td>

@@ -139,7 +139,7 @@
 
                                     @foreach ($oaupload as $upload)
                                         @if ($upload->userid == Auth::user()->id)
-                                            <input class="form-control my-3" name="file" type="file" style="width:300px" id="file" multiple required>
+                                            <input class="form-control my-3" name="file" type="file" style="width:300px" id="file" multiple>
                                             <style>
                                                 #pdf-error1 {
                                                     color: red;
@@ -271,7 +271,6 @@
                             <div class="container">
                                 <div class="col mb-3" >
                                     <div style="float: right" class="mb-3">
-                                        <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
                                         <input type="submit" value="Submit SMR" class="btn btn-lg btn-success">
                                     </div>
                                 </div>

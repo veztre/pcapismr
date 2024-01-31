@@ -279,6 +279,7 @@ class ModuleThreeController extends Controller
     public function update(Request $request, $id){
 
         $waterpolutiondata = WaterPolutionData::where('userid', $id)->first();
+        dd($waterpolutiondata);
         $waterpolutiondata->Domestic_wastewater = $request->input('domwaste');
         $waterpolutiondata->Cooling_water = $request->input('coolingw');
         $waterpolutiondata->Waste_water_equipment = $request->input('wequip');
