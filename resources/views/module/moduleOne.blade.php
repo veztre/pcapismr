@@ -209,18 +209,11 @@
                                                    required>
                                             <span class="checkmark"></span>
                                         </td>
+                                        <td><button type="button" name="add" id="dynamic-ar"
+                                                class="btn btn-outline-primary">+</button></td>
                                      </tr>
 
                                     </tbody>
-
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-
-                                    <td><button type="button" name="add" id="dynamic-ar"
-                                                class="btn btn-outline-primary">+</button></td>
-                                    <td></td>
-                                    <td></td>
 
                                     {{--ECC/CNC no. data table with add loop--}}
                                     <tbody id=pd>

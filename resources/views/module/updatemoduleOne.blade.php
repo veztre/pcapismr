@@ -246,9 +246,7 @@
 
                                     </tbody>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    
                                     <td><button type="button" name="add" id="dynamic-ar"
                                                 class="btn btn-outline-primary">+</button></td>
                                     <td></td>

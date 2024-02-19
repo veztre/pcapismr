@@ -468,8 +468,29 @@
     });
 
     $("#dynamic-ar").click(function () { //button name
-        var newRow = $('<tr><td></td><td></td><td></td><td class="position-relative"><label for="dpno" hidden></label><input class="form-control validate-input" type="text" name="dpno[]" id="dpno" value="{{ old('dpno', ' ') }}" required><span class="checkmark"></span></td><td class="position-relative"><label for="dpno" hidden></label><input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="dpno[]" id="dpno" required><span class="checkmark"></span></td><td class="position-relative"><label for="dpno" hidden></label> <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"  type="date" name="dpno[]" id="dpnoe" required><span class="checkmark"></span></td></tr>');
+        document.getElementById('dynamic-ar').style.display = 'none';
+        var content=`<tr>
+                     <td></td><td></td><td></td>
+                     <td class="position-relative">
+                     <label for="dpno" hidden></label>
+                     <input class="form-control validate-input"
+                     type="text" name="dpno[]" id="dpno" value="{{ old('dpno', ' ') }}" required>
+                     <span class="checkmark"></span>
+                     </td><td class="position-relative">
+                     <label for="dpno" hidden></label>
+                     <input class="form-select validate-input" placeholder="Date: "
+                     value="2001-01-01"  type="date" name="dpno[]" id="dpno" required>
+                     <span class="checkmark"></span></td>
+                     <td class="position-relative">
+                     <label for="dpno" hidden></label>
+                     <input class="form-select validate-input" placeholder="Date: " value="2001-01-01"
+                     type="date" name="dpno[]" id="dpnoe" required>
+                     <span class="checkmark"></span></td>
+                     <td><button type="button" name="add" id="dynamic-ar"
+                     class="btn btn-outline-primary">+</button></td>
+                    </tr>`;
 
+        var newRow = $(content);
 
         $("#dynamicAddRemove").append(newRow);
 
