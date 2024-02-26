@@ -24,10 +24,9 @@ class AdminSeeder extends Seeder
         }
 
         User::create([
-            'username' => 'Admin',
             'firstname' => 'admin',
             'lastname' => 'admin',
-            'company' => 'administrator',
+            'company' => 'PCAPI SMR',
             'contact' => '1234567890',
             'region' => 'NATIONAL CAPITAL REGION (NCR)',
             'usertype' => 'admin',

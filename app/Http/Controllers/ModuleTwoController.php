@@ -20,35 +20,52 @@ use League\CommonMark\Reference\Reference;
 class ModuleTwoController extends Controller
 {
     public function index(){
-        $hwGeneration = Auth::user()->hwGeneration();
-        $hwDetails = Auth::user()->hwDetails();
-        $storage = Auth::user()->storage();
-        $transporter = Auth::user()->transporter();
-        $treater = Auth::user()->treater();
-        $disposal = Auth::user()->disposal();
-        $osisa = Auth::user()->osisa();
-        $reference= Auth::user()->reference_no()->first();
+        $reference= Auth::user()->reference_no;
+        $page_completed = Auth::user()->page_completed;
 
-
-
-        return view('module.moduleTwo')
-            ->with([
-                'hwGeneration'=>$hwGeneration,
-                'hwDetails'=>$hwDetails,
-                'storage'=>$storage,
-                'transporter'=>$transporter,
-                'treater'=>$treater,
-                'disposal'=>$disposal,
-                'osisa'=>$osisa,
-                'referencen'=>$reference->ref_no
-            ]);
-
+        if($page_completed=="Module One"){
+            return view('module.moduleTwo')
+            ->with(['referencen'=>$reference->ref_no]);
+        }else {
+            return redirect()->route('view2',['id' => Auth::user()->id]);
+        }
 
     }
 
     public function save(Request $request){
 
         $hwGeneration = $request->input('hwGeneration');
+        if (is_null($hwGeneration) ){
+           return back()->withInput();
+        }
+        $hwDetails = $request->input('hwDetails');
+        if (is_null($hwDetails)){
+            return back()->withInput();
+         }
+         $storage = $request->input('storage');
+        if (is_null($storage)){
+            return back()->withInput();
+         }
+
+         $treater = $request->input('treater');
+        if (is_null($treater)){
+            return back()->withInput();
+         }
+         $disposal = $request->input('disposal');
+        if (is_null($disposal)){
+            return back()->withInput();
+         }
+         $transporter = $request->input('transporter');
+        if (is_null($transporter)){
+            return back()->withInput();
+         }
+         $osisa = $request->input('osisa');
+         if (is_null($osisa)){
+             return back()->withInput();
+          }
+
+
+
         for ($x=0; $x<count($hwGeneration); $x+=8 ){
             $DBhwGeneration = new HwGeneration();
             $DBhwGeneration->userid = Auth::user()->id;
@@ -63,7 +80,8 @@ class ModuleTwoController extends Controller
             $DBhwGeneration->save();
         }
 
-        $hwDetails = $request->input('hwDetails');
+
+
         for ($x=0; $x<count($hwDetails); $x+=5 ){
             $DBhwDetails = new HWDetails();
             $DBhwDetails ->userid = Auth::user()->id;
@@ -72,10 +90,9 @@ class ModuleTwoController extends Controller
             $DBhwDetails->QtyOfHWTreated = $hwDetails[$x+2];
             $DBhwDetails->Unit = $hwDetails[$x+3];
             $DBhwDetails->TSDLocation = $hwDetails[$x+4];
-
             $DBhwDetails->save();
         }
-        $storage = $request->input('storage');
+
         for ($x=0; $x<count($storage); $x+=2 ){
             $DBstorage = new Storage();
             $DBstorage->userid = Auth::user()->id;
@@ -83,7 +100,7 @@ class ModuleTwoController extends Controller
             $DBstorage->method = $storage[$x+1];
             $DBstorage->save();
         }
-        $transporter = $request->input('transporter');
+
         for ($x=0; $x<count($transporter); $x+=4){
             $DBtransporter = new Transporter();
             $DBtransporter->userid = Auth::user()->id;
@@ -93,7 +110,7 @@ class ModuleTwoController extends Controller
             $DBtransporter->date = date('Y-m-d', strtotime($transporter[$x+3]));
             $DBtransporter->save();
         }
-        $treater = $request->input('treater');
+
         for ($x=0; $x<count($treater); $x+=4){
             $DBtreater = new Treater();
             $DBtreater->userid = Auth::user()->id;
@@ -103,7 +120,7 @@ class ModuleTwoController extends Controller
             $DBtreater->date = date('Y-m-d', strtotime($treater[$x+3]));
             $DBtreater->save();
         }
-        $disposal = $request->input('disposal');
+
         for ($x=0; $x<count($disposal); $x+=4){
             $DBdisposal = new Disposal();
             $DBdisposal->userid = Auth::user()->id;
@@ -114,7 +131,7 @@ class ModuleTwoController extends Controller
             $DBdisposal->save();
         }
 
-        $osisa = $request->input('osisa');
+
         for ($x=0; $x<count($osisa); $x+=4){
             $DBosisa = new Osisa();
             $DBosisa->userid = Auth::user()->id;
@@ -124,8 +141,9 @@ class ModuleTwoController extends Controller
             $DBosisa->CorrectiveActionsTaken = $osisa[$x+3];
             $DBosisa->save();
         }
-
-
+        $user = User::find(Auth::user()->id);
+        $user->page_completed = "Module Two";
+        $user->update();
         return redirect('moduleThree');
     }
 
@@ -162,9 +180,10 @@ class ModuleTwoController extends Controller
 
 
     public function edit(){
+
         $id = Auth::id();
         $users = User::find($id);
-        $referencens = Auth::user()->reference_no()->get();
+        $referencens = Auth::user()->reference_no;
         $hwGeneration = Auth::user()->hwGeneration()->get();
         $hwDetails = Auth::user()->hwDetails()->get();
         $storage = Auth::user()->storage()->get();
@@ -183,7 +202,6 @@ class ModuleTwoController extends Controller
                 'disposal',
                 'transporter',
                 'osisa',
-
             ));
 
 

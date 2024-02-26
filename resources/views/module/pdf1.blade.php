@@ -33,29 +33,15 @@ tr:nth-child(even) {
 
   <div class="container pt-0">
 
-      @foreach ($ref_no as $ref_nos)
 
-          <p class="text-secondary ml-2 mt-2" style="font-size: 15px; "><b>Reference No.:</b> {{ $ref_nos->ref_no }} </p>
-      @endforeach
+          <p class="text-secondary ml-2 mt-2" style="font-size: 15px; "><b>Reference No.:</b> {{ $ref_no->ref_no }} </p>
 
+          <p class="text-secondary ml-2 mt-2" style="font-size: 15px; "><b>Year:</b> {{$year->year}}
 
-      @foreach ($year as $years)
-
-          <p class="text-secondary ml-2 mt-2" style="font-size: 15px; "><b>Year:</b> {{$years->year}}
-
-      @endforeach
-
-          @foreach ($quarter as $quarters)
-
-         <b>Quarter:</b> {{$quarters->quarter}} </p>
-
-      @endforeach
-
-  @foreach ($plants as $plant)
+         <b>Quarter:</b> {{$quarter->quarter}} </p>
 
     <p class="text-secondary ml-2 mt-2" style="font-size: 15px; "><b>Name of Plant:</b> {{$plant->plantname}} </p>
 
-      @endforeach
 
   </div>
 
@@ -66,15 +52,15 @@ tr:nth-child(even) {
 
   <table  style="border-style: solid;  margin-top: 3%; margin-bottom: 3%;">
 <tbody>
-                    @foreach ($gic as $item)
+
 
                   <tr>
 
-                    <td style="text-align: justify ">{{$item->description}}</td>
+                    <td style="text-align: justify ">{{$gic->description}}</td>
 
                   </tr>
 
-                  @endforeach
+
 </tbody>
                   </table>
 
@@ -98,15 +84,15 @@ tr:nth-child(even) {
                       <tr>
                         <td colspan="4"><b>RA 9275</b></td>
                       </tr>
-                      @foreach ($aircon as $air)
+
                       <tr>
 
                           <td style="text-align: center; background-color: white;">A/C</td>
-                          <td style="text-align: center; background-color: white;">{{$air->permit}}</td>
-                          <td style="text-align: center; background-color: white;">{{$air->dateIssued}}</td>
-                          <td style="text-align: center; background-color: white;">{{$air->dateExpired}}</td>
+                          <td style="text-align: center; background-color: white;">{{$aircon->permit}}</td>
+                          <td style="text-align: center; background-color: white;">{{$aircon->dateIssued}}</td>
+                          <td style="text-align: center; background-color: white;">{{$aircon->dateExpired}}</td>
                       </tr>
-                      @endforeach
+
 
                     </tbody>
 
@@ -163,44 +149,42 @@ tr:nth-child(even) {
                             <td colspan="4"><b>RA 6969</b></td>
 
                         </tr>
-                        @foreach ($denrid as $denr)
+
                         <tr>
                             <td style="text-align: center; background-color: white">DENR Registry ID</td>
 
 
-                            <td style="text-align: center; background-color: white">{{$denr->permit}}</td>
-                            <td style="text-align: center; background-color: white">{{$denr->dateIssued}}</td>
-                            <td style="text-align: center; background-color: white">{{$denr->dateExpired}}</td>
+                            <td style="text-align: center; background-color: white">{{$denrid->permit}}</td>
+                            <td style="text-align: center; background-color: white">{{$denrid->dateIssued}}</td>
+                            <td style="text-align: center; background-color: white">{{$denrid->dateExpired}}</td>
                         </tr>
 
-                            @endforeach
+
                     </tbody>
 
 
 
                    <tbody>
-                   @foreach ($transporterReg as $trans)
-                        <tr>
+                         <tr>
                             <td style="text-align: center; ">Transporter Registration</td>
-                            <td style="text-align: center; ">{{$trans->permit}}</td>
-                            <td style="text-align: center; ">{{$trans->dateIssued}}</td>
-                            <td style="text-align: center;">{{$trans->dateExpired}}</td>
+                            <td style="text-align: center; ">{{$transporterReg->permit}}</td>
+                            <td style="text-align: center; ">{{$transporterReg->dateIssued}}</td>
+                            <td style="text-align: center;">{{$transporterReg->dateExpired}}</td>
                         </tr>
-                            @endforeach
+
                     </tbody>
 
 
 
                     <tbody>
-                    @foreach ($tsdreg as $tsd)
                         <tr>
                             <td style="text-align: center;">TSD Registration</td>
-                            <td style="text-align: center;">{{$tsd->permit}}</td>
-                            <td style="text-align: center;">{{$tsd->dateIssued}}</td>
-                            <td style="text-align: center;">{{$tsd->dateExpired}}</td>
+                            <td style="text-align: center;">{{$tsdreg->permit}}</td>
+                            <td style="text-align: center;">{{$tsdreg->dateIssued}}</td>
+                            <td style="text-align: center;">{{$tsdreg->dateExpired}}</td>
                         </tr>
 
-                        @endforeach
+
                     </tbody>
 
 
@@ -248,24 +232,8 @@ tr:nth-child(even) {
 
 
 
-                    <tbody>
-                    @foreach ($permit as $permt)
-                        <tr>
-                            @if ($loop->first)
-                                <td style="text-align: center; background-color: white; border-bottom-style: none;">Permit to Transport</td>
-                                <td style="text-align: center;">{{$permt->permit}}</td>
-                                <td style="text-align: center;">{{$permt->dateIssued}}</td>
-                                <td style="text-align: center;">{{$permt->dateExpired}}</td>
-                            @else
-                                <td style="text-align: center; background-color: white; border-style: none">&nbsp;</td>
-                                <td style="text-align: center; background-color: white;">{{$permt->permit}}</td>
-                                <td style="text-align: center; background-color: white;">{{$permt->dateIssued}}</td>
-                                <td style="text-align: center; background-color: white;">{{$permt->dateExpired}}</td>
-                            @endif
-                        </tr>
+                    
 
-                             @endforeach
-                    </tbody>
 
 
                     <tbody>
@@ -357,16 +325,15 @@ tr:nth-child(even) {
 
                         </tr>
 
-                        @foreach ($acno as $ac)
 
                         <tr>
                             <td style="text-align: center; background-color: white">A/C no.</td>
-                            <td style="text-align: center; background-color: white">{{$ac->permit}}</td>
-                            <td style="text-align: center; background-color: white">{{$ac->dateIssued}}</td>
-                            <td style="text-align: center; background-color: white">{{$ac->dateExpired}}</td>
+                            <td style="text-align: center; background-color: white">{{$acno->permit}}</td>
+                            <td style="text-align: center; background-color: white">{{$acno->dateIssued}}</td>
+                            <td style="text-align: center; background-color: white">{{$acno->dateExpired}}</td>
 
                         </tr>
-                        @endforeach
+
 
                     </tbody>
 
@@ -404,15 +371,14 @@ tr:nth-child(even) {
 
                         </thead>
 
-                      @foreach ($operation as $operate)
                         <tbody>
                             <tr>
                                 <td><b>Average</b></td>
 
 
-                                <td style="text-align: center;">{{$operate->aveOPhours}}</td>
-                                <td style="text-align: center;">{{$operate->aveOPdays}}</td>
-                                <td style="text-align: center;">{{$operate->aveOPshift}}</td>
+                                <td style="text-align: center;">{{$operation->aveOPhours}}</td>
+                                <td style="text-align: center;">{{$operation->aveOPdays}}</td>
+                                <td style="text-align: center;">{{$operation->aveOPshift}}</td>
                             </tr>
 
 
@@ -421,13 +387,13 @@ tr:nth-child(even) {
                             <tbody>
                             <tr>
                                 <td><b>Maximum</b></td>
-                                <td style="text-align: center;">{{$operate->maxOPhours}}</td>
-                                <td style="text-align: center;">{{$operate->maxOPdays}}</td>
-                                <td style="text-align: center;">{{$operate->maxOPshift}}</td>
+                                <td style="text-align: center;">{{$operation->maxOPhours}}</td>
+                                <td style="text-align: center;">{{$operation->maxOPdays}}</td>
+                                <td style="text-align: center;">{{$operation->maxOPshift}}</td>
 
                             </tr>
 
-                               @endforeach
+
                         </tbody>
                     </table>
 
@@ -437,29 +403,28 @@ tr:nth-child(even) {
 
 
                             <tbody>
-                              @foreach ($production as $product)
 
                                 <tr>
                                     <td style="width:50%"><b>Average Daily Production Output</b></td>
-                                    <td style="text-align: center;">{{$product->aveProduction}}</td>
+                                    <td style="text-align: center;">{{$production->aveProduction}}</td>
                                 </tr>
                                 <tr>
                                     <td style="background-color: white;"><b>Total Output This Quarter</b></td>
-                                    <td style="text-align: center; background-color: white;">{{$product->totalOutput}}</td>
+                                    <td style="text-align: center; background-color: white;">{{$production->totalOutput}}</td>
                                 </tr>
 
                                 <tr>
                                     <td><b>Total Consuption This Quarter</b></td>
-                                    <td style="text-align: center;">{{$product->totalConsumption}}</td>
+                                    <td style="text-align: center;">{{$production->totalConsumption}}</td>
                                 </tr>
 
                                 <tr>
                                     <td style="background-color: white;"><b>Total Electric Consumption this Quarter (kwh)</b></td>
-                                    <td style="text-align: center; background-color: white;">{{$product->totalElectric}}</td>
+                                    <td style="text-align: center; background-color: white;">{{$production->totalElectric}}</td>
 
                                 </tr>
 
-                                @endforeach
+
                             </tbody>
 
                     </table>

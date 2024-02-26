@@ -79,16 +79,15 @@ Route::get('/trainee/dashboard', [TraineeController::class, 'index'])->name('tra
 
 /* Module One Controller */
 Route::get('/module', [ModuleOneController::class, 'index'])->name('module.moduleOne');
+Route::get('/create', [ModuleOneController::class, 'create'])->name('create');
 Route::post('/saveData', [ModuleOneController::class, 'save'])->name('saveData');
 Route::get('/view/moduleOneUpdate/{id}', [ModuleOneController::class, 'edit'])->name('view');
 Route::put('/view/moduleOneUpdate/{id}', [ModuleOneController::class, 'update'])->name('moduleOne.update');
 Route::get('/pdf', [ModuleOneController::class, 'pdf']);
-Route::get('/reference', [ModuleOneController::class, 'generate'])->name('module.moduleOne.generate.save');
 
 
 /* Module Two Controller */
-Route::get('/moduleTwo', [ModuleTwoController::class, 'index'])->name('module.moduleTwo');
-
+Route::get('/moduleTwo', [ModuleTwoController::class, 'index'])->name('moduleTwo');
 Route::get('/saveData2', [ModuleTwoController::class, 'save']);
 Route::get('/view/moduleTwoUpdate/{id}', [ModuleTwoController::class, 'edit'])->name('view2');
 Route::put('/view/moduleTwoUpdate/{id}', [ModuleTwoController::class, 'update'])->name('moduleTwo.update');

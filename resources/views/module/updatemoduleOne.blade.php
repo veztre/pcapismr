@@ -38,12 +38,7 @@
                                     </div>
 
                                     <div class="card-body">
-                                        @foreach ($referencens as $ref)
-
-                                            <input type="text" class="form-control mt-0" placeholder=""  value="{{$ref->ref_no}}" readonly >
-
-                                        @endforeach
-
+                                            <input type="text" class="form-control mt-0" placeholder=""  value="{{$referencens->ref_no}}" readonly >
                                     </div>
 
                                 </div>
@@ -57,22 +52,19 @@
                                     <div class="col-2">
                                         <label for="year" hidden></label>
                                         <select class="form-select validate-input" id="year" name="year"  required>
-                                            @foreach ($year as $years)
+                                                <option value="{{$year->year}}">{{$year->year}}</option>
+                                                <option value="2025" >2025</option>
+                                                <option value="2024" >2024</option>
+                                                <option value="2023" >2023</option>
+                                                <option value="2022" >2022</option>
+                                                <option value="2021" >2021</option>
+                                                <option value="2020" >2020</option>
+                                                <option value="2019" >2019</option>
+                                                <option value="2018" >2018</option>
+                                                <option value="2017" >2017</option>
+                                                <option value="2016" >2016</option>
+                                                <option value="2015" >2015</option>
 
-                                                <option value="{{ $years->year }}">{{ $years->year }}</option>
-                                                <option value="2025" {{  $years->year  === '2025' ? 'selected' : '' }}>2025</option>
-                                                <option value="2024" {{  $years->year  === '2024' ? 'selected' : '' }}>2024</option>
-                                                <option value="2023" {{  $years->year  === '2023' ? 'selected' : '' }}>2023</option>
-                                                <option value="2022" {{  $years->year  === '2022' ? 'selected' : '' }}>2022</option>
-                                                <option value="2021" {{  $years->year  === '2021' ? 'selected' : '' }}>2021</option>
-                                                <option value="2020" {{  $years->year  === '2020' ? 'selected' : '' }}>2020</option>
-                                                <option value="2019" {{  $years->year  === '2019' ? 'selected' : '' }}>2019</option>
-                                                <option value="2018" {{  $years->year  === '2018' ? 'selected' : '' }}>2018</option>
-                                                <option value="2017" {{  $years->year  === '2017' ? 'selected' : '' }}>2017</option>
-                                                <option value="2016" {{  $years->year  === '2016' ? 'selected' : '' }}>2016</option>
-                                                <option value="2015" {{  $years->year  === '2015' ? 'selected' : '' }}>2015</option>
-
-                                            @endforeach
                                         </select>
                                         <span class="checkmark"></span>
                                         <div class="invalid-feedback">
@@ -84,15 +76,11 @@
                                     <div class="col-2">
                                         <label for="quarter" hidden></label>
                                         <select class="form-select validate-input" id="quarter" name="quarter" required>
-                                            @foreach ($quarter as $quarters)
-
-                                                <option value="{{ $quarters->quarter }}">{{ $quarters->quarter }}</option>
-                                                <option value="1st Quarter" {{ $quarters->quarter  === '1st Quarter' ? 'selected' : '' }}>1st Quarter</option>
-                                                <option value="2nd Quarter" {{  $quarters->quarter === '2nd Quarter' ? 'selected' : '' }}>2nd Quarter</option>
-                                                <option value="3rd Quarter" {{  $quarters->quarter  === '3rd Quarter' ? 'selected' : '' }}>3rd Quarter</option>
-                                                <option value="4th Quarter" {{  $quarters->quarter  === '4th Quarter' ? 'selected' : '' }}>4th Quarter</option>
-
-                                            @endforeach
+                                                <option value="{{ $quarter->quarter }}">{{ $quarter->quarter}}</option>
+                                                <option value="1st Quarter" >1st Quarter</option>
+                                                <option value="2nd Quarter" >2nd Quarter</option>
+                                                <option value="3rd Quarter" >3rd Quarter</option>
+                                                <option value="4th Quarter" >4th Quarter</option>
                                         </select>
                                         <span class="checkmark"></span>
                                         <div class="invalid-feedback">
@@ -135,13 +123,9 @@
                                         <p>Name of the Plant</p>
                                         <label for="plant" hidden></label>
                                         <select class="form-select validate-input" id="plant" name="plantname" required>
-                                            @foreach ($plant as $plants)
-
-                                                <option value="{{$plants->plantname}}" >
-                                                    {{$plants->plantname}}
+                                                <option value="{{$plant->plantname}}" >
+                                                    {{$plant->plantname}}
                                                 </option>
-
-                                            @endforeach
                                         </select>
                                         <span class="checkmark"></span>
                                         <div class="invalid-feedback">
@@ -155,16 +139,12 @@
                                     <P class="text-secondary ml-3 mt-3">Please provide the necessary revised, corrected or updated
                                         information not contained in your <br> General Information Sheet.</P>
                                 </div>
-
-                                @foreach ($gic as $gic)
-
-                                    <div class="container">
+                            <div class="container">
                             <textarea name="description" class="form-control" id="description" cols="40" rows="10" style="overflow:scroll; overflow-x:hidden" >
                                 {{$gic->description}}
                              </textarea>
-                                    </div>
+                            </div>
 
-                                @endforeach
 
 
                                 <table class="table table-borderless table-hover">
@@ -183,7 +163,6 @@
                                     </thead>
 
                                     <tbody>
-                                    @foreach ($aircon as $air)
 
                                         <tr>
                                             <td></td>
@@ -192,24 +171,23 @@
 
                                             <td class="position-relative">
                                                 <label for="ACPermit" hidden></label>
-                                                <input class="form-control validate-input" type="text" name="ACPermit" id="ACPermit" value="{{$air->permit }}" required>
+                                                <input class="form-control validate-input" type="text" name="ACPermit" id="ACPermit" value="{{$aircon->permit }}" required>
                                                 <span class="checkmark"></span>
                                             </td>
                                             <td class="position-relative">
                                                 <label for="ACIssued" hidden></label>
-                                                <input class="form-select validate-input" placeholder="Date: " value="{{$air->dateIssued }}"  type="date" name="ACIssued"
+                                                <input class="form-select validate-input" placeholder="Date: " value="{{$aircon->dateIssued }}"  type="date" name="ACIssued"
                                                        id="ACIssued" required>
                                                 <span class="checkmark"></span>
                                             </td>
                                             <td class="position-relative">
                                                 <label for="ACExpire" hidden></label>
-                                                <input class="form-select validate-input" placeholder="Date: " value="{{$air->dateExpired }}"  type="date" name="ACExpire"
+                                                <input class="form-select validate-input" placeholder="Date: " value="{{$aircon->dateExpired }}"  type="date" name="ACExpire"
                                                        id="ACExpire" required>
                                                 <span class="checkmark"></span>
                                             </td>
                                         </tr>
 
-                                    @endforeach
                                     </tbody>
 
 
@@ -246,7 +224,7 @@
 
                                     </tbody>
 
-                                    
+
                                     <td><button type="button" name="add" id="dynamic-ar"
                                                 class="btn btn-outline-primary">+</button></td>
                                     <td></td>
@@ -294,7 +272,6 @@
 
                                     <!-- DENR REG -->
                                     <tbody id="reg">
-                                    @foreach ($denrid as $denr)
 
                                         <tr>
                                             <td></td>
@@ -302,27 +279,26 @@
                                             <td>DENR Registry ID</td>
                                             <td class="position-relative">
                                                 <label for="DENRpermit" hidden></label>
-                                                <input class="form-control validate-input" type="text" name="DENRpermit" id="DENRpermit" value="{{$denr->permit }}" required>
+                                                <input class="form-control validate-input" type="text" name="DENRpermit" id="DENRpermit" value="{{$denrid->permit }}" required>
                                                 <span class="checkmark"></span>
                                             </td>
                                             <td class="position-relative">
                                                 <label for="DENRdateIssued" hidden></label>
-                                                <input class="form-select validate-input" placeholder="Date: " value="{{$denr->dateIssued  }}" type="date" name="DENRdateIssued"
+                                                <input class="form-select validate-input" placeholder="Date: " value="{{$denrid->dateIssued  }}" type="date" name="DENRdateIssued"
                                                        id="DENRdateIssued" required>
                                                 <span class="checkmark"></span>
                                             </td>
                                             <td class="position-relative">
                                                 <label for="DENRdateExpired" hidden></label>
-                                                <input class="form-select validate-input" placeholder="Date: " value="{{$denr->dateExpired  }}" type="date" name="DENRdateExpired"
+                                                <input class="form-select validate-input" placeholder="Date: " value="{{$denrid->dateExpired  }}" type="date" name="DENRdateExpired"
                                                        id="DENRdateExpired" required>
                                                 <span class="checkmark"></span>
                                             </td>
 
                                         </tr>
 
-                                    @endforeach
+
                                     </tbody>
-                                    @foreach ($transporterReg as $transport)
 
                                         <!-- Transporter-->
                                         <tbody id="trans">
@@ -333,29 +309,27 @@
                                             <td class="position-relative">
                                                 <label for="Transportpermit" hidden></label>
                                                 <input class="form-control validate-input" type="text" name="Transportpermit" id="Transportpermit"
-                                                       value="{{$transport->permit }}" required>
+                                                       value="{{$transporterReg->permit }}" required>
                                                 <span class="checkmark"></span>
                                             </td>
                                             <td class="position-relative">
                                                 <label for="TransportdateIssued" hidden></label>
-                                                <input class="form-select validate-input" placeholder="Date: "value="{{$transport->dateIssued }}"  type="date"
+                                                <input class="form-select validate-input" placeholder="Date: "value="{{$transporterReg->dateIssued }}"  type="date"
                                                        name="TransportdateIssued" id="TransportdateIssued" required>
                                                 <span class="checkmark"></span>
                                             </td>
                                             <td class="position-relative">
                                                 <label for="TransportdateExpired" hidden></label>
-                                                <input class="form-select validate-input" placeholder="Date: " value="{{$transport->dateExpired }}" type="date"
+                                                <input class="form-select validate-input" placeholder="Date: " value="{{$transporterReg->dateExpired }}" type="date"
                                                        name="TransportdateExpired" id="TransportdateExpired" required>
                                                 <span class="checkmark"></span>
                                             </td>
                                         </tr>
 
-                                        @endforeach
                                         </tbody>
 
                                         <!-- TSD -->
                                         <tbody id="tsd">
-                                        @foreach ($tsdreg as $tsd)
 
                                             <tr>
                                                 <td></td>
@@ -363,23 +337,23 @@
                                                 <td>TSD Registration</td>
                                                 <td class="position-relative">
                                                     <label for="TSDpermit" hidden></label>
-                                                    <input class="form-control validate-input" type="text" name="TSDpermit" id="TSDpermit" value="{{$tsd->permit }}" required>
+                                                    <input class="form-control validate-input" type="text" name="TSDpermit" id="TSDpermit" value="{{$tsdreg->permit }}" required>
                                                     <span class="checkmark"></span>
                                                 </td>
                                                 <td class="position-relative">
                                                     <label for="TSDdateIssued" hidden></label>
-                                                    <input class="form-select validate-input" placeholder="Date: " value="{{$tsd->dateIssued  }}" type="date" name="TSDdateIssued"
+                                                    <input class="form-select validate-input" placeholder="Date: " value="{{$tsdreg->dateIssued  }}" type="date" name="TSDdateIssued"
                                                            id="TSDdateIssued" required>
                                                     <span class="checkmark"></span>
                                                 </td>
                                                 <td class="position-relative">
                                                     <label for="TSDdateExpired" hidden></label>
-                                                    <input class="form-select validate-input" placeholder="Date: " value="{{$tsd->dateExpired  }}" type="date" name="TSDdateExpired"
+                                                    <input class="form-select validate-input" placeholder="Date: " value="{{$tsdreg->dateExpired  }}" type="date" name="TSDdateExpired"
                                                            id="TSDdateExpired" required>
                                                     <span class="checkmark"></span>
                                                 </td>
 
-                                                @endforeach
+
                                             </tr>
                                         </tbody>
 
@@ -631,13 +605,13 @@
                                                 </td>
                                                 <td class="position-relative">
                                                     <label for="pmpin" hidden></label>
-                                                    <input class="form-select validate-input" placeholder="Date: " value="{{$air->dateIssued }}"  type="date" name="pmpin[]"
+                                                    <input class="form-select validate-input" placeholder="Date: " value="{{$aircon->dateIssued }}"  type="date" name="pmpin[]"
                                                            id="pmpin" required>
                                                     <span class="checkmark"></span>
                                                 </td>
                                                 <td class="position-relative">
                                                     <label for="pmpin" hidden></label>
-                                                    <input class="form-select validate-input" placeholder="Date: " value="{{$air->dateExpired }}"  type="date" name="pmpin[]"
+                                                    <input class="form-select validate-input" placeholder="Date: " value="{{$aircon->dateExpired }}"  type="date" name="pmpin[]"
                                                            id="pmpin" required>
                                                     <span class="checkmark"></span>
                                                 </td>
@@ -665,18 +639,18 @@
                                                 <td>A/C no.</td>
                                                 <td class="position-relative">
                                                     <label for="ACNOPermit" hidden></label>
-                                                    <input class="form-control validate-input" type="text" name="ACNOPermit" id="ACNOPermit" value="{{$ac->permit }}" required>
+                                                    <input class="form-control validate-input" type="text" name="ACNOPermit" id="ACNOPermit" value="{{$acno->permit }}" required>
                                                     <span class="checkmark"></span>
                                                 </td>
                                                 <td class="position-relative">
                                                     <label for="ACNOIssued" hidden></label>
-                                                    <input class="form-select validate-input" placeholder="Date: " value="{{$air->dateIssued }}"  type="date" name="ACNOIssued"
+                                                    <input class="form-select validate-input" placeholder="Date: " value="{{$aircon->dateIssued }}"  type="date" name="ACNOIssued"
                                                            id="ACNOIssued" required>
 
                                                 </td>
                                                 <td class="position-relative">
                                                     <label for="ACNOExpired" hidden></label>
-                                                    <input class="form-select validate-input" placeholder="Date: " value="{{$air->dateExpired }}"  type="date" name="ACNOExpired"
+                                                    <input class="form-select validate-input" placeholder="Date: " value="{{$aircon->dateExpired }}"  type="date" name="ACNOExpired"
                                                            id="ACNOExpired" required>
 
                                                 </td>
@@ -743,27 +717,25 @@
                                     </thead>
 
                                     <tbody>
-                                    @foreach ($operation as $operate)
-
                                         <tr>
                                             <td>Average</td>
                                             <td></td>
                                             <td class="position-relative">
                                                 <label for="aveOPhours" hidden></label>
                                                 <input class="form-control validate-input" type="text" name="aveOPhours"  id="aveOPhours"
-                                                       value="{{$operate->aveOPhours}}" required>
+                                                       value="{{$operation->aveOPhours}}" required>
                                                 <span class="checkmark"></span>
                                             </td>
                                             <td class="position-relative">
                                                 <label for="aveOPdays" hidden></label>
                                                 <input class="form-control validate-input" type="text" name="aveOPdays" id="aveOPdays"
-                                                       value="{{$operate->aveOPdays}}" required>
+                                                       value="{{$operation->aveOPdays}}" required>
                                                 <span class="checkmark"></span>
                                             </td>
                                             <td class="position-relative">
                                                 <label for="aveOPshift" hidden></label>
                                                 <input class="form-control validate-input" type="text" name="aveOPshift" id="aveOPshift"
-                                                       value="{{$operate->aveOPshift}}" required>
+                                                       value="{{$operation->aveOPshift}}" required>
                                                 <span class="checkmark"></span>
                                             </td>
 
@@ -779,25 +751,25 @@
                                         <td class="position-relative">
                                             <label for="maxOPhours" hidden></label>
                                             <input class="form-control validate-input" type="text" name="maxOPhours" id="maxOPhours"
-                                                   value="{{$operate->maxOPhours}}" required>
+                                                   value="{{$operation->maxOPhours}}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
                                             <label for="maxOPdays" hidden></label>
                                             <input class="form-control validate-input" type="text" name="maxOPdays" id="maxOPdays"
-                                                   value="{{$operate->maxOPdays}}" required>
+                                                   value="{{$operation->maxOPdays}}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">
                                             <label for="maxOPshift" hidden></label>
                                             <input class="form-control validate-input" type="text" name="maxOPshift" id="maxOPshift"
-                                                   value="{{$operate->maxOPshift}}" required>
+                                                   value="{{$operation->maxOPshift}}" required>
                                             <span class="checkmark"></span>
                                         </td>
 
                                     </tr>
 
-                                    @endforeach
+
 
                                     </tbody>
 
@@ -808,21 +780,20 @@
                                     <h3 class="mt-3 mx-2 text-success">OPERATION / PRODUCTION / QUALITY</h3>
 
                                     <tbody>
-                                    @foreach ($production as $prod)
 
                                         <tr>
                                             <td>Average Daily Production Output</td>
                                             <td class="position-relative">
                                                 <label for="aveProduction" hidden></label>
                                                 <input class="form-control validate-input" type="text" name="aveProduction" id="aveProduction"
-                                                       value="{{$prod->aveProduction}}" required>
+                                                       value="{{$production->aveProduction}}" required>
                                                 <span class="checkmark"></span>
                                             </td>
                                             <td>Total Output This Quarter</td>
                                             <td class="position-relative">
                                                 <label for="totalOutput" hidden></label>
                                                 <input class="form-control validate-input" type="text" name="totalOutput" id="totalOutput"
-                                                       value="{{$prod->totalOutput}}" required>
+                                                       value="{{$production->totalOutput}}" required>
                                                 <span class="checkmark"></span>
                                             </td>
                                         </tr>
@@ -834,20 +805,19 @@
                                         <td class="position-relative">
                                             <label for="totalConsumption" hidden></label>
                                             <input class="form-control validate-input" type="text" name="totalConsumption"
-                                                   id="totalConsumption" value="{{$prod->totalConsumption}}" required>
+                                                   id="totalConsumption" value="{{$production->totalConsumption}}" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td>Total Electric Consumption this Quarter (kwh)</td>
                                         <td class="position-relative">
                                             <label for="totalElectric" hidden></label>
                                             <input class="form-control validate-input" type="text" name="totalElectric" id="totalElectric"
-                                                   value="{{$prod->totalElectric}}"required>
+                                                   value="{{$production->totalElectric}}"required>
                                             <span class="checkmark"></span>
                                         </td>
 
                                     </tr>
 
-                                    @endforeach
                                     </tbody>
 
                                 </table>
@@ -898,12 +868,13 @@
                                 <div class="col mb-3">
                                     <div style="float: right" class="mb-3">
                                         <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
-
+                                        <a href="\moduleTwo" class="btn btn-primary">Next Page</a>
 
                                     </div>
                                 </div>
                             </div>
                         </form>
+
 
 
 

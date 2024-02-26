@@ -29,8 +29,6 @@ class User extends Authenticatable
      * @var string<int, string>
      */
     protected $fillable =  [
-        'role_id',
-        'username',
         'firstname',
         'lastname',
         'position',
@@ -363,33 +361,10 @@ class User extends Authenticatable
 
 
     /*Facility*/
-    public function facility (){
-        return $this->hasOne(Addfacility::class, 'userid');
-    }
     public function addfacility (){
-        return $this->hasOne(Addfacility::class, 'userid');
+        return $this->hasMany(Addfacility::class, 'userid');
     }
-    public function embregion (){
-        return $this->hasOne(Addfacility::class, 'userid');
-    }
-    public function embid (){
-        return $this->hasOne(Addfacility::class, 'userid');
-    }
-    public function establishment (){
-        return $this->hasOne(Addfacility::class, 'userid');
-    }
-    public function street (){
-        return $this->hasOne(Addfacility::class, 'userid');
-    }
-    public function baranggay (){
-        return $this->hasOne(Addfacility::class, 'userid');
-    }
-    public function city (){
-        return $this->hasOne(Addfacility::class, 'userid');
-    }
-    public function province (){
-        return $this->hasOne(Addfacility::class, 'userid');
-    }
+
     /*Facility end*/
 
 

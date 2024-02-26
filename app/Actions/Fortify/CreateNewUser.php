@@ -22,32 +22,19 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input): User
     {
         Validator::make($input, [
-            'username' => ['required', 'string', 'max:255', 'unique:users'],
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
             'company' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'contact' => ['required', 'string', 'max:255'],
             'region' => ['required', 'string'],
-
-         /*   'company_id'=> ['required', 'mimes:jpg,jpeg,png', 'max:1024'],
-            'government_id' => ['required', 'mimes:jpg,jpeg,png', 'max:1024'],*/
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
         return DB::transaction(function () use ($input) {
-/*            $request = request();
 
-            $file = $request->file('company_id');
-            $name = $file->getClientOriginalName();
-            $file->move('User/CompanyID', $name);
-
-            $file1 = $request->file('government_id');
-            $name1 = $file1->getClientOriginalName();
-            $file1->move('User/GovernmentID', $name1);*/
             return tap(User::create([
-                'username' => $input['username'],
                 'firstname' => $input['firstname'],
                 'lastname' => $input['lastname'],
                 'company' => $input['company'],
@@ -55,8 +42,7 @@ class CreateNewUser implements CreatesNewUsers
                 'contact' => $input['contact'],
                 'region' => $input['region'],
                 'usertype' => 'trainee',
-    /*            'company_id' => $name,
-                'government_id' => $name1,*/
+                'page_completed' => 'None',
                 'password' => Hash::make($input['password']),
             ]), function (User $user) {
                 $this->createTeam($user);

@@ -29,12 +29,6 @@
                 @csrf
                 <div class="grid  grid-cols-2 gap-4 auto-cols-1 ">
                     <div class="mt-4" >
-                        <x-jet-label for="username" value="{{ __('Username') }}" />
-                        <x-jet-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus autocomplete="username" />
-
-                    </div>
-
-                    <div class="mt-4" >
                         <x-jet-label for="firstname" value="{{ __('First Name') }}" />
                         <x-jet-input id="firstname" class="block mt-1 w-full" type="text" name="firstname" :value="old('firstname')" required autofocus autocomplete="firstname" />
 
@@ -44,12 +38,6 @@
                         <x-jet-label for="lastname" value="{{ __('Last Name') }}" />
                         <x-jet-input id="lastname" class="block mt-1 w-full" type="text" name="lastname" :value="old('lastname')" required autofocus autocomplete="lastname" />
                     </div>
-
-                    <div class="mt-4">
-                        <x-jet-label for="company" value="{{ __('Company') }}" />
-                        <x-jet-input id="company" class="block mt-1 w-full" type="text" name="company" :value="old('company')" required autofocus autocomplete="company" />
-                    </div>
-
                     <div class="mt-4">
                         <x-jet-label for="email" value="{{ __('Email') }}" />
                         <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
@@ -70,6 +58,10 @@
                         <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
                     </div>
                 </div>
+                <div class="mt-4 mb-3">
+                        <x-jet-label for="company" value="{{ __('Company') }}" />
+                        <x-jet-input id="company" class="block mt-1 w-full" type="text" name="company" :value="old('company')" required autofocus autocomplete="company" />
+                    </div>
                 <div class="form-group mt-4 mb-3 ">
                     <x-jet-label for="region" value="{{ __('Region') }}" />
                     <select  id="region" name="region" class="form-control valid w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500
@@ -83,46 +75,6 @@
                         @endforeach
                     </select>
                 </div>
-
-       {{--               <div class="grid  grid-cols-2 gap-4 auto-cols-1">
-                          <div class="mt-4">
-
-                              <x-jet-label for="company_id" class="text-red-600 mb-4" value="{{ __('* Company ID') }}" />
-                              <x-jet-input id="company_id" class="form-control"  type="file" name="company_id"  />
-
-
-                          </div>
-
-
-                          <div class="mt-4">
-                              <x-jet-label for="government_id" class="text-red-600 mb-4 " value="{{ __('* Government ID') }}" />
-                              <x-jet-input id="government_id" class="form-control" type="file" name="government_id"   />
-                          </div>
-
-
-
-                      </div>--}}
-
-
-
-                @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                    <div class="mt-4">
-                        <x-jet-label for="terms">
-                            <div class="flex items-center">
-                                <x-jet-checkbox name="terms" id="terms" required />
-
-
-
-                                <div class="ml-2">
-                                    {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                            'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">'.__('Terms of Service').'</a>',
-                                            'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">'.__('Privacy Policy').'</a>',
-                                    ]) !!}
-                                </div>
-                            </div>
-                        </x-jet-label>
-                    </div>
-                @endif
 
                 <div class="flex items-center justify-center mt-8">
                     <a class="underline text-sm text-indigo-400 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">

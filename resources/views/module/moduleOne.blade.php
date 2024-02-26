@@ -30,7 +30,7 @@
                                         </div>
                                         <div class="card-body">
                                             {{--reference no--}}
-                                            <input type="text" class="form-control mt-0" placeholder="" value="{{ $referencen }}" readonly>
+                                            <input type="text" class="form-control mt-0" placeholder="" value="None" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -113,8 +113,7 @@
                                     <div class="col mx-auto position-relative">
                                         {{--Plant / add facility data--}}
                                         <p>Name of the Plant</p>
-                                        <label for="plant" hidden></label>
-                                        <select class="form-select text-center validate-input" id="plant" name="plantname" required>
+                                         <select class="form-select text-center validate-input" id="plant" name="plantname" required>
                                             <option selected disabled value="">-- Select --</option>
                                             @foreach ($addfacility as $data)
                                                 @if ($data->userid == Auth::id())
@@ -169,7 +168,7 @@
                                         <td>RA 9275</td>
                                         <td>A/C</td>
                                         <td class="position-relative">
-                                            <input class="form-control validate-input" type="text" name="ACPermit" id="ACPermit" value="{{ old('ACPermit', ' ') }}" required>
+                                            <input class="form-control validate-input" type="text" name="ACPermit" id="ACPermit" required>
                                             <span class="checkmark"></span>
                                         </td>
                                         <td class="position-relative">

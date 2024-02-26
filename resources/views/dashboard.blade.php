@@ -52,7 +52,7 @@
                                         </td>
 
 
-                                        <td>ACTIVE</td>
+                                        <td>{{$user->page_completed}}</td>
                                         <td>
                                             <div class="btn-group">
                                                 <a  href="{{ route('editaccount', $user->id) }}"><button class="btn btn-info"><i class="bi bi-pencil-square"></i><svg
@@ -112,13 +112,16 @@
                     </h1>
 
                     <!--Title-->
+                    @if (count($addfacility)>0)
                     <div class="m-auto flex justify-end p-2">
                         @unless(Request::is('admin*'))
-                            <a href="{{ route('module.moduleOne.generate.save') }}" id="createButton" class="px-4 py-2 mb-6 text-white no-underline rounded-full transition ease-in-out delay-150 bg-indigo-400 hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 duration-300">
+                            <a href="{{ route('create') }}" id="createButton" class="px-4 py-2 mb-6 text-white no-underline rounded-full transition ease-in-out delay-150 bg-indigo-400 hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 duration-300">
                                 Create SMR
                             </a>
                         @endunless
                     </div>
+                    @endif
+
 
 
 
@@ -132,7 +135,7 @@
                                     <th data-priority="3" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 224px;" aria-label="Name: activate to sort column descending">Name</th>
                                     <th data-priority="4" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100px;" aria-label="Date Created: activate to sort column ascending">Date Created</th>
                                     <th data-priority="5" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100px;" aria-label="Date Submitted: activate to sort column ascending">Date Submitted</th>
-                                    <th data-priority="6" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 92px;" aria-label="Status: activate to sort column ascending">Status</th>
+                                    <th data-priority="6" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 92px;" aria-label="Status: activate to sort column ascending">Page Completed</th>
 
                                 </tr>
 
@@ -206,7 +209,7 @@
                                         <th data-priority="2" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 224px;" aria-label="Facility: activate to sort column ascending">Facility</th>
                                         <th data-priority="3" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100px;" aria-label="Date Created: activate to sort column ascending">Date Created</th>
                                         <th data-priority="4" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 100px;" aria-label="Date Submitted: activate to sort column ascending">Date Submitted</th>
-                                        <th data-priority="5" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 92px;" aria-label="Status: activate to sort column ascending">Status</th>
+                                        <th data-priority="5" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 92px;" aria-label="Status: activate to sort column ascending">Page Completed</th>
                                         <th data-priority="6" class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1" style="width: 77px;" aria-label="Action: activate to sort column ascending">Action</th>
                                     </tr>
 
@@ -223,7 +226,7 @@
                                                 $referencens = Auth::user()->reference_no()->first();
 
                                                 if ($referencens) {
-                                                    $refNo = $referencens->reference_number;
+                                                    $refNo = $referencens->ref_no;
                                                     $upload = $oaupload->where('userid', $userId)->first();
                                                     $fileName = $upload ? $upload->file : '';
 
@@ -241,7 +244,7 @@
                                             @endphp
                                             <td>
                                                 @if ($downloadUrl)
-                                                    <a href="{{ $downloadUrl }}">{{ $ref->plant->facility->establishment }}</a>
+                                                    <a href="{{ $downloadUrl }}">{{ $ref->plant->facility}}</a>
                                                 @else
                                                     No facility found
                                                 @endif
@@ -263,7 +266,7 @@
 
 
 
-                                        <td>ACTIVE</td>
+                                        <td>{{Auth::user()->page_completed}}</td>
 
 
                                         <td>
@@ -396,7 +399,8 @@
 
 // Remove the button in the admin panel
 const isAdminPanel = '{{ Request::is('admin*') }}';
-if (isAdminPanel) {
+
+if (isAdminPanel)  {
 createButton.remove();
 }
 </script>

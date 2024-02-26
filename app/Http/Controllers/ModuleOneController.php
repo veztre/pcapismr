@@ -38,33 +38,30 @@ use App\Models\Plant;
 class ModuleOneController extends Controller
 {
     public function index(){
-        //updated value
-        $year = Auth::user()->year();
-        $quarter = Auth::user()->quarter();
-        $plant = Auth::user()->plant();
-        // end of updated value
-
-        $aircon = Auth::user()->aircon();
-        $gic = Auth::user()->gic();
-        $acno = Auth::user()->acno();
-        $dpno = Auth::user()->dpno();
-        $cncno = Auth::user()->cncno();
-        $denrid = Auth::user()->denrid();
-        $transporterReg = Auth::user()->transporterReg();
-        $tsdreg = Auth::user()->tsdreg();
-        $ccoreg = Auth::user()->ccoreg();
-        $import = Auth::user()->import();
-        $permit = Auth::user()->permit();
-        $smallquan = Auth::user()->smallquan();
-        $priority = Auth::user()->priority();
-        $piccs = Auth::user()->piccs();
-        $pmpin = Auth::user()->pmpin();
-        $pono = Auth::user()->pono();
-        $operation = Auth::user()->operation();
-        $production = Auth::user()->production();
-        $reference= Auth::user()->reference_no()->first();
+        $year = Auth::user()->year;
+        $quarter = Auth::user()->quarter;
+        $plant = Auth::user()->plant;
+        $aircon = Auth::user()->aircon;
+        $gic = Auth::user()->gic;
+        $acno = Auth::user()->acno;
+        $dpno = Auth::user()->dpno;
+        $cncno = Auth::user()->cncno;
+        $denrid = Auth::user()->denrid;
+        $transporterReg = Auth::user()->transporterReg;
+        $tsdreg = Auth::user()->tsdreg;
+        $ccoreg = Auth::user()->ccoreg;
+        $import = Auth::user()->import;
+        $permit = Auth::user()->permit;
+        $smallquan = Auth::user()->smallquan;
+        $priority = Auth::user()->priority;
+        $piccs = Auth::user()->piccs;
+        $pmpin = Auth::user()->pmpin;
+        $pono = Auth::user()->pono;
+        $operation = Auth::user()->operation;
+        $production = Auth::user()->production;
+        $reference= Auth::user()->reference_no->first();
         $upload = Upload::all();
-        $addfacility = Addfacility::get();
+       // $addfacility = Addfacility::get();
 
 
         $users = User::all();
@@ -100,14 +97,23 @@ class ModuleOneController extends Controller
 
     }
 
-    public function create()
-    {
-        return view('module.moduleOne');
+    public function create(){
+
+        $addfacilities = Auth::user()->addfacility;
+        return view('module.moduleOne',['addfacility'=>$addfacilities]);
     }
 
     public function save(Request $request ){
 
         $userId = Auth::user()->id;
+
+//generate reference number
+        $reference_no = Helper::IDGenerator(new referencen, 'ref_no', 5 , 'DENR');
+//create reference number
+        $refNo = new referencen();
+        $refNo->ref_no = $reference_no;
+        $refNo->userid = Auth::user()->id;
+        $refNo->save();
 
 // updated value
         $year = new Yeardd();
@@ -295,8 +301,8 @@ class ModuleOneController extends Controller
 
         if ($files = $request->file('file')) {
             $userId = Auth::user()->id;
-            $reference = Auth::user()->reference_no()->first(); // Fetch reference number of authenticated user
-            $refNo = $reference->reference_number; // Extract the reference number from the fetched object
+            $reference = Auth::user()->reference_no; // Fetch reference number of authenticated user
+            $refNo = $reference->ref_no; // Extract the reference number from the fetched object
             $userFolder = $userId . '/' . $refNo . '/moduleOneAttachment'; // Set user folder path
 
             foreach ($files as $file) {
@@ -310,72 +316,46 @@ class ModuleOneController extends Controller
                 }
             }
         }
-
-
-
+    // to update the module completed by the user
+        $user = User::find(Auth::user()->id);
+        $user->page_completed = "Module One";
+        $user->update();
         return redirect('moduleTwoTransition');
-
 
     }
 
 
     public function pdf(){
-        $ref_no= Auth::user()->reference_no()->get();
-        $years = Auth::user()->year()->get();
-        $quarters = Auth::user()->quarter()->get();
-        $plants = Auth::user()->plant()->get();
-        $aircon = Auth::user()->aircon()->get();
-        $gic = Auth::user()->gic()->get();
-        $dpno = Auth::user()->dpno()->get();
-        $cncno = Auth::user()->cncno()->get();
-        $denrid = Auth::user()->denrid()->get();
-        $transporterReg = Auth::user()->transporterReg()->get();
-        $tsdreg = Auth::user()->tsdreg()->get();
-        $ccoreg = Auth::user()->ccoreg()->get();
-        $import = Auth::user()->import()->get();
-        $permit = Auth::user()->permit()->get();
-        $smallquan = Auth::user()->smallquan()->get();
-        $priority = Auth::user()->priority()->get();
-        $piccs = Auth::user()->piccs()->get();
-        $pmpin = Auth::user()->pmpin()->get();
-        $acno = Auth::user()->acno()->get();
-        $pono = Auth::user()->pono()->get();
-        $operation = Auth::user()->operation()->get();
-        $production = Auth::user()->production()->get();
+        //$addfacility = Auth::user()->addfacility()->get();
+        //$tsdreg = Auth::user()->tsdreg;
+
         $customPaper = array(0,0,800.00,800.90);
         $pdf = PDF::loadView('module.pdf1' , [
-            'ref_no'=>$ref_no,
-            'year'=>$years,
-            'quarter'=>$quarters,
-            'plants'=>$plants,
-            'gic'=>$gic,
-            'aircon'=>$aircon,
-            'dpno'=>$dpno,
-            'cncno'=>$cncno,
-            'denrid'=>$denrid,
-            'transporterReg'=>$transporterReg,
-            'tsdreg'=>$tsdreg,
-            'ccoreg'=>$ccoreg,
-            'import'=>$import,
-            'permit'=>$permit,
-            'smallquan'=>$smallquan,
-            'priority'=>$priority,
-            'piccs'=>$piccs,
-            'pmpin'=>$pmpin,
-            'acno'=>$acno,
-            'pono'=>$pono,
-            'operation'=>$operation,
-            'production'=>$production
-
+            'ref_no'=>Auth::user()->reference_no,
+            'year'=>Auth::user()->year,
+            'quarter'=>Auth::user()->quarter,
+            'plant'=>Auth::user()->plant,
+            'gic'=>Auth::user()->gic,
+            'aircon'=>Auth::user()->aircon,
+            'dpno'=>Auth::user()->dpno()->get(),
+            'cncno'=>Auth::user()->cncno()->get(),
+            'denrid'=>Auth::user()->denrid,
+            'transporterReg'=>Auth::user()->transporterReg,
+            'tsdreg'=>Auth::user()->tsdreg,
+            'ccoreg'=>Auth::user()->ccoreg()->get(),
+            'import'=>Auth::user()->import()->get(),
+            'permit'=>Auth::user()->permit,
+            'smallquan'=>Auth::user()->smallquan()->get(),
+            'priority'=>Auth::user()->priority()->get(),
+            'piccs'=>Auth::user()->piccs()->get(),
+            'pmpin'=>Auth::user()->pmpin()->get(),
+            'acno'=>Auth::user()->acno,
+            'pono'=>Auth::user()->pono()->get(),
+            'operation'=>Auth::user()->operation,
+            'production'=>Auth::user()->production
         ])->setPaper($customPaper,'A4');
 
         return $pdf->download('moduleOne.pdf');
-    }
-
-    public function show($id)
-    {
-
-
     }
 
 
@@ -383,32 +363,33 @@ class ModuleOneController extends Controller
     public function edit()
     {
         $id = Auth::id();
-        $year = Auth::user()->year()->get();
-        $quarter = Auth::user()->quarter()->get();
-        $plant = Auth::user()->plant()->get();
-        $referencens = Auth::user()->reference_no()->get();
-        $aircon = Auth::user()->aircon()->get();
-        $gic = Auth::user()->gic()->get();
+        $year = Auth::user()->year;
+
+        $quarter = Auth::user()->quarter;
+        $plant = Auth::user()->plant;
+        $referencens = Auth::user()->reference_no;
+        $aircon = Auth::user()->aircon;
+        $gic = Auth::user()->gic;
         $dpno = Auth::user()->dpno()->get();
         $cncno = Auth::user()->cncno()->get();
-        $denrid = Auth::user()->denrid()->get();
-        $transporterReg = Auth::user()->transporterReg()->get();
-        $tsdreg = Auth::user()->tsdreg()->get();
+        $denrid = Auth::user()->denrid;
+        $transporterReg = Auth::user()->transporterReg;
+        $tsdreg = Auth::user()->tsdreg;
         $ccoreg = Auth::user()->ccoreg()->get();
         $import = Auth::user()->import()->get();
-        $permit = Auth::user()->permit()->get();
+        $permit = Auth::user()->permit;
         $smallquan = Auth::user()->smallquan()->get();
         $priority = Auth::user()->priority()->get();
         $piccs = Auth::user()->piccs()->get();
         $pmpin = Auth::user()->pmpin()->get();
-        $acno = Auth::user()->acno()->get();
+        $acno = Auth::user()->acno;
         $pono = Auth::user()->pono()->get();
-        $operation = Auth::user()->operation()->get();
-        $production = Auth::user()->production()->get();
+        $operation = Auth::user()->operation;
+        $production = Auth::user()->production;
         $uploads = Upload::get();
         $users = User::find($id);
         $upload = Upload::get();
-        $addfacility = Addfacility::get();
+        $addfacility = Auth::user()->addfacility()->get();
 
         return view('module.updatemoduleOne',
             compact('users',
@@ -437,9 +418,6 @@ class ModuleOneController extends Controller
                 'uploads',
                 'addfacility',
                 'upload',
-
-
-
             ));
     }
     public function update(Request $request, $id)
@@ -455,7 +433,7 @@ class ModuleOneController extends Controller
 
         if ($files) {
             $userId = Auth::user()->id;
-            $reference = Auth::user()->reference_no()->first(); // Fetch reference number of authenticated user
+            $reference = Auth::user()->reference_no->first(); // Fetch reference number of authenticated user
             $refNo = $reference->reference_number; // Extract the reference number from the fetched object
             $userFolder = $userId . '/' . $refNo . '/moduleOneAttachment'; // Set user folder path
 
@@ -802,25 +780,6 @@ class ModuleOneController extends Controller
 
         return redirect()->route('module.moduleOne');
     }
-
-    public static function generate(){
-        // ... existing code ...
-        $exist = Auth::user()->reference_no()->first();
-
-        if ($exist==null) {
-            $reference_no = Helper::IDGenerator(new referencen, 'ref_no', 5 , 'DENR');
-            $data = new referencen();
-            $data->ref_no = $reference_no;
-            $data->userid = Auth::user()->id;
-            $data->save();
-        }
-        return redirect('moduleOne');
-    }
-
-
-
-
-
 
 
 }
