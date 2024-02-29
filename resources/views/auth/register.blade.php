@@ -6,7 +6,7 @@
                 <!-- <a class="navbar-brand text-center" href="#"> </a> -->
                 <table class="w-full font-bold" >
                     <tbody><tr class="text-lg">
-                        <td class="w-50 text-white" > <a href="{{ route('login') }}" ><img class="inline bg-transparent w-50 h-50 mr-4" src="/images/rep-bg-logo.gif" alt="logo-denr" >User Registration</a></td>
+                        <td class="w-50 text-white" > <a href="{{ route('login') }}" ><img class="inline bg-transparent w-50 h-50 mr-4" src="{{asset('storage/images/rep-bg-logo.gif') }}" alt="logo-denr" >User Registration</a></td>
                         <td class="text-right text-white mr-6" >POLLUTION CONTROL ASSOCIATION OF THE PHILIPPINES INC. (PCAPI)</td>
                     </tr>
                     </tbody></table>
