@@ -36,11 +36,10 @@
                                     </div>
 
                                     <div class="card-body">
-                                        @foreach ($referencens as $ref)
 
-                                            <input type="text" class="form-control mt-0" placeholder=""  value="{{$ref->ref_no}}" readonly >
+                                            <input type="text" class="form-control mt-0" placeholder=""  value="{{$referencens->ref_no}}" readonly >
 
-                                        @endforeach
+
                                     </div>
 
                                 </div>
@@ -271,6 +270,7 @@
                             <div class="container">
                                 <div class="col mb-3" >
                                     <div style="float: right" class="mb-3">
+                                    <a href="{{ route('view5',['id' => Auth::id()]) }}" class="btn btn-lg border bg-light">Previous</a>
                                         <input type="submit" value="Submit SMR" class="btn btn-lg btn-success">
                                     </div>
                                 </div>

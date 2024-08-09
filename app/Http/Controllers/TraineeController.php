@@ -20,7 +20,7 @@ class TraineeController extends Controller
         $users = Auth::user()->id;
         $addfacility = Auth::user()->addfacility()->get();
         $oaupload = Oaupload::get();
-       
+
         $currentUserId = auth()->user()->id;
         $uploadedFilePath = Session::pull('uploadedFilePath');
         $upload = Oaupload::where('userid', $currentUserId)->first();
@@ -63,7 +63,12 @@ class TraineeController extends Controller
             }
         }
 
-        // Handle the rest of your code...
+
     }
 
+    public function editModule (){
+
+       // for the user show the module need to be edited by the user
+
+    }
 }

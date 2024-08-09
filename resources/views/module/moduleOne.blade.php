@@ -10,7 +10,11 @@
                 {{View::make('module.tabs')}}
 
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg container">
-
+                    @if (session('input_error'))
+                            <div class="alert alert-danger">
+                                {{ session('input_error') }}
+                            </div>
+                    @endif
 
                     <div class="container">
                         <form id="myForm" action="/saveData" method="post"  enctype="multipart/form-data">
@@ -94,7 +98,7 @@
                                 <!-- Message input -->
                                 <div class="col">
                                     <p class="text-primary my-0">Note.</p>
-                                    <p class="text-primary my-0">1. Put " " for field not applicable to you.</p>
+                                    <p class="text-primary my-0">1. Put "N/A " for field not applicable to you.</p>
                                     <p class="text-primary my-0">2. You Can now Export data on Each module by clicking "EXPORT" Link
                                         Below.</p>
                                 </div>
@@ -103,7 +107,7 @@
                                         {{--pdf export button--}}
                                         <p class="col p-1 mt-3  text-light " style="background-color:gray; font-size:20px ">
                                             MODULE 1: GENERAL INFORMATION
-                                            <a href="/pdf" class="btn btn-lg float-right " ><img src="/images/printpdflogo.png" class="inline" height="40px" width="50px" style="backgorund-color:gray;"> EXPORT PDF</a>
+                                            <a href="/pdf" class="btn btn-lg float-right " ><img src="{{asset('images/printpdflogo.png')}}" class="inline" height="40px" width="50px" style=" background-color:gray;"> EXPORT PDF</a>
                                         </p>
 
                                     </div>
@@ -208,9 +212,17 @@
                                                    required>
                                             <span class="checkmark"></span>
                                         </td>
+                                        </tr>
+                                        <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
                                         <td><button type="button" name="add" id="dynamic-ar"
                                                 class="btn btn-outline-primary">+</button></td>
-                                     </tr>
+                                                <td></td>
+                                        <td></td>
+                                    </tr>
+
 
                                     </tbody>
 
@@ -780,6 +792,7 @@
                                     <div style="float: right" class="mb-3">
                                         <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
                                     </div>
+
                                 </div>
                             </div>
                         </form>

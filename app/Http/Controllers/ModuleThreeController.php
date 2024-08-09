@@ -27,42 +27,17 @@ class ModuleThreeController extends Controller
 {
     public function index(){
 
-        $waterpolutiondata = Auth::user()->waterpolutiondata();
-        $personEmployed = Auth::user()->personEmployed();
-        $personEmployedCost = Auth::user()->personEmployedCost();
-        $costofchemical = Auth::user()->costofchemical();
-        $utilitycost = Auth::user()->utilitycost();
-        $administrativecosts = Auth::user()->administrativecosts();
-        $costofoperating = Auth::user()->costofoperating();
-        $newinvestment = Auth::user()->newinvestment();
-        $costofnew = Auth::user()->costofnew();
-        $dischargeLocation = Auth::user()->dischargeLocation();
-        $dreportofwaste = Auth::user()->dreportofwaste();
-        $drowcfop = Auth::user()->drowcfop();
-        $drowcfop1 = Auth::user()->drowcfop1();
-        $reference= Auth::user()->reference_no()->first();
-        $dreportofwaste_parameter = Auth::user()->dreportofwaste_parameter();
+        $reference= Auth::user()->reference_no;
+        $page_completed = Auth::user()->page_completed;
 
-
-        return view('module.moduleThree')
-            ->with([
-                'waterpolutiondata'=>$waterpolutiondata,
-                'personEmployed'=>$personEmployed,
-                'personEmployedCost'=>$personEmployedCost,
-                'costofchemical'=>$costofchemical,
-                'utilitycost'=>$utilitycost,
-                'administrativecosts'=>$administrativecosts,
-                'costofoperating'=>$costofoperating,
-                'newinvestment'=>$newinvestment,
-                'costofnew'=>$costofnew,
-                'dischargeLocation'=>$dischargeLocation,
-                'dreportofwaste'=>$dreportofwaste,
-                'drowcfop'=>$drowcfop,
-                'drowcfop1'=>$drowcfop1,
-                'referencen'=>$reference->ref_no,
-                'dreportof_waste_parameters'=>$dreportofwaste_parameter,
-            ]);
-
+        if($page_completed=="Module Two"){
+            //new
+            return view('module.moduleThree')
+            ->with(['referencen'=>$reference->ref_no]);
+        }else {
+            //for update
+            return redirect()->route('view3',['id' => Auth::user()->id]);
+        }
 
     }
 
@@ -70,6 +45,64 @@ class ModuleThreeController extends Controller
 
 
         $waterpolutiondata  = new WaterPolutionData();
+        if (is_null($waterpolutiondata) ){
+            return back()->withInput();
+         }
+        $personEmployed = new PersonEmployed();
+        if (is_null($personEmployed) ){
+            return back()->withInput();
+         }
+        $personEmployedCost = new PersonEmployedCost();
+        if (is_null($personEmployedCost) ){
+            return back()->withInput();
+         }
+        $costofchemical = new CostOfChemical();
+        if (is_null($costofchemical) ){
+            return back()->withInput();
+         }
+        $utilitycost = new UtilityCost();
+        if (is_null($utilitycost) ){
+            return back()->withInput();
+         }
+        $administrativecosts = new AdministrativeCost();
+        if (is_null($administrativecosts) ){
+            return back()->withInput();
+         }
+        $newinvestment = new NewInvestment();
+        if (is_null($newinvestment) ){
+            return back()->withInput();
+         }
+        $costofoperating = new CostOfOperating();
+        if (is_null($costofoperating) ){
+            return back()->withInput();
+         }
+        $costofnew = new CostOfNew();
+        if (is_null($costofnew) ){
+            return back()->withInput();
+         }
+        $dreportofwaste_parameter = new DreportofWaste_parameter();
+        if (is_null($dreportofwaste_parameter) ){
+            return back()->withInput();
+         }
+
+
+        //with array data
+        $dischargeLocation = $request->input('dischargeLocation');
+        if (is_null($dischargeLocation) ){
+            return back()->withInput();
+         }
+
+        $dreportofwaste = $request->input('dreportofwaste');
+        if (is_null($dreportofwaste ) ){
+            return back()->withInput();
+         }
+
+
+        $drowcfop1 = $request->input('drowcfop1');
+        if (is_null($drowcfop1) ){
+            return back()->withInput();
+         }
+
         $waterpolutiondata->userid = Auth::user()->id;
         $waterpolutiondata->Domestic_wastewater = $request->input('domwaste');
         $waterpolutiondata->Cooling_water = $request->input('coolingw');
@@ -82,7 +115,7 @@ class ModuleThreeController extends Controller
 
         $waterpolutiondata->save();
 
-        $personEmployed = new PersonEmployed();
+
         $personEmployed->userid = Auth::user()->id;
         $personEmployed->Month_1 = $request->input('pemonth1');
         $personEmployed->Month_2 = $request->input('pemonth2');
@@ -90,7 +123,7 @@ class ModuleThreeController extends Controller
 
         $personEmployed->save();
 
-        $personEmployedCost = new PersonEmployedCost();
+
         $personEmployedCost->userid = Auth::user()->id;
         $personEmployedCost->Month_1 = $request->input('pecmonth1');
         $personEmployedCost->Month_2 = $request->input('pecmonth2');
@@ -98,7 +131,7 @@ class ModuleThreeController extends Controller
 
         $personEmployedCost->save();
 
-        $costofchemical = new CostOfChemical();
+
         $costofchemical->userid = Auth::user()->id;
         $costofchemical->Month_1 = $request->input('cocw1');
         $costofchemical->Month_2 = $request->input('cocw2');
@@ -106,7 +139,7 @@ class ModuleThreeController extends Controller
 
         $costofchemical->save();
 
-        $utilitycost = new UtilityCost();
+
         $utilitycost->userid = Auth::user()->id;
         $utilitycost->Month_1 = $request->input('ucw1');
         $utilitycost->Month_2 = $request->input('ucw2');
@@ -114,7 +147,7 @@ class ModuleThreeController extends Controller
 
         $utilitycost->save();
 
-        $administrativecosts = new AdministrativeCost();
+
         $administrativecosts->userid = Auth::user()->id;
         $administrativecosts->Month_1 = $request->input('aoc1');
         $administrativecosts->Month_2 = $request->input('aoc2');
@@ -122,7 +155,7 @@ class ModuleThreeController extends Controller
 
         $administrativecosts->save();
 
-        $costofoperating = new CostOfOperating();
+
         $costofoperating->userid = Auth::user()->id;
         $costofoperating->Month_1 = $request->input('colab1');
         $costofoperating->Month_2 = $request->input('colab2');
@@ -130,7 +163,7 @@ class ModuleThreeController extends Controller
 
         $costofoperating->save();
 
-        $newinvestment = new NewInvestment();
+
         $newinvestment->userid = Auth::user()->id;
         $newinvestment->Month_1 = $request->input('nai1');
         $newinvestment->Month_2 = $request->input('nai2');
@@ -138,7 +171,7 @@ class ModuleThreeController extends Controller
 
         $newinvestment->save();
 
-        $costofnew = new CostOfNew();
+
         $costofnew->userid = Auth::user()->id;
         $costofnew->Month_1 = $request->input('cnai1');
         $costofnew->Month_2 = $request->input('cnai2');
@@ -146,7 +179,7 @@ class ModuleThreeController extends Controller
 
         $costofnew->save();
 
-        $dischargeLocation = $request->input('dischargeLocation');
+
         for ($x=0; $x<count($dischargeLocation); $x+=3 ){
             $DBdischargeLocation = new DischargeLocation();
             $DBdischargeLocation->userid = Auth::user()->id;
@@ -156,15 +189,14 @@ class ModuleThreeController extends Controller
             $DBdischargeLocation->save();
         }
         /*dreportwaste_parameter*/
-        $dreportofwaste_parameter = $request->input('dreportof_waste_parameters');
-        $dreportofwaste_parameter = new DreportofWaste_parameter();
+        //$dreportofwaste_parameter = $request->input('dreportof_waste_parameters');
         $dreportofwaste_parameter->userid = Auth::user()->id;
         $dreportofwaste_parameter->name_parameter = $request->input('name_parameter');
         $dreportofwaste_parameter->unit_parameter = $request->input('unit_parameter');
         $dreportofwaste_parameter->save();
         /*end dreportwaste_parameter*/
 
-        $dreportofwaste = $request->input('dreportofwaste');
+
         for ($x=0; $x<count($dreportofwaste); $x+=10 ){
             $DBdreportofwaste = new DreportofWaste();
             $DBdreportofwaste->userid = Auth::user()->id;
@@ -204,8 +236,7 @@ class ModuleThreeController extends Controller
 
 
 
-        $drowcfop1 = $request->input('drowcfop1');
-        for ($x=0; $x<count($drowcfop1); $x+=10 ){
+         for ($x=0; $x<count($drowcfop1); $x+=10 ){
             $DBdrowcfop1 = new Drowcfop1();
             $DBdrowcfop1->userid = Auth::user()->id;
             $DBdrowcfop1->Outlet_No = $drowcfop1[$x];
@@ -223,10 +254,9 @@ class ModuleThreeController extends Controller
 
 
         }
-
-
-
-
+        $user = User::find(Auth::user()->id);
+        $user->page_completed = "Module Three";
+        $user->update();
         return redirect('moduleFour');
 
     }
@@ -238,22 +268,22 @@ class ModuleThreeController extends Controller
         $id = Auth::id();
         $users = User::find($id);
 
-        $waterpolutiondata = Auth::user()->waterpolutiondata()->get();
-        $personEmployed = Auth::user()->personEmployed()->get();
-        $personEmployedCost = Auth::user()->personEmployedCost()->get();
-        $costofchemical = Auth::user()->costofchemical()->get();
-        $utilitycost = Auth::user()->utilitycost()->get();
-        $administrativecosts = Auth::user()->administrativecosts()->get();
-        $costofoperating = Auth::user()->costofoperating()->get();
-        $newinvestment = Auth::user()->newinvestment()->get();
-        $costofnew = Auth::user()->costofnew()->get();
+        $waterpolutiondata = Auth::user()->waterpolutiondata;
+        $personEmployed = Auth::user()->personEmployed;
+        $personEmployedCost = Auth::user()->personEmployedCost;
+        $costofchemical = Auth::user()->costofchemical;
+        $utilitycost = Auth::user()->utilitycost;
+        $administrativecosts = Auth::user()->administrativecosts;
+        $costofoperating = Auth::user()->costofoperating;
+        $newinvestment = Auth::user()->newinvestment;
+        $costofnew = Auth::user()->costofnew;
         $dischargeLocation = Auth::user()->dischargeLocation()->get();
         $dreportofwaste = Auth::user()->dreportofwaste()->get();
-        $drowcfop = Auth::user()->drowcfop()->get();
+        $drowcfop = Auth::user()->drowcfop;
         $drowcfop1 = Auth::user()->drowcfop1()->get();
-        $dreportofwaste_parameter = Auth::user()->dreportofwaste_parameter()->get();
+        $dreportofwaste_parameter = Auth::user()->dreportofwaste_parameter;
 
-        $referencens = Auth::user()->reference_no()->get();
+        $referencens = Auth::user()->reference_no;
 
         return view ('/module.updatemoduleThree',
             compact('users',
@@ -279,7 +309,7 @@ class ModuleThreeController extends Controller
     public function update(Request $request, $id){
 
         $waterpolutiondata = WaterPolutionData::where('userid', $id)->first();
-        dd($waterpolutiondata);
+
         $waterpolutiondata->Domestic_wastewater = $request->input('domwaste');
         $waterpolutiondata->Cooling_water = $request->input('coolingw');
         $waterpolutiondata->Waste_water_equipment = $request->input('wequip');
@@ -468,11 +498,7 @@ class ModuleThreeController extends Controller
             $newRecord->value7 = $drowcfop1[$x+9];
             $newRecord->save();
         }
-
-
-
-
-        return redirect()->route('view2', ['id' => $userId]);
+        return redirect('/moduleFour');
 
     }
 

@@ -78,7 +78,7 @@ Route::get('/trainee/dashboard', [TraineeController::class, 'index'])->name('tra
 //end
 
 /* Module One Controller */
-Route::get('/module', [ModuleOneController::class, 'index'])->name('module.moduleOne');
+Route::get('/module', [ModuleOneController::class, 'index'])->name('moduleOne');
 Route::get('/create', [ModuleOneController::class, 'create'])->name('create');
 Route::post('/saveData', [ModuleOneController::class, 'save'])->name('saveData');
 Route::get('/view/moduleOneUpdate/{id}', [ModuleOneController::class, 'edit'])->name('view');
@@ -95,7 +95,7 @@ Route::get('/pdf2', [ModuleTwoController::class, 'pdf']);
 Route::get('/reference2', [ModuleTwoController::class, 'generate']);
 
 /* Module Three Controller */
-Route::get('/moduleThree', [ModuleThreeController::class, 'index'])->name('module.moduleThree');
+Route::get('/moduleThree', [ModuleThreeController::class, 'index'])->name('moduleThree');
 Route::get('/saveData3', [ModuleThreeController::class, 'save']);
 Route::get('/view/moduleThreeUpdate/{id}', [ModuleThreeController::class, 'edit'])->name('view3');
 Route::put('/view/moduleThreeUpdate/{id}', [ModuleThreeController::class, 'update'])->name('moduleThree.update');
@@ -105,7 +105,7 @@ Route::get('/reference3', [ModuleThreeController::class, 'generate']);
 
 
 /* Module Four Controller */
-Route::get('/moduleFour', [ModuleFourController::class, 'index'])->name('module.moduleFour');
+Route::get('/moduleFour', [ModuleFourController::class, 'index'])->name('moduleFour');
 Route::get('/saveData4', [ModuleFourController::class, 'save']);
 Route::get('/view/moduleFourUpdate/{id}', [ModuleFourController::class, 'edit'])->name('view4');
 Route::put('/view/moduleFourUpdate/{id}', [ModuleFourController::class, 'update'])->name('moduleFour.update');
@@ -114,7 +114,7 @@ Route::get('/reference4', [ModuleFourController::class, 'generate']);
 
 
 /* Module Five Controller */
-Route::get('/moduleFive', [ModuleFiveController::class, 'index'])->name('module.moduleFive');
+Route::get('/moduleFive', [ModuleFiveController::class, 'index'])->name('moduleFive');
 
 Route::get('/saveData5', [ModuleFiveController::class, 'save']);
 Route::get('/view/moduleFiveUpdate/{id}', [ModuleFiveController::class, 'edit'])->name('view5');
@@ -123,9 +123,7 @@ Route::get('/pdf5', [ModuleFiveController::class, 'pdf']);
 Route::get('/reference5', [ModuleFiveController::class, 'generate']);
 
 /* Module Six Controller */
-Route::get('/moduleSix', [ModuleSixController::class, 'index'])->name('module.moduleSix');
-
-
+Route::get('/moduleSix', [ModuleSixController::class, 'index'])->name('moduleSix');
 Route::post('/saveData6', [ModuleSixController::class, 'save']);
 Route::get('/view/moduleSixUpdate/{id}', [ModuleSixController::class, 'edit'])->name('view6');
 Route::put('/view/moduleSixUpdate/{id}', [ModuleSixController::class, 'update'])->name('moduleSix.update');

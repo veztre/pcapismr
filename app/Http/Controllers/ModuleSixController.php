@@ -23,26 +23,18 @@ use Illuminate\Support\Facades\Session;
 class ModuleSixController extends Controller
 {
     public function index(){
-        $accident_records = Auth::user()->accident_records();
-        $personel_staff = Auth::user()->personel_staff();
-        $reference= Auth::user()->reference_no()->first();
-        $oaupload = Oaupload::all();
-        $oattachment = Auth::user()->oattachment();
-        $oaemployee = Auth::user()->oaemployee();
-        $oaemployee1 = Auth::user()->oaemployee1();
+        $reference= Auth::user()->reference_no;
+        $page_completed = Auth::user()->page_completed;
+
+        if($page_completed=="Module Five"){
+            //new
+            return view('module.moduleSix',['referencen'=>$reference->ref_no]);
+        }else {
+            //for update
+            return redirect()->route('view6',['id' => Auth::user()->id]);
+        }
 
 
-        return view('module.moduleSix')
-            ->with ([
-                'accident_records'=>$accident_records,
-                'personel_staff'=>$personel_staff,
-                'referencen'=>$reference->ref_no,
-                'oaupload'=>$oaupload,
-                'oattachment'=>$oattachment,
-                'oaemployee'=>$oaemployee,
-                'oaemployee1'=>$oaemployee1,
-
-            ]);
     }
 
     public function save(Request $request){
@@ -103,16 +95,16 @@ class ModuleSixController extends Controller
         if ($file = $request->file('file')) {
             $name = $file->getClientOriginalName();
             $userId = Auth::user()->id;
-            $reference = Auth::user()->reference_no()->first(); // Fetch reference number of authenticated user
+            $reference = Auth::user()->reference_no; // Fetch reference number of authenticated user
             $refNo = $reference->reference_number; // Extract the reference number from the fetched object
 
             // Build the user folder path
             $userFolder = $userId . '/' . $refNo . '/moduleSixAttachment';
 
             // Build the file path
-            $filePath = $userFolder . '/' . $name;
+            //$filePath = $userFolder . '/' . $name;
 
-            if ($file->move($userFolder, $name)) {
+            if ($file->storeAs($userFolder, $name,'public')) {
                 $upload = new Oaupload();
                 $upload->file = $name;
                 $upload->userid = $userId;
@@ -120,9 +112,10 @@ class ModuleSixController extends Controller
             }
         }
 
-
-
-        return redirect()->route('traineedb');
+        $user = User::find(Auth::user()->id);
+        $user->page_completed = "Module Six";
+        $user->update();
+        return redirect('traineedb');
     }
 
 
@@ -132,7 +125,7 @@ class ModuleSixController extends Controller
 
         $id = Auth::id();
         $users = User::find($id);
-        $referencens = Auth::user()->reference_no()->get();
+        $referencens = Auth::user()->reference_no;
         $accident_records = Auth::user()->accident_records()->get();
         $personel_staff = Auth::user()->personel_staff()->get();
         $oattachment = Auth::user()->oattachment()->get();
@@ -274,7 +267,7 @@ class ModuleSixController extends Controller
             $newRecord->save();
         }
 
-        return redirect()->route('traineedb');
+        return redirect('/trainee/dashboard');
 
     }
 

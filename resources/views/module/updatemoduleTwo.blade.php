@@ -6,12 +6,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="">
             {{View::make('module.tabsupdate')}}
-            
+
                  <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <div class="container m-auto mb-4" style="align-content: center">
                         <div class="card m-auto mb-4">
                             <div class="col">
-
                                 <form action="{{ route('moduleTwo.update', ['moduleTwo' => Auth::user()->id]) }}" method="POST">
 
                                 @csrf
@@ -732,7 +731,9 @@
                                     <div class="container">
                                         <div class="col mb-3">
                                             <div class="mb-3" style="float: right">
-                                                <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
+                                            <a href="{{ route('view',['id' => Auth::id()]) }}" class="btn btn-lg border bg-light">Previous</a>
+                                            <a href="/moduleThree" class="btn btn-lg border bg-light">Next</a>
+                                              <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
                                             </div>
                                         </div>
                                     </div>

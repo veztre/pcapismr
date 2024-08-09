@@ -28,50 +28,20 @@ use PDF;
 class ModuleFourController extends Controller
 {
     public function index(){
-        $summary1 = Auth::user()->summary1();
-        $summary2 = Auth::user()->summary2();
-        $summary3 = Auth::user()->summary3();
-        $cost_of_person_employed = Auth::user()->cost_of_person_employed();
-        $total_consumption_of_water = Auth::user()->total_consumption_of_water();
-        $total_cost_of_chemicals_used = Auth::user()->total_cost_of_chemicals_used();
-        $total_consumption_of_electricity = Auth::user()->total_consumption_of_electricity();
-        $administrative_and_overhead_costs = Auth::user()->administrative_and_overhead_costs();
-        $cost_of_operating_in_house_laboratory = Auth::user()->cost_of_operating_in_house_laboratory();
-        $improvement_or_modification = Auth::user()->improvement_or_modification();
-        $cost_of_improvement_of_modification = Auth::user()->cost_of_improvement_of_modification();
-        $detailreport = Auth::user()->detailreport();
-        $detail_parameter = Auth::user()->detail_parameter();
-        $detail_parameter_value = Auth::user()->detail_parameter_value();
-        $reference= Auth::user()->reference_no()->first();
+        $reference= Auth::user()->reference_no;
+        $page_completed = Auth::user()->page_completed;
 
-
-
-        return view('module.moduleFour')
-            ->with([
-                'summary1'=>$summary1,
-                'summary2'=>$summary2,
-                'summary3'=>$summary3,
-                'cost_of_person_employed'=>$cost_of_person_employed,
-                'total_consumption_of_water'=>$total_consumption_of_water,
-                'total_cost_of_chemicals_used'=>$total_cost_of_chemicals_used,
-                'total_consumption_of_electricity'=>$total_consumption_of_electricity,
-                'administrative_and_overhead_costs'=>$administrative_and_overhead_costs,
-                'cost_of_operating_in_house_laboratory'=>$cost_of_operating_in_house_laboratory,
-                'improvement_or_modification'=>$improvement_or_modification,
-                'cost_of_improvement_of_modification'=>$cost_of_improvement_of_modification,
-                'detailreport'=>$detailreport,
-                'detail_parameter'=>$detail_parameter,
-                'detail_parameter_value'=>$detail_parameter_value,
-                'referencen'=>$reference->ref_no
-
-            ]);
-
+        if($page_completed=="Module Three"){
+            //new
+            return view('module.moduleFour',['referencen'=>$reference->ref_no]);
+        }else {
+            //for update
+            return redirect()->route('view4',['id' => Auth::user()->id]);
+        }
     }
     public function save(Request $request){
 
-
-
-
+    try{
         $summary1 = $request->input('summary1');
         for ($x=0; $x<count($summary1); $x+=3 ){
             $DBsummary1 = new Summary1();
@@ -79,9 +49,13 @@ class ModuleFourController extends Controller
             $DBsummary1->Process_Equipment = $summary1[$x];
             $DBsummary1->Location = $summary1[$x+1];
             $DBsummary1->no_of_hours_of_operation_for_the_quarter = $summary1[$x+2];
-
             $DBsummary1->save();
         }
+    } catch(\Exception $e) {
+        return redirect()->back()->withErrors(['custom_error' => $e->getMessage()]);
+    }
+
+    try{
 
         $summary2 = $request->input('summary2');
         for ($x=0; $x<count($summary2); $x+=7 ){
@@ -94,10 +68,13 @@ class ModuleFourController extends Controller
             $DBsummary2->Quantity_Consumed_for_the_quarter = $summary2[$x+4];
             $DBsummary2->Unit_Consumed_for_the_quarter = $summary2[$x+5];
             $DBsummary2->no_of_hours_of_operation_for_the_quarter = $summary2[$x+6];
-
             $DBsummary2->save();
         }
+    } catch(\Exception $e) {
+        return redirect()->back()->withErrors(['custom_error' => $e->getMessage()]);
+    }
 
+    try{
         $summary3 = $request->input('summary3');
         for ($x=0; $x<count($summary3); $x+=3 ){
             $DBsummary3 = new Summary3();
@@ -108,7 +85,11 @@ class ModuleFourController extends Controller
 
             $DBsummary3->save();
         }
+    } catch(\Exception $e) {
+        return redirect()->back()->withErrors(['custom_error' => $e->getMessage()]);
+    }
 
+    try{
         $cost_of_person_employed = $request->input('cost_of_person_employed');
         for ($x=0; $x<count($cost_of_person_employed); $x+=3 ){
             $DBcost_of_person_employed = new Cost_of_person_employed();
@@ -119,7 +100,11 @@ class ModuleFourController extends Controller
 
             $DBcost_of_person_employed->save();
         }
+    } catch(\Exception $e) {
+        return redirect()->back()->withErrors(['custom_error' => $e->getMessage()]);
+    }
 
+    try{
         $total_consumption_of_water = $request->input('total_consumption_of_water');
         for ($x=0; $x<count($total_consumption_of_water); $x+=3 ){
             $DBtotal_consumption_of_water = new Total_Consumption_of_Water();
@@ -130,7 +115,11 @@ class ModuleFourController extends Controller
 
             $DBtotal_consumption_of_water->save();
         }
+    } catch(\Exception $e) {
+        return redirect()->back()->withErrors(['custom_error' => $e->getMessage()]);
+    }
 
+    try{
         $total_cost_of_chemicals_used = $request->input('total_cost_of_chemicals_used');
         for ($x=0; $x<count($total_cost_of_chemicals_used); $x+=3 ){
             $DBtotal_cost_of_chemicals_used = new Total_Cost_of_Chemicals_used();
@@ -141,7 +130,11 @@ class ModuleFourController extends Controller
 
             $DBtotal_cost_of_chemicals_used->save();
         }
+    } catch(\Exception $e) {
+        return redirect()->back()->withErrors(['custom_error' => $e->getMessage()]);
+    }
 
+    try {
         $total_consumption_of_electricity = $request->input('total_consumption_of_electricity');
         for ($x=0; $x<count($total_consumption_of_electricity); $x+=3 ){
             $DBtotal_consumption_of_electricity = new Total_Consumption_of_Electricity();
@@ -152,7 +145,11 @@ class ModuleFourController extends Controller
 
             $DBtotal_consumption_of_electricity->save();
         }
+    } catch(\Exception $e) {
+        return redirect()->back()->withErrors(['custom_error' => $e->getMessage()]);
+    }
 
+    try{
         $administrative_and_overhead_costs = $request->input('administrative_and_overhead_costs');
         for ($x=0; $x<count($administrative_and_overhead_costs); $x+=3 ){
             $DBadministrative_and_overhead_costs = new Administrative_and_Overhead_Costs();
@@ -163,7 +160,10 @@ class ModuleFourController extends Controller
 
             $DBadministrative_and_overhead_costs->save();
         }
-
+    } catch(\Exception $e) {
+        return redirect()->back()->withErrors(['custom_error' => $e->getMessage()]);
+    }
+    try {
         $cost_of_operating_in_house_laboratory = $request->input('cost_of_operating_in_house_laboratory');
         for ($x=0; $x<count($cost_of_operating_in_house_laboratory); $x+=3 ){
             $DBcost_of_operating_in_house_laboratory = new Cost_of_operating_in_house_laboratory();
@@ -174,7 +174,11 @@ class ModuleFourController extends Controller
 
             $DBcost_of_operating_in_house_laboratory->save();
         }
+    } catch(\Exception $e) {
+        return redirect()->back()->withErrors(['custom_error' => $e->getMessage()]);
+    }
 
+    try{
         $improvement_or_modification = $request->input('improvement_or_modification');
         for ($x=0; $x<count($improvement_or_modification); $x+=3 ){
             $DBimprovement_or_modification = new Improvement_or_modification();
@@ -185,6 +189,11 @@ class ModuleFourController extends Controller
 
             $DBimprovement_or_modification->save();
         }
+    } catch(\Exception $e) {
+        return redirect()->back()->withErrors(['custom_error' => $e->getMessage()]);
+    }
+
+    try{
 
         $cost_of_improvement_of_modification = $request->input('cost_of_improvement_of_modification');
         for ($x=0; $x<count($cost_of_improvement_of_modification); $x+=3 ){
@@ -197,10 +206,11 @@ class ModuleFourController extends Controller
             $DBcost_of_improvement_of_modification->save();
         }
 
+    } catch(\Exception $e) {
+        return redirect()->back()->withErrors(['custom_error' => $e->getMessage()]);
+    }
 
-
-
-
+    try{
         $detailreport = $request->input('detailreport');
         for ($x=0; $x<count($detailreport); $x+=7 ){
             $DBdetailreport = new DetailReport();
@@ -212,18 +222,24 @@ class ModuleFourController extends Controller
             $DBdetailreport->NOx_mg_Ncm = $detailreport[$x+4];
             $DBdetailreport->Particulates_mg_Ncm = $detailreport[$x+5];
             $DBdetailreport->SOx_mg_Ncm = $detailreport[$x+6];
-
-
             $DBdetailreport->save();
         }
+    } catch(\Exception $e) {
+        return redirect()->back()->withErrors(['custom_error' => $e->getMessage()]);
+    }
 
+    try {
         $detail_parameter  = new DetailParameter();
         $detail_parameter->userid = Auth::user()->id;
         $detail_parameter->parameter1 = $request->input('parameter1');
         $detail_parameter->parameter2 = $request->input('parameter2');
         $detail_parameter->parameter3 = $request->input('parameter3');
         $detail_parameter->save();
+    } catch(\Exception $e) {
+        return redirect()->back()->withErrors(['custom_error' => $e->getMessage()]);
+    }
 
+    try{
         $detail_parameter_value = $request->input('detail_parameter_value');
         for ($x=0; $x<count($detail_parameter_value); $x+=3){
             $DBdetail_parameter_value = new DetailParameterValue();
@@ -234,8 +250,14 @@ class ModuleFourController extends Controller
             $DBdetail_parameter_value->value_parameter3 = $detail_parameter_value[$x+2];
             $DBdetail_parameter_value->save();
         }
+    } catch(\Exception $e) {
+        return redirect()->back()->withErrors(['custom_error' => $e->getMessage()]);
+    }
 
-        return redirect('moduleFive');
+    $user = User::find(Auth::user()->id);
+    $user->page_completed = "Module Four";
+    $user->update();
+    return redirect('moduleFive');
     }
 
 
@@ -591,7 +613,7 @@ class ModuleFourController extends Controller
 
 
 
-        return redirect()->route('view3', ['id' => $userId]);
+        return redirect('moduleFive');
     }
 
 

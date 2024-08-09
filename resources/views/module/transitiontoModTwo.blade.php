@@ -69,7 +69,7 @@
             <div class="container">
                 <div class="col mb-3">
                     <div class="mb-3" style="float: right">
-                        <a href="{{ route('module.moduleOne') }}" class="btn btn-lg border bg-light">Previous</a>
+                        <a href="{{ route('moduleOne') }}" class="btn btn-lg border bg-light">Previous</a>
                         <input type="submit" value="Proceed to Module 2" class="px-4 py-2 mb-6 text-white no-underline  transition ease-in-out delay-150 bg-blue-400 hover:-translate-y-1 hover:scale-110 hover:bg-blue-500 duration-300">
                     </div>
                 </div>

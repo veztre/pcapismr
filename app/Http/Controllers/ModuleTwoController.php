@@ -20,6 +20,7 @@ use League\CommonMark\Reference\Reference;
 class ModuleTwoController extends Controller
 {
     public function index(){
+
         $reference= Auth::user()->reference_no;
         $page_completed = Auth::user()->page_completed;
 
@@ -141,9 +142,9 @@ class ModuleTwoController extends Controller
             $DBosisa->CorrectiveActionsTaken = $osisa[$x+3];
             $DBosisa->save();
         }
-        $user = User::find(Auth::user()->id);
-        $user->page_completed = "Module Two";
-        $user->update();
+        Auth::user()->page_completed="Module Two";
+        Auth::user()->update();
+
         return redirect('moduleThree');
     }
 
@@ -390,9 +391,10 @@ class ModuleTwoController extends Controller
             $newRecord->CorrectiveActionsTaken = $osisa[$x+3];
             $newRecord->save();
         }
-
-
-
+        if (Auth::user()->page_completed=="Module One"){
+            Auth::user()->page_completed="Module Two";
+            Auth::user()->update();
+        }
         return redirect()->route('view', ['id' => $userId]);
     }
 

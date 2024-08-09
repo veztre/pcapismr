@@ -36,24 +36,30 @@ class ModuleFiveController extends Controller
         $description = Auth::user()->description();
         $awqmonitoring = Auth::user()->awqmonitoring();
         $awqmonitoring1 = Auth::user()->awqmonitoring1();
-        $reference= Auth::user()->reference_no()->first();
+        $reference= Auth::user()->reference_no;
+        $page_completed = Auth::user()->page_completed;
 
-        return view('module.moduleFive')
-            ->with([
-                'aaqmonitoring'=>$aaqmonitoring,
-                'aaqmonitoring_parameter'=>$aaqmonitoring_parameter,
-                'oecondition'=>$oecondition,
-                'evmpprogram'=>$evmpprogram,
-                'aqg'=>$aqg,
-                'tqg'=>$tqg,
-                'aqc'=>$aqc,
-                'tqc'=>$tqc,
-                'eicc'=>$eicc,
-                'description'=>$description,
-                'awqmonitoring'=>$awqmonitoring,
-                'awqmonitoring1'=>$awqmonitoring1,
-                'referencen'=>$reference->ref_no
-            ]);
+        if($page_completed=="Module Four"){
+            //new
+            return view('module.moduleFive',['referencen'=>$reference->ref_no,
+            'aaqmonitoring'=>$aaqmonitoring,
+            'aaqmonitoring_parameter'=>$aaqmonitoring_parameter,
+            'oecondition'=>$oecondition,
+            'evmpprogram'=>$evmpprogram,
+            'aqg'=>$aqg,
+            'tqg'=>$tqg,
+            'aqc'=>$aqc,
+            'tqc'=>$tqc,
+            'eicc'=>$eicc,
+            'description'=>$description,
+            'awqmonitoring'=>$awqmonitoring,
+            'awqmonitoring1'=>$awqmonitoring1,
+
+        ]);
+        }else {
+            //for update
+            return redirect()->route('view5',['id' => Auth::user()->id]);
+        }
 
     }
 
@@ -93,7 +99,7 @@ class ModuleFiveController extends Controller
         }
 
 
-/*        $oeconditions = $request->input('oecondition');
+       $oeconditions = $request->input('oecondition');
         for ($i = 0; $i < count($oeconditions); $i++) {
             $DBoecondition = new OECondition();
             $DBoecondition->userid = Auth::user()->id;
@@ -101,11 +107,11 @@ class ModuleFiveController extends Controller
             $DBoecondition->Status_of_Compliance = $oeconditions[$i]['status_of_compliance'];
             $DBoecondition->Actions_Taken = $oeconditions[$i]['actions_taken'];
             $DBoecondition->save();
-        }*/
+        }
 
 
 
-     /*   $evmpprogram = $request->input('evmpprogram');
+       $evmpprogram = $request->input('evmpprogram');
         for ($i = 0; $i < count($evmpprogram); $i++) {
             $DBevmpprogram = new EVMPprogram();
             $DBevmpprogram->userid = Auth::user()->id;
@@ -113,7 +119,7 @@ class ModuleFiveController extends Controller
             $DBevmpprogram->Status_of_Compliance = $evmpprogram[$i]['evm_status_of_compliance'];
             $DBevmpprogram->Actions_Taken = $evmpprogram[$i]['evm_actions_taken'];
             $DBevmpprogram->save();
-        }*/
+        }
 
         $evmpprogram = $request->input('evmpprogram');
         foreach ($evmpprogram as $i => $evmp) {
@@ -214,8 +220,9 @@ class ModuleFiveController extends Controller
 
         }
 
-
-
+        $user = User::find(Auth::user()->id);
+        $user->page_completed = "Module Five";
+        $user->update();
         return redirect('moduleSix');
     }
 

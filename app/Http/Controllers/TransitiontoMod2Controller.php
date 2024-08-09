@@ -38,15 +38,5 @@ class TransitiontoMod2Controller extends Controller
 
     }
 
-    // public function checkQuestions(Request $request)
-    //{
-    //  $answer1 = $request->input('eidm');
-    //    $answer2 = $request->input('ehwt');
-
-    //   if ($answer1 == 'Yes' || $answer2 == 'Yes') {
-    //       return "Module 2A is under construction";
-    //   } else {
-    // continue with normal flow
-    //   }
-    // }
+  
 }

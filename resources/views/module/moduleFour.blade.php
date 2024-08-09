@@ -308,8 +308,8 @@
                                     <div class="container">
                                         <div class="col mb-3" >
                                             <div style="float: right" class="mb-3">
-                                                <a href="{{ url('moduleThree') }}" class="btn btn-lg border bg-light">Previous</a>
-                                                <a href="{{ url('moduleFive') }}" class="btn btn-lg btn-info">Next</a>
+                                            <a href="{{ route('view3',['id' => Auth::id()]) }}" class="btn btn-lg border bg-light">Previous</a>
+                                                  <!-- <a href="{{ url('moduleFive') }}" class="btn btn-lg btn-info">Next</a> -->
                                                 <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
                                             </div>
                                         </div>

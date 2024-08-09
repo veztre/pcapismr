@@ -55,12 +55,7 @@
                                     </div>
 
                                     <div class="card-body">
-                                        @foreach ($referencens as $ref)
-
-                                            <input type="text" class="form-control mt-0" placeholder=""  value="{{$ref->ref_no}}" readonly >
-
-                                        @endforeach
-
+                                            <input type="text" class="form-control mt-0" placeholder=""  value="{{$referencens->ref_no}}" readonly >
                                     </div>
 
                                 </div>
@@ -78,7 +73,7 @@
                                 <div class="row">
                                     <p class="p-1 mt-3  text-light" style="background-color:gray; font-size:20px ">
                                         MODULE 3: RA 9275
-                                        <a href="/pdf3" class="btn btn-lg float-right " ><img src="/images/printpdflogo.png" class="inline" height="40px" width="50px" style="backgorund-color:gray;"> EXPORT PDF</a>
+                                        <a href="/pdf3" class="btn btn-lg float-right " ><img src="{{asset('/images/printpdflogo.png')}}" class="inline" height="40px" width="50px" style="backgorund-color:gray;"> EXPORT PDF</a>
                                     </p>
                                 </div>
                             </div>
@@ -87,17 +82,16 @@
                                 <table class="table table-borderless table-hover" >
                                     <h3 class="mt-3 mx-2 text-success">WATER POLLUTION DATA</h3>
 
-                                    @foreach ($waterpolutiondata as $water)
                                     <tbody>
                                             <tr>
                                                 <td>Domestic wastewater (cubicmeters/day)</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
-                                                <td><input class="form-control" type="text" style="text-align:center" name="domwaste" id="dww" value="{{$water->Domestic_wastewater }}"></td>
+                                                <td><input class="form-control" type="text" style="text-align:center" name="domwaste" id="dww" required value="{{$waterpolutiondata->Domestic_wastewater }}"></td>
 
                                                 <td></td>
                                                 <td>Processs wastewater (cubicmeters/day)</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
-                                                <td><input class="form-control" type="text" style="text-align:center" name="processwaste" id="pww" value="{{$water->Processs_wastewater }}"></td>
+                                                <td><input class="form-control" type="text" style="text-align:center" name="processwaste" id="pww" required value="{{$waterpolutiondata->Processs_wastewater }}"></td>
                                             </tr>
                                     </tbody>
 
@@ -105,14 +99,14 @@
                                     <tr>
                                         <td>Cooling water (cubicmeters/day)</td>
                                         <input class="form-control" type="number" name="traineeID" value="1" hidden>
-                                        <td><input class="form-control" type="text" style="text-align:center" name="coolingw" id="cwmd" value="{{$water->Cooling_water }}"></td>
+                                        <td><input class="form-control" type="text" style="text-align:center" name="coolingw" id="cwmd" required value="{{$waterpolutiondata->Cooling_water }}"></td>
 
                                         <td>
                                         <td class="grid-rows-1 grid-cols-2"><label for="othern">Others</label>
                                             <input class="form-control" type="number" name="traineeID" value="1" hidden>
-                                            <input class="form-control inline" type="text" style="text-align:center" name="othern" id="otn" value="{{$water->others_n }}"></td>
+                                            <input class="form-control inline" type="text" style="text-align:center" name="othern" id="otn" required value="{{$waterpolutiondata->others_n }}"></td>
                                         <td> <label for="othercm">(cubicmeters/day)</label>
-                                            <input class="form-control" type="text" style="text-align:center" name="othercm" id="ocmd" value="{{$water->others_m }}"></td>
+                                            <input class="form-control" type="text" style="text-align:center" name="othercm" id="ocmd" required value="{{$waterpolutiondata->others_m }}"></td>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -121,16 +115,16 @@
                                     <tr>
                                         <td>Waste water, equipment (cubicmeters/day)</td>
                                         <input class="form-control" type="number" name="traineeID" value="1" hidden>
-                                        <td><input class="form-control" type="text" style="text-align:center" name="wequip" id="wweq" value="{{$water->Waste_water_equipment }}"></td>
+                                        <td><input class="form-control" type="text" style="text-align:center" name="wequip" id="wweq" required value="{{$waterpolutiondata->Waste_water_equipment }}"></td>
 
                                         <td></td>
                                         <td>Waste water, floor (cubicmeters/day)</td>
                                         <input class="form-control" type="number" name="traineeID" value="1" hidden>
-                                        <td><input class="form-control" type="text" style="text-align:center" name="wwfloor" id="wwfl" value="{{$water->Waste_water_floor }}"></td>
+                                        <td><input class="form-control" type="text" style="text-align:center" name="wwfloor" id="wwfl" required value="{{$waterpolutiondata->Waste_water_floor }}"></td>
 
                                     </tr>
 
-                                    @endforeach
+
                                     </tbody>
                                 </table>
 
@@ -138,7 +132,6 @@
                                 <table class="table table-borderless table-hover" >
                                     <h3 class="mt-3 mx-2 text-success">RECORD COST OF TREATMENT</h3>
 
-                                    @foreach ($personEmployed as $person)
                                     <tbody>
                                     <tr>
                                         <th></th>
@@ -155,9 +148,9 @@
                                             <tr>
                                                 <td>Person employed, (# of employees)</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
-                                                <td><input class="form-control" type="text" name="pemonth1" id="pem1" value="{{$person->Month_1 }}"></td>
-                                                <td><input class="form-control"type="text" name="pemonth2" id="pem2" value="{{$person->Month_2 }}"></td>
-                                                <td><input class="form-control" type="text" name="pemonth3" id="pem3" value="{{$person->Month_3 }}"></td>
+                                                <td><input class="form-control" type="text" name="pemonth1" id="pem1" required value="{{$personEmployed->Month_1 }}"></td>
+                                                <td><input class="form-control"type="text" name="pemonth2" id="pem2" required value="{{$personEmployed->Month_2 }}"></td>
+                                                <td><input class="form-control" type="text" name="pemonth3" id="pem3" required value="{{$personEmployed->Month_3 }}"></td>
                                             </tr>
 
 
@@ -166,110 +159,95 @@
 
                                     <tbody id="pecost">
 
-                                    @foreach ($personEmployedCost as $personcost)
-                                        @if($person->id == $personcost->id)
+                                         @if($personEmployed->id == $personEmployedCost->id)
                                             <tr>
                                                 <td>Person employed, (cost)</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
-                                                <td><input class="form-control" type="text" name="pecmonth1" id="pecm1" value="{{$personcost->Month_1 }}"></td>
-                                                <td><input class="form-control" type="text" name="pecmonth2" id="pecm2" value="{{$personcost->Month_2 }}"></td>
-                                                <td><input class="form-control" type="text" name="pecmonth3" id="pecm3" value="{{$personcost->Month_3 }}"></td>
+                                                <td><input class="form-control" type="text" name="pecmonth1" id="pecm1" required value="{{$personEmployedCost->Month_1 }}"></td>
+                                                <td><input class="form-control" type="text" name="pecmonth2" id="pecm2" required value="{{$personEmployedCost->Month_2 }}"></td>
+                                                <td><input class="form-control" type="text" name="pecmonth3" id="pecm3" required value="{{$personEmployedCost->Month_3 }}"></td>
                                             </tr>
                                         @endif
-                                    @endforeach {{--personEmployedCost--}}
-                                    </tbody>
+                                     </tbody>
 
                                     <tbody id="cocwtp">
 
-                                    @foreach ($costofchemical as $chemical)
-                                        @if($person->id == $chemical->id)
+                                         @if($personEmployed->id == $costofchemical->id)
                                             <tr>
                                                 <td>Cost of Chemicals used by WTP</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
-                                                <td><input class="form-control" type="text" name="cocw1" id="cocwm1" value="{{$chemical->Month_1 }}"></td>
-                                                <td><input class="form-control" type="text" name="cocw2" id="cocwm2" value="{{$chemical->Month_1 }}"></td>
-                                                <td><input class="form-control" type="text" name="cocw3" id="cocwm3" value="{{$chemical->Month_1 }}"></td>
+                                                <td><input class="form-control" type="text" name="cocw1" id="cocwm1" required value="{{$costofchemical->Month_1 }}"></td>
+                                                <td><input class="form-control" type="text" name="cocw2" id="cocwm2" required value="{{$costofchemical->Month_1 }}"></td>
+                                                <td><input class="form-control" type="text" name="cocw3" id="cocwm3" required value="{{$costofchemical->Month_1 }}"></td>
                                             </tr>
                                         @endif
-                                    @endforeach {{--costofchemical--}}
                                     </tbody>
 
                                     <tbody id="ucwtp">
-                                    @foreach ($utilitycost as $utility)
-                                        @if($person->id == $utility->id)
+                                        @if($personEmployed->id == $utilitycost->id)
                                             <tr>
                                                 <td>Utility Costs of WTP(electricity & water)</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
-                                                <td><input class="form-control" type="text" name="ucw1" id="ucwm1" value="{{$chemical->Month_1 }}"></td>
-                                                <td><input class="form-control" type="text" name="ucw2" id="ucwm2" value="{{$chemical->Month_2 }}"></td>
-                                                <td><input class="form-control" type="text" name="ucw3" id="ucwm3" value="{{$chemical->Month_3 }}"></td>
+                                                <td><input class="form-control" type="text" name="ucw1" id="ucwm1" required value="{{$utilitycost->Month_1 }}"></td>
+                                                <td><input class="form-control" type="text" name="ucw2" id="ucwm2" required value="{{$utilitycost->Month_2 }}"></td>
+                                                <td><input class="form-control" type="text" name="ucw3" id="ucwm3" required value="{{$utilitycost->Month_3 }}"></td>
                                             </tr>
                                         @endif
-                                    @endforeach  {{--utilitycost--}}
                                     </tbody>
 
                                     <tbody id="aoc">
 
-                                    @foreach ($administrativecosts as $administrative)
-                                        @if($person->id == $administrative->id)
+                                        @if($personEmployed->id == $administrativecosts->id)
                                             <tr>
                                                 <td>Administrative and Overhead Costs</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
-                                                <td><input class="form-control" type="text" name="aoc1" id="aocm1" value="{{$administrative->Month_1 }}"></td>
-                                                <td><input class="form-control" type="text" name="aoc2" id="aocm2" value="{{$administrative->Month_1 }}"></td>
-                                                <td><input class="form-control" type="text" name="aoc3" id="aocm3" value="{{$administrative->Month_1 }}"></td>
+                                                <td><input class="form-control" type="text" name="aoc1" id="aocm1" required value="{{$administrativecosts->Month_1 }}"></td>
+                                                <td><input class="form-control" type="text" name="aoc2" id="aocm2" required value="{{$administrativecosts->Month_1 }}"></td>
+                                                <td><input class="form-control" type="text" name="aoc3" id="aocm3" required value="{{$administrativecosts->Month_1 }}"></td>
                                             </tr>
                                         @endif
-                                    @endforeach  {{--administrativecosts--}}
-                                    </tbody>
+                                     </tbody>
 
                                     <tbody id="colab">
                                     <tr>
 
-                                    @foreach ($costofoperating as $costofOp)
-                                        @if($person->id == $costofOp->id)
+                                        @if($personEmployed->id == $costofoperating->id)
                                             <tr>
                                                 <td>Cost of operating in-house laboratory</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
-                                                <td><input class="form-control" type="text" name="colab1" id="colabm1" value="{{$costofOp->Month_1 }}"></td>
-                                                <td><input class="form-control" type="text" name="colab2" id="colabm2" value="{{$costofOp->Month_2 }}"></td>
-                                                <td><input class="form-control" type="text" name="colab3" id="colabm3" value="{{$costofOp->Month_3 }}"></td>
+                                                <td><input class="form-control" type="text" name="colab1" id="colabm1" required value="{{$costofoperating->Month_1 }}"></td>
+                                                <td><input class="form-control" type="text" name="colab2" id="colabm2" required value="{{$costofoperating->Month_2 }}"></td>
+                                                <td><input class="form-control" type="text" name="colab3" id="colabm3" required value="{{$costofoperating->Month_3 }}"></td>
                                             </tr>
                                         @endif
-                                    @endforeach  {{--costofoperating--}}
-                                    </tbody>
+                                     </tbody>
 
                                     <tbody id="nai">
 
-                                    @foreach ($newinvestment as $newinv)
-                                        @if($person->id == $newinv->id)
+                                        @if($personEmployed->id == $newinvestment->id)
                                             <tr>
                                                 <td>New/Additional Investments in WTP <br> (description)</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
-                                                <td><input class="form-control" type="text" name="nai1" id="naim1" value="{{$newinv->Month_1 }}"></td>
-                                                <td><input class="form-control" type="text" name="nai2" id="naim2" value="{{$newinv->Month_2 }}"></td>
-                                                <td><input class="form-control" type="text" name="nai3" id="naim3" value="{{$newinv->Month_3 }}"></td>
+                                                <td><input class="form-control" type="text" name="nai1" id="naim1" required value="{{$newinvestment->Month_1 }}"></td>
+                                                <td><input class="form-control" type="text" name="nai2" id="naim2" required value="{{$newinvestment->Month_2 }}"></td>
+                                                <td><input class="form-control" type="text" name="nai3" id="naim3" required value="{{$newinvestment->Month_3 }}"></td>
                                             </tr>
                                         @endif
-                                    @endforeach  {{--newinvestment--}}
                                     </tbody>
 
 
                                     <tbody id="cnai">
-                                    @foreach ($costofnew as $con)
-                                        @if($person->id == $con->id)
+                                        @if($personEmployed->id == $costofnew->id)
                                             <tr>
                                                 <td>Costs of New/Add Investments <br> (description)</td>
                                                 <input class="form-control" type="number" name="traineeID" value="1" hidden>
-                                                <td><input class="form-control" type="text" name="cnai1" id="cnaim1" value="{{$con->Month_1 }}"></td>
-                                                <td><input class="form-control" type="text" name="cnai2" id="cnaim2" value="{{$con->Month_2 }}"></td>
-                                                <td><input class="form-control" type="text" name="cnai3" id="cnaim3" value="{{$con->Month_3 }}"></td>
+                                                <td><input class="form-control" type="text" name="cnai1" id="cnaim1" required value="{{$costofnew->Month_1 }}"></td>
+                                                <td><input class="form-control" type="text" name="cnai2" id="cnaim2" required value="{{$costofnew->Month_2 }}"></td>
+                                                <td><input class="form-control" type="text" name="cnai3" id="cnaim3" required value="{{$costofnew->Month_3 }}"></td>
                                             </tr>
                                         @endif
-                                    @endforeach  {{--costofnew--}}
                                     </tbody>
-                                    @endforeach {{--personemployed--}}
-                                </table>
+                                 </table>
 
 
                                 <table class="table table-borderless table-hover" >
@@ -285,9 +263,9 @@
                                     @foreach ($dischargeLocation as $dischargeloc)
 
                                             <tr>
-                                                <td ><input class="form-control" type="text" name="dischargeLocation[]" value ="{{$dischargeloc->Outlet_Number }}"></td>
-                                                <td><input class="form-control" type="text"  id="lo" name="dischargeLocation[]" value="{{$dischargeloc->Location_of_Outlet }}"></td>
-                                                <td><input class="form-control" type="text"  id="nrwb" name="dischargeLocation[]" value="{{$dischargeloc->Name_of_Receiving_water_body }}"></td>
+                                                <td ><input class="form-control" type="text" name="dischargeLocation[]" required value ="{{$dischargeloc->Outlet_Number }}"></td>
+                                                <td><input class="form-control" type="text"  id="lo" name="dischargeLocation[]" required value="{{$dischargeloc->Location_of_Outlet }}"></td>
+                                                <td><input class="form-control" type="text"  id="nrwb" name="dischargeLocation[]" required value="{{$dischargeloc->Name_of_Receiving_water_body }}"></td>
                                                 <td></td>
                                             </tr>
 
@@ -319,9 +297,8 @@
                                         <th style="text-align: center">Oil & Grease (mg/L)</th>
                                         <th style="text-align: center">Temp Rise ©</th>
                                      </tr>
-                                     @foreach ($dreportofwaste_parameter as $dreport_parameter)
                                     <tr>
-                                        <td><input class="form-control" type="text" name="name_parameter" id="npara" value="{{ $dreport_parameter->name_parameter }}"></td>
+                                        <td><input class="form-control" type="text" name="name_parameter" id="npara" required value="{{ $dreportofwaste_parameter->name_parameter }}"></td>
                                     </tr>
                                     <td></td>
                                     <td></td>
@@ -343,7 +320,7 @@
                                         <td></td>
                                         <td></td>
                                         <td></td>
-                                        <td><input class="form-control" type="text" name="unit_parameter" id="upara" value="{{ $dreport_parameter->unit_parameter }}" ></td>
+                                        <td><input class="form-control" type="text" name="unit_parameter" id="upara" required value="{{ $dreportofwaste_parameter->unit_parameter }}" ></td>
                                     </tr>
                                     <td></td>
                                     <td></td>
@@ -355,20 +332,19 @@
                                     <td></td>
                                     <td></td>
                                     <th style="text-align: left">unit</th>
-                                    @endforeach
                                     @foreach ($dreportofwaste as $dreport)
 
                                             <tr>
                                                 <td><input class="form-control" type="text" name="dreportofwaste[]" value="{{$dreport->Outlet_No }}"></td>
                                                 <td ><input class="form-control" type="date"  id="wcdate" name="dreportofwaste[]" value="{{$dreport->date }}"></td>
-                                                <td><input class="form-control" type="text"  id="nfr" name="dreportofwaste[]" value="{{$dreport->Effluent_Flow_Rate }}"></td>
-                                                <td><input class="form-control" type="text"  id="bod" name="dreportofwaste[]" value="{{$dreport->BOD_mg_L }}"></td>
-                                                <td><input class="form-control" type="text"  id="tss" name="dreportofwaste[]" value="{{$dreport->TSS_mg_L }}"></td>
-                                                <td><input class="form-control" type="text"  id="clr" name="dreportofwaste[]" value="{{$dreport->Color }}"></td>
-                                                <td><input class="form-control" type="text"  id="phl" name="dreportofwaste[]" value="{{$dreport->pH }}"></td>
-                                                <td><input class="form-control" type="text"  id="oag" name="dreportofwaste[]" value="{{$dreport->Oil_Grease_mg_L }}"></td>
-                                                <td><input class="form-control" type="text"  id="tempr" name="dreportofwaste[]" value="{{$dreport->Temp_Rise }}"></td>
-                                                <td><input class="form-control" type="text" id="add_p" name="dreportofwaste[]" value="{{ $dreport->Add_parameter }}"></td>
+                                                <td><input class="form-control" type="text"  id="nfr" name="dreportofwaste[]" required value="{{$dreport->Effluent_Flow_Rate }}"></td>
+                                                <td><input class="form-control" type="text"  id="bod" name="dreportofwaste[]" required value="{{$dreport->BOD_mg_L }}"></td>
+                                                <td><input class="form-control" type="text"  id="tss" name="dreportofwaste[]" required value="{{$dreport->TSS_mg_L }}"></td>
+                                                <td><input class="form-control" type="text"  id="clr" name="dreportofwaste[]" required value="{{$dreport->Color }}"></td>
+                                                <td><input class="form-control" type="text"  id="phl" name="dreportofwaste[]" required value="{{$dreport->pH }}"></td>
+                                                <td><input class="form-control" type="text"  id="oag" name="dreportofwaste[]" required value="{{$dreport->Oil_Grease_mg_L }}"></td>
+                                                <td><input class="form-control" type="text"  id="tempr" name="dreportofwaste[]" required value="{{$dreport->Temp_Rise }}"></td>
+                                                <td><input class="form-control" type="text" id="add_p" name="dreportofwaste[]" required value="{{ $dreport->Add_parameter }}"></td>
                                                 <td></td>
                                             </tr>
 
@@ -394,19 +370,17 @@
                                     <h3 class="mt-3 mx-2 text-success">DETAILED REPORT OF WASTEWATER CHARACTERISTICS FOR OTHER POLLUTANTS</h3>
 
                                     <tbody id=dwrcop>
-                                    @foreach ($drowcfop as $drow1)
-
-                                            <tr>
+                                               <tr>
                                                 <th style="text-align: center">Outlet No.</th>
                                                 <th style="text-align: center">Date</th>
                                                 <th style="text-align: center">Effluent Flow Rate (m3/day)</th>
-                                                <td><input class="form-control" type="text"  id="opn1" name="name1" value="{{$drow1->name1}}"></td>
-                                                <td><input class="form-control" type="text"  id="opn2" name="name2" value="{{$drow1->name2}}"></td>
-                                                <td><input class="form-control" type="text"  id="opn3" name="name3" value="{{$drow1->name3}}"></td>
-                                                <td><input class="form-control" type="text"  id="opn4" name="name4" value="{{$drow1->name4}}"></td>
-                                                <td><input class="form-control" type="text"  id="opn5" name="name5" value="{{$drow1->name5}}"></td>
-                                                <td><input class="form-control" type="text"  id="opn6" name="name6" value="{{$drow1->name6}}"></td>
-                                                <td><input class="form-control" type="text"  id="opn7" name="name7" value="{{$drow1->name7}}"></td>
+                                                <td><input class="form-control" type="text"  id="opn1" name="name1" required value="{{$drowcfop->name1}}"></td>
+                                                <td><input class="form-control" type="text"  id="opn2" name="name2"  required value="{{$drowcfop->name2}}"></td>
+                                                <td><input class="form-control" type="text"  id="opn3" name="name3" required value="{{$drowcfop->name3}}"></td>
+                                                <td><input class="form-control" type="text"  id="opn4" name="name4" required value="{{$drowcfop->name4}}"></td>
+                                                <td><input class="form-control" type="text"  id="opn5" name="name5" required value="{{$drowcfop->name5}}"></td>
+                                                <td><input class="form-control" type="text"  id="opn6" name="name6" required value="{{$drowcfop->name6}}"></td>
+                                                <td><input class="form-control" type="text"  id="opn7" name="name7" required value="{{$drowcfop->name7}}"></td>
                                             </tr>
 
                                             <tr>
@@ -426,16 +400,16 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td></td>
-                                                <td><input class="form-control" type="text"  id="opu1" name="unit1" value="{{$drow1->unit1}}"></td>
-                                                <td><input class="form-control" type="text"  id="opu2" name="unit2" value="{{$drow1->unit2}}"></td>
-                                                <td><input class="form-control" type="text"  id="opu3" name="unit3" value="{{$drow1->unit3}}"></td>
-                                                <td><input class="form-control" type="text"  id="opu4" name="unit4" value="{{$drow1->unit4}}"></td>
-                                                <td><input class="form-control" type="text"  id="opu5" name="unit5" value="{{$drow1->unit5}}"></td>
-                                                <td><input class="form-control" type="text"  id="opu6" name="unit6" value="{{$drow1->unit6}}"></td>
-                                                <td><input class="form-control" type="text"  id="opu7" name="unit7" value="{{$drow1->unit7}}"></td>
+                                                <td><input class="form-control" type="text"  id="opu1" name="unit1" required value="{{$drowcfop->unit1}}"></td>
+                                                <td><input class="form-control" type="text"  id="opu2" name="unit2" required value="{{$drowcfop->unit2}}"></td>
+                                                <td><input class="form-control" type="text"  id="opu3" name="unit3" required value="{{$drowcfop->unit3}}"></td>
+                                                <td><input class="form-control" type="text"  id="opu4" name="unit4" required value="{{$drowcfop->unit4}}"></td>
+                                                <td><input class="form-control" type="text"  id="opu5" name="unit5" required value="{{$drowcfop->unit5}}"></td>
+                                                <td><input class="form-control" type="text"  id="opu6" name="unit6" required value="{{$drowcfop->unit6}}"></td>
+                                                <td><input class="form-control" type="text"  id="opu7" name="unit7" required value="{{$drowcfop->unit7}}"></td>
                                             </tr>
 
-                                    @endforeach
+
 
                                     <tr>
                                         <td></td>
@@ -453,16 +427,16 @@
 
                                             <tr>
 
-                                                <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{$drow2->Outlet_No}}"></td>
-                                                <td><input class="form-control" type="date"   name="drowcfop1[]" value="{{$drow2->Date}}"></td>
-                                                <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{$drow2->Effluent_Flow_Rate_m3_day}}"></td>
-                                                <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{$drow2->value1}}"></td>
-                                                <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{$drow2->value2}}"></td>
-                                                <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{$drow2->value3}}"></td>
-                                                <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{$drow2->value4}}"></td>
-                                                <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{$drow2->value5}}"></td>
-                                                <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{$drow2->value6}}"></td>
-                                                <td><input class="form-control" type="text"   name="drowcfop1[]" value="{{$drow2->value7}}"></td>
+                                                <td><input class="form-control" type="text"   name="drowcfop1[]" required value="{{$drow2->Outlet_No}}"></td>
+                                                <td><input class="form-control" type="date"   name="drowcfop1[]" required value="{{$drow2->Date}}"></td>
+                                                <td><input class="form-control" type="text"   name="drowcfop1[]" required value="{{$drow2->Effluent_Flow_Rate_m3_day}}"></td>
+                                                <td><input class="form-control" type="text"   name="drowcfop1[]" required value="{{$drow2->value1}}"></td>
+                                                <td><input class="form-control" type="text"   name="drowcfop1[]" required value="{{$drow2->value2}}"></td>
+                                                <td><input class="form-control" type="text"   name="drowcfop1[]" required value="{{$drow2->value3}}"></td>
+                                                <td><input class="form-control" type="text"   name="drowcfop1[]" required value="{{$drow2->value4}}"></td>
+                                                <td><input class="form-control" type="text"   name="drowcfop1[]" required value="{{$drow2->value5}}"></td>
+                                                <td><input class="form-control" type="text"   name="drowcfop1[]" required value="{{$drow2->value6}}"></td>
+                                                <td><input class="form-control" type="text"   name="drowcfop1[]" required value="{{$drow2->value7}}"></td>
                                                 <td></td>
                                             </tr>
 
@@ -493,8 +467,10 @@
                             <div class="container">
                                 <div class="col mb-3" >
                                     <div style="float: right" class="mb-3">
-                                        <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
-                                    </div>
+                                    <a href="{{ route('view2',['id' => Auth::id()]) }}" class="btn btn-lg border bg-light">Previous</a>
+                                    <a href="/moduleFour" class="btn btn-lg border bg-light">Next</a>
+                                    <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
+                                      </div>
                                 </div>
                             </div>
                         </form>

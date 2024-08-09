@@ -412,7 +412,9 @@
                                     <div class="container">
                                         <div class="col mb-3">
                                             <div style="float: right" class="mb-3">
-                                                <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
+                                            <a href="{{ route('view6',['id' => Auth::id()]) }}" class="btn btn-lg border bg-light">Previous</a>
+                                            <a href="/moduleSix" class="btn btn-lg border bg-light">Next</a>
+                                            <input type="submit" value="Save Page" class="btn btn-lg btn-primary">
                                             </div>
                                         </div>
                                     </div>

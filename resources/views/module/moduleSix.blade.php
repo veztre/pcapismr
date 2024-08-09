@@ -231,7 +231,8 @@
                             <div class="container">
                                 <div class="col mb-3" >
                                     <div style="float: right" class="mb-3">
-                                        <input type="submit" value="Submit SMR" class="btn btn-lg btn-success">
+                                    <a href="{{ route('view5',['id' => Auth::id()]) }}" class="btn btn-lg border bg-light">Previous</a>
+                                    <input type="submit" value="Submit SMR" class="btn btn-lg btn-success">
                                     </div>
                                 </div>
                             </div>
