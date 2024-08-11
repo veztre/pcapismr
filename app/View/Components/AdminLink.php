@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class adminlink extends Component
+class AdminLink extends Component
 {
     /**
      * Create a new component instance.
