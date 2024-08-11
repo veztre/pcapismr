@@ -5,7 +5,7 @@
 
 
         <div class=" col-sm-12 ">
-            <h1  class="mt-10 text-center text-cyan-800 text-4xl"><a href="#"><img src="{{asset('storage/images/logo.gif')}}" class="inline "></a> POLLUTION CONTROL ASSOCIATION OF THE PHILIPPINES INC.  (PCAPI) - SMR</h1>
+            <h1  class="mt-10 text-center text-cyan-800 text-4xl"><a href="#"><img src="{{asset('images/logo.gif')}}" class="inline "></a> POLLUTION CONTROL ASSOCIATION OF THE PHILIPPINES INC.  (PCAPI) - SMR</h1>
         </div>
 
 
@@ -14,7 +14,7 @@
             <!-- Login banner -->
 
             <div  class="md:m-auto hidden lg:inline rounded-l-md" style="width: 45rem; height: 35rem;">
-                <img class=" min-h-full min-w-full   bg-center bg-no-repeat bg-cover " src="{{asset('storage/images/Banner_National-Clean-Up-Month2022-web.jpg')}}">
+                <img class=" min-h-full min-w-full   bg-center bg-no-repeat bg-cover " src="{{asset('images/Banner_National-Clean-Up-Month2022-web.jpg')}}">
             </div>
             <!-- Login form -->
             <div class="md:m-auto md:max-2xl:flex flex flex-wrap content-center justify-center rounded-r-md bg-white " style="width: 24rem; height: 35rem;">
