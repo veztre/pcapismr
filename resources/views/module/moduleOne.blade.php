@@ -17,7 +17,7 @@
                     @endif
 
                     <div class="container">
-                        <form id="myForm" action="/saveData" method="post"  enctype="multipart/form-data">
+                        <form id="myForm" action="{{route('saveData')}}" method="post"  enctype="multipart/form-data">
                             @csrf
                             <!-- {{ csrf_field() }} -->
                             <br>
