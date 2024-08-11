@@ -58,7 +58,7 @@
                                 <div class="row">
                                     <p class="p-1 mt-3  text-light" style="background-color:gray; font-size:20px ">
                                         MODULE 5: P.D. 1586
-                                        <a href="{{route('pdf5')}}" class="btn btn-lg float-right " ><img src="/images/printpdflogo.png" class="inline" height="40px" width="50px" style="backgorund-color:gray;"> EXPORT PDF</a>
+                                        <a href="{{route('pdf5')}}" class="btn btn-lg float-right " ><img src="{{asset('public/images/printpdflogo.png')}}" class="inline" height="40px" width="50px" style="backgorund-color:gray;"> EXPORT PDF</a>
                                     </p>
 
                                 </div>

@@ -73,7 +73,7 @@
                                 <div class="row">
                                     <p class="p-1 mt-3  text-light" style="background-color:gray; font-size:20px ">
                                         MODULE 3: RA 9275
-                                        <a href="{{route('pdf3')}}" class="btn btn-lg float-right " ><img src="{{asset('/images/printpdflogo.png')}}" class="inline" height="40px" width="50px" style="backgorund-color:gray;"> EXPORT PDF</a>
+                                        <a href="{{route('pdf3')}}" class="btn btn-lg float-right " ><img src="{{asset('public/images/printpdflogo.png')}}" class="inline" height="40px" width="50px" style="backgorund-color:gray;"> EXPORT PDF</a>
                                     </p>
                                 </div>
                             </div>
