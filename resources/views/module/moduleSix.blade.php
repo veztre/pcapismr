@@ -54,7 +54,7 @@
                                 <div class="row">
                                     <p class="p-1 mt-3  text-light" style="background-color:gray; font-size:20px ">
                                         MODULE 6: OTHERS
-                                        <a href="/pdf6" class="btn btn-lg float-right " ><img src="/images/printpdflogo.png" class="inline" height="40px" width="50px" style="backgorund-color:gray;"> EXPORT PDF</a>
+                                        <a href="{{route('pdf6')}}" class="btn btn-lg float-right " ><img src="/images/printpdflogo.png" class="inline" height="40px" width="50px" style="backgorund-color:gray;"> EXPORT PDF</a>
                                     </p>
 
                                 </div>
