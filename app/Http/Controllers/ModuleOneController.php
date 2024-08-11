@@ -20,7 +20,7 @@ use App\Models\Pono;
 use App\Models\Priority;
 use App\Models\Production;
 use App\Models\Quarterdd;
-use App\Models\referencen;
+use App\Models\Referencen;
 use App\Models\Smallquan;
 use App\Models\TransporterReg;
 use App\Models\Tsdreg;
@@ -107,9 +107,9 @@ class ModuleOneController extends Controller
     try{
             $userId = Auth::user()->id;
             //generate reference number
-            $reference_no = Helper::IDGenerator(new referencen, 'ref_no', 5 , 'DENR');
+            $reference_no = Helper::IDGenerator(new Referencen, 'ref_no', 5 , 'DENR');
             //create reference number
-            $refNo = new referencen();
+            $refNo = new Referencen();
             $refNo->ref_no = $reference_no;
             $refNo->userid = Auth::user()->id;
             $refNo->save();
